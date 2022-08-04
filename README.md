@@ -1,8 +1,8 @@
-### Team Dev Client
+# Team Dev Client
 
 Client repository for team dev project.
 
-### Quick Start
+## Quick Start
 
 Clone this repository
 
@@ -13,7 +13,7 @@ $ npm start
 # then point your browser to localhost:3000
 ```
 
-### Run tests
+## Run tests
 
 Cypress setup: https://docs.cypress.io/guides/getting-started/installing-cypress
 
@@ -21,9 +21,9 @@ Cypress setup: https://docs.cypress.io/guides/getting-started/installing-cypress
 $ npx cypress open
 ```
 
-### Contribution
+## Contribution
 
-### Styling
+## Styling
 
 - Fonts: to make it easier let's just keep a consistent font throughout
 - Colors: background #2a2c30, normal text #fff, links #ffa500
