@@ -1,6 +1,6 @@
 # Team Dev Frontend Client
 
-Client repository for team dev project.
+Client repository for team dev frontend project.
 
 ## Quick Start
 
@@ -13,7 +13,7 @@ $ npm start
 # then point your browser to localhost:3000
 ```
 
-## Run tests
+## Run Tests
 
 Cypress setup: https://docs.cypress.io/guides/getting-started/installing-cypress
 
@@ -21,7 +21,9 @@ Cypress setup: https://docs.cypress.io/guides/getting-started/installing-cypress
 $ npx cypress open
 ```
 
-## Contribution
+## Deployment
+
+The client is deployed to AWS Amplify, at [https://main.d3auuogvq1hhel.amplifyapp.com/](https://main.d3auuogvq1hhel.amplifyapp.com/).
 
 ## Styling
 
