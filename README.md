@@ -1,4 +1,4 @@
-# Team Dev Client
+# Team Dev Frontend Client
 
 Client repository for team dev project.
 
