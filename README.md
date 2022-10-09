@@ -20,7 +20,7 @@ This is a simulation of professional development teamwork. Here, you work on par
 
 ## Project Board
 
-[Team Dev Frontend Client Project Board](https://github.com/orgs/boolean-uk/projects/6)
+[Team Dev Frontend Client Project Board](https://github.com/orgs/boolean-uk/projects/6).
 
 ## Team Dev Frontend Server
 
