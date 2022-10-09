@@ -18,6 +18,10 @@ This is a simulation of professional development teamwork. Here, you work on par
 - Explain and use a Continuous Integration/Continuous Delivery (CI/CD) process to integrate and deploy features
 - Maintain and monitor a live application
 
+## Project Board
+
+[Team Dev Frontend Client Project Board](https://github.com/orgs/boolean-uk/projects/6)
+
 ## Team Dev Frontend Server
 
 There is more info' about the deployed server at [https://github.com/boolean-uk/team-dev-frontend-server](https://github.com/boolean-uk/team-dev-frontend-server). There, you'll find information about the database design and the API.
