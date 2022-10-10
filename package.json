@@ -30,8 +30,11 @@
       "react-app/jest",
       "prettier"
     ],
+    "plugins": ["prettier"],
     "rules": {
-      "prettier/prettier": ["error"],
+      "prettier/prettier": [
+        "error"
+      ],
       "quotes": [
         "error",
         "single",
@@ -54,6 +57,10 @@
     ]
   },
   "devDependencies": {
-    "cypress": "^9.5.4"
+    "@boolean-uk/boolean-prettier-config": "^1.0.2",
+    "cypress": "^9.5.4",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.7.1"
   }
 }
