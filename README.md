@@ -25,15 +25,13 @@ This is a simulation of professional development teamwork. Here, you work on par
 
 Below is the beginning of your [Team Dev Frontend Client Project Board](https://github.com/orgs/boolean-uk/projects/6). It uses [Kanban](https://www.atlassian.com/agile/kanban). Part of the issues on the backlog there were developed from the following [epic](https://www.atlassian.com/agile/project-management/epics):
 
-```text
-Teachers & students can have conversations
+**Teachers and students can have conversations**
 
-When signed in, a user of id 123 can navigate to `/messages`. They will see a list of users on the left hand side from whom they have had conversations. Clicking on a conversation in the list will show the conversation in the main area. Show the most recent conversation by default. The conversation can continue - in the main area a user will see the conversation messages ordered by date, and an input field and a submit button at the bottom to create a message. For now, other recipients will see these new messages when they refresh their browser page.
+_When signed in, a user of id 123 can navigate to `/messages`. They will see a list of users on the left hand side from whom they have had conversations. Clicking on a conversation in the list will show the conversation in the main area. Show the most recent conversation by default. The conversation can continue - in the main area a user will see the conversation messages ordered by date, and an input field and a submit button at the bottom to create a message. For now, other recipients will see these new messages when they refresh their browser page._
 
-A user can create a conversation with any other user(s). At the top of the page, they see a “start new conversation” area. It has a search input field that updates on input to find users. Selecting a user adds it to the conversation about to be created. The signed in user can see which other users they are adding to a new conversation, they can remove a user from the list before creating the conversation. There’s a required input field for the conversation name. When a user is done adding users to the conversation, they create the conversation by clicking a submit button. This should show immediately for the signed in user in the left hand menu of conversations and show be default in the main area.
+_A user can create a conversation with any other user(s). At the top of the page, they see a “start new conversation” area. It has a search input field that updates on input to find users. Selecting a user adds it to the conversation about to be created. The signed in user can see which other users they are adding to a new conversation, they can remove a user from the list before creating the conversation. There’s a required input field for the conversation name. When a user is done adding users to the conversation, they create the conversation by clicking a submit button. This should show immediately for the signed in user in the left hand menu of conversations and show be default in the main area._
 
-Messages are shown by user with consistent background colours. Signed in users always see their messages with a background colour of blue. Other conversation members have random (but consistent colours)
-```
+_Messages are shown by user with consistent background colours. Signed in users always see their messages with a background colour of blue. Other conversation members have random (but consistent colours)._
 
 ## Team Dev Frontend Server
 
