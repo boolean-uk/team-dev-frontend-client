@@ -2,6 +2,7 @@
   "name": "team-dev-client",
   "version": "0.1.0",
   "private": true,
+  "prettier": "@boolean-uk/boolean-prettier-config",
   "dependencies": {
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
@@ -26,8 +27,19 @@
   "eslintConfig": {
     "extends": [
       "react-app",
-      "react-app/jest"
-    ]
+      "react-app/jest",
+      "prettier"
+    ],
+    "rules": {
+      "prettier/prettier": ["error"],
+      "quotes": [
+        "error",
+        "single",
+        {
+          "allowTemplateLiterals": true
+        }
+      ]
+    }
   },
   "browserslist": {
     "production": [
