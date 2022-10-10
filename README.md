@@ -6,13 +6,17 @@ This is a simulation of professional development teamwork. Here, you work on par
 
 ## Learning Objectives
 
+- Understand the software development lifecycle and take a requirement through to release
+  - Gather requirements
+  - Model the problem domain
+  - Iterative implementation
+  - Verify implementation against requirements
 - Use [agile project management](https://www.atlassian.com/agile/project-management) in a team to build and maintain software
   - Use [ceremonies](https://www.atlassian.com/agile/scrum/ceremonies) like [standups](https://www.atlassian.com/agile/scrum/standups), [planning sessions](https://www.atlassian.com/agile/scrum/sprint-planning), [retrospectives](https://www.atlassian.com/agile/scrum/retrospectives) and [sprint reviews](https://www.atlassian.com/agile/scrum/sprint-reviews) to get stakeholder feedback
   - Estimate and prioritise work
   - Document work
   - [Pair](https://www.agile-academy.com/en/agile-dictionary/pair-programming/), [mob](https://www.agilealliance.org/glossary/mob-programming), and work individually
-- Establish contracts between teams when working on areas of the codebase that overlap
-- Understand the software development lifecycle and take a requirement through to release
+  - Establish contracts between teams when working on areas of the codebase that overlap
 - Use a version control tool to send Pull Requests for integrating code to a codebase
 - Explain and use a Continuous Integration/Continuous Delivery (CI/CD) process to integrate and deploy features
 - Maintain and monitor a live application
