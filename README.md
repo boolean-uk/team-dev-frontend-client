@@ -17,8 +17,8 @@ This is a simulation of professional development teamwork. Here, you work on par
   - Document work
   - [Pair](https://www.agile-academy.com/en/agile-dictionary/pair-programming/), [mob](https://www.agilealliance.org/glossary/mob-programming), and work individually
   - Establish contracts between teams when working on areas of the codebase that overlap
-- Use a version control tool to send Pull Requests for integrating code to a codebase
-- Explain and use a Continuous Integration/Continuous Delivery (CI/CD) process to integrate and deploy features
+- Use a version control tool to send [Pull Requests](https://www.atlassian.com/git/tutorials/making-a-pull-request) for integrating code to a codebase
+- Explain and use a Continuous Integration/Continuous Delivery ([CI/CD](https://www.redhat.com/en/topics/devops/what-is-ci-cd)) process to integrate and deploy features
 - Maintain and monitor a live application
 
 ## Project Board
