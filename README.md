@@ -112,3 +112,8 @@ Students see a list of all of **their** exercises and the status completed true/
 **Student View: User Settings**
 Students can **edit their own user data** (and cannot edit any user data).
 They can adjust persona settings e.g. language, theme, personal pronoun.
+
+
+## UI Views
+
+![UI Concept](/concept/cohort-manager-ui-concept.jpg)
