@@ -24,3 +24,5 @@ yarn-debug.log*
 yarn-error.log*
 insomnia.json
 requests.http
+.env.development
+.env.development
