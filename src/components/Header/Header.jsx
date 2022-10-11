@@ -6,7 +6,6 @@ import InputBase from "@mui/material/InputBase";
 import { Link, useNavigate } from "react-router-dom";
 
 const Header = ({ companyName }) => {
-  console.log(companyName)
   let navigate = useNavigate();
 
   const logOut = (event) => {

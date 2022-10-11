@@ -1,19 +1,15 @@
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 
-const submitPlaceholder = (event) => {
-  alert("API endpoint to update users has not yet been developed.");
-};
-
-const SettingsForm = ({ handleChange, user }) => {
+const SettingsForm = ({ handleChange, handleSubmit, user }) => {
   return (
-    <form className="user-form" onSubmit={submitPlaceholder}>
+    <form className="user-form" onSubmit={handleSubmit}>
       <TextField
         className="user-settings-form-input"
         label="First Name"
         variant="outlined"
         name="first_name"
-        value={user.firstName}
+        value={user.first_name}
         onChange={handleChange}
       />
       <TextField
@@ -21,7 +17,7 @@ const SettingsForm = ({ handleChange, user }) => {
         label="Last Name"
         variant="outlined"
         name="last_name"
-        value={user.lastName}
+        value={user.last_name}
         onChange={handleChange}
       />
       <TextField

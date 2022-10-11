@@ -17,12 +17,18 @@ const SettingsPage = ({ currentUser, setCurrentUser }) => {
     });
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    client.patch(`/user/${user.id}`, user, true)
+      .then(res => console.log(res))
+      .catch(err => console.log(err.response))
+  }
   return (
     <>
     <Header companyName={`Cohort Manager 2.0`} />
     <div className="settings-page">
       <h1>User Settings</h1>
-      <SettingsForm handleChange={handleChange} user={user} />
+      <SettingsForm handleChange={handleChange} handleSubmit={handleSubmit} user={user} />
     </div>
     </>
   );

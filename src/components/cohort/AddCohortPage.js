@@ -9,11 +9,7 @@ function AddCohortPage() {
     })
 
     const handleChange = (event) => {
-        console.log("Something has changed in the cohort form")
         const { value, name } = event.target;
-
-        console.log("cohortName")
-        console.log(name, value)
 
         setCohort({
             ...cohort,
