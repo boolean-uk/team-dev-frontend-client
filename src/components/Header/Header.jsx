@@ -53,7 +53,9 @@ const Header = ({ companyName }) => {
 
         <Box>
           <Stack spacing={2} direction="row">
-            <Button variant="contained">Add Cohort</Button>
+            <Link to='/add-cohort'>
+              <Button variant="contained">Add Cohort</Button>
+            </Link>
             <Button variant="contained" onClick={logOut}>
               Logout
             </Button>
