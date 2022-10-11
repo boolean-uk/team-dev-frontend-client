@@ -39,7 +39,8 @@ const SettingsForm = ({ handleChange, user }) => {
         label="Password"
         variant="outlined"
         name="password"
-        disabled
+        value={user.password}
+        onChange={handleChange}
       />
       <TextField
         className="user-settings-form-input"

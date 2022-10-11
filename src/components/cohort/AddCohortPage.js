@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import client from "../../utils/client";
 import AddCohortForm from "./AddCohortForm";
+import Header from "../Header/Header"
 
 function AddCohortPage() {
     const [cohort, setCohort] = useState({
@@ -15,8 +16,8 @@ function AddCohortPage() {
         console.log(name, value)
 
         setCohort({
-          ...cohort,
-          [name]: value,
+            ...cohort,
+            [name]: value,
         });
     }
 
@@ -34,8 +35,9 @@ function AddCohortPage() {
 
     return (
         <>
+            <Header companyName={`Cohort Manager 2.0`} />
             <h1>Add new cohort</h1>
-            <AddCohortForm handleChange={handleChange} handleSubmit={handleSubmit}/>
+            <AddCohortForm handleChange={handleChange} handleSubmit={handleSubmit} />
         </>
     )
 }
