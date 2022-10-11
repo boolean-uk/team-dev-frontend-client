@@ -7,8 +7,17 @@ function AddCohortPage() {
         "cohortName": ""
     })
 
-    const handleChange = () => {
+    const handleChange = (event) => {
         console.log("Something has changed in the cohort form")
+        const { value, name } = event.target;
+
+        console.log("cohortName")
+        console.log(name, value)
+
+        setCohort({
+          ...cohort,
+          [name]: value,
+        });
     }
 
     const handleSubmit = (event) => {
@@ -16,7 +25,7 @@ function AddCohortPage() {
         console.log(event)
         console.log('Something has been submitted in the cohort form')
         client
-            .post("/cohort")
+            .post("/cohort", cohort)
             .then((res) => {
                 console.log(res.data)
             })
