@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import PostForm from './PostForm';
@@ -5,7 +6,9 @@ import client from '../../utils/client';
 import './style.css';
 // import {testUserData} from '../users/login/LoginPage'
 
-import Header from '../Header/Header';
+
+import Header from "../Header/Header";
+
 
 const PostsPage = (props) => {
   
@@ -26,24 +29,25 @@ const PostsPage = (props) => {
   //   return <></>
   // }
 
+
   const createPost = async (event) => {
-    event.preventDefault();
+    event.preventDefault()
     client
-      .post('/post', post)
+      .post("/post", post)
       .then((res) => setPostResponse(res.data))
       .catch((data) => {
-        console.log(data);
-      });
-  };
+        console.log(data)
+      })
+  }
 
   const handleChange = (event) => {
-    event.preventDefault();
-    const { value, name } = event.target;
+    event.preventDefault()
+    const { value, name } = event.target
     setPost({
       ...post,
-      [name]: value,
-    });
-  };
+      [name]: value
+    })
+  }
 
   // const testUser = () => {
   //   client.get('/user').then(res=>console.log('test user: ',res))
@@ -52,14 +56,17 @@ const PostsPage = (props) => {
   console.log('props post page',userData)
 
   const signOut = (event) => {
-    event.preventDefault();
-    localStorage.setItem(process.env.REACT_APP_USER_TOKEN, '');
-    navigate('../', { replace: true });
-  };
+    event.preventDefault()
+    localStorage.setItem(process.env.REACT_APP_USER_TOKEN, "")
+    navigate("../", { replace: true })
+  }
+
+  console.log(posts, postResponse);
 
   return (
     <>
       <Header companyName={`Cohort Manager 2.0`} />
+      <main>
       <section className='posts-section'>
         <button id='user-signout-button' onClick={signOut}>
           sign out
@@ -69,10 +76,17 @@ const PostsPage = (props) => {
         <ul className='posts-list'>
           {posts.map((post, index) => (
             <li key={index} className='post-item'>
-              {post.user.profile.firstName}: {post.content} <br></br>
-              <button>Like</button>
-              <button>Comment</button>
-              {
+            
+             <div className="post-item-user">
+                {`${post.user.profile.firstName} ${post.user.profile.lastName} says:`} 
+                </div>
+                <div className="post-item-content">
+                {post.content} 
+                </div>
+                <div className="post-item-buttons">
+                <button>Like</button>
+                <button>Comment</button>
+                 {
                 userData.role === 'TEACHER'?
               (
               <>
@@ -82,12 +96,14 @@ const PostsPage = (props) => {
               :
                 console.log('')
               }
+                </div>
             </li>
           ))}
         </ul>
       </section>
+     </main>
     </>
-  );
-};
+  )
+}
 
-export default PostsPage;
+export default PostsPage

@@ -1,3 +1,4 @@
+
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import UserForm from "./UserForm";
@@ -22,14 +23,16 @@ const LoginPage = (props) => {
   }, []);
 
 
+
   const loginUser = (event) => {
-    event.preventDefault();
+    event.preventDefault()
     client
       .post("/login", user)
       .then((res) => {
         localStorage.setItem(
           process.env.REACT_APP_USER_TOKEN,
           res.data.data.token
+
         );
         setLoginResponse(res.data);
         navigate("../posts", { replace: true });
@@ -37,19 +40,22 @@ const LoginPage = (props) => {
         console.log("test user res data: ", res.data.data.user);
 
 
+
       })
-      .catch((err) => console.log(err.response));
-  };
+      .catch((err) => console.log(err.response))
+  }
 
   const handleChange = (event) => {
-    event.preventDefault();
-    const { value, name } = event.target;
+    event.preventDefault()
+    const { value, name } = event.target
 
     setUser({
       ...user,
+
       [name]: value,
     });
   };
+
   return (
     <div className="login-page">
       <div>
@@ -66,7 +72,7 @@ const LoginPage = (props) => {
       <UserForm handleChange={handleChange} handleSubmit={loginUser} />
       {/* <PostsPage userData={userData} /> */}
     </div>
-  );
-};
+  )
+}
 
 export default LoginPage;
