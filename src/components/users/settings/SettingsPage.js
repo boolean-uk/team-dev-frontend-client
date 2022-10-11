@@ -1,13 +1,11 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import SettingsForm from "./SettingsForm";
-import userBlankData from "../utils/userHelpers";
+import Header from "../../Header/Header"
 import client from "../../../utils/client";
 import "./style.css";
 
 const SettingsPage = ({ currentUser, setCurrentUser }) => {
-  console.log("currentUser on settings page");
-  console.log(currentUser);
   const [user, setUser] = useState(currentUser);
 
   const handleChange = (event) => {
@@ -21,16 +19,13 @@ const SettingsPage = ({ currentUser, setCurrentUser }) => {
   };
 
   return (
+    <>
+    <Header companyName={`Cohort Manager 2.0`} />
     <div className="settings-page">
-      <Link id="user-settings-link" to="/signup">
-        sign up
-      </Link>{" "}
-      <Link id="user-login-link" to="/">
-        login
-      </Link>
-      <h1>Sign up</h1>
+      <h1>User Settings</h1>
       <SettingsForm handleChange={handleChange} user={user} />
     </div>
+    </>
   );
 };
 

@@ -5,6 +5,7 @@ import RegistrationPage from "./components/users/registration/RegistrationPage";
 import SettingsPage from "./components/users/settings/SettingsPage";
 import PostsPage from "./components/posts/PostsPage";
 import userBlankData from "./components/users/utils/userHelpers";
+import AddCohortPage from "./components/cohort/AddCohortPage"
 
 import { Routes, Route, Navigate, Outlet } from "react-router-dom";
 
@@ -35,6 +36,7 @@ function App() {
               />
             }
           />
+           <Route path="/add-cohort" element={<AddCohortPage />} />
         </Route>
       </Routes>
     </div>

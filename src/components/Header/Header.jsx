@@ -6,11 +6,13 @@ import InputBase from "@mui/material/InputBase";
 import { Link, useNavigate } from "react-router-dom";
 
 const Header = ({ companyName }) => {
+  console.log(companyName)
   let navigate = useNavigate();
 
-  const logout = () => {
+  const logOut = (event) => {
+    event.preventDefault();
     localStorage.setItem(process.env.REACT_APP_USER_TOKEN, "");
-    navigate("/");
+    navigate("../", { replace: true });
   };
 
   return (
@@ -52,10 +54,10 @@ const Header = ({ companyName }) => {
         <Box>
           <Stack spacing={2} direction="row">
             <Button variant="contained">Add Cohort</Button>
-            <Button variant="contained" onClick={logout}>
+            <Button variant="contained" onClick={logOut}>
               Logout
             </Button>
-            <Link to="/settings">User Settings</Link>
+            <Link to="/settings">User Settings<br/><sup>(Link will be removed)</sup></Link>
           </Stack>
         </Box>
       </Box>
