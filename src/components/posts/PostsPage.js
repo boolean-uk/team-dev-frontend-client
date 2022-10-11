@@ -72,7 +72,7 @@ const PostsPage = (props) => {
           sign out
         </button>
         <p>Status: {postResponse.status}</p>
-        <PostForm handleSubmit={createPost} handleChange={handleChange} />
+
         <ul className='posts-list'>
           {posts.map((post, index) => (
             <li key={index} className='post-item'>
@@ -100,6 +100,7 @@ const PostsPage = (props) => {
             </li>
           ))}
         </ul>
+        <PostForm handleSubmit={createPost} handleChange={handleChange} />
       </section>
      </main>
     </>
