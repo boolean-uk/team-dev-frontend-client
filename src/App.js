@@ -11,14 +11,6 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<LoginPage setUserData={setUserData} />} />
-        <Route path="/signup" element={<RegistrationPage />} />
-        <Route element={<AuthenticateUser />}>
-          <Route path="/posts" element={<PostsPage userData={userData} />} />
-        </Route>
-      </Routes>
-
-      <Routes>
         <Route path="/" element={<LoginPage />} setUserData={setUserData} />
         <Route path="/signup" element={<RegistrationPage />} />
         <Route element={<AuthenticateUser />}>
