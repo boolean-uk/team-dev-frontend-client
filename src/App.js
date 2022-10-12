@@ -1,11 +1,9 @@
-
-import './App.css';
-import LoginPage from './components/users/login/LoginPage';
-import RegistrationPage from './components/users/registration/RegistrationPage';
-import PostsPage from './components/posts/PostsPage';
-import { useState } from 'react';
-import { Routes, Route, Navigate, Outlet } from 'react-router-dom';
-
+import './App.css'
+import LoginPage from './components/users/login/LoginPage'
+import RegistrationPage from './components/users/registration/RegistrationPage'
+import PostsPage from './components/posts/PostsPage'
+import { useState } from 'react'
+import { Routes, Route, Navigate, Outlet } from 'react-router-dom'
 
 function App() {
   const [userData, setUserData] = useState('')
@@ -13,12 +11,10 @@ function App() {
   return (
     <div className="App">
       <Routes>
-
-        <Route path='/' element={<LoginPage  setUserData={setUserData}/>} />
-        <Route path='/signup' element={<RegistrationPage />} />
+        <Route path="/" element={<LoginPage setUserData={setUserData} />} />
+        <Route path="/signup" element={<RegistrationPage />} />
         <Route element={<AuthenticateUser />}>
-          <Route path='/posts' element={<PostsPage userData={userData}/>} />
-
+          <Route path="/posts" element={<PostsPage userData={userData} />} />
         </Route>
       </Routes>
 
