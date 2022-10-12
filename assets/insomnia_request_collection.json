@@ -9,7 +9,7 @@
       "parentId": "wrk_ee6bd1c6a17a495898f0062b836289f8",
       "modified": 1649418138233,
       "created": 1649407799357,
-      "url": "https://team-dev-frontend-server.herokuapp.com:4000/user",
+      "url": "https://team-dev-frontend-server.herokuapp.com/user",
       "name": "Create User",
       "description": "",
       "method": "POST",
@@ -51,7 +51,7 @@
       "parentId": "wrk_ee6bd1c6a17a495898f0062b836289f8",
       "modified": 1649419034532,
       "created": 1649408503619,
-      "url": "https://team-dev-frontend-server.herokuapp.com:4000/login",
+      "url": "https://team-dev-frontend-server.herokuapp.com/login",
       "name": "Login",
       "description": "",
       "method": "POST",
@@ -83,7 +83,7 @@
       "parentId": "wrk_ee6bd1c6a17a495898f0062b836289f8",
       "modified": 1649431643504,
       "created": 1649412868986,
-      "url": "https://team-dev-frontend-server.herokuapp.com:4000/post",
+      "url": "https://team-dev-frontend-server.herokuapp.com/post",
       "name": "Create Post",
       "description": "",
       "method": "POST",
@@ -101,7 +101,7 @@
         {
           "id": "pair_5c7788bb00e84470b78efdebe2c44071",
           "name": "Authorization",
-          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjUsImlhdCI6MTY0OTQxMzk0OSwiZXhwIjoxNjQ5NTAwMzQ5fQ.b37lSRtpFWJ9kqUYAc6PUIP28JXjAYtBN_GpU5TcEuc",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY2NTU3MzE5MSwiZXhwIjoxNjY1NjU5NTkxfQ.QIM0ssvUqZGjZvKsP9bNEeugA0nd0P6xDRsHnlLhMtY",
           "description": ""
         }
       ],
@@ -121,7 +121,7 @@
       "parentId": "wrk_ee6bd1c6a17a495898f0062b836289f8",
       "modified": 1649434615438,
       "created": 1649431648833,
-      "url": "https://team-dev-frontend-server.herokuapp.com:4000/cohort",
+      "url": "https://team-dev-frontend-server.herokuapp.com/cohort",
       "name": "Create Cohort",
       "description": "",
       "method": "POST",
@@ -131,7 +131,7 @@
         {
           "id": "pair_5c7788bb00e84470b78efdebe2c44071",
           "name": "Authorization",
-          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjUsImlhdCI6MTY0OTQxMzk0OSwiZXhwIjoxNjQ5NTAwMzQ5fQ.b37lSRtpFWJ9kqUYAc6PUIP28JXjAYtBN_GpU5TcEuc",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY2NTU3MzE5MSwiZXhwIjoxNjY1NjU5NTkxfQ.QIM0ssvUqZGjZvKsP9bNEeugA0nd0P6xDRsHnlLhMtY",
           "description": ""
         }
       ],
@@ -151,7 +151,7 @@
       "parentId": "wrk_ee6bd1c6a17a495898f0062b836289f8",
       "modified": 1649434759094,
       "created": 1649434621399,
-      "url": "https://team-dev-frontend-server.herokuapp.com:4000/log",
+      "url": "https://team-dev-frontend-server.herokuapp.com/log",
       "name": "Create Delivery Log",
       "description": "",
       "method": "POST",
@@ -164,7 +164,7 @@
         {
           "id": "pair_5c7788bb00e84470b78efdebe2c44071",
           "name": "Authorization",
-          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjUsImlhdCI6MTY0OTQxMzk0OSwiZXhwIjoxNjQ5NTAwMzQ5fQ.b37lSRtpFWJ9kqUYAc6PUIP28JXjAYtBN_GpU5TcEuc",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY2NTU3MzE5MSwiZXhwIjoxNjY1NjU5NTkxfQ.QIM0ssvUqZGjZvKsP9bNEeugA0nd0P6xDRsHnlLhMtY",
           "description": ""
         },
         {
@@ -189,7 +189,7 @@
       "parentId": "wrk_ee6bd1c6a17a495898f0062b836289f8",
       "modified": 1649433065412,
       "created": 1649432950857,
-      "url": "https://team-dev-frontend-server.herokuapp.com:4000/user/1",
+      "url": "https://team-dev-frontend-server.herokuapp.com/user/1",
       "name": "Add User To Cohort",
       "description": "",
       "method": "PATCH",
@@ -202,7 +202,7 @@
         {
           "id": "pair_5c7788bb00e84470b78efdebe2c44071",
           "name": "Authorization",
-          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjUsImlhdCI6MTY0OTQxMzk0OSwiZXhwIjoxNjQ5NTAwMzQ5fQ.b37lSRtpFWJ9kqUYAc6PUIP28JXjAYtBN_GpU5TcEuc",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY2NTU3MzE5MSwiZXhwIjoxNjY1NjU5NTkxfQ.QIM0ssvUqZGjZvKsP9bNEeugA0nd0P6xDRsHnlLhMtY",
           "description": ""
         },
         {
@@ -227,7 +227,7 @@
       "parentId": "wrk_ee6bd1c6a17a495898f0062b836289f8",
       "modified": 1649415496579,
       "created": 1649415488481,
-      "url": "https://team-dev-frontend-server.herokuapp.com:4000/posts",
+      "url": "https://team-dev-frontend-server.herokuapp.com/posts",
       "name": "Get Posts",
       "description": "",
       "method": "GET",
@@ -237,7 +237,7 @@
         {
           "id": "pair_5c7788bb00e84470b78efdebe2c44071",
           "name": "Authorization",
-          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjUsImlhdCI6MTY0OTQxMzk0OSwiZXhwIjoxNjQ5NTAwMzQ5fQ.b37lSRtpFWJ9kqUYAc6PUIP28JXjAYtBN_GpU5TcEuc",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY2NTU3MzE5MSwiZXhwIjoxNjY1NjU5NTkxfQ.QIM0ssvUqZGjZvKsP9bNEeugA0nd0P6xDRsHnlLhMtY",
           "description": ""
         }
       ],
@@ -257,7 +257,7 @@
       "parentId": "wrk_ee6bd1c6a17a495898f0062b836289f8",
       "modified": 1649416277801,
       "created": 1649416179607,
-      "url": "https://team-dev-frontend-server.herokuapp.com:4000/user/1",
+      "url": "https://team-dev-frontend-server.herokuapp.com/user/1",
       "name": "Get User",
       "description": "",
       "method": "GET",
@@ -267,7 +267,7 @@
         {
           "id": "pair_5c7788bb00e84470b78efdebe2c44071",
           "name": "Authorization",
-          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjUsImlhdCI6MTY0OTQxMzk0OSwiZXhwIjoxNjQ5NTAwMzQ5fQ.b37lSRtpFWJ9kqUYAc6PUIP28JXjAYtBN_GpU5TcEuc",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY2NTU3MzE5MSwiZXhwIjoxNjY1NjU5NTkxfQ.QIM0ssvUqZGjZvKsP9bNEeugA0nd0P6xDRsHnlLhMtY",
           "description": ""
         }
       ],
@@ -287,7 +287,7 @@
       "parentId": "wrk_ee6bd1c6a17a495898f0062b836289f8",
       "modified": 1649418055091,
       "created": 1649416736298,
-      "url": "https://team-dev-frontend-server.herokuapp.com:4000/users?first_name=Nathan",
+      "url": "https://team-dev-frontend-server.herokuapp.com/users?first_name=Nathan",
       "name": "Get Users",
       "description": "",
       "method": "GET",
@@ -297,7 +297,7 @@
         {
           "id": "pair_5c7788bb00e84470b78efdebe2c44071",
           "name": "Authorization",
-          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjUsImlhdCI6MTY0OTQxMzk0OSwiZXhwIjoxNjQ5NTAwMzQ5fQ.b37lSRtpFWJ9kqUYAc6PUIP28JXjAYtBN_GpU5TcEuc",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY2NTU3MzE5MSwiZXhwIjoxNjY1NjU5NTkxfQ.QIM0ssvUqZGjZvKsP9bNEeugA0nd0P6xDRsHnlLhMtY",
           "description": "",
           "disabled": false
         }
