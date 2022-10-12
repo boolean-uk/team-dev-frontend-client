@@ -31,6 +31,8 @@ const PostsPage = (props) => {
       .catch((data) => {
         console.log(data)
       })
+    event.target.reset()
+    setPost({ content: '' })
   }
 
   const handleChange = (event) => {
@@ -84,7 +86,10 @@ const PostsPage = (props) => {
               </li>
             ))}
           </ul>
-          <PostForm handleSubmit={createPost} handleChange={handleChange} />
+          <PostForm
+            handleSubmit={(e) => createPost(e)}
+            handleChange={handleChange}
+          />
         </section>
       </main>
     </>
