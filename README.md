@@ -1,4 +1,4 @@
-# Team Dev Frontend Client Amended
+# Team Dev Frontend Client Changed
 
 This is the client repository for the frontend team development project.
 
