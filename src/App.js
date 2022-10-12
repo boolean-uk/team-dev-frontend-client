@@ -40,7 +40,7 @@ function isLoggedIn() {
 
 export default App
 
-const AuthenticateUser = ({ children, redirectPath = '/' }) => {
+const AuthenticateUser = ({ children, redirectPath = "/" }) => {
   if (!isLoggedIn()) {
     return <Navigate to={redirectPath} replace />
   }
