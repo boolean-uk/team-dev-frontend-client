@@ -18,13 +18,16 @@ const PostsPage = (props) => {
     client
       .get('/posts')
       .then((res) => setPosts(res.data.data.posts.sort((a, b) => a.id - b.id)))
-  }, [])
+  }, [posts])
 
   const createPost = async (event) => {
     event.preventDefault()
     client
       .post('/post', post)
-      .then((res) => setPostResponse(res.data))
+      .then((res) => {
+        setPostResponse(res.data)
+        setPosts(posts)
+      })
       .catch((data) => {
         console.log(data)
       })
@@ -39,7 +42,7 @@ const PostsPage = (props) => {
     })
   }
 
-  console.log('props post page', userData)
+  // console.log('props post page', userData)
 
   const signOut = (event) => {
     event.preventDefault()
@@ -47,7 +50,7 @@ const PostsPage = (props) => {
     navigate('../', { replace: true })
   }
 
-  console.log(posts, postResponse)
+  // console.log(posts, postResponse)
 
   return (
     <>
@@ -75,7 +78,7 @@ const PostsPage = (props) => {
                       <button>Delete</button>
                     </>
                   ) : (
-                    console.log('')
+                    userData
                   )}
                 </div>
               </li>
