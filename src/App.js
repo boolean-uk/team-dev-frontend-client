@@ -2,6 +2,7 @@ import './App.css'
 import LoginPage from './components/users/login/LoginPage'
 import RegistrationPage from './components/users/registration/RegistrationPage'
 import PostsPage from './components/posts/PostsPage'
+import UsersPage from './components/users/UsersPage/UsersPage'
 import { useState } from 'react'
 import { Routes, Route, Navigate, Outlet } from 'react-router-dom'
 
@@ -16,8 +17,7 @@ function App() {
         <Route element={<AuthenticateUser />}>
           <Route path="/posts" element={<PostsPage userData={userData} />} />
         </Route>
-        <Route path="/users" />
-        {/* element={<UsersPage />} */}
+        <Route path="/users" element={<UsersPage />} />
         <Route path="/exercises" />
         {/* element={<ExercisePage />} */}
         <Route path="/settings" />

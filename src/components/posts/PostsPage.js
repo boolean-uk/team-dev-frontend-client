@@ -14,6 +14,11 @@ const PostsPage = (props) => {
   const [postResponse, setPostResponse] = useState('')
   const [posts, setPosts] = useState([])
   let navigate = useNavigate()
+
+  const [post, setPost] = useState({ content: '' })
+  const [postResponse, setPostResponse] = useState('')
+  const [posts, setPosts] = useState([])
+  let navigate = useNavigate()
   useEffect(() => {
     client
       .get('/posts')
@@ -24,10 +29,7 @@ const PostsPage = (props) => {
     event.preventDefault()
     client
       .post('/post', post)
-      .then((res) => {
-        setPostResponse(res.data)
-        setPosts(posts)
-      })
+      .then((res) => setPostResponse(res.data))
       .catch((data) => {
         console.log(data)
       })
@@ -44,7 +46,11 @@ const PostsPage = (props) => {
     })
   }
 
-  // console.log('props post page', userData)
+  // const testUser = () => {
+  //   client.get('/user').then(res=>console.log('test user: ',res))
+  // }
+  // testUser()
+  console.log('props post page', userData)
 
   const signOut = (event) => {
     event.preventDefault()
@@ -52,7 +58,7 @@ const PostsPage = (props) => {
     navigate('../', { replace: true })
   }
 
-  // console.log(posts, postResponse)
+  console.log(posts, postResponse)
 
   return (
     <>
