@@ -17,6 +17,26 @@ function App() {
           <Route path="/posts" element={<PostsPage userData={userData} />} />
         </Route>
       </Routes>
+
+      <Routes>
+        <Route path="/" element={<LoginPage />} setUserData={setUserData} />
+        <Route path="/signup" element={<RegistrationPage />} />
+        <Route element={<AuthenticateUser />}>
+          <Route path="/posts" element={<PostsPage userData={userData} />} />
+          </Route>
+          <Route path="/users" />
+          {/* element={<UsersPage />} */}
+          <Route path="/exercises" />
+          {/* element={<ExercisePage />} */}
+          <Route path="/settings" />
+          {/* element={<SettingsPage />} */}
+          <Route path="/add-user" />
+          {/* element={<AddUserPage />} */}
+          <Route path="/add-cohort" />
+          {/* element={<AddCohortPage />} */}
+        
+      </Routes>
+
     </div>
   )
 }
