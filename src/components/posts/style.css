@@ -6,6 +6,11 @@ h1 {
   margin: 30px 0px 10px;
 }
 
+.posts-section {
+  display: grid;
+  height: 80vh;
+  grid-template-rows: 30px 30px 1fr 100px;
+
 .users-section {
   display: grid;
   /* grid-template-rows: 30px 30px 1fr 100px; */
@@ -15,7 +20,7 @@ h1 {
   margin: 20px;
   text-align: left;
   list-style-type : none;
-
+  overflow: scroll ;
 }
 
 .user-item {
@@ -24,7 +29,20 @@ h1 {
   margin: 10px;
 }
 
-/* .user-button {
-  padding: 3px 10px;
-  margin: 0.5em;
-} */
+.post-item-buttons button{
+  margin-left: 0.5em;
+}
+
+.comments{
+  margin-top: 30px;
+  /* margin-right: 50px; */
+  list-style: none;
+}
+
+.comment button{
+  margin-left: 5px;
+}
+
+.comment-form-input{
+  height: 20px;
+}
