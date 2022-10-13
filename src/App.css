@@ -38,3 +38,20 @@ h1 {
 #user-submit-button {
   margin: 2rem;
 }
+
+.mainGridArea{
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-areas:
+
+  "sidebar main-col " 
+}
+.main-col {
+  grid-area: main-col;
+}
+
+.sidebar {
+  grid-area: sidebar;
+  width: 400px;
+  
+}

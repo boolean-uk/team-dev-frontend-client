@@ -1,8 +1,9 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import PostForm from './PostForm'
 import client from '../../utils/client'
 import './style.css'
+import SideNavBar from '../sideNavBar/sideNavBar'
 // import {testUserData} from '../users/login/LoginPage'
 
 import Header from '../Header/Header'
@@ -69,12 +70,14 @@ const PostsPage = (props) => {
   return (
     <div className="content">
       <Header companyName={`Cohort Manager 2.0`} />
-      <main>
-        <section className="posts-section">
-          <button id="user-signout-button" onClick={signOut}>
-            sign out
-          </button>
-          <p>Status: {postResponse.status}</p>
+      <div className="mainGridArea">
+        <SideNavBar />
+        <main>
+          <section className="posts-section main-col">
+            <button id="user-signout-button" onClick={signOut}>
+              sign out
+            </button>
+            <p>Status: {postResponse.status}</p>
 
           <ul className="posts-list">
             {posts.map((post, index) => (
