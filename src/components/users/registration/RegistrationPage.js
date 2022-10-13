@@ -36,7 +36,7 @@ const RegistrationPage = () => {
         login
       </Link>
       <h1>Sign up</h1>
-      <p>Status: {registerResponse.status}</p>
+      <span>Status: {registerResponse.status}</span>
       <UserForm handleChange={handleChange} handleSubmit={registerUser} />
     </div>
   )

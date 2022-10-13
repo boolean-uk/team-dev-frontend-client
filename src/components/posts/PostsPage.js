@@ -55,13 +55,13 @@ const PostsPage = (props) => {
       [name]: value
     })
   }
-
+  
   const signOut = (event) => {
     event.preventDefault()
     localStorage.setItem(process.env.REACT_APP_USER_TOKEN, '')
     navigate('../', { replace: true })
   }
-
+  
   return (
     <div className="content">
       <Header companyName={`Cohort Manager 2.0`} />
