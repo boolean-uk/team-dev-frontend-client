@@ -1,5 +1,5 @@
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
+import TextField from '@mui/material/TextField'
+import Button from '@mui/material/Button'
 
 const SettingsForm = ({ handleChange, handleSubmit, user }) => {
   return (
@@ -63,7 +63,7 @@ const SettingsForm = ({ handleChange, handleSubmit, user }) => {
         Submit
       </Button>
     </form>
-  );
-};
+  )
+}
 
-export default SettingsForm;
+export default SettingsForm
