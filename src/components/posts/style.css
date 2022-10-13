@@ -19,3 +19,17 @@
 .post-item-buttons button{
   margin-left: 0.5em;
 }
+
+.comments{
+  margin-top: 30px;
+  /* margin-right: 50px; */
+  list-style: none;
+}
+
+.comment button{
+  margin-left: 5px;
+}
+
+.comment-form-input{
+  height: 20px;
+}
