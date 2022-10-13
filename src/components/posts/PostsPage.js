@@ -1,11 +1,10 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import PostForm from './PostForm'
 import client from '../../utils/client'
 import './style.css'
-// import {testUserData} from '../users/login/LoginPage'
-
 import Header from '../Header/Header'
+import Post from './Post'
 
 const PostsPage = (props) => {
   const { userData } = props
@@ -16,21 +15,36 @@ const PostsPage = (props) => {
   let navigate = useNavigate()
 
   useEffect(() => {
-    client.get('/posts').then((res) => setPosts(res.data.data.posts))
-  }, [])
-  // if(!userData){
-  //   console.log('no user data')
-  //   return <></>
-  // }
+    client
+      .get('/posts')
+      .then((res) => setPosts(res.data.data.posts.sort((a, b) => a.id - b.id)))
+  }, [postResponse])
+
+  const postsEndRef = useRef(null)
+
+  const scrollToBottom = () => {
+    postsEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+  }
+
+  useEffect(() => {
+    scrollToBottom()
+    console.log('scrollToBottom called')
+  }, [posts])
 
   const createPost = async (event) => {
     event.preventDefault()
     client
       .post('/post', post)
-      .then((res) => setPostResponse(res.data))
+      .then((res) => {
+        setPostResponse(res.data)
+        setPosts(posts)
+        scrollToBottom()
+      })
       .catch((data) => {
         console.log(data)
       })
+    event.target.reset()
+    setPost({ content: '' })
   }
 
   const handleChange = (event) => {
@@ -42,47 +56,43 @@ const PostsPage = (props) => {
     })
   }
 
-  // const testUser = () => {
-  //   client.get('/user').then(res=>console.log('test user: ',res))
-  // }
-  // testUser()
-  console.log('props post page', userData)
-
-  console.log(posts, postResponse)
+  const signOut = (event) => {
+    event.preventDefault()
+    localStorage.setItem(process.env.REACT_APP_USER_TOKEN, '')
+    navigate('../', { replace: true })
+  }
 
   return (
-    <>
+    <div className="content">
       <Header companyName={`Cohort Manager 2.0`} />
       <main>
         <section className="posts-section">
+          <button id="user-signout-button" onClick={signOut}>
+            sign out
+          </button>
           <span>Status: {postResponse.status}</span>
 
           <ul className="posts-list">
             {posts.map((post, index) => (
-              <li key={index} className="post-item">
-                <div className="post-item-user">
-                  {`${post.user.profile.firstName} ${post.user.profile.lastName} says:`}
-                </div>
-                <div className="post-item-content">{post.content}</div>
-                <div className="post-item-buttons">
-                  <button>Like</button>
-                  <button>Comment</button>
-                  {userData.role === 'TEACHER' ? (
-                    <>
-                      <button>Edit</button>
-                      <button>Delete</button>
-                    </>
-                  ) : (
-                    console.log('')
-                  )}
-                </div>
-              </li>
+              <Post
+                key={index}
+                post={post}
+                postResponse={postResponse}
+                setPostResponse={setPostResponse}
+                index={index}
+                userData={userData}
+              />
             ))}
+            <div ref={postsEndRef} />
           </ul>
-          <PostForm handleSubmit={createPost} handleChange={handleChange} />
+
+          <PostForm
+            handleSubmit={(e) => createPost(e)}
+            handleChange={handleChange}
+          />
         </section>
       </main>
-    </>
+    </div>
   )
 }
 

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import client from '../../utils/client'
 import AddCohortForm from './AddCohortForm'
 import Header from '../Header/Header'

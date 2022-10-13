@@ -4,6 +4,7 @@ import RegistrationPage from './components/users/registration/RegistrationPage'
 import PostsPage from './components/posts/PostsPage'
 import SettingsPage from './components/users/settings/SettingsPage'
 import AddCohortPage from './components/cohort/AddCohortPage'
+import UsersPage from './components/users/UsersPage/UsersPage'
 import { useState } from 'react'
 import { Routes, Route, Navigate, Outlet } from 'react-router-dom'
 
