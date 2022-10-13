@@ -1,5 +1,6 @@
 .posts-section {
   display: grid;
+  height: 80vh;
   grid-template-rows: 30px 30px 1fr 100px;
 
 }
@@ -8,6 +9,7 @@
   margin: 20px;
   text-align: left;
   list-style-type : none;
+  overflow: scroll ;
 }
 
 .post-item {

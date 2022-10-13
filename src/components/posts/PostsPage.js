@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import PostForm from './PostForm'
 import client from '../../utils/client'
@@ -13,11 +13,24 @@ const PostsPage = (props) => {
   const [postResponse, setPostResponse] = useState('')
   const [posts, setPosts] = useState([])
   let navigate = useNavigate()
+  
   useEffect(() => {
-    client.get('/posts').then((res) => {
-      setPosts(res.data.data.posts.sort((a, b) => a.id - b.id))
-    })
+    client
+      .get('/posts')
+      .then((res) => setPosts(res.data.data.posts.sort((a, b) => a.id - b.id)))
   }, [postResponse])
+
+  const postsEndRef = useRef(null)
+
+  const scrollToBottom = () => {
+    postsEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+  }
+
+  useEffect(() => {
+    scrollToBottom()
+    console.log('scrollToBottom called')
+  }, [posts])
+  
   const createPost = async (event) => {
     event.preventDefault()
     client
@@ -25,6 +38,7 @@ const PostsPage = (props) => {
       .then((res) => {
         setPostResponse(res.data)
         setPosts(posts)
+        scrollToBottom()
       })
       .catch((data) => {
         console.log(data)
@@ -49,7 +63,7 @@ const PostsPage = (props) => {
   }
 
   return (
-    <>
+    <div className="content">
       <Header companyName={`Cohort Manager 2.0`} />
       <main>
         <section className="posts-section">
@@ -69,14 +83,16 @@ const PostsPage = (props) => {
                 userData={userData}
               />
             ))}
+            <div ref={postsEndRef} />
           </ul>
+
           <PostForm
             handleSubmit={(e) => createPost(e)}
             handleChange={handleChange}
           />
         </section>
       </main>
-    </>
+    </div>
   )
 }
 
