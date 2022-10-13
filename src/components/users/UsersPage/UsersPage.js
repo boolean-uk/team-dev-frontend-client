@@ -1,24 +1,21 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import client from '../../../utils/client'
+import './style.css'
 
 import Header from '../../Header/Header'
 
 const UsersPage = (props) => {
   const { userData } = props
 
-  const [users, setUsers] = useState({ content: '' })
+  const [users, setUsers] = useState([])
   let navigate = useNavigate()
 
   useEffect(() => {
     client.get('/users').then((res) => {
-      if (res.data?.data?.users?.length) {
-        setUsers(res.data.data.users)
-      }
+      setUsers(res.data.data.users)
     })
   }, [])
-
-  console.log('users is: ', users)
 
   const signOut = (event) => {
     event.preventDefault()
@@ -26,25 +23,53 @@ const UsersPage = (props) => {
     navigate('../', { replace: true })
   }
 
-  console.log('users is: ', users)
-  // console.log('firstname is: ', users[0].firstName)
+  if (!users) {
+    return <></>
+  }
+
+  function checkLength(user) {
+    if (user.biography) {
+      if (user.biography.length > 70) {
+        let newBio = user.biography.slice(0, 70) + '...'
+        return newBio
+      }
+      return user.biography
+    }
+    return 'No biography available'
+  }
+
+  function checkGitURL(user) {
+    if (!user.githubUrl) {
+      return 'No link available'
+    }
+    return <a href={`${user.githubUrl}`}>{user.githubUrl}</a>
+  }
 
   return (
     <>
       <Header companyName={`Cohort Manager 2.0`} />
       <main>
-        <section className="posts-section">
+        <section className="users-section">
           <button id="user-signout-button" onClick={signOut}>
             sign out
           </button>
-          <ul className="posts-list">
+          <h1>Cohort member list</h1>
+          <ul className="users-list">
+            {/* <li className="user-item">
+              <div>{`Full Name`}</div>
+              <div>{`Email`}</div>
+              <div>{`Biography`}</div>
+            </li> */}
             {users.map((user, index) => (
-              <li key={index} className="post-item">
-                <div className="post-item-user">
-                  {`${user.firstName} ${user.lastName}`}
-                </div>
-                {/* <div className="post-item-content">
-                  {`${user.firstName} ${user.lastName}`}
+              <li key={index} className="user-item">
+                <div>{`${user.firstName} ${user.lastName}`}</div>
+                <div>{`${user.email}`}</div>
+                <div>{`${checkLength(user)}`}</div>
+                <div>{checkGitURL(user)}</div>
+
+                {/* <div>
+                  <button className="user-button">Edit</button>
+                  <button className="user-button">Delete</button>
                 </div> */}
               </li>
             ))}

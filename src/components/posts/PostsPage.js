@@ -14,11 +14,6 @@ const PostsPage = (props) => {
   const [postResponse, setPostResponse] = useState('')
   const [posts, setPosts] = useState([])
   let navigate = useNavigate()
-
-  const [post, setPost] = useState({ content: '' })
-  const [postResponse, setPostResponse] = useState('')
-  const [posts, setPosts] = useState([])
-  let navigate = useNavigate()
   useEffect(() => {
     client
       .get('/posts')
@@ -68,7 +63,7 @@ const PostsPage = (props) => {
           <button id="user-signout-button" onClick={signOut}>
             sign out
           </button>
-          <p>Status: {postResponse.status}</p>
+          <span>Status: {postResponse.status}</span>
 
           <ul className="posts-list">
             {posts.map((post, index) => (
