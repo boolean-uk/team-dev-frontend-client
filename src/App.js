@@ -1,5 +1,6 @@
 import './App.css'
 import LoginPage from './components/users/login/LoginPage'
+import AddCohortPage from './components/cohort/AddCohortPage'
 import RegistrationPage from './components/users/registration/RegistrationPage'
 import PostsPage from './components/posts/PostsPage'
 import UsersPage from './components/users/UsersPage/UsersPage'
@@ -16,6 +17,7 @@ function App() {
         <Route path="/signup" element={<RegistrationPage />} />
         <Route element={<AuthenticateUser />}>
           <Route path="/posts" element={<PostsPage userData={userData} />} />
+          <Route path="/add-cohort" element={<AddCohortPage />} />
         </Route>
         <Route path="/users" element={<UsersPage />} />
         <Route path="/exercises" />
@@ -24,8 +26,6 @@ function App() {
         {/* element={<SettingsPage />} */}
         <Route path="/add-user" />
         {/* element={<AddUserPage />} */}
-        <Route path="/add-cohort" />
-        {/* element={<AddCohortPage />} */}
       </Routes>
     </div>
   )

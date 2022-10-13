@@ -13,7 +13,7 @@ const PostsPage = (props) => {
   const [postResponse, setPostResponse] = useState('')
   const [posts, setPosts] = useState([])
   let navigate = useNavigate()
-  
+
   useEffect(() => {
     client
       .get('/posts')
@@ -30,7 +30,7 @@ const PostsPage = (props) => {
     scrollToBottom()
     console.log('scrollToBottom called')
   }, [posts])
-  
+
   const createPost = async (event) => {
     event.preventDefault()
     client
@@ -55,13 +55,13 @@ const PostsPage = (props) => {
       [name]: value
     })
   }
-  
+
   const signOut = (event) => {
     event.preventDefault()
     localStorage.setItem(process.env.REACT_APP_USER_TOKEN, '')
     navigate('../', { replace: true })
   }
-  
+
   return (
     <div className="content">
       <Header companyName={`Cohort Manager 2.0`} />

@@ -10,6 +10,7 @@ h1 {
   display: grid;
   height: 80vh;
   grid-template-rows: 30px 30px 1fr 100px;
+}
 
 .users-section {
   display: grid;

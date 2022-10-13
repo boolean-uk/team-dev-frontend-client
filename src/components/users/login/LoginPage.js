@@ -4,7 +4,7 @@ import UserForm from './UserForm'
 import userBlankData from '../utils/userHelpers'
 import client from '../../../utils/client'
 import { useNavigate } from 'react-router-dom'
-import PostsPage from '../../posts/PostsPage'
+// import PostsPage from '../../posts/PostsPage'
 
 const LoginPage = (props) => {
   const { setUserData } = props

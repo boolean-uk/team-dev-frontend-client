@@ -6,7 +6,7 @@ import './style.css'
 import Header from '../../Header/Header'
 
 const UsersPage = (props) => {
-  const { userData } = props
+  // const { userData } = props
 
   const [users, setUsers] = useState([])
   let navigate = useNavigate()
