@@ -1,6 +1,6 @@
 import EditComment from './EditComment'
 const PostComments = (props) => {
-  const { post, setPostResponse } = props
+  const { post, setPostResponse, userData } = props
 
   return post.postComments.map((comment, index) => {
     return (
@@ -9,6 +9,7 @@ const PostComments = (props) => {
         comment={comment}
         key={index}
         setPostResponse={setPostResponse}
+        userData={userData}
       />
     )
   })

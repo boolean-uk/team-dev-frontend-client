@@ -4,7 +4,7 @@ import client from '../../utils/client'
 const EditComment = (props) => {
   const [newComment, setNewComment] = useState({ content: '' })
   const [showEdit, setShowEdit] = useState(false)
-  const { post, comment, setPostResponse } = props
+  const { post, comment, setPostResponse, userData } = props
   const submitEditedComment = (event) => {
     event.preventDefault()
     client
@@ -34,8 +34,14 @@ const EditComment = (props) => {
           {comment.profile.firstName}: {comment.content}
         </p>
       )}
-      <button onClick={() => setShowEdit(!showEdit)}>Edit</button>
-      <button>Delete</button>
+      {comment.profile.id === userData.id || userData.role === 'TEACHER' ? (
+        <>
+          <button onClick={() => setShowEdit(!showEdit)}>Edit</button>
+          <button>Delete</button>
+        </>
+      ) : (
+        <></>
+      )}
     </li>
   )
 }

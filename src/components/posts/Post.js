@@ -69,11 +69,15 @@ const Post = (props) => {
             <button>Delete</button>
           </>
         ) : (
-          userData
+          <></>
         )}
       </div>
       <ul className="comments">
-        <PostComments post={post} setPostResponse={setPostResponse} />
+        <PostComments
+          userData={userData}
+          post={post}
+          setPostResponse={setPostResponse}
+        />
       </ul>
     </li>
   )
