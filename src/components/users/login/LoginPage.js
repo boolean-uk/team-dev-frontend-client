@@ -5,8 +5,7 @@ import userBlankData from '../utils/userHelpers'
 import client from '../../../utils/client'
 import { useNavigate } from 'react-router-dom'
 
-const LoginPage = (props) => {
-  const { setUserData } = props
+const LoginPage = ({ setUserData }) => {
   const [user, setUser] = useState(userBlankData())
   const [loginResponse, setLoginResponse] = useState({
     data: { token: '', user: {} }
@@ -59,7 +58,7 @@ const LoginPage = (props) => {
         login
       </Link>
       <h1>Login</h1>
-      <p>Status: {loginResponse.status}</p>
+      <span>Status: {loginResponse.status}</span>
       <UserForm handleChange={handleChange} handleSubmit={loginUser} />
       {/* <PostsPage userData={userData} /> */}
     </div>

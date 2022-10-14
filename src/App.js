@@ -2,6 +2,9 @@ import './App.css'
 import LoginPage from './components/users/login/LoginPage'
 import RegistrationPage from './components/users/registration/RegistrationPage'
 import PostsPage from './components/posts/PostsPage'
+import SettingsPage from './components/users/settings/SettingsPage'
+import AddCohortPage from './components/cohort/AddCohortPage'
+import UsersPage from './components/users/UsersPage/UsersPage'
 import { useState } from 'react'
 import { Routes, Route, Navigate, Outlet } from 'react-router-dom'
 
@@ -15,17 +18,18 @@ function App() {
         <Route path="/signup" element={<RegistrationPage />} />
         <Route element={<AuthenticateUser />}>
           <Route path="/posts" element={<PostsPage userData={userData} />} />
+          <Route
+            path="/settings"
+            element={<SettingsPage userData={userData} />}
+          />
+          <Route path="/add-cohort" element={<AddCohortPage />} />
+          <Route path="/users" />
+          {/* element={<UsersPage />} */}
+          <Route path="/exercises" />
+          {/* element={<ExercisePage />} */}
+          <Route path="/add-user" />
+          {/* element={<AddUserPage />} */}
         </Route>
-        <Route path="/users" />
-        {/* element={<UsersPage />} */}
-        <Route path="/exercises" />
-        {/* element={<ExercisePage />} */}
-        <Route path="/settings" />
-        {/* element={<SettingsPage />} */}
-        <Route path="/add-user" />
-        {/* element={<AddUserPage />} */}
-        <Route path="/add-cohort" />
-        {/* element={<AddCohortPage />} */}
       </Routes>
     </div>
   )

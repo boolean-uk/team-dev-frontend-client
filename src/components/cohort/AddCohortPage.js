@@ -1,11 +1,16 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import client from '../../utils/client'
 import AddCohortForm from './AddCohortForm'
 import Header from '../Header/Header'
+import { useNavigate } from 'react-router-dom'
 
 function AddCohortPage() {
+  let navigate = useNavigate()
+
   const [cohort, setCohort] = useState({
-    cohortName: ''
+    cohortName: '',
+    startDate: '',
+    endDate: ''
   })
 
   const handleChange = (event) => {
@@ -19,12 +24,13 @@ function AddCohortPage() {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    console.log(event)
-    console.log('Something has been submitted in the cohort form')
+
     client
-      .post('/cohort', cohort)
+      .post('/cohort', cohort, true)
       .then((res) => {
         console.log(res.data)
+        alert(`Cohort ${cohort.cohortName} created successfully.`)
+        navigate('/posts')
       })
       .catch((err) => console.log(err.response))
   }
