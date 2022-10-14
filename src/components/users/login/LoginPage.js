@@ -4,10 +4,9 @@ import UserForm from './UserForm'
 import userBlankData from '../utils/userHelpers'
 import client from '../../../utils/client'
 import { useNavigate } from 'react-router-dom'
-// import PostsPage from '../../posts/PostsPage'
+import PostsPage from '../../posts/PostsPage'
 
-const LoginPage = (props) => {
-  const { setUserData } = props
+const LoginPage = ({ setUserData }) => {
   const [user, setUser] = useState(userBlankData())
   const [loginResponse, setLoginResponse] = useState({
     data: { token: '', user: {} }
@@ -31,9 +30,8 @@ const LoginPage = (props) => {
           res.data.data.token
         )
         setLoginResponse(res.data)
-        navigate('../posts', { replace: true })
         setUserData(res.data.data.user)
-        console.log('test user res data: ', res.data.data.user)
+        navigate('../posts', { replace: true })
       })
       .catch((err) => console.log(err.response))
   }
