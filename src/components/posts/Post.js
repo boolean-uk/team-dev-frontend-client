@@ -2,16 +2,15 @@ import { useState } from 'react'
 import PostComments from './PostComments'
 import PostCommentsForm from './PostCommentsForm'
 import client from '../../utils/client'
-//import { PopperUnstyled } from '@mui/base'
 
 const Post = (props) => {
   const [addComment, setAddComment] = useState(false)
   const [comment, setComment] = useState({})
   const { post, setPostResponse, index, userData } = props
+
   const handleChange = (event) => {
     event.preventDefault()
     const { value, name } = event.target
-
     setComment({
       ...comment,
       [name]: value
@@ -70,11 +69,15 @@ const Post = (props) => {
             <button>Delete</button>
           </>
         ) : (
-          userData
+          <></>
         )}
       </div>
       <ul className="comments">
-        <PostComments post={post} />
+        <PostComments
+          userData={userData}
+          post={post}
+          setPostResponse={setPostResponse}
+        />
       </ul>
     </li>
   )

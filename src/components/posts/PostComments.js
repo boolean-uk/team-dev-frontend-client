@@ -1,12 +1,16 @@
+import EditComment from './EditComment'
 const PostComments = (props) => {
-  const { post } = props
-  return post.postComments.map((comment) => {
+  const { post, setPostResponse, userData } = props
+
+  return post.postComments.map((comment, index) => {
     return (
-      <li key={comment.id} className="comment">
-        {comment.profile.firstName}: {comment.content}
-        <button>Edit</button>
-        <button>Delete</button>
-      </li>
+      <EditComment
+        post={post}
+        comment={comment}
+        key={index}
+        setPostResponse={setPostResponse}
+        userData={userData}
+      />
     )
   })
 }
