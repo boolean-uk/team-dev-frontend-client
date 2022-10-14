@@ -38,45 +38,47 @@ const Post = (props) => {
   }
 
   return (
-    <li className="post-item">
-      <div className="post-item-user">
-        {`${post.user.profile.firstName} ${post.user.profile.lastName} says:`}
-      </div>
-      <div className="post-item-content">{post.content}</div>
-      <div className="post-item-buttons" key={index}>
-        <button>Like</button>
-        <button
-          id={post.id}
-          onClick={(e) =>
-            Number(e.target.id) === Number(post.id)
-              ? setAddComment(!addComment)
-              : e
-          }
-        >
-          Comment
-        </button>
-        {addComment ? (
-          <PostCommentsForm
-            post={post}
-            handleChange={handleChange}
-            handleSubmit={handleSubmit}
-          />
-        ) : (
-          addComment
-        )}
-        {userData.role === 'TEACHER' ? (
-          <>
-            <button>Edit</button>
-            <button>Delete</button>
-          </>
-        ) : (
-          userData
-        )}
-      </div>
+    <>
+      <li className="post-item">
+        <div className="post-item-user">
+          {`${post.user.profile.firstName} ${post.user.profile.lastName} says:`}
+        </div>
+        <div className="post-item-content">{post.content}</div>
+        <div className="post-item-buttons" key={index}>
+          <button>Like</button>
+          <button
+            id={post.id}
+            onClick={(e) =>
+              Number(e.target.id) === Number(post.id)
+                ? setAddComment(!addComment)
+                : e
+            }
+          >
+            Comment
+          </button>
+          {addComment ? (
+            <PostCommentsForm
+              post={post}
+              handleChange={handleChange}
+              handleSubmit={handleSubmit}
+            />
+          ) : (
+            addComment
+          )}
+          {userData.role === 'TEACHER' ? (
+            <>
+              <button>Edit</button>
+              <button>Delete</button>
+            </>
+          ) : (
+            userData
+          )}
+        </div>
+      </li>
       <ul className="comments">
         <PostComments post={post} />
       </ul>
-    </li>
+    </>
   )
 }
 

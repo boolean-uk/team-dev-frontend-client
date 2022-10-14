@@ -9,7 +9,21 @@ h1 {
 .posts-section {
   display: grid;
   height: 80vh;
-  grid-template-rows: 30px 30px 1fr 100px;
+  grid-template-rows: 30px auto 1fr 100px;
+}
+
+.posts-list {
+  margin: 20px;
+  text-align: left;
+  list-style-type : none;
+  display: grid;
+  grid-auto-rows: auto;
+}
+
+.post-item {
+  display: grid;
+  grid-template-columns: 1fr 3fr repeat(4, auto);
+  margin: 0.5em
 }
 
 .users-section {
