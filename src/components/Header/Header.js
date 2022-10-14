@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom'
 
 const Header = ({ companyName }) => {
   let navigate = useNavigate()
-
+  
   const handleLogout = (event) => {
     event.preventDefault()
     localStorage.removeItem(process.env.REACT_APP_USER_TOKEN)
