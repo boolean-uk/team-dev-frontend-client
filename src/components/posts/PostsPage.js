@@ -4,9 +4,8 @@ import PostForm from './PostForm'
 import client from '../../utils/client'
 import './style.css'
 import SideNavBar from '../sideNavBar/sideNavBar'
-// import {testUserData} from '../users/login/LoginPage'
-
 import Header from '../Header/Header'
+import Post from './Post'
 
 const PostsPage = (props) => {
   const { userData } = props
@@ -15,6 +14,7 @@ const PostsPage = (props) => {
   const [postResponse, setPostResponse] = useState('')
   const [posts, setPosts] = useState([])
   let navigate = useNavigate()
+
   useEffect(() => {
     client
       .get('/posts')
@@ -57,15 +57,11 @@ const PostsPage = (props) => {
     })
   }
 
-  // console.log('props post page', userData)
-
   const signOut = (event) => {
     event.preventDefault()
     localStorage.setItem(process.env.REACT_APP_USER_TOKEN, '')
     navigate('../', { replace: true })
   }
-
-  // console.log(posts, postResponse)
 
   return (
     <div className="content">
@@ -81,24 +77,14 @@ const PostsPage = (props) => {
 
           <ul className="posts-list">
             {posts.map((post, index) => (
-              <li key={index} className="post-item">
-                <div className="post-item-user">
-                  {`${post.user.profile.firstName} ${post.user.profile.lastName} says:`}
-                </div>
-                <div className="post-item-content">{post.content}</div>
-                <div className="post-item-buttons">
-                  <button onClick={() => console.log(post.id)}>Like</button>
-                  <button>Comment</button>
-                  {userData.role === 'TEACHER' ? (
-                    <>
-                      <button>Edit</button>
-                      <button>Delete</button>
-                    </>
-                  ) : (
-                    userData
-                  )}
-                </div>
-              </li>
+              <Post
+                key={index}
+                post={post}
+                postResponse={postResponse}
+                setPostResponse={setPostResponse}
+                index={index}
+                userData={userData}
+              />
             ))}
             <div ref={postsEndRef} />
           </ul>
