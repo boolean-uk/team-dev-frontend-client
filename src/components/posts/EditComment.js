@@ -34,6 +34,7 @@ const EditComment = (props) => {
           {comment.profile.firstName}: {comment.content}
         </p>
       )}
+      <button>Like</button>
       {comment.profile.id === userData.id || userData.role === 'TEACHER' ? (
         <>
           <button onClick={() => setShowEdit(!showEdit)}>Edit</button>
