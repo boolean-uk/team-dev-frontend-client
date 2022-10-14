@@ -4,14 +4,13 @@ import Typography from '@mui/material/Typography'
 import { Stack } from '@mui/material'
 import InputBase from '@mui/material/InputBase'
 import { useNavigate } from 'react-router-dom'
-import { Link } from 'react-router-dom'
 
 const Header = ({ companyName }) => {
   let navigate = useNavigate()
-
-  const logOut = (event) => {
+  
+  const handleLogout = (event) => {
     event.preventDefault()
-    localStorage.setItem(process.env.REACT_APP_USER_TOKEN, '')
+    localStorage.removeItem(process.env.REACT_APP_USER_TOKEN)
     navigate('../', { replace: true })
   }
 
@@ -53,13 +52,10 @@ const Header = ({ companyName }) => {
 
         <Box>
           <Stack spacing={2} direction="row">
-            <Link to="/add-cohort">
-              <Button variant="contained">Add Cohort</Button>
-            </Link>
-            <Button variant="contained" onClick={logOut}>
+            <Button variant="contained">Add Cohort</Button>
+            <Button variant="contained" onClick={handleLogout}>
               Logout
             </Button>
-            <Link to="/settings">Settings (Temp)</Link>
           </Stack>
         </Box>
       </Box>
