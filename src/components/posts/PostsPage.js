@@ -64,9 +64,9 @@ const PostsPage = (props) => {
   }
 
   return (
-    <div className="content">
+    <div className="content ">
       <Header companyName={`Cohort Manager 2.0`} />
-      <div className="mainGridArea">
+      <div className="mainGridArea ">
         <SideNavBar />
         <main>
           <section className="posts-section main-col">

@@ -3,6 +3,7 @@ import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import { Stack } from '@mui/material'
 import InputBase from '@mui/material/InputBase'
+import { Link } from 'react-router-dom'
 
 const Header = ({ companyName }) => {
   return (
@@ -19,7 +20,12 @@ const Header = ({ companyName }) => {
       >
         <Box>
           <Typography>
-            <span>{companyName}</span>
+            <Link
+              to="/posts"
+              style={{ textDecoration: 'none', fontSize: '25px' }}
+            >
+              <span>{companyName}</span>
+            </Link>
           </Typography>
         </Box>
 
@@ -43,8 +49,12 @@ const Header = ({ companyName }) => {
 
         <Box>
           <Stack spacing={2} direction="row">
-            <Button variant="contained">Add Cohort</Button>
-            <Button variant="contained">Logout</Button>
+            <Link to="/add-cohort" style={{ textDecoration: 'none' }}>
+              <Button variant="contained">Add Cohort</Button>
+            </Link>
+            <Link to="/" style={{ textDecoration: 'none' }}>
+              <Button variant="contained">Logout</Button>
+            </Link>
           </Stack>
         </Box>
       </Box>

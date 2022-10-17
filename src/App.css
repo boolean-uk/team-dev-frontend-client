@@ -41,17 +41,22 @@ h1 {
 
 .mainGridArea{
   display: grid;
+  height: 100%;
   grid-template-columns: 1fr 4fr;
   grid-template-areas:
 
-  "sidebar main-col " 
+  "sidebar main-col " ;
 }
 .main-col {
   grid-area: main-col;
+  overflow-y: scroll;
 }
 
 .sidebar {
   grid-area: sidebar;
-  width: 400px;
-  
+
 }
+
+/* ::-webkit-scrollbar{
+  width: 20px;
+} */
