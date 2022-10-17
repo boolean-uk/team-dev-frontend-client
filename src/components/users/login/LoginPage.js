@@ -4,10 +4,8 @@ import UserForm from './UserForm'
 import userBlankData from '../utils/userHelpers'
 import client from '../../../utils/client'
 import { useNavigate } from 'react-router-dom'
-// import PostsPage from '../../posts/PostsPage'
 
-const LoginPage = (props) => {
-  const { setUserData } = props
+const LoginPage = ({ setUserData }) => {
   const [user, setUser] = useState(userBlankData())
   const [loginResponse, setLoginResponse] = useState({
     data: { token: '', user: {} }
@@ -30,10 +28,9 @@ const LoginPage = (props) => {
           process.env.REACT_APP_USER_TOKEN,
           res.data.data.token
         )
+        setUserData(res.data.data.user)
         setLoginResponse(res.data)
         navigate('../posts', { replace: true })
-        setUserData(res.data.data.user)
-        console.log('test user res data: ', res.data.data.user)
       })
       .catch((err) => console.log(err.response))
   }

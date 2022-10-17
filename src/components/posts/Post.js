@@ -2,16 +2,17 @@ import { useState } from 'react'
 import PostComments from './PostComments'
 import PostCommentsForm from './PostCommentsForm'
 import client from '../../utils/client'
-//import { PopperUnstyled } from '@mui/base'
 
 const Post = (props) => {
   const [addComment, setAddComment] = useState(false)
   const [comment, setComment] = useState({})
+  const [editedPost, setEditedPost] = useState({ content: '' })
+  const [showEditPost, setShowEditPost] = useState(false)
+
   const { post, setPostResponse, index, userData } = props
   const handleChange = (event) => {
     event.preventDefault()
     const { value, name } = event.target
-
     setComment({
       ...comment,
       [name]: value
@@ -37,12 +38,42 @@ const Post = (props) => {
     event.target.reset()
   }
 
+  const submitEditedPost = (event) => {
+    event.preventDefault()
+    client
+      .patch(`/post/${post.id}`, {
+        content: editedPost.content
+      })
+      .then((res) => {
+        setPostResponse(res.data)
+      })
+    setShowEditPost(!editedPost)
+  }
+
+  const deletePost = () => {
+    client.delete(`/post/${post.id}`).then((res) => {
+      setPostResponse(res.data)
+    })
+  }
   return (
     <li className="post-item">
       <div className="post-item-user">
         {`${post.user.profile.firstName} ${post.user.profile.lastName} says:`}
       </div>
-      <div className="post-item-content">{post.content}</div>
+      {showEditPost ? (
+        <form onSubmit={(e) => submitEditedPost(e)}>
+          <input
+            defaultValue={post.content}
+            onChange={(e) =>
+              setEditedPost({ ...editedPost, content: e.target.value })
+            }
+          />
+          <button type="submit">Send</button>
+        </form>
+      ) : (
+        <div className="post-item-content">{post.content}</div>
+      )}
+
       <div className="post-item-buttons" key={index}>
         <button>Like</button>
         <button
@@ -64,17 +95,21 @@ const Post = (props) => {
         ) : (
           addComment
         )}
-        {userData.role === 'TEACHER' ? (
+        {userData.role === 'TEACHER' || post.user.id === userData.id ? (
           <>
-            <button>Edit</button>
-            <button>Delete</button>
+            <button onClick={() => setShowEditPost(!showEditPost)}>Edit</button>
+            <button onClick={() => deletePost()}>Delete</button>
           </>
         ) : (
-          userData
+          <></>
         )}
       </div>
       <ul className="comments">
-        <PostComments post={post} />
+        <PostComments
+          userData={userData}
+          post={post}
+          setPostResponse={setPostResponse}
+        />
       </ul>
     </li>
   )
