@@ -1,11 +1,13 @@
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 
-const AddUserForm = ({ handleSubmit, handleChange }) => {
+const AddUserForm = ({ handleSubmit, handleChange, cohorts }) => {
   const roleOptions = [
     { value: 'STUDENT', label: 'Student' },
     { value: 'TEACHER', label: 'Teacher' }
   ]
+
+  console.log(cohorts)
 
   return (
     <form className="user-form" onSubmit={handleSubmit}>
@@ -18,6 +20,20 @@ const AddUserForm = ({ handleSubmit, handleChange }) => {
         {roleOptions.map((roleOption, index) => (
           <option key={index} value={roleOption.value}>
             {roleOption.label}
+          </option>
+        ))}
+      </select>
+      <br />
+      <br />
+      <select
+        name="cohortId"
+        id="cohortId"
+        onChange={handleChange}
+        className="user-form-input"
+      >
+        {cohorts.map((cohort, index) => (
+          <option key={index} value={cohort.id}>
+            {cohort.cohortName} (Cohort ID: {cohort.id})
           </option>
         ))}
       </select>

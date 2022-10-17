@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import AddUserForm from './AddUserForm'
 import Header from '../../Header/Header'
 
@@ -6,8 +6,7 @@ import client from '../../../utils/client'
 import '../registration/style.css'
 
 const AddUserPage = ({ userData }) => {
-  console.log('userData in AddUserPage')
-  console.log(userData)
+  const [cohorts, setCohorts] = useState([])
 
   const [addedUser, setAddedUser] = useState({
     role: '',
@@ -19,20 +18,26 @@ const AddUserPage = ({ userData }) => {
     profileUrl: ''
   })
 
+  useEffect(() => {
+    client.get('/cohort').then((res) => {
+      setCohorts(res.data.data)
+    })
+  }, [])
+
   const registerUser = (event) => {
     event.preventDefault()
 
     setAddedUser({
       ...addedUser,
-      role: event.target.role.value
+      role: event.target.role.value,
+      cohortId: event.target.role.value
     })
 
     client
       .post('/user', addedUser, true)
       .then((res) => {
-        console.log(res.data.data)
         alert(
-          `Registration of new user ${res.data.data.user.firstName} ${res.data.data.user.lastName} (ID: ${res.data.data.user.id}) successful. Please add them to a cohort.`
+          `Registration of new user ${res.data.data.user.firstName} ${res.data.data.user.lastName} (user ID: ${res.data.data.user.id}) successful.`
         )
       })
       .catch((err) => console.log(err.response))
@@ -54,7 +59,11 @@ const AddUserPage = ({ userData }) => {
       <div className="registration-page">
         <h2>Add a new User</h2>
         <p>Please also set their role (TEACHER or STUDENT).</p>
-        <AddUserForm handleChange={handleChange} handleSubmit={registerUser} />
+        <AddUserForm
+          handleChange={handleChange}
+          handleSubmit={registerUser}
+          cohorts={cohorts}
+        />
       </div>
     </>
   )
