@@ -4,9 +4,9 @@ import RegistrationPage from './components/users/registration/RegistrationPage'
 import PostsPage from './components/posts/PostsPage'
 import SettingsPage from './components/users/settings/SettingsPage'
 import AddCohortPage from './components/cohort/AddCohortPage'
-import ExercisesPage from './components/exercises/ExercisesPage'
-import AddUserPage from './components/users/AddUsers/AddUsersPage'
 import UsersPage from './components/users/UsersPage/UsersPage'
+import AddUserPage from './components/users/AddUsers/AddUserPage'
+import ExercisePage from './components/exercises/ExercisesPage'
 import { useState } from 'react'
 import { Routes, Route, Navigate, Outlet } from 'react-router-dom'
 
@@ -16,7 +16,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<LoginPage />} />
+        <Route path="/" element={<LoginPage setUserData={setUserData} />} />
         <Route path="/signup" element={<RegistrationPage />} />
         <Route element={<AuthenticateUser />}>
           <Route path="/posts" element={<PostsPage userData={userData} />} />
@@ -31,7 +31,7 @@ function App() {
           <Route path="/users" element={<UsersPage userData={userData} />} />
           <Route
             path="/exercises"
-            element={<ExercisesPage userData={userData} />}
+            element={<ExercisePage userData={userData} />}
           />
           <Route
             path="/add-user"

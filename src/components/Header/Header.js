@@ -56,18 +56,13 @@ const Header = ({ companyName, userData }) => {
 
         <Box>
           <Stack spacing={2} direction="row">
-            {userData.role === 'TEACHER' && (
-              <>
-                <Link to="/add-cohort">
-                  <Button variant="contained">Add Cohort</Button>
-                </Link>
+            <Link to="/add-cohort">
+              <Button variant="contained">Add Cohort</Button>
+            </Link>
 
-                <Link to="/add-user">
-                  <Button variant="contained">Add User</Button>
-                </Link>
-              </>
-            )}
-
+            <Link to="/add-user">
+              <Button variant="contained">Add User</Button>
+            </Link>
             <Button variant="contained" onClick={handleLogout}>
               Logout
             </Button>

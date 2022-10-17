@@ -5,10 +5,9 @@ const constants = {
       'firstName',
       'lastName',
       'email',
-      'password',
       'biography',
-      'githubUrl',
-      'role'
+      'password',
+      'githubUrl'
     ]
   },
   post: {

@@ -25,3 +25,4 @@ yarn-error.log*
 insomnia.json
 requests.http
 package-lock.json
+request.http
