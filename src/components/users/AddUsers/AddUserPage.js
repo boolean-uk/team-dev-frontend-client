@@ -18,14 +18,23 @@ const AddUserPage = ({ userData }) => {
     githubUrl: '',
     profileUrl: ''
   })
-  const [registerResponse, setRegisterResponse] = useState('')
 
   const registerUser = (event) => {
     event.preventDefault()
-    console.log(addedUser)
+
+    setAddedUser({
+      ...addedUser,
+      role: event.target.role.value
+    })
+
     client
       .post('/user', addedUser, true)
-      .then((res) => setRegisterResponse(res.data))
+      .then((res) => {
+        console.log(res.data.data)
+        alert(
+          `Registration of new user ${res.data.data.user.firstName} ${res.data.data.user.lastName} (ID: ${res.data.data.user.id}) successful. Please add them to a cohort.`
+        )
+      })
       .catch((err) => console.log(err.response))
   }
 
