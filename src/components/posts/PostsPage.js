@@ -67,10 +67,10 @@ const PostsPage = (props) => {
       <Header companyName={`Cohort Manager 2.0`} />
       <main>
         <section className="posts-section">
-          <button id="user-signout-button" onClick={signOut}>
+          {/* <button id="user-signout-button" onClick={signOut}>
             sign out
-          </button>
-          <span>Status: {postResponse.status}</span>
+          </button> */}
+          {/* <span>Status: {postResponse.status}</span> */}
 
           <ul className="posts-list">
             {posts.map((post, index) => (

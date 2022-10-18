@@ -57,60 +57,63 @@ const Post = (props) => {
   }
   return (
     <li className="post-item">
-      <div className="post-item-user">
-        {`${post.user.profile.firstName} ${post.user.profile.lastName} says:`}
-      </div>
-      {showEditPost ? (
-        <form onSubmit={(e) => submitEditedPost(e)}>
-          <input
-            defaultValue={post.content}
-            onChange={(e) =>
-              setEditedPost({ ...editedPost, content: e.target.value })
-            }
-          />
-          <button type="submit">Send</button>
-        </form>
-      ) : (
-        <div className="post-item-content">{post.content}</div>
-      )}
+      <div className="post-item-content">
+        <p className="comment-author">
+          {`${post.user.profile.firstName} ${post.user.profile.lastName} says:`}
+        </p>
+        {showEditPost ? (
+          <form onSubmit={(e) => submitEditedPost(e)}>
+            <input
+              defaultValue={post.content}
+              onChange={(e) =>
+                setEditedPost({ ...editedPost, content: e.target.value })
+              }
+            />
+            <button type="submit">Send</button>
+          </form>
+        ) : (
+          <div className="post-item-description">{post.content}</div>
+        )}
 
-      <div className="post-item-buttons" key={index}>
-        <button>Like</button>
-        <button
-          id={post.id}
-          onClick={(e) =>
-            Number(e.target.id) === Number(post.id)
-              ? setAddComment(!addComment)
-              : e
-          }
-        >
-          Comment
-        </button>
-        {addComment ? (
-          <PostCommentsForm
-            post={post}
-            handleChange={handleChange}
-            handleSubmit={handleSubmit}
-          />
-        ) : (
-          addComment
-        )}
-        {userData.role === 'TEACHER' || post.user.id === userData.id ? (
-          <>
-            <button onClick={() => setShowEditPost(!showEditPost)}>Edit</button>
-            <button onClick={() => deletePost()}>Delete</button>
-          </>
-        ) : (
-          <></>
-        )}
+        <div className="post-item-buttons" key={index}>
+          <button>Like</button>
+          <button
+            id={post.id}
+            onClick={(e) =>
+              Number(e.target.id) === Number(post.id)
+                ? setAddComment(!addComment)
+                : e
+            }
+          >
+            Comment
+          </button>
+          {addComment ? (
+            <PostCommentsForm
+              post={post}
+              handleChange={handleChange}
+              handleSubmit={handleSubmit}
+            />
+          ) : (
+            addComment
+          )}
+          {userData.role === 'TEACHER' || post.user.id === userData.id ? (
+            <>
+              <button onClick={() => setShowEditPost(!showEditPost)}>
+                Edit
+              </button>
+              <button onClick={() => deletePost()}>Delete</button>
+            </>
+          ) : (
+            <></>
+          )}
+        </div>
       </div>
-      <ul className="comments">
-        <PostComments
-          userData={userData}
-          post={post}
-          setPostResponse={setPostResponse}
-        />
-      </ul>
+      <PostComments
+        userData={userData}
+        post={post}
+        setPostResponse={setPostResponse}
+      />
+      {/* </ul> */}
     </li>
   )
 }
