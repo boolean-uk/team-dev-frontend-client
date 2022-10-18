@@ -38,3 +38,25 @@ h1 {
 #user-submit-button {
   margin: 2rem;
 }
+
+.mainGridArea{
+  display: grid;
+  height: 100%;
+  grid-template-columns: 1fr 4fr;
+  grid-template-areas:
+
+  "sidebar main-col " ;
+}
+.main-col {
+  grid-area: main-col;
+  overflow-y: scroll;
+}
+
+.sidebar {
+  grid-area: sidebar;
+
+}
+
+/* ::-webkit-scrollbar{
+  width: 20px;
+} */

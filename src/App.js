@@ -9,6 +9,7 @@ import AddUserPage from './components/users/AddUsers/AddUserPage'
 import ExercisePage from './components/exercises/ExercisesPage'
 import { useState } from 'react'
 import { Routes, Route, Navigate, Outlet } from 'react-router-dom'
+import SideNavBar from './components/sideNavBar/sideNavBar'
 
 function App() {
   const [userData, setUserData] = useState('')

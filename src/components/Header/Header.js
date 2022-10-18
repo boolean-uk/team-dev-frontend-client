@@ -6,11 +6,8 @@ import InputBase from '@mui/material/InputBase'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 
-const Header = ({ companyName, userData }) => {
-  console.log('userData in Header')
-  console.log(userData)
-
-  let navigate = useNavigate()
+const Header = ({ companyName }) => {
+  const navigate = useNavigate()
 
   const handleLogout = (event) => {
     event.preventDefault()
@@ -32,7 +29,12 @@ const Header = ({ companyName, userData }) => {
       >
         <Box>
           <Typography>
-            <span>{companyName}</span>
+            <Link
+              to="/posts"
+              style={{ textDecoration: 'none', fontSize: '25px' }}
+            >
+              <span>{companyName}</span>
+            </Link>
           </Typography>
         </Box>
 
