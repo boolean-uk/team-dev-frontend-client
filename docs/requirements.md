@@ -39,7 +39,7 @@ They can adjust personal settings e.g. language, theme, personal pronoun.
 ### Teacher View: Student User Notes
 
 Teachers can **leave notes about students**.
-Any teacher can leave a note about any given student, and any teacher can update (add) to that note.
+Any teacher can leave multiple notes about any given student, and any teacher can update (add) to those note.
 
 ## Students
 
