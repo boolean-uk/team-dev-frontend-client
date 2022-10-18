@@ -38,12 +38,24 @@ const Post = (props) => {
   }
 
   return (
-    <>
-      <li className="post-item">
-        <div className="post-item-user">
+    <li className="post-item">
+      <div className="post-item-content">
+        <p className="comment-author">
           {`${post.user.profile.firstName} ${post.user.profile.lastName} says:`}
-        </div>
-        <div className="post-item-content">{post.content}</div>
+        </p>
+        {showEditPost ? (
+          <form onSubmit={(e) => submitEditedPost(e)}>
+            <input
+              defaultValue={post.content}
+              onChange={(e) =>
+                setEditedPost({ ...editedPost, content: e.target.value })
+              }
+            />
+            <button type="submit">Send</button>
+          </form>
+        ) : (
+          <div className="post-item-description">{post.content}</div>
+        )}
         <div className="post-item-buttons" key={index}>
           <button>Like</button>
           <button
@@ -65,24 +77,25 @@ const Post = (props) => {
           ) : (
             addComment
           )}
-          {userData.role === 'TEACHER' ? (
+          {userData.role === 'TEACHER' || post.user.id === userData.id ? (
             <>
-              <button>Edit</button>
-              <button>Delete</button>
+              <button onClick={() => setShowEditPost(!showEditPost)}>
+                Edit
+              </button>
+              <button onClick={() => deletePost()}>Delete</button>
             </>
           ) : (
-            userData
+            <></>
           )}
         </div>
-      </li>
-      <ul className="comments">
-        <PostComments
-          userData={userData}
-          post={post}
-          setPostResponse={setPostResponse}
-        />
-      </ul>
-    </>
+      </div>
+      <PostComments
+        userData={userData}
+        post={post}
+        setPostResponse={setPostResponse}
+      />
+      {/* </ul> */}
+    </li>
   )
 }
 

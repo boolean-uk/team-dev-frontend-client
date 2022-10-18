@@ -30,9 +30,12 @@ const EditComment = (props) => {
           <button type="submit">Send</button>
         </form>
       ) : (
-        <p key={comment.id}>
-          {comment.profile.firstName}: {comment.content}
-        </p>
+        <>
+          <span className="comment-user-name">
+            {comment.profile.firstName}:{' '}
+          </span>
+          <span>{comment.content}</span>
+        </>
       )}
       <button>Like</button>
       {comment.profile.id === userData.id || userData.role === 'TEACHER' ? (

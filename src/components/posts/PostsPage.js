@@ -66,35 +66,33 @@ const PostsPage = (props) => {
   return (
     <div className="content ">
       <Header companyName={`Cohort Manager 2.0`} />
-      <div className="mainGridArea ">
-        <SideNavBar />
-        <main>
-          <section className="posts-section main-col">
-            <p>Status: {postResponse.status}</p>
-            <ul className="posts-list">
-              {posts.map((post, index) => (
-                <Post
-                  key={index}
-                  post={post}
-                  postResponse={postResponse}
-                  setPostResponse={setPostResponse}
-                  index={index}
-                  userData={userData}
-                />
-              ))}
-              <div ref={postsEndRef} />
-            </ul>
-            <PostForm
-              handleSubmit={(e) => createPost(e)}
-              handleChange={handleChange}
-            />
-            <p>1</p>
-            <p>2</p>
-            <p>3</p>
-            <p>4</p>
-          </section>
-        </main>
-      </div>
+      <main>
+        <section className="posts-section">
+          {/* <button id="user-signout-button" onClick={signOut}>
+            sign out
+          </button> */}
+          {/* <span>Status: {postResponse.status}</span> */}
+
+          <ul className="posts-list">
+            {posts.map((post, index) => (
+              <Post
+                key={index}
+                post={post}
+                postResponse={postResponse}
+                setPostResponse={setPostResponse}
+                index={index}
+                userData={userData}
+              />
+            ))}
+            <div ref={postsEndRef} />
+          </ul>
+
+          <PostForm
+            handleSubmit={(e) => createPost(e)}
+            handleChange={handleChange}
+          />
+        </section>
+      </main>
     </div>
   )
 }

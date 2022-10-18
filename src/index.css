@@ -1,6 +1,5 @@
 :root {
-  /* change this value for the background colour! */
-  --bg-color: #32323f;
+  --bg-color: #1d87c6;
   --primary-color: #da4b27;
   --font-family: 'Poppins', sans-serif;
 }
@@ -11,17 +10,27 @@
   padding: 0;
 }
 
-body {
+html, body {
   font-family: var(--font-family);
   background-color: var(--bg-color);
-  color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  color: #39c9da;
+  height: 100vh;
+  width: 100%;
+  overflow: scroll;
+
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+main{
+  margin-top: 60px;
+  padding-bottom: 300px;
+  height: 100vh; 
+}
+.header{
+  position: fixed;
+  top: 0%;
 }
