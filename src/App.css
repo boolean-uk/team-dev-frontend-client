@@ -21,42 +21,20 @@ h1 {
   margin: 40px;
 }
 
-#user-registration-link,
-#user-login-link {
-  text-decoration: none;
-  color: orange;
+button{
+  all: unset;
+  color: white;
+  background-color: #e07f72;
+  border-radius: 3px;
+  font-size: 13px;
 }
 
-#user-registration-link {
-  margin-right: 2rem;
-}
-
-#user-login-link {
-  margin-left: 2rem;
-}
-
-#user-submit-button {
-  margin: 2rem;
-}
-
-.mainGridArea{
-  display: grid;
-  height: 100%;
-  grid-template-columns: 1fr 4fr;
-  grid-template-areas:
-
-  "sidebar main-col " ;
-}
-.main-col {
-  grid-area: main-col;
-  overflow-y: scroll;
-}
-
-.sidebar {
-  grid-area: sidebar;
+.MuiButton-root{
+  background-color: #15479c !important;
 
 }
 
-/* ::-webkit-scrollbar{
-  width: 20px;
-} */
+.search-bar{
+  background-color: white;
+  height: 25px;
+}
