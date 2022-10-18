@@ -1,9 +1,44 @@
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 
-const UserForm = ({ handleSubmit, handleChange }) => {
+const AddUserForm = ({ handleSubmit, handleChange, cohorts }) => {
+  const roleOptions = [
+    { value: 'STUDENT', label: 'Student' },
+    { value: 'TEACHER', label: 'Teacher' }
+  ]
+
+  console.log(cohorts)
+
   return (
     <form className="user-form" onSubmit={handleSubmit}>
+      <select
+        name="role"
+        id="role"
+        onChange={handleChange}
+        className="user-form-input"
+      >
+        {roleOptions.map((roleOption, index) => (
+          <option key={index} value={roleOption.value}>
+            {roleOption.label}
+          </option>
+        ))}
+      </select>
+      <br />
+      <br />
+      <select
+        name="cohortId"
+        id="cohortId"
+        onChange={handleChange}
+        className="user-form-input"
+      >
+        {cohorts.map((cohort, index) => (
+          <option key={index} value={cohort.id}>
+            {cohort.cohortName} (Cohort ID: {cohort.id})
+          </option>
+        ))}
+      </select>
+      <br />
+      <br />
       <TextField
         className="user-form-input"
         label="First Name"
@@ -12,6 +47,7 @@ const UserForm = ({ handleSubmit, handleChange }) => {
         onChange={handleChange}
       />
       <br />
+      <br />
       <TextField
         className="user-form-input"
         label="Last Name"
@@ -19,6 +55,7 @@ const UserForm = ({ handleSubmit, handleChange }) => {
         name="lastName"
         onChange={handleChange}
       />
+      <br />
       <br />
       <TextField
         className="user-form-input"
@@ -29,6 +66,7 @@ const UserForm = ({ handleSubmit, handleChange }) => {
         onChange={handleChange}
       />
       <br />
+      <br />
       <TextField
         className="user-form-input"
         type="password"
@@ -38,6 +76,7 @@ const UserForm = ({ handleSubmit, handleChange }) => {
         onChange={handleChange}
       />
       <br />
+      <br />
       <TextField
         className="user-form-input"
         label="Bio"
@@ -45,6 +84,7 @@ const UserForm = ({ handleSubmit, handleChange }) => {
         name="biography"
         onChange={handleChange}
       />
+      <br />
       <br />
       <TextField
         className="user-form-input"
@@ -61,4 +101,4 @@ const UserForm = ({ handleSubmit, handleChange }) => {
   )
 }
 
-export default UserForm
+export default AddUserForm

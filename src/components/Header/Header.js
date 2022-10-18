@@ -3,10 +3,11 @@ import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import { Stack } from '@mui/material'
 import InputBase from '@mui/material/InputBase'
+import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 
 const Header = ({ companyName }) => {
-  let navigate = useNavigate()
+  const navigate = useNavigate()
 
   const handleLogout = (event) => {
     event.preventDefault()

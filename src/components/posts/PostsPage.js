@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import PostForm from './PostForm'
 import client from '../../utils/client'
 import './style.css'
+import SideNavBar from '../sideNavBar/sideNavBar'
 import Header from '../Header/Header'
 import Post from './Post'
 
@@ -63,7 +64,7 @@ const PostsPage = (props) => {
   }
 
   return (
-    <div className="content">
+    <div className="content ">
       <Header companyName={`Cohort Manager 2.0`} />
       <main>
         <section className="posts-section">
