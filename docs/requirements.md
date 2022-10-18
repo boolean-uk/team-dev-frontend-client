@@ -36,6 +36,11 @@ Teachers see a list of all exercises for the cohort including a count showing th
 Teachers can **edit their own user data**.
 They can adjust personal settings e.g. language, theme, personal pronoun.
 
+### Teacher View: Student User Notes
+
+Teachers can **leave notes about students**.
+Any teacher can leave a note about any given student, and any teacher can update (add) to that note.
+
 ## Students
 
 Students participate in one or more **courses/cohorts.**
