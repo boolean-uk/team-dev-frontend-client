@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from 'react'
-import { useNavigate } from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom'
 import PostForm from './PostForm'
 import client from '../../utils/client'
 import './style.css'
-import SideNavBar from '../sideNavBar/sideNavBar'
+// import SideNavBar from '../sideNavBar/sideNavBar'
 import Header from '../Header/Header'
 import Post from './Post'
 
@@ -13,7 +13,7 @@ const PostsPage = (props) => {
   const [post, setPost] = useState({ content: '' })
   const [postResponse, setPostResponse] = useState('')
   const [posts, setPosts] = useState([])
-  let navigate = useNavigate()
+  // const navigate = useNavigate()
 
   useEffect(() => {
     client
@@ -57,11 +57,11 @@ const PostsPage = (props) => {
     })
   }
 
-  const signOut = (event) => {
+  /* const signOut = (event) => {
     event.preventDefault()
     localStorage.setItem(process.env.REACT_APP_USER_TOKEN, '')
     navigate('../', { replace: true })
-  }
+  }*/
 
   return (
     <div className="content ">
