@@ -3,9 +3,13 @@ import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import { Stack } from '@mui/material'
 import InputBase from '@mui/material/InputBase'
+import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 
-const Header = ({ companyName }) => {
+const Header = ({ companyName, userData }) => {
+  console.log('userData in Header')
+  console.log(userData)
+
   let navigate = useNavigate()
 
   const handleLogout = (event) => {
@@ -52,7 +56,13 @@ const Header = ({ companyName }) => {
 
         <Box>
           <Stack spacing={2} direction="row">
-            <Button variant="contained">Add Cohort</Button>
+            <Link to="/add-cohort">
+              <Button variant="contained">Add Cohort</Button>
+            </Link>
+
+            <Link to="/add-user">
+              <Button variant="contained">Add User</Button>
+            </Link>
             <Button variant="contained" onClick={handleLogout}>
               Logout
             </Button>

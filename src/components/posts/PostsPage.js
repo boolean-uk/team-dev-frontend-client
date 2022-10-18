@@ -64,7 +64,7 @@ const PostsPage = (props) => {
 
   return (
     <div className="content">
-      <Header companyName={`Cohort Manager 2.0`} />
+      <Header companyName={`Cohort Manager 2.0`} userData={userData} />
       <main>
         <section className="posts-section">
           <button id="user-signout-button" onClick={signOut}>
