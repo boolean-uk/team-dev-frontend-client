@@ -77,7 +77,7 @@ const SideNavBar = () => {
       </div>
       <div className="menuNav">
         <Link
-          to=" /settings "
+          to="settings "
           style={{
             textDecoration: 'none',
             fontSize: '25px',

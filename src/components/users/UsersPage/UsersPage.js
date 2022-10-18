@@ -5,9 +5,7 @@ import './style.css'
 
 import Header from '../../Header/Header'
 
-const UsersPage = (props) => {
-  // const { userData } = props
-
+const UsersPage = ({ userData }) => {
   const [users, setUsers] = useState([])
   let navigate = useNavigate()
 
@@ -47,7 +45,7 @@ const UsersPage = (props) => {
 
   return (
     <>
-      <Header companyName={`Cohort Manager 2.0`} />
+      <Header companyName={`Cohort Manager 2.0`} userData={userData} />
       <main>
         <section className="users-section">
           <button id="user-signout-button" onClick={signOut}>
