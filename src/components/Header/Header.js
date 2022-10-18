@@ -4,8 +4,17 @@ import Typography from '@mui/material/Typography'
 import { Stack } from '@mui/material'
 import InputBase from '@mui/material/InputBase'
 import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const Header = ({ companyName }) => {
+  const navigate = useNavigate()
+
+  const handleLogout = (event) => {
+    event.preventDefault()
+    localStorage.removeItem(process.env.REACT_APP_USER_TOKEN)
+    navigate('../', { replace: true })
+  }
+
   return (
     <>
       <Box
@@ -49,12 +58,16 @@ const Header = ({ companyName }) => {
 
         <Box>
           <Stack spacing={2} direction="row">
-            <Link to="/add-cohort" style={{ textDecoration: 'none' }}>
+            <Link to="/add-cohort">
               <Button variant="contained">Add Cohort</Button>
             </Link>
-            <Link to="/" style={{ textDecoration: 'none' }}>
-              <Button variant="contained">Logout</Button>
+
+            <Link to="/add-user">
+              <Button variant="contained">Add User</Button>
             </Link>
+            <Button variant="contained" onClick={handleLogout}>
+              Logout
+            </Button>
           </Stack>
         </Box>
       </Box>

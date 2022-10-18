@@ -8,16 +8,16 @@ const SettingsForm = ({ handleChange, handleSubmit, user }) => {
         className="user-settings-form-input"
         label="First Name"
         variant="outlined"
-        name="first_name"
-        value={user.first_name}
+        name="firstName"
+        value={user.firstName}
         onChange={handleChange}
       />
       <TextField
         className="user-settings-form-input"
         label="Last Name"
         variant="outlined"
-        name="last_name"
-        value={user.last_name}
+        name="lastName"
+        value={user.lastName}
         onChange={handleChange}
       />
       <TextField
@@ -51,8 +51,8 @@ const SettingsForm = ({ handleChange, handleSubmit, user }) => {
         type="url"
         label="GitHub URL"
         variant="outlined"
-        name="github_url"
-        value={user.github_url}
+        name="githubUrl"
+        value={user.githubUrl}
         onChange={handleChange}
       />
       <Button

@@ -1,9 +1,12 @@
 import './App.css'
 import LoginPage from './components/users/login/LoginPage'
-import AddCohortPage from './components/cohort/AddCohortPage'
 import RegistrationPage from './components/users/registration/RegistrationPage'
 import PostsPage from './components/posts/PostsPage'
+import SettingsPage from './components/users/settings/SettingsPage'
+import AddCohortPage from './components/cohort/AddCohortPage'
 import UsersPage from './components/users/UsersPage/UsersPage'
+import AddUserPage from './components/users/AddUsers/AddUserPage'
+import ExercisePage from './components/exercises/ExercisesPage'
 import { useState } from 'react'
 import { Routes, Route, Navigate, Outlet } from 'react-router-dom'
 import SideNavBar from './components/sideNavBar/sideNavBar'
@@ -14,19 +17,28 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<LoginPage />} setUserData={setUserData} />
+        <Route path="/" element={<LoginPage setUserData={setUserData} />} />
         <Route path="/signup" element={<RegistrationPage />} />
         <Route element={<AuthenticateUser />}>
           <Route path="/posts" element={<PostsPage userData={userData} />} />
-          <Route path="/add-cohort" element={<AddCohortPage />} />
+          <Route
+            path="/settings"
+            element={<SettingsPage userData={userData} />}
+          />
+          <Route
+            path="/add-cohort"
+            element={<AddCohortPage userData={userData} />}
+          />
+          <Route path="/users" element={<UsersPage userData={userData} />} />
+          <Route
+            path="/exercises"
+            element={<ExercisePage userData={userData} />}
+          />
+          <Route
+            path="/add-user"
+            element={<AddUserPage userData={userData} />}
+          />
         </Route>
-        <Route path="/users" element={<UsersPage />} />
-        <Route path="/exercises" />
-        {/* element={<ExercisePage />} */}
-        <Route path="/settings" />
-        {/* element={<SettingsPage />} */}
-        <Route path="/add-user" />
-        {/* element={<AddUserPage />} */}
       </Routes>
     </div>
   )
