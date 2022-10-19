@@ -8,29 +8,32 @@ import Header from '../../Header/Header'
 const UsersPage = ({ userData }) => {
   const [users, setUsers] = useState([])
   const [cohorts, setCohorts] = useState([])
+  const ownCohort = cohorts.filter(
+    (cohort, index) => index + 1 === userData.cohortId
+  )
   const cohortTemplate = [
     {
-      cohort: 'cohort 1',
+      cohort: 'Cohort 1',
       users: []
     },
     {
-      cohort: 'cohort 2',
+      cohort: 'Cohort 2',
       users: []
     },
     {
-      cohort: 'cohort 3',
+      cohort: 'Cohort 3',
       users: []
     },
     {
-      cohort: 'cohort 4',
+      cohort: 'Cohort 4',
       users: []
     },
     {
-      cohort: 'cohort 5',
+      cohort: 'Cohort 5',
       users: []
     },
     {
-      cohort: 'no cohort assigned',
+      cohort: 'No cohort assigned',
       users: []
     }
   ]
@@ -108,6 +111,10 @@ const UsersPage = ({ userData }) => {
     return <a href={`${user.githubUrl}`}>{user.githubUrl}</a>
   }
 
+  const isTeacher = () => {
+    return userData.role === 'TEACHER'
+  }
+
   if (!users) {
     return (
       <>
@@ -116,8 +123,8 @@ const UsersPage = ({ userData }) => {
     )
   }
 
-  console.log(cohorts)
-  return (
+  console.log(ownCohort)
+  return isTeacher() ? (
     <>
       <Header companyName={`Cohort Manager 2.0`} userData={userData} />
       <main>
@@ -125,18 +132,43 @@ const UsersPage = ({ userData }) => {
           <h1>Cohort member list</h1>
           <ul className="cohort-list">
             {cohorts.map((cohort, index) => (
-              <li key={index}>
-                <div className="cohort-box">
-                  <h1>{cohort.cohort}</h1>
-                  <ul>
-                    <li>
+              <>
+                <li key={index}>
+                  <div className="cohort-box">
+                    <h1>{cohort.cohort}</h1>
+                    <div className="content">
                       {cohort.users.map((user, index) => (
                         <p>{`${user.firstName} ${user.lastName}`}</p>
                       ))}
-                    </li>
-                  </ul>
-                </div>
-              </li>
+                    </div>
+                  </div>
+                </li>
+              </>
+            ))}
+          </ul>
+        </section>
+      </main>
+    </>
+  ) : (
+    <>
+      <Header companyName={`Cohort Manager 2.0`} userData={userData} />
+      <main>
+        <section className="users-section">
+          <h1>Cohort member list</h1>
+          <ul className="cohort-list">
+            {ownCohort.map((cohort, index) => (
+              <>
+                <li key={index}>
+                  <div className="cohort-box">
+                    <h1>{cohort.cohort}</h1>
+                    <div className="content">
+                      {cohort.users.map((user, index) => (
+                        <p>{`${user.firstName} ${user.lastName}`}</p>
+                      ))}
+                    </div>
+                  </div>
+                </li>
+              </>
             ))}
           </ul>
         </section>
