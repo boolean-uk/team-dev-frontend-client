@@ -7,12 +7,16 @@ import Header from '../../Header/Header'
 
 const UsersPage = ({ userData }) => {
   const [users, setUsers] = useState([])
+  const [cohorts, setCohorts] = useState([])
   let navigate = useNavigate()
 
   useEffect(() => {
     client.get('/users').then((res) => {
       setUsers(res.data.data.users)
+      console.log(res.data.data.users)
     })
+    const cohortArr = users.filter((user) => user.cohortId)
+    console.log(cohortArr)
   }, [])
 
   const signOut = (event) => {
@@ -43,6 +47,7 @@ const UsersPage = ({ userData }) => {
     return <a href={`${user.githubUrl}`}>{user.githubUrl}</a>
   }
 
+  console.log('user data:', userData)
   return (
     <>
       <Header companyName={`Cohort Manager 2.0`} userData={userData} />

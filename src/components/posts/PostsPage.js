@@ -6,6 +6,7 @@ import './style.css'
 // import SideNavBar from '../sideNavBar/sideNavBar'
 import Header from '../Header/Header'
 import Post from './Post'
+import { Link } from 'react-router-dom'
 
 const PostsPage = (props) => {
   const { userData } = props
@@ -63,6 +64,8 @@ const PostsPage = (props) => {
     navigate('../', { replace: true })
   }*/
 
+  console.log('user data in postsPage:', userData)
+
   return (
     <div className="content ">
       <Header companyName={`Cohort Manager 2.0`} />
@@ -72,7 +75,9 @@ const PostsPage = (props) => {
             sign out
           </button> */}
           {/* <span>Status: {postResponse.status}</span> */}
-
+          <Link to="/users">
+            <button>To users</button>
+          </Link>
           <ul className="posts-list">
             {posts.map((post, index) => (
               <Post

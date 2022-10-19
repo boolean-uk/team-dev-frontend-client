@@ -13,6 +13,7 @@ import SideNavBar from './components/sideNavBar/sideNavBar'
 
 function App() {
   const [userData, setUserData] = useState('')
+  console.log('user data in app.js:', userData)
 
   return (
     <div className="App">
