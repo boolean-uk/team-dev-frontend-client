@@ -6,6 +6,7 @@ import './style.css'
 // import SideNavBar from '../sideNavBar/sideNavBar'
 import Header from '../Header/Header'
 import Post from './Post'
+import SideNavBar from '../sideNavBar/sideNavBar'
 
 const PostsPage = (props) => {
   const { userData } = props
@@ -66,33 +67,36 @@ const PostsPage = (props) => {
   return (
     <div className="content ">
       <Header companyName={`Cohort Manager 2.0`} />
-      <main>
-        <section className="posts-section">
-          {/* <button id="user-signout-button" onClick={signOut}>
+      <div className="mainGridArea ">
+        <SideNavBar />
+        <section className="posts-section main-col">
+          <main>
+            {/* <button id="user-signout-button" onClick={signOut}>
             sign out
           </button> */}
-          {/* <span>Status: {postResponse.status}</span> */}
+            {/* <span>Status: {postResponse.status}</span> */}
 
-          <ul className="posts-list">
-            {posts.map((post, index) => (
-              <Post
-                key={index}
-                post={post}
-                postResponse={postResponse}
-                setPostResponse={setPostResponse}
-                index={index}
-                userData={userData}
-              />
-            ))}
-            <div ref={postsEndRef} />
-          </ul>
+            <ul className="posts-list">
+              {posts.map((post, index) => (
+                <Post
+                  key={index}
+                  post={post}
+                  postResponse={postResponse}
+                  setPostResponse={setPostResponse}
+                  index={index}
+                  userData={userData}
+                />
+              ))}
+              <div ref={postsEndRef} />
+            </ul>
 
-          <PostForm
-            handleSubmit={(e) => createPost(e)}
-            handleChange={handleChange}
-          />
+            <PostForm
+              handleSubmit={(e) => createPost(e)}
+              handleChange={handleChange}
+            />
+          </main>
         </section>
-      </main>
+      </div>
     </div>
   )
 }
