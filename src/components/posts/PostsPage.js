@@ -66,7 +66,7 @@ const PostsPage = (props) => {
 
   return (
     <div className="content ">
-      <Header companyName={`Cohort Manager 2.0`} />
+      <Header companyName={`Cohort Manager 2.0`} userData={userData} />
       <div className="mainGridArea ">
         <SideNavBar />
         <section className="posts-section main-col">

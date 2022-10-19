@@ -9,6 +9,8 @@ import { useNavigate } from 'react-router-dom'
 const Header = ({ companyName, userData }) => {
   const navigate = useNavigate()
 
+  console.log('user', userData)
+
   const handleLogout = (event) => {
     event.preventDefault()
     localStorage.removeItem(process.env.REACT_APP_USER_TOKEN)
@@ -70,8 +72,8 @@ const Header = ({ companyName, userData }) => {
               </>
             ) : (
               false
-            )}            
-            <Button variant="contained" onClick={handleLogout}>
+            )}
+            <Button variant="contained" onClick={handleLogout} />
           </Stack>
         </Box>
       </Box>
