@@ -125,9 +125,18 @@ const UsersPage = ({ userData }) => {
           <h1>Cohort member list</h1>
           <ul className="cohort-list">
             {cohorts.map((cohort, index) => (
-              <div className="cohort-box">
-                <h1>{cohort.cohort}</h1>
-              </div>
+              <li key={index}>
+                <div className="cohort-box">
+                  <h1>{cohort.cohort}</h1>
+                  <ul>
+                    <li>
+                      {cohort.users.map((user, index) => (
+                        <p>{`${user.firstName} ${user.lastName}`}</p>
+                      ))}
+                    </li>
+                  </ul>
+                </div>
+              </li>
             ))}
           </ul>
         </section>
