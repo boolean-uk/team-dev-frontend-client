@@ -4,8 +4,9 @@ import Typography from '@mui/material/Typography'
 import { Stack } from '@mui/material'
 import InputBase from '@mui/material/InputBase'
 import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
-const Header = ({ companyName }) => {
+const Header = ({ companyName, userData }) => {
   const navigate = useNavigate()
 
   const handleLogout = (event) => {
@@ -75,17 +76,40 @@ const Header = ({ companyName }) => {
 
         <Box>
           <Stack spacing={2} direction="row">
-            <Button
-              sx={{
-                height: '20px',
-                marginTop: '2px',
-                fontSize: '13px'
-              }}
-              className="header-button"
-              variant="contained"
-            >
-              Add Cohort
-            </Button>
+            {userData.role === 'TEACHER' ? (
+              <>
+                <Link to="/add-cohort" style={{ textDecoration: 'none' }}>
+                  {' '}
+                  <Button
+                    sx={{
+                      height: '20px',
+                      marginTop: '2px',
+                      fontSize: '13px',
+                      textDecoration: 'none'
+                    }}
+                    className="header-button"
+                    variant="contained"
+                  >
+                    Add Cohort
+                  </Button>
+                </Link>
+                <Link to="/add-user" style={{ textDecoration: 'none' }}>
+                  <Button
+                    sx={{
+                      height: '20px',
+                      marginTop: '2px',
+                      fontSize: '13px'
+                    }}
+                    className="header-button"
+                    variant="contained"
+                  >
+                    Add User
+                  </Button>
+                </Link>
+              </>
+            ) : (
+              false
+            )}
             <Button
               sx={{
                 height: '20px',
