@@ -34,6 +34,12 @@ h1 {
   margin-left: 0.5em;
 }
 
+.post-like:active {
+  background-color: lightskyblue;
+  box-shadow: 0 5px #666;
+  transform: translateY(2px);
+}
+
 .comments{
   margin-top: 30px;
   /* margin-right: 50px; */
@@ -42,6 +48,10 @@ h1 {
 
 .comment button{
   margin-left: 5px;
+}
+
+.like-blue{
+  background-color: lightskyblue;
 }
 
 .comment-form-input{
