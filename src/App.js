@@ -5,6 +5,7 @@ import PostsPage from './components/posts/PostsPage'
 import SettingsPage from './components/users/settings/SettingsPage'
 import AddCohortPage from './components/cohort/AddCohortPage'
 import UsersPage from './components/users/UsersPage/UsersPage'
+import AddNote from './components/notes/AddNote'
 import { useState } from 'react'
 import { Routes, Route, Navigate, Outlet } from 'react-router-dom'
 
@@ -23,6 +24,7 @@ function App() {
             element={<SettingsPage userData={userData} />}
           />
           <Route path="/add-cohort" element={<AddCohortPage />} />
+          <Route path="/add-note" element={<AddNote userData={userData} />} />
           <Route path="/users" />
           {/* element={<UsersPage />} */}
           <Route path="/exercises" />
