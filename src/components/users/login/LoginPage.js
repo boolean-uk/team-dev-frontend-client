@@ -30,6 +30,8 @@ const LoginPage = ({ setUserData }) => {
         )
         setUserData(res.data.data.user)
         setLoginResponse(res.data)
+        console.log(res.data)
+
         navigate('../posts', { replace: true })
       })
       .catch((err) => console.log(err.response))

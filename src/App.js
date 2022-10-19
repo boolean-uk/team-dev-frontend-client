@@ -7,6 +7,7 @@ import AddCohortPage from './components/cohort/AddCohortPage'
 import UsersPage from './components/users/UsersPage/UsersPage'
 import AddUserPage from './components/users/AddUsers/AddUserPage'
 import ExercisePage from './components/exercises/ExercisesPage'
+import ExrciseForm from './components/exercises/ExerciseForm'
 import { useState } from 'react'
 import { Routes, Route, Navigate, Outlet } from 'react-router-dom'
 import SideNavBar from './components/sideNavBar/sideNavBar'
@@ -33,6 +34,10 @@ function App() {
           <Route
             path="/exercises"
             element={<ExercisePage userData={userData} />}
+          />
+          <Route
+            path="/exercises/add"
+            element={<ExrciseForm userData={userData} />}
           />
           <Route
             path="/add-user"
