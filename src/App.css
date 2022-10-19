@@ -21,20 +21,20 @@ h1 {
   margin: 40px;
 }
 
-#user-registration-link,
-#user-login-link {
-  text-decoration: none;
-  color: orange;
+button{
+  all: unset;
+  color: white;
+  background-color: #e07f72;
+  border-radius: 3px;
+  font-size: 13px;
 }
 
-#user-registration-link {
-  margin-right: 2rem;
+.MuiButton-root{
+  background-color: #15479c !important;
+
 }
 
-#user-login-link {
-  margin-left: 2rem;
-}
-
-#user-submit-button {
-  margin: 2rem;
+.search-bar{
+  background-color: white;
+  height: 25px;
 }

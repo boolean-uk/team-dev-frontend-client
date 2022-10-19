@@ -1,8 +1,4 @@
-.posts-section {
-  display: grid;
-  grid-template-rows: 30px 30px 1fr 100px;
 
-}
 
 .user-list {
   margin: 20px;
@@ -12,7 +8,6 @@
 
 .user-item {
   display: grid;
-  /* grid-template-columns: 1fr 2fr repeat(4, auto); */
   margin: 0.5em
 }
 
@@ -20,9 +15,7 @@ li.user-item div{
   margin: 0px 1em;
 }
 
-.post-item-buttons button{
-  margin-left: 0.5em;
-}
+
 
 a {
   color: white;
