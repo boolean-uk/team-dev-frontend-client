@@ -31,7 +31,7 @@ const SideNavBar = () => {
       </div>
       <div className="menuNav">
         <Link
-          to="/posts"
+          to="/conversations"
           style={{
             textDecoration: 'none',
             // fontSize: '25px',
@@ -42,19 +42,19 @@ const SideNavBar = () => {
           <p>Conversations</p>
         </Link>
         <Link
-          to="/users"
+          to="/conversations"
           style={{ textDecoration: 'none', fontSize: '1 em', color: 'white' }}
         >
           <p>User 1</p>
         </Link>
         <Link
-          to="/users"
+          to="/conversations"
           style={{ textDecoration: 'none', fontSize: '1 em', color: 'white' }}
         >
           <p>User 2</p>
         </Link>
         <Link
-          to="/users"
+          to="/conversations"
           style={{ textDecoration: 'none', fontSize: '1 em', color: 'white' }}
         >
           <p>User 3</p>

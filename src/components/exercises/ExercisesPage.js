@@ -33,16 +33,12 @@ const ExercisesPage = ({ userData }) => {
             console.log(exercisesList)
             return (
               <li className="exercise">
-                <p>
-                  <span className="exercise-title">Title: </span>
-                  <span className="exercise-name">{exercise.exerciseName}</span>
-                </p>
-                <p>
-                  <span className="exercise-title">GitHub link: </span>
-                  <span className="exercise-name">
-                    <a href={exercise.githubUrl}>Here</a>
-                  </span>
-                </p>
+                <span className="exercise-title">Title: </span>
+                <span className="exercise-name">{exercise.exerciseName}</span>
+                <span className="exercise-title">GitHub link: </span>
+                <span className="exercise-name">
+                  <a href={exercise.githubUrl}>Here</a>
+                </span>
               </li>
             )
           })}

@@ -12,6 +12,7 @@ import ExrciseForm from './components/exercises/ExerciseForm'
 import { useState } from 'react'
 import { Routes, Route, Navigate, Outlet } from 'react-router-dom'
 import SideNavBar from './components/sideNavBar/sideNavBar'
+import ConversionPage from './components/Conversations/ConversationsPage'
 
 function App() {
   const [userData, setUserData] = useState('')
@@ -44,6 +45,10 @@ function App() {
           <Route
             path="/add-user"
             element={<AddUserPage userData={userData} />}
+          />
+          <Route
+            path="/conversations"
+            element={<ConversionPage userData={userData} />}
           />
         </Route>
       </Routes>
