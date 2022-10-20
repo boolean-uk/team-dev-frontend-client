@@ -4,7 +4,7 @@ const PostComments = (props) => {
 
   return post.postComments.map((comment, index) => {
     return (
-      <ul className="comments">
+      <ul key={index} className="comments">
         <EditComment
           post={post}
           comment={comment}

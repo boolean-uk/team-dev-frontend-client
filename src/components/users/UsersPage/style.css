@@ -6,9 +6,28 @@
   list-style-type : none;
 }
 
+.cohort-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  
+}
+
+.cohort-box h1{
+  font-size: 2.5em;
+}
+
+.content {
+  text-transform: capitalize;
+  
+}
+
 .user-item {
   display: grid;
   margin: 0.5em
+}
+
+ul {
+  list-style: none;
 }
 
 li.user-item div{
