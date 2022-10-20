@@ -73,7 +73,9 @@ const Header = ({ companyName, userData }) => {
             ) : (
               false
             )}
-            <Button variant="contained" onClick={handleLogout} />
+            <Button variant="contained" onClick={handleLogout}>
+              Logout
+            </Button>
           </Stack>
         </Box>
       </Box>
