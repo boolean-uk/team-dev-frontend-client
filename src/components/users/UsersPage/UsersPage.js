@@ -123,8 +123,7 @@ const UsersPage = ({ userData }) => {
     )
   }
 
-  console.log(isTeacher())
-  return isTeacher() ? (
+  return (
     <>
       <div className="content ">
         <Header companyName={`Cohort Manager 2.0`} userData={userData} />
