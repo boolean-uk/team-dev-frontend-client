@@ -51,6 +51,9 @@ const Post = (props) => {
   }
 
   const deletePost = () => {
+    if (post.user.role === 'TEACHER' && post.user.id !== userData.id) {
+      return
+    }
     client.delete(`/post/${post.id}`).then((res) => {
       setPostResponse(res.data)
     })
