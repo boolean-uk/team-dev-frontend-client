@@ -1,3 +1,8 @@
 .noteInputForm {
   margin: 0 1em 0 1em;
 }
+
+.studentNotesArea {
+  height: 4em;
+  overflow-y: scroll;
+}
