@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import client from '../../../utils/client'
 import './style.css'
-
+import SideNavBar from '../../sideNavBar/sideNavBar'
 import Header from '../../Header/Header'
 
 const UsersPage = ({ userData }) => {
@@ -126,53 +126,38 @@ const UsersPage = ({ userData }) => {
   console.log(isTeacher())
   return isTeacher() ? (
     <>
-      <Header companyName={`Cohort Manager 2.0`} userData={userData} />
-      <main>
-        <section className="users-section">
-          <h1>Cohort member list</h1>
-          <ul className="cohort-list">
-            {cohorts.map((cohort, index) => (
-              <>
-                <li key={index}>
-                  <div className="cohort-box">
-                    <h1>{cohort.cohort}</h1>
-                    <div className="content">
-                      {cohort.users.map((user, index) => (
-                        <p>{`${user.firstName} ${user.lastName}`}</p>
-                      ))}
-                    </div>
-                  </div>
+      <div className="content ">
+        <Header companyName={`Cohort Manager 2.0`} userData={userData} />
+        <section className="users-section mainGridArea">
+          <SideNavBar />
+          <main className="main-col">
+            {/* <button id="user-signout-button" onClick={signOut}>
+              sign out
+            </button> */}
+            <h1>Cohort member list</h1>
+            <ul className="users-list">
+              {/* <li className="user-item">
+              <div>{`Full Name`}</div>
+              <div>{`Email`}</div>
+              <div>{`Biography`}</div>
+            </li> */}
+              {users.map((user, index) => (
+                <li key={index} className="user-item">
+                  <div>{`${user.firstName} ${user.lastName}`}</div>
+                  <div>{`${user.email}`}</div>
+                  <div>{`${checkLength(user)}`}</div>
+                  <div>{checkGitURL(user)}</div>
+
+                  {/* <div>
+                  <button className="user-button">Edit</button>
+                  <button className="user-button">Delete</button>
+                </div> */}
                 </li>
-              </>
-            ))}
-          </ul>
+              ))}
+            </ul>
+          </main>
         </section>
-      </main>
-    </>
-  ) : (
-    <>
-      <Header companyName={`Cohort Manager 2.0`} userData={userData} />
-      <main>
-        <section className="users-section">
-          <h1>Cohort member list</h1>
-          <ul className="cohort-list">
-            {ownCohort.map((cohort, index) => (
-              <>
-                <li key={index}>
-                  <div className="cohort-box">
-                    <h1>{cohort.cohort}</h1>
-                    <div className="content">
-                      {cohort.users.map((user, index) => (
-                        <p>{`${user.firstName} ${user.lastName}`}</p>
-                      ))}
-                    </div>
-                  </div>
-                </li>
-              </>
-            ))}
-          </ul>
-        </section>
-      </main>
+      </div>
     </>
   )
 }
