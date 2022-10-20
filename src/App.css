@@ -42,6 +42,7 @@ button{
 .mainGridArea{
   display: grid;
   /* height: 100%; */
+  position: relative;
   grid-template-columns: 1fr 4fr;
   grid-template-areas:
 

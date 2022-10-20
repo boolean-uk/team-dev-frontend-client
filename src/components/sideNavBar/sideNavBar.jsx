@@ -6,7 +6,7 @@ const SideNavBar = () => {
     <div className="sidebar">
       <div className="menuNav">
         <Link
-          to="/add-cohort"
+          to="/users"
           style={{
             textDecoration: 'none',
             // fontSize: '25px',

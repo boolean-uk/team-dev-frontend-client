@@ -4,14 +4,14 @@
     text-align: start;
     text-align: center;
     list-style-type: none;
-    padding-left: 550px;
+    /* padding-left: 550px; */
     
 }
 
 .exercise{
     margin-top: 20px;
     margin-left: 10px;
-    width: 33%;
+    /* width: 33%; */
     border-bottom: 1px solid #e07f72;
     
 }
