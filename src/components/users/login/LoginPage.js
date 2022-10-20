@@ -29,6 +29,9 @@ const LoginPage = ({ setUserData }) => {
           res.data.data.token
         )
         setUserData(res.data.data.user)
+        sessionStorage.setItem('userRole', res.data.data.user.role)
+        // sessionStorage.setItem(res.data.data.user)
+        // console.log(sessionStorage.getItem(res.data.data.user))
         setLoginResponse(res.data)
         console.log(res.data)
 

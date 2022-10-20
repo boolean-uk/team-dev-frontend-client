@@ -112,7 +112,7 @@ const UsersPage = ({ userData }) => {
   }
 
   const isTeacher = () => {
-    return userData.role === 'TEACHER'
+    return sessionStorage.getItem('userRole') === 'TEACHER'
   }
 
   if (!users) {
@@ -123,7 +123,7 @@ const UsersPage = ({ userData }) => {
     )
   }
 
-  console.log(ownCohort)
+  console.log(isTeacher())
   return isTeacher() ? (
     <>
       <Header companyName={`Cohort Manager 2.0`} userData={userData} />
