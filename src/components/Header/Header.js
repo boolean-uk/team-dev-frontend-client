@@ -62,11 +62,11 @@ const Header = ({ companyName, userData }) => {
           <Stack spacing={2} direction="row">
             {userData.role === 'TEACHER' ? (
               <>
-                <Link to="/add-cohort">
+                <Link to="/add-cohort" style={{ textDecoration: 'none' }}>
                   <Button variant="contained">Add Cohort</Button>
                 </Link>
 
-                <Link to="/add-user">
+                <Link to="/add-user" style={{ textDecoration: 'none' }}>
                   <Button variant="contained">Add User</Button>
                 </Link>
               </>
