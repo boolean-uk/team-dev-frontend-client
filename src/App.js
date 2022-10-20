@@ -6,6 +6,7 @@ import SettingsPage from './components/users/settings/SettingsPage'
 import AddCohortPage from './components/cohort/AddCohortPage'
 import UsersPage from './components/users/UsersPage/UsersPage'
 import AddNote from './components/notes/AddNote'
+import NotesPage from './components/notes/NotesPage'
 import AddUserPage from './components/users/AddUsers/AddUserPage'
 import ExercisePage from './components/exercises/ExercisesPage'
 import ExrciseForm from './components/exercises/ExerciseForm'
@@ -32,6 +33,7 @@ function App() {
             element={<AddCohortPage userData={userData} />}
           />
           <Route path="/add-note" element={<AddNote userData={userData} />} />
+          <Route path="/notes" element={<NotesPage userData={userData} />} />
           <Route path="/users" element={<UsersPage userData={userData} />} />
           <Route
             path="/exercises"
