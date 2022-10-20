@@ -51,6 +51,12 @@ h1 {
   /* background-color: #15479c; */
 }
 
+.post-like:active {
+  background-color: lightskyblue;
+  box-shadow: 0 5px #666;
+  transform: translateY(2px);
+}
+
 .comments{
   display: grid;
   grid-template-columns: 400px;
@@ -76,6 +82,10 @@ h1 {
 
 .comment button{
   margin-left: 5px;
+}
+
+.like-blue{
+  background-color: lightskyblue;
 }
 
 .comment-form-input{
