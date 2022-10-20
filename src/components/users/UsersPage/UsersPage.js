@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import client from '../../../utils/client'
 import './style.css'
-
+import SideNavBar from '../../sideNavBar/sideNavBar'
 import Header from '../../Header/Header'
 
 const UsersPage = ({ userData }) => {
@@ -112,7 +112,7 @@ const UsersPage = ({ userData }) => {
   }
 
   const isTeacher = () => {
-    return userData.role === 'TEACHER'
+    return sessionStorage.getItem('userRole') === 'TEACHER'
   }
 
   if (!users) {
@@ -123,12 +123,12 @@ const UsersPage = ({ userData }) => {
     )
   }
 
-  console.log(ownCohort)
   return isTeacher() ? (
     <>
       <Header companyName={`Cohort Manager 2.0`} userData={userData} />
-      <main>
-        <section className="users-section">
+      <section className="users-section mainGridArea">
+        <SideNavBar />
+        <main className="main-col">
           <h1>Cohort member list</h1>
           <ul className="cohort-list">
             {cohorts.map((cohort, index) => (
@@ -146,14 +146,15 @@ const UsersPage = ({ userData }) => {
               </>
             ))}
           </ul>
-        </section>
-      </main>
+        </main>
+      </section>
     </>
   ) : (
     <>
       <Header companyName={`Cohort Manager 2.0`} userData={userData} />
-      <main>
-        <section className="users-section">
+      <section className="users-section mainGridArea">
+        <SideNavBar />
+        <main className="main-col">
           <h1>Cohort member list</h1>
           <ul className="cohort-list">
             {ownCohort.map((cohort, index) => (
@@ -171,8 +172,8 @@ const UsersPage = ({ userData }) => {
               </>
             ))}
           </ul>
-        </section>
-      </main>
+        </main>
+      </section>
     </>
   )
 }
