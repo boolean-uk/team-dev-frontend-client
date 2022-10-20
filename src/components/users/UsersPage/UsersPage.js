@@ -5,11 +5,11 @@ import './style.css'
 import SideNavBar from '../../sideNavBar/sideNavBar'
 import Header from '../../Header/Header'
 
-const UsersPage = ({ userData }) => {
+const UsersPage = () => {
   const [users, setUsers] = useState([])
   const [cohorts, setCohorts] = useState([])
   const ownCohort = cohorts.filter(
-    (cohort, index) => index + 1 === userData.cohortId
+    (cohort, index) => index + 1 === Number(sessionStorage.getItem('cohortId'))
   )
   const cohortTemplate = [
     {
@@ -41,8 +41,6 @@ const UsersPage = ({ userData }) => {
 
   useEffect(() => {
     client.get('/users').then((res) => {
-      // setUsers(res.data.data.users)
-      console.log(res)
       filterUsersIntoCohorts(
         res.data.data.users.sort(function (a, b) {
           return a.id - b.id
@@ -56,35 +54,28 @@ const UsersPage = ({ userData }) => {
     for (const user of users) {
       switch (user.cohortId) {
         case 1:
-          console.log(user)
           updatedCohorts[0].users.push(user)
           break
         case 2:
-          console.log(user)
           updatedCohorts[1].users.push(user)
           break
         case 3:
-          console.log(user)
           updatedCohorts[2].users.push(user)
 
           break
         case 4:
-          console.log(user)
           updatedCohorts[3].users.push(user)
 
           break
         case 5:
-          console.log(user)
           updatedCohorts[4].users.push(user)
 
           break
         default:
-          console.log('no cohort: ', user)
           updatedCohorts[5].users.push(user)
       }
     }
     setCohorts(updatedCohorts)
-    console.log(updatedCohorts, cohorts)
   }
 
   const signOut = (event) => {
@@ -125,7 +116,7 @@ const UsersPage = ({ userData }) => {
 
   return isTeacher() ? (
     <>
-      <Header companyName={`Cohort Manager 2.0`} userData={userData} />
+      <Header companyName={`Cohort Manager 2.0`} />
       <section className="users-section mainGridArea">
         <SideNavBar />
         <main className="main-col">
@@ -151,7 +142,7 @@ const UsersPage = ({ userData }) => {
     </>
   ) : (
     <>
-      <Header companyName={`Cohort Manager 2.0`} userData={userData} />
+      <Header companyName={`Cohort Manager 2.0`} />
       <section className="users-section mainGridArea">
         <SideNavBar />
         <main className="main-col">

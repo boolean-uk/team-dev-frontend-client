@@ -22,7 +22,7 @@ const Post = (props) => {
   useEffect(() => {
     if (likes.length > 0) {
       likes.forEach((item) => {
-        if (item.userId === userData.id) {
+        if (item.userId === sessionStorage.getItem('userId')) {
           setLikedItem(item)
         }
         // console.log('useEffect was called', likesCount)
@@ -156,7 +156,10 @@ const Post = (props) => {
   }
 
   const deletePost = () => {
-    if (post.user.role === 'TEACHER' && post.user.id !== userData.id) {
+    if (
+      post.user.role === 'TEACHER' &&
+      post.user.id !== sessionStorage.getItem('userId')
+    ) {
       return
     }
     client.delete(`/post/${post.id}`).then((res) => {
@@ -207,7 +210,8 @@ const Post = (props) => {
           ) : (
             addComment
           )}
-          {userData.role === 'TEACHER' || post.user.id === userData.id ? (
+          {sessionStorage.getItem('userRole') === 'TEACHER' ||
+          post.user.id === sessionStorage.getItem('userId') ? (
             <>
               <button onClick={() => setShowEditPost(!showEditPost)}>
                 Edit
