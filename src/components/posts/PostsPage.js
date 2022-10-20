@@ -78,9 +78,6 @@ const PostsPage = (props) => {
             sign out
           </button> */}
             {/* <span>Status: {postResponse.status}</span> */}
-            <Link to="/users">
-              <button>To users</button>
-            </Link>
             <ul className="posts-list">
               {posts.map((post, index) => (
                 <Post
