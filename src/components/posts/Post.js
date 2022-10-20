@@ -1,8 +1,8 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+
 import PostComments from './PostComments'
 import PostCommentsForm from './PostCommentsForm'
 import client from '../../utils/client'
-import { useEffect } from 'react'
 
 const Post = (props) => {
   const { post, setPostResponse, index, userData } = props
@@ -53,7 +53,7 @@ const Post = (props) => {
     client.post(url, data).then((res) => {
       setLikes(res.data.data)
       setLikesCount(likesCount + 1)
-      console.log('res.data.data is:', res.data.data)
+      // console.log('res.data.data is:', res.data.data)
       const myLikeItem = res.data.data
       setLikedItem(myLikeItem)
     })
@@ -61,7 +61,7 @@ const Post = (props) => {
 
   function removeLike() {
     const url = `/post/${post.id}/postLike`
-    console.log('likedItem.id is:', likedItem.id)
+    //console.log('likedItem.id is:', likedItem.id)
     const data = {
       active: false,
       postLikeId: likedItem.id
@@ -95,7 +95,6 @@ const Post = (props) => {
     }
   }
 
-  const { post, setPostResponse, index, userData } = props
   const handleChange = (event) => {
     event.preventDefault()
     const { value, name } = event.target
@@ -124,7 +123,6 @@ const Post = (props) => {
     event.target.reset()
   }
 
-
   function likeCounter() {
     let newCounter = 0
     if (likes.length) {
@@ -143,7 +141,8 @@ const Post = (props) => {
       console.log('function triggered 2')
       return 'like-blue'
     }
-    
+  }
+
   const submitEditedPost = (event) => {
     event.preventDefault()
     client
@@ -186,9 +185,9 @@ const Post = (props) => {
         )}
 
         <div className="post-item-buttons" key={index}>
-        <button className={`${likeStyleCheck()}`} onClick={handleClick}>
-          <span>{`Like | ${likesCount}`}</span>
-        </button>
+          <button className={`${likeStyleCheck()}`} onClick={handleClick}>
+            <span>{`Like | ${likesCount}`}</span>
+          </button>
           <button
             id={post.id}
             onClick={(e) =>
