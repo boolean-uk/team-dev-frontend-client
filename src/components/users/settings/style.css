@@ -1,4 +1,5 @@
 .settings-page {
+  /* border: 5px solid yellow; */
 }
 
 .user-settings-form {
@@ -6,6 +7,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  
+ 
 }
 
 .user-settings-form-input {

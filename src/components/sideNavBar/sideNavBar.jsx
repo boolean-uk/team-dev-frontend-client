@@ -6,15 +6,15 @@ const SideNavBar = () => {
     <div className="sidebar">
       <div className="menuNav">
         <Link
-          to="/posts"
+          to="/add-cohort"
           style={{
             textDecoration: 'none',
-            fontSize: '25px',
+            // fontSize: '25px',
             color: 'white',
             fontWeight: 'bold'
           }}
         >
-          <h2>Cohort</h2>
+          <p>Cohort</p>
         </Link>
       </div>
       <div className="menuNav">
@@ -22,12 +22,11 @@ const SideNavBar = () => {
           to="/posts"
           style={{
             textDecoration: 'none',
-            fontSize: '25px',
-            color: '#1976d2',
+            // fontSize: '25px',
             fontWeight: 'bold'
           }}
         >
-          <h2>Posts</h2>
+          <p>Posts</p>
         </Link>
       </div>
       <div className="menuNav">
@@ -35,12 +34,12 @@ const SideNavBar = () => {
           to="/posts"
           style={{
             textDecoration: 'none',
-            fontSize: '25px',
+            // fontSize: '25px',
             color: 'white',
             fontWeight: 'bold'
           }}
         >
-          <h2>Conversations</h2>
+          <p>Conversations</p>
         </Link>
         <Link
           to="/users"
@@ -67,25 +66,25 @@ const SideNavBar = () => {
           to="/exercises"
           style={{
             textDecoration: 'none',
-            fontSize: '25px',
+            // fontSize: '25px',
             color: 'white',
             fontWeight: 'bold'
           }}
         >
-          <h2>Cohort Exercises</h2>
+          <p>Cohort Exercises</p>
         </Link>
       </div>
       <div className="menuNav">
         <Link
-          to="settings "
+          to="/settings "
           style={{
             textDecoration: 'none',
-            fontSize: '25px',
+            // fontSize: '25px',
             color: 'white',
             fontWeight: 'bold'
           }}
         >
-          <h2>User Settings</h2>
+          <p>User Settings</p>
         </Link>
       </div>
     </div>
