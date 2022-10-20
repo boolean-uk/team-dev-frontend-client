@@ -27,7 +27,7 @@ function NotesPage({ userData }) {
     client
       .get(`/note/${studentId}`, true)
       .then((res) => {
-        return res.data.data.note
+        return res.data.data.content
       })
       .catch((err) => console.log(err.response))
   }
