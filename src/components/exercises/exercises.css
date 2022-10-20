@@ -1,15 +1,27 @@
 .exercises{
+    background-color: #1d87c6;
+    height: 90.5vh;
     text-align: start;
+    text-align: center;
+    list-style-type: none;
+    /* padding-left: 550px; */
+    
 }
+
 .exercise{
-    margin-top: 10px;
+    margin-top: 20px;
     margin-left: 10px;
+    padding-bottom: 20px;
+    /* width: 33%; */
+    border-bottom: 1px solid #e07f72;
+    
 }
 .exercise-title{
     color: #f8c4bd;
+    padding-left: 1em;
 }
 
 .exercise-name{
     /* color: #1d87c6; */
-    color: #15479c;
+    /* color: #15479c; */
 }
