@@ -1,8 +1,4 @@
-.posts-section {
-  display: grid;
-  grid-template-rows: 30px 30px 1fr 100px;
 
-}
 
 .user-list {
   margin: 20px;
@@ -10,19 +6,35 @@
   list-style-type : none;
 }
 
+.cohort-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  
+}
+
+.cohort-box h1{
+  font-size: 2.5em;
+}
+
+.content {
+  text-transform: capitalize;
+  
+}
+
 .user-item {
   display: grid;
-  /* grid-template-columns: 1fr 2fr repeat(4, auto); */
   margin: 0.5em
+}
+
+ul {
+  list-style: none;
 }
 
 li.user-item div{
   margin: 0px 1em;
 }
 
-.post-item-buttons button{
-  margin-left: 0.5em;
-}
+
 
 a {
   color: white;

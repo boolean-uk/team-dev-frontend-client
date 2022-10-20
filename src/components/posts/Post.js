@@ -8,6 +8,8 @@ const Post = (props) => {
   const { post, setPostResponse, index, userData } = props
   const [addComment, setAddComment] = useState(false)
   const [comment, setComment] = useState({})
+  const [editedPost, setEditedPost] = useState({ content: '' })
+  const [showEditPost, setShowEditPost] = useState(false)
   const [likes, setLikes] = useState(post.postLikes)
   const [likesCount, setLikesCount] = useState(0)
   const [likedItem, setLikedItem] = useState(null)
@@ -93,6 +95,7 @@ const Post = (props) => {
     }
   }
 
+  const { post, setPostResponse, index, userData } = props
   const handleChange = (event) => {
     event.preventDefault()
     const { value, name } = event.target
@@ -121,6 +124,7 @@ const Post = (props) => {
     event.target.reset()
   }
 
+
   function likeCounter() {
     let newCounter = 0
     if (likes.length) {
@@ -139,54 +143,88 @@ const Post = (props) => {
       console.log('function triggered 2')
       return 'like-blue'
     }
+    
+  const submitEditedPost = (event) => {
+    event.preventDefault()
+    client
+      .patch(`/post/${post.id}`, {
+        content: editedPost.content
+      })
+      .then((res) => {
+        setPostResponse(res.data)
+      })
+    setShowEditPost(!editedPost)
+  }
+
+  const deletePost = () => {
+    if (post.user.role === 'TEACHER' && post.user.id !== userData.id) {
+      return
+    }
+    client.delete(`/post/${post.id}`).then((res) => {
+      setPostResponse(res.data)
+    })
   }
 
   return (
     <li className="post-item">
-      <div className="post-item-user">
-        {`${post.user.profile.firstName} ${post.user.profile.lastName} says:`}
-      </div>
-      <div className="post-item-content">{post.content}</div>
-      <div className="post-item-buttons" key={index}>
+      <div className="post-item-content">
+        <p className="comment-author">
+          {`${post.user.profile.firstName} ${post.user.profile.lastName} says:`}
+        </p>
+        {showEditPost ? (
+          <form onSubmit={(e) => submitEditedPost(e)}>
+            <input
+              defaultValue={post.content}
+              onChange={(e) =>
+                setEditedPost({ ...editedPost, content: e.target.value })
+              }
+            />
+            <button type="submit">Send</button>
+          </form>
+        ) : (
+          <div className="post-item-description">{post.content}</div>
+        )}
+
+        <div className="post-item-buttons" key={index}>
         <button className={`${likeStyleCheck()}`} onClick={handleClick}>
           <span>{`Like | ${likesCount}`}</span>
         </button>
-
-        <button
-          id={post.id}
-          onClick={(e) =>
-            Number(e.target.id) === Number(post.id)
-              ? setAddComment(!addComment)
-              : e
-          }
-        >
-          Comment
-        </button>
-        {addComment ? (
-          <PostCommentsForm
-            post={post}
-            handleChange={handleChange}
-            handleSubmit={handleSubmit}
-          />
-        ) : (
-          addComment
-        )}
-        {userData.role === 'TEACHER' ? (
-          <>
-            <button>Edit</button>
-            <button>Delete</button>
-          </>
-        ) : (
-          <></>
-        )}
+          <button
+            id={post.id}
+            onClick={(e) =>
+              Number(e.target.id) === Number(post.id)
+                ? setAddComment(!addComment)
+                : e
+            }
+          >
+            Comment
+          </button>
+          {addComment ? (
+            <PostCommentsForm
+              post={post}
+              handleChange={handleChange}
+              handleSubmit={handleSubmit}
+            />
+          ) : (
+            addComment
+          )}
+          {userData.role === 'TEACHER' || post.user.id === userData.id ? (
+            <>
+              <button onClick={() => setShowEditPost(!showEditPost)}>
+                Edit
+              </button>
+              <button onClick={() => deletePost()}>Delete</button>
+            </>
+          ) : (
+            <></>
+          )}
+        </div>
       </div>
-      <ul className="comments">
-        <PostComments
-          userData={userData}
-          post={post}
-          setPostResponse={setPostResponse}
-        />
-      </ul>
+      <PostComments
+        userData={userData}
+        post={post}
+        setPostResponse={setPostResponse}
+      />
     </li>
   )
 }

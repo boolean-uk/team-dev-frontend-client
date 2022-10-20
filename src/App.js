@@ -5,11 +5,17 @@ import PostsPage from './components/posts/PostsPage'
 import SettingsPage from './components/users/settings/SettingsPage'
 import AddCohortPage from './components/cohort/AddCohortPage'
 import UsersPage from './components/users/UsersPage/UsersPage'
+import AddNote from './components/notes/AddNote'
+import AddUserPage from './components/users/AddUsers/AddUserPage'
+import ExercisePage from './components/exercises/ExercisesPage'
+import ExrciseForm from './components/exercises/ExerciseForm'
 import { useState } from 'react'
 import { Routes, Route, Navigate, Outlet } from 'react-router-dom'
+import SideNavBar from './components/sideNavBar/sideNavBar'
 
 function App() {
   const [userData, setUserData] = useState('')
+  console.log('user data in app.js:', userData)
 
   return (
     <div className="App">
@@ -22,13 +28,24 @@ function App() {
             path="/settings"
             element={<SettingsPage userData={userData} />}
           />
-          <Route path="/add-cohort" element={<AddCohortPage />} />
-          <Route path="/users" />
-          {/* element={<UsersPage />} */}
-          <Route path="/exercises" />
-          {/* element={<ExercisePage />} */}
-          <Route path="/add-user" />
-          {/* element={<AddUserPage />} */}
+          <Route
+            path="/add-cohort"
+            element={<AddCohortPage userData={userData} />}
+          />
+          <Route path="/add-note" element={<AddNote userData={userData} />} />
+          <Route path="/users" element={<UsersPage userData={userData} />} />
+          <Route
+            path="/exercises"
+            element={<ExercisePage userData={userData} />}
+          />
+          <Route
+            path="/exercises/add"
+            element={<ExrciseForm userData={userData} />}
+          />
+          <Route
+            path="/add-user"
+            element={<AddUserPage userData={userData} />}
+          />
         </Route>
       </Routes>
     </div>

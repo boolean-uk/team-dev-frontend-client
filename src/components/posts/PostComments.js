@@ -4,13 +4,15 @@ const PostComments = (props) => {
 
   return post.postComments.map((comment, index) => {
     return (
-      <EditComment
-        post={post}
-        comment={comment}
-        key={index}
-        setPostResponse={setPostResponse}
-        userData={userData}
-      />
+      <ul key={index} className="comments">
+        <EditComment
+          post={post}
+          comment={comment}
+          key={index}
+          setPostResponse={setPostResponse}
+          userData={userData}
+        />
+      </ul>
     )
   })
 }

@@ -1,0 +1,15 @@
+.exercises{
+    text-align: start;
+}
+.exercise{
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.exercise-title{
+    color: #f8c4bd;
+}
+
+.exercise-name{
+    /* color: #1d87c6; */
+    color: #15479c;
+}

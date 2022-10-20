@@ -1,10 +1,13 @@
 import { useState, useEffect, useRef } from 'react'
-import { useNavigate } from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom'
 import PostForm from './PostForm'
 import client from '../../utils/client'
 import './style.css'
+// import SideNavBar from '../sideNavBar/sideNavBar'
 import Header from '../Header/Header'
 import Post from './Post'
+import { Link } from 'react-router-dom'
+import SideNavBar from '../sideNavBar/sideNavBar'
 
 const PostsPage = (props) => {
   const { userData } = props
@@ -12,7 +15,7 @@ const PostsPage = (props) => {
   const [post, setPost] = useState({ content: '' })
   const [postResponse, setPostResponse] = useState('')
   const [posts, setPosts] = useState([])
-  let navigate = useNavigate()
+  // const navigate = useNavigate()
 
   useEffect(() => {
     client
@@ -56,42 +59,61 @@ const PostsPage = (props) => {
     })
   }
 
-  const signOut = (event) => {
+  /* const signOut = (event) => {
     event.preventDefault()
     localStorage.setItem(process.env.REACT_APP_USER_TOKEN, '')
     navigate('../', { replace: true })
-  }
+  }*/
+
+  console.log('user data in postsPage:', userData)
 
   return (
-    <div className="content">
-      <Header companyName={`Cohort Manager 2.0`} />
-      <main>
-        <section className="posts-section">
-          <button id="user-signout-button" onClick={signOut}>
+    <div className="content ">
+      <Header companyName={`Cohort Manager 2.0`} userData={userData} />
+      <div className="mainGridArea ">
+        <SideNavBar />
+        <section className="posts-section main-col">
+          <main>
+            {/* <button id="user-signout-button" onClick={signOut}>
             sign out
-          </button>
-          <span>Status: {postResponse.status}</span>
+          </button> */}
+            {/* <span>Status: {postResponse.status}</span> */}
+            <ul className="posts-list">
+              {posts.map((post, index) => (
+                <Post
+                  key={index}
+                  post={post}
+                  postResponse={postResponse}
+                  setPostResponse={setPostResponse}
+                  index={index}
+                  userData={userData}
+                />
+              ))}
+              <div ref={postsEndRef} />
+            </ul>
+            {/* <span>Status: {postResponse.status}</span> */}
 
-          <ul className="posts-list">
-            {posts.map((post, index) => (
-              <Post
-                key={index}
-                post={post}
-                postResponse={postResponse}
-                setPostResponse={setPostResponse}
-                index={index}
-                userData={userData}
-              />
-            ))}
-            <div ref={postsEndRef} />
-          </ul>
+            <ul className="posts-list">
+              {posts.map((post, index) => (
+                <Post
+                  key={index}
+                  post={post}
+                  postResponse={postResponse}
+                  setPostResponse={setPostResponse}
+                  index={index}
+                  userData={userData}
+                />
+              ))}
+              <div ref={postsEndRef} />
+            </ul>
 
-          <PostForm
-            handleSubmit={(e) => createPost(e)}
-            handleChange={handleChange}
-          />
+            <PostForm
+              handleSubmit={(e) => createPost(e)}
+              handleChange={handleChange}
+            />
+          </main>
         </section>
-      </main>
+      </div>
     </div>
   )
 }
