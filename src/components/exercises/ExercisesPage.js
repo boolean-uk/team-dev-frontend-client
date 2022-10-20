@@ -16,15 +16,10 @@ const ExercisesPage = ({ userData }) => {
     })
   }, [])
 
+  console.log(sessionStorage.getItem('userRole') === 'TEACHER')
+
   return (
     <>
-      {(userData.role === 'TEACHER') === userData.id ? (
-        <Link to="/exercises/add">
-          <button>Create Exercise</button>
-        </Link>
-      ) : (
-        userData
-      )}
       <Header companyName={`Cohort Manager 2.0`} userData={userData} />
       <div className="mainGridArea ">
         <SideNavBar />
@@ -42,6 +37,11 @@ const ExercisesPage = ({ userData }) => {
               </li>
             )
           })}
+          {sessionStorage.getItem('userRole') === 'TEACHER' ? (
+            <Link to="/exercises/add">
+              <button>Create Exercise</button>
+            </Link>
+          ) : null}
         </ul>
       </div>
     </>
