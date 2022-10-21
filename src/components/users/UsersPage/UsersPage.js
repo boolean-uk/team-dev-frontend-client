@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react'
 import Dropdown from 'react-dropdown'
 import client from '../../../utils/client'
 import './style.css'
-
+import SideNavBar from '../../sideNavBar/sideNavBar'
 import Header from '../../Header/Header'
 
-const UsersPage = ({ userData }) => {
+const UsersPage = () => {
   const [users, setUsers] = useState([])
   const [cohorts, setCohorts] = useState([])
   const [response, setResponse] = useState('')
@@ -15,10 +15,10 @@ const UsersPage = ({ userData }) => {
       setUsers(res.data.data.users)
     })
     client.get('/cohort').then((res) => setCohorts(res.data.data))
-  }, [response])
-
+  }, [response])  
+  
   const isTeacher = () => {
-    return userData.role === 'TEACHER'
+    return sessionStorage.getItem('userRole') === 'TEACHER'
   }
 
   if (!users) {
@@ -28,10 +28,10 @@ const UsersPage = ({ userData }) => {
       </>
     )
   }
-
+  
   const removeStudent = (student) => {
     client
-      .patch(`/user/${student.id}`, { cohortId: 4 })
+      .patch(`/user/${student.id}`, { cohortId: 17 })
       .then((res) => setResponse(res))
   }
 
@@ -42,7 +42,8 @@ const UsersPage = ({ userData }) => {
     client
       .patch(`/user/${userId}`, { cohortId: destination[0].id })
       .then((res) => setResponse(res))
-  }
+  }  
+
   return isTeacher() ? (
     <>
       <Header companyName={`Cohort Manager 2.0`} userData={userData} />

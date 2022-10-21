@@ -45,7 +45,8 @@ const EditComment = (props) => {
         </>
       )}
       <button>Like</button>
-      {comment.profile.id === userData.id || userData.role === 'TEACHER' ? (
+      {comment.profile.id === sessionStorage.getItem('userId') ||
+      sessionStorage.getItem('userRole') === 'TEACHER' ? (
         <>
           <button onClick={() => setShowEdit(!showEdit)}>Edit</button>
           <button onClick={() => deleteComment()}>Delete</button>

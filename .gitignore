@@ -26,3 +26,4 @@ insomnia.json
 requests.http
 package-lock.json
 request.http
+.env.development
