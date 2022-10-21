@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import './navBar.css'
 
-const SideNavBar = () => {
+const SideNavBar = ({ userData }) => {
   return (
     <div className="sidebar">
       <div className="menuNav">
@@ -74,6 +74,22 @@ const SideNavBar = () => {
           <p>Cohort Exercises</p>
         </Link>
       </div>
+      {userData.role === 'TEACHER' && (
+        <>
+          <div className="menuNav">
+            <Link
+              to="/notes"
+              style={{
+                textDecoration: 'none',
+                color: 'white',
+                fontWeight: 'bold'
+              }}
+            >
+              <p>Teacher Notes</p>
+            </Link>
+          </div>
+        </>
+      )}
       <div className="menuNav">
         <Link
           to="/settings "

@@ -1,3 +1,16 @@
 .noteInputForm {
   margin: 0 1em 0 1em;
 }
+
+.studentNotesArea {
+  background-color: #5890eb;
+}
+
+.notesTitle {
+  font-strength: bold;
+  color: #1b7cbf;
+}
+
+.studentNote {
+  color: black;
+}
