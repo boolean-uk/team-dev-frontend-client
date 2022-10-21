@@ -28,13 +28,12 @@ const UsersPage = ({ userData }) => {
       </>
     )
   }
-
   const removeStudent = (student) => {
     client
       .patch(`/user/${student.id}`, { cohortId: 17 })
       .then((res) => setResponse(res))
   }
-
+  console.log(userData)
   const assignCohort = (userId, assignedCohort) => {
     const destination = cohorts.filter((e) => {
       return e.cohortName === assignedCohort.value
@@ -43,7 +42,6 @@ const UsersPage = ({ userData }) => {
       .patch(`/user/${userId}`, { cohortId: destination[0].id })
       .then((res) => setResponse(res))
   }
-
   return isTeacher() ? (
     <>
       <div className="content ">
@@ -104,9 +102,15 @@ const UsersPage = ({ userData }) => {
               cohort.id === userData.cohortId ? (
                 <div key={index}>
                   <h1>{cohort.cohortName}</h1>
-                  {users.map((user, index) => (
-                    <li key={index}>{`${user.firstName} ${user.lastName}`}</li>
-                  ))}
+                  {users.map((user, index) =>
+                    user.cohortId === userData.cohortId ? (
+                      <li
+                        key={index}
+                      >{`${user.firstName} ${user.lastName}`}</li>
+                    ) : (
+                      false
+                    )
+                  )}
                 </div>
               ) : (
                 false
