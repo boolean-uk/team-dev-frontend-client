@@ -22,7 +22,7 @@ const ExrciseForm = () => {
         console.log('exercise:', exercise)
         console.log('exercise:', res)
 
-        navigate('/posts')
+        navigate('/exercises')
       })
   }
 
