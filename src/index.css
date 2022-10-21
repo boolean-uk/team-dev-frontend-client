@@ -1,5 +1,6 @@
 :root {
-  --bg-color: #1d87c6;
+  /* --bg-color: #1d87c6; */
+  --bg-color: #e07f72 ;
   --primary-color: #da4b27;
   --font-family: 'Poppins', sans-serif;
 }
@@ -10,13 +11,27 @@
   padding: 0;
 }
 
-html, body {
+/* html, body {
   font-family: var(--font-family);
   background-color: var(--bg-color);
   color: #39c9da;
   height: 100vh;
   width: 100%;
   overflow: scroll;
+
+} */
+
+ body {
+  font-family: var(--font-family);
+  background-color: var(--bg-color);
+  color: #39c9da;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* height: 100vh;
+  width: 100vh; */
+  /* overflow: scroll; */
 
 }
 
@@ -26,7 +41,7 @@ code {
 }
 
 main{
-  margin-top: 60px;
+  /* margin-top: 60px; */
   padding-bottom: 300px;
   height: 100vh; 
 }

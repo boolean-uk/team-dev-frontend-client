@@ -7,16 +7,22 @@ h1 {
 }
 
 .posts-section {
+  background-color: #1d87c6;
+  padding-bottom: 10px;
   margin-top: 15px;
   display: grid; 
-  height: 100%;
+  /* height: 100%; */
+  /* height: 84.5vh; */
+  /* height: 100vh; */
   width: 100%;
   grid-template-rows: 1fr;
+  /* grid-template-rows: 30px auto 1fr 100px; */
 }
 .post-list{
   overflow: scroll;
-  height: auto;
-  margin-top: 10px;
+  /* height: auto; */
+  margin-top: 50px;
+  
 
 }
 .users-section {
@@ -27,7 +33,7 @@ h1 {
   margin: 20px;
   text-align: left;
   list-style-type : none;
-  overflow: scroll ;
+  /* overflow: scroll ; */
 }
 
 .user-item {
@@ -35,9 +41,21 @@ h1 {
   grid-template-columns: 1fr 1fr 2fr 1fr;
   margin: 10px;
 }
+
+
 .user-form-input{
-  all: unset;
-  background-color: #15479c;
+  width: 75.5vw;
+  margin: 5PX;
+  text-align: center;
+  /* all: unset; */
+  background-color: #ffffff;
+  /* background-color: #15479c; */
+}
+
+.post-like:active {
+  background-color: lightskyblue;
+  box-shadow: 0 5px #666;
+  transform: translateY(2px);
 }
 
 .comments{
@@ -67,16 +85,21 @@ h1 {
   margin-left: 5px;
 }
 
+.like-blue{
+  background-color: lightskyblue;
+}
+
 .comment-form-input{
   height: 20px;
 }
 
 .post-form{
+  background-color:#e07f72;
   display: grid;
   grid-template-columns: 1fr auto;
   position: absolute;
   bottom: 7px;
-  width: 100vw;
+  /* width: 100vw; */
   justify-self: center;
   height: 40px;
   bottom: 0%;
@@ -89,6 +112,7 @@ h1 {
   margin: 0px 10px 0px 10px;
   width: 400px;
   padding-left: 5px;
+  padding-bottom: 10px;
 }
 
 .post-item-description{

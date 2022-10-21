@@ -29,6 +29,9 @@ const LoginPage = ({ setUserData }) => {
           res.data.data.token
         )
         setUserData(res.data.data.user)
+        sessionStorage.setItem('userRole', res.data.data.user.role)
+        sessionStorage.setItem('userId', res.data.data.user.id)
+        sessionStorage.setItem('cohortId', res.data.data.user.cohortId)
         setLoginResponse(res.data)
         console.log(res.data)
 

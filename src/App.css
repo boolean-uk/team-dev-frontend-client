@@ -38,3 +38,23 @@ button{
   background-color: white;
   height: 25px;
 }
+
+.mainGridArea{
+  display: grid;
+  /* height: 100%; */
+  position: relative;
+  grid-template-columns: 1fr 4fr;
+  grid-template-areas:
+
+  "sidebar main-col " ;
+}
+.main-col {
+  grid-area: main-col;
+  height: 90vh;
+  /* height: 100%; */
+  overflow-y: scroll;
+}
+
+.sidebar {
+  grid-area: sidebar;
+}

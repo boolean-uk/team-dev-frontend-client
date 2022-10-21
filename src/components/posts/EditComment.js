@@ -17,6 +17,13 @@ const EditComment = (props) => {
     event.target.reset()
     setShowEdit(!showEdit)
   }
+
+  const deleteComment = () => {
+    client.delete(`/post/${post.id}/comment/${comment.id}`).then((res) => {
+      setPostResponse(res.data)
+    })
+  }
+
   return (
     <li key={comment.id} className="comment">
       {showEdit ? (
@@ -38,10 +45,11 @@ const EditComment = (props) => {
         </>
       )}
       <button>Like</button>
-      {comment.profile.id === userData.id || userData.role === 'TEACHER' ? (
+      {comment.profile.id === sessionStorage.getItem('userId') ||
+      sessionStorage.getItem('userRole') === 'TEACHER' ? (
         <>
           <button onClick={() => setShowEdit(!showEdit)}>Edit</button>
-          <button>Delete</button>
+          <button onClick={() => deleteComment()}>Delete</button>
         </>
       ) : (
         <></>

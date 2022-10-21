@@ -2,27 +2,86 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import client from '../../../utils/client'
 import './style.css'
-
+import SideNavBar from '../../sideNavBar/sideNavBar'
 import Header from '../../Header/Header'
 
-const UsersPage = ({ userData }) => {
+const UsersPage = () => {
   const [users, setUsers] = useState([])
+  const [cohorts, setCohorts] = useState([])
+  const ownCohort = cohorts.filter(
+    (cohort, index) => index + 1 === Number(sessionStorage.getItem('cohortId'))
+  )
+  const cohortTemplate = [
+    {
+      cohort: 'Cohort 1',
+      users: []
+    },
+    {
+      cohort: 'Cohort 2',
+      users: []
+    },
+    {
+      cohort: 'Cohort 3',
+      users: []
+    },
+    {
+      cohort: 'Cohort 4',
+      users: []
+    },
+    {
+      cohort: 'Cohort 5',
+      users: []
+    },
+    {
+      cohort: 'No cohort assigned',
+      users: []
+    }
+  ]
   let navigate = useNavigate()
 
   useEffect(() => {
     client.get('/users').then((res) => {
-      setUsers(res.data.data.users)
+      filterUsersIntoCohorts(
+        res.data.data.users.sort(function (a, b) {
+          return a.id - b.id
+        })
+      )
     })
   }, [])
+
+  const filterUsersIntoCohorts = (users) => {
+    const updatedCohorts = [...cohortTemplate]
+    for (const user of users) {
+      switch (user.cohortId) {
+        case 1:
+          updatedCohorts[0].users.push(user)
+          break
+        case 2:
+          updatedCohorts[1].users.push(user)
+          break
+        case 3:
+          updatedCohorts[2].users.push(user)
+
+          break
+        case 4:
+          updatedCohorts[3].users.push(user)
+
+          break
+        case 5:
+          updatedCohorts[4].users.push(user)
+
+          break
+        default:
+          updatedCohorts[5].users.push(user)
+      }
+    }
+    setCohorts(updatedCohorts)
+  }
 
   const signOut = (event) => {
     event.preventDefault()
     localStorage.setItem(process.env.REACT_APP_USER_TOKEN, '')
     navigate('../', { replace: true })
-  }
-
-  if (!users) {
-    return <></>
   }
 
   function checkLength(user) {
@@ -43,37 +102,69 @@ const UsersPage = ({ userData }) => {
     return <a href={`${user.githubUrl}`}>{user.githubUrl}</a>
   }
 
-  return (
-    <>
-      <Header companyName={`Cohort Manager 2.0`} userData={userData} />
-      <main>
-        <section className="users-section">
-          <button id="user-signout-button" onClick={signOut}>
-            sign out
-          </button>
-          <h1>Cohort member list</h1>
-          <ul className="users-list">
-            {/* <li className="user-item">
-              <div>{`Full Name`}</div>
-              <div>{`Email`}</div>
-              <div>{`Biography`}</div>
-            </li> */}
-            {users.map((user, index) => (
-              <li key={index} className="user-item">
-                <div>{`${user.firstName} ${user.lastName}`}</div>
-                <div>{`${user.email}`}</div>
-                <div>{`${checkLength(user)}`}</div>
-                <div>{checkGitURL(user)}</div>
+  const isTeacher = () => {
+    return sessionStorage.getItem('userRole') === 'TEACHER'
+  }
 
-                {/* <div>
-                  <button className="user-button">Edit</button>
-                  <button className="user-button">Delete</button>
-                </div> */}
-              </li>
+  if (!users) {
+    return (
+      <>
+        <span>No users</span>
+      </>
+    )
+  }
+
+  return isTeacher() ? (
+    <>
+      <Header companyName={`Cohort Manager 2.0`} />
+      <section className="users-section mainGridArea">
+        <SideNavBar />
+        <main className="main-col">
+          <h1>Cohort member list</h1>
+          <ul className="cohort-list">
+            {cohorts.map((cohort, index) => (
+              <>
+                <li key={index}>
+                  <div className="cohort-box">
+                    <h1>{cohort.cohort}</h1>
+                    <div className="content">
+                      {cohort.users.map((user, index) => (
+                        <p>{`${user.firstName} ${user.lastName}`}</p>
+                      ))}
+                    </div>
+                  </div>
+                </li>
+              </>
             ))}
           </ul>
-        </section>
-      </main>
+        </main>
+      </section>
+    </>
+  ) : (
+    <>
+      <Header companyName={`Cohort Manager 2.0`} />
+      <section className="users-section mainGridArea">
+        <SideNavBar />
+        <main className="main-col">
+          <h1>Cohort member list</h1>
+          <ul className="cohort-list">
+            {ownCohort.map((cohort, index) => (
+              <>
+                <li key={index}>
+                  <div className="cohort-box">
+                    <h1>{cohort.cohort}</h1>
+                    <div className="content">
+                      {cohort.users.map((user, index) => (
+                        <p>{`${user.firstName} ${user.lastName}`}</p>
+                      ))}
+                    </div>
+                  </div>
+                </li>
+              </>
+            ))}
+          </ul>
+        </main>
+      </section>
     </>
   )
 }

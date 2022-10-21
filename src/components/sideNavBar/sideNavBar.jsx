@@ -9,6 +9,7 @@ const SideNavBar = ({ userData }) => {
           to="/users"
           style={{
             textDecoration: 'none',
+            // fontSize: '25px',
             color: 'white',
             fontWeight: 'bold'
           }}
@@ -21,6 +22,7 @@ const SideNavBar = ({ userData }) => {
           to="/posts"
           style={{
             textDecoration: 'none',
+            // fontSize: '25px',
             fontWeight: 'bold'
           }}
         >
@@ -32,6 +34,7 @@ const SideNavBar = ({ userData }) => {
           to="/conversations"
           style={{
             textDecoration: 'none',
+            // fontSize: '25px',
             color: 'white',
             fontWeight: 'bold'
           }}

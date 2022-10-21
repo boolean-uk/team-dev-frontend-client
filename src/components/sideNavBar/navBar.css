@@ -1,16 +1,18 @@
 .sidebar {
-    background-color: #808080 ;
+    background-color: #e07f72 ;
     color: white;
-    padding-left: 40px;
-    padding-right: 40px;
-    height: 100%;
-    margin-bottom: 10px;
+    padding-left: 10px;
+    /* padding-right: 30px; */
+    /* height: 100%; */
+    /* margin-bottom: 10px; */
+    /* height: 100vh;
+    overflow-y: scroll; */
 }
 
 .menuNav{
-    padding-bottom: 10px;
-    margin: 20px;
-    padding-top: 10px;
+    /* padding-bottom: 10px; */
+    /* margin: 20px; */
+    /* padding-top: 10px; */
     border-bottom: 1px solid #1976d2;
 }
 
@@ -19,7 +21,7 @@
 }
 
 .menuNav h2{
-    font-size: 25px;
+    font-size: 20px;
 }
 
 p:hover, h2:hover {
@@ -34,7 +36,7 @@ p:hover, h2:hover {
     border-radius: 10px;
     margin: 15px;
     padding: 10px;
-    font-size: 20px;
+    font-size: 12px;
 }
 
 .linkStyle {
