@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react'
 import Dropdown from 'react-dropdown'
 import client from '../../../utils/client'
 import './style.css'
-//import SideNavBar from '../../sideNavBar/sideNavBar'
 import Header from '../../Header/Header'
+import SideNavBar from '../../sideNavBar/sideNavBar'
 
 const UsersPage = ({ userData }) => {
   const [users, setUsers] = useState([])
@@ -46,46 +46,52 @@ const UsersPage = ({ userData }) => {
 
   return isTeacher() ? (
     <>
-      <Header companyName={`Cohort Manager 2.0`} userData={userData} />
-      <main>
-        <section className="users-section">
-          <h1>Cohort member list</h1>
-          <div className="cohort-list">
-            {cohorts.map((cohort, index) => (
-              <ul key={index} className="cohort-box">
-                <h2 className="cohort-name">
-                  {cohort.id === 17 ? 'No cohort' : cohort.cohortName}
-                </h2>
-                {users.map((user, index) =>
-                  user.role === 'TEACHER' ? (
-                    true
-                  ) : user.cohortId === cohort.id ? (
-                    <li className="student" key={index}>
-                      {`${user.firstName} ${user.lastName}`}
-                      {cohort.id === 17 ? (
-                        <Dropdown
-                          placeholder="Assign to"
-                          className="dropdown"
-                          onChange={(e) => assignCohort(user.id, e)}
-                          options={cohorts.map((element) =>
-                            element.id === 17 ? true : element.cohortName
+      <div className="content ">
+        <Header companyName={`Cohort Manager 2.0`} userData={userData} />
+        <div className="mainGridArea ">
+          <SideNavBar />
+
+          <main className="main-col">
+            <section className="users-section  main-col">
+              <h1>Cohort member list</h1>
+              <div className="cohort-list">
+                {cohorts.map((cohort, index) => (
+                  <ul key={index} className="cohort-box">
+                    <h2 className="cohort-name">
+                      {cohort.id === 17 ? 'No cohort' : cohort.cohortName}
+                    </h2>
+                    {users.map((user, index) =>
+                      user.role === 'TEACHER' ? (
+                        true
+                      ) : user.cohortId === cohort.id ? (
+                        <li className="student" key={index}>
+                          {`${user.firstName} ${user.lastName}`}
+                          {cohort.id === 17 ? (
+                            <Dropdown
+                              placeholder="Assign student to cohort"
+                              className="dropdown"
+                              onChange={(e) => assignCohort(user.id, e)}
+                              options={cohorts.map((element) =>
+                                element.id === 17 ? true : element.cohortName
+                              )}
+                            />
+                          ) : (
+                            <button onClick={(e) => removeStudent(user)}>
+                              Remove
+                            </button>
                           )}
-                        />
+                        </li>
                       ) : (
-                        <button onClick={(e) => removeStudent(user)}>
-                          Remove
-                        </button>
-                      )}
-                    </li>
-                  ) : (
-                    false
-                  )
-                )}
-              </ul>
-            ))}
-          </div>
-        </section>
-      </main>
+                        false
+                      )
+                    )}
+                  </ul>
+                ))}
+              </div>
+            </section>
+          </main>
+        </div>
+      </div>
     </>
   ) : (
     <>

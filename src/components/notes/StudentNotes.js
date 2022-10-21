@@ -9,12 +9,11 @@ function StudentNotes({ studentId }) {
       .get(`/note/${studentId}`, true)
       .then((res) => {
         if (res.data.data.notes.length > 0) {
-          console.log(res.data.data.notes)
           setNotesForThisStudent(res.data.data.notes)
         }
       })
       .catch((err) => console.log(err.response))
-  }, [])
+  }, [studentId])
 
   return (
     <>

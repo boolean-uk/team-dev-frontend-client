@@ -7,8 +7,6 @@ const AddUserForm = ({ handleSubmit, handleChange, cohorts }) => {
     { value: 'TEACHER', label: 'Teacher' }
   ]
 
-  console.log(cohorts)
-
   return (
     <form className="user-form" onSubmit={handleSubmit}>
       <select

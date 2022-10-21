@@ -28,7 +28,7 @@ function NotesPage({ userData }) {
       <Header companyName={`Cohort Manager 2.0`} userData={userData} />
       <div className="mainGridArea ">
         <SideNavBar />
-        <section className="main-col">
+        <section className="mainNotes main-col">
           <h2>Teacher Notes for Students</h2>
           <Link to="/add-note" style={{ textDecoration: 'none' }}>
             <Button
@@ -46,7 +46,8 @@ function NotesPage({ userData }) {
           {students.map((student, index) => (
             <div key={index}>
               <p>
-                {student.firstName} {student.lastName} (User ID: {student.id})
+                <strong>Student:</strong> {student.firstName} {student.lastName}{' '}
+                (User ID: {student.id})
               </p>
               <StudentNotes studentId={student.id} />
             </div>

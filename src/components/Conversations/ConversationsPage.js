@@ -8,7 +8,10 @@ function ConversionPage({ userData }) {
       <div className="mainGridArea ">
         <SideNavBar />
         <div>
-          <img src="https://t3.ftcdn.net/jpg/02/98/53/18/360_F_298531843_n8oXcW29nw0eQDpd7iaerprgcERGltLP.jpg" />
+          <img
+            src="https://t3.ftcdn.net/jpg/02/98/53/18/360_F_298531843_n8oXcW29nw0eQDpd7iaerprgcERGltLP.jpg"
+            alt="hello world"
+          />
           <h1>UNDER CONSTRUCTION</h1>
           <h2>Converstions coming soon</h2>
         </div>

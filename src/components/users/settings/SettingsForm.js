@@ -1,6 +1,5 @@
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
-import Header from '../../Header/Header'
 import SideNavBar from '../../sideNavBar/sideNavBar'
 
 const SettingsForm = ({ handleChange, handleSubmit, user }) => {
@@ -9,6 +8,7 @@ const SettingsForm = ({ handleChange, handleSubmit, user }) => {
     <div className="mainGridArea">
       <SideNavBar />
       <form className="user-form main-col " onSubmit={handleSubmit}>
+        <h1>User Settings</h1>
         <TextField
           className="user-settings-form-input"
           label="First Name"
@@ -17,6 +17,8 @@ const SettingsForm = ({ handleChange, handleSubmit, user }) => {
           value={user.firstName}
           onChange={handleChange}
         />
+        <br />
+        <br />
         <TextField
           className="user-settings-form-input"
           label="Last Name"
@@ -24,7 +26,9 @@ const SettingsForm = ({ handleChange, handleSubmit, user }) => {
           name="lastName"
           value={user.lastName}
           onChange={handleChange}
-        />
+        />{' '}
+        <br />
+        <br />
         <TextField
           className="user-settings-form-input"
           type="email"
@@ -33,7 +37,9 @@ const SettingsForm = ({ handleChange, handleSubmit, user }) => {
           name="email"
           value={user.email}
           onChange={handleChange}
-        />
+        />{' '}
+        <br />
+        <br />
         <TextField
           className="user-settings-form-input"
           type="password"
@@ -42,7 +48,9 @@ const SettingsForm = ({ handleChange, handleSubmit, user }) => {
           name="password"
           value={user.password}
           onChange={handleChange}
-        />
+        />{' '}
+        <br />
+        <br />
         <TextField
           className="user-settings-form-input"
           label="Bio"
@@ -50,7 +58,9 @@ const SettingsForm = ({ handleChange, handleSubmit, user }) => {
           name="biography"
           value={user.biography}
           onChange={handleChange}
-        />
+        />{' '}
+        <br />
+        <br />
         <TextField
           className="user-settings-form-input"
           type="url"
@@ -59,7 +69,9 @@ const SettingsForm = ({ handleChange, handleSubmit, user }) => {
           name="githubUrl"
           value={user.githubUrl}
           onChange={handleChange}
-        />
+        />{' '}
+        <br />
+        <br />
         <Button
           id="user-settings-submit-button"
           type="submit"

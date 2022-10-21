@@ -12,7 +12,6 @@ import ExercisePage from './components/exercises/ExercisesPage'
 import ExrciseForm from './components/exercises/ExerciseForm'
 import { useState } from 'react'
 import { Routes, Route, Navigate, Outlet } from 'react-router-dom'
-import SideNavBar from './components/sideNavBar/sideNavBar'
 import ConversionPage from './components/Conversations/ConversationsPage'
 
 function App() {
