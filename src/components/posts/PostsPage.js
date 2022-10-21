@@ -15,6 +15,7 @@ const PostsPage = (props) => {
   const [post, setPost] = useState({ content: '' })
   const [postResponse, setPostResponse] = useState('')
   const [posts, setPosts] = useState([])
+  const { allCommentsLike, setAllCommentsLike } = useState([])
   // const navigate = useNavigate()
 
   useEffect(() => {
