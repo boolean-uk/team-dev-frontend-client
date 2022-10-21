@@ -3,9 +3,13 @@ import TextField from '@mui/material/TextField'
 import client from '../../utils/client'
 import Button from '@mui/material/Button'
 import Header from '../Header/Header'
+import { useNavigate } from 'react-router-dom'
 import './style.css'
 
 function AddNote({ userData }) {
+  const navigate = useNavigate()
+  const [title, setTitle] = useState('')
+  const [content, setContent] = useState('')
   const [students, setStudents] = useState([])
   const [note, setNote] = useState({
     content: ''
@@ -35,6 +39,7 @@ function AddNote({ userData }) {
       .then((res) => console.log(res.data))
       .catch((err) => console.log(err.response))
     alert(`Your note is now added to student ID ${userId}`)
+    navigate('/notes')
   }
 
   const handleNoteChange = (event) => {
@@ -50,6 +55,8 @@ function AddNote({ userData }) {
   return (
     <>
       <Header userData={userData} />
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
       <h2>Add a Note</h2>
       <p>Please select a student ID and enter the note text</p>
       <form className="user-form noteInputForm" onSubmit={handleNoteSubmit}>
@@ -63,6 +70,7 @@ function AddNote({ userData }) {
             ></option>
           ))}
         </select>
+        <br />
         <TextField
           className="user-form-input"
           type="text"
@@ -71,6 +79,7 @@ function AddNote({ userData }) {
           name="content"
           onChange={handleNoteChange}
         />
+        <br />
         <Button id="user-submit-button" type="submit" variant="contained">
           Submit
         </Button>

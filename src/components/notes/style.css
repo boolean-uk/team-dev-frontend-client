@@ -3,6 +3,14 @@
 }
 
 .studentNotesArea {
-  height: 4em;
-  overflow-y: scroll;
+  background-color: #5890eb;
+}
+
+.notesTitle {
+  font-strength: bold;
+  color: #1b7cbf;
+}
+
+.studentNote {
+  color: black;
 }
