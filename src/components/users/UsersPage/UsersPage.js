@@ -33,7 +33,6 @@ const UsersPage = ({ userData }) => {
       .patch(`/user/${student.id}`, { cohortId: 17 })
       .then((res) => setResponse(res))
   }
-  console.log(userData)
   const assignCohort = (userId, assignedCohort) => {
     const destination = cohorts.filter((e) => {
       return e.cohortName === assignedCohort.value
