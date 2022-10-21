@@ -17,18 +17,18 @@ function StudentNotes({ studentId }) {
   }, [])
 
   return (
-    <div className="studentNotesArea">
+    <>
       {notesForThisStudent.length > 0 && (
-        <>
+        <div className="studentNotesArea">
           <h4 className="notesTitle">Notes: </h4>
           {notesForThisStudent.map((note, index) => (
-            <span className="studentNote" key={index}>
+            <p className="studentNote" key={index}>
               {note.content}
-            </span>
+            </p>
           ))}
-        </>
+        </div>
       )}
-    </div>
+    </>
   )
 }
 
