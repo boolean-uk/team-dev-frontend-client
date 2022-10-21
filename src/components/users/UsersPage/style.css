@@ -9,13 +9,20 @@
 .cohort-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  
+  margin-top: 30px;
 }
 
 .cohort-box h1{
   font-size: 2.5em;
 }
-
+.cohort-box{
+  display: grid;
+  grid-template-rows: 35px auto;
+  background-color: #15479c;
+  margin-left: 15px;
+  margin-right: 15px;
+  justify-content: center;
+}
 .content {
   text-transform: capitalize;
   
@@ -34,9 +41,30 @@ li.user-item div{
   margin: 0px 1em;
 }
 
+.dropdown{
+  display: grid;
 
-
+  color: white;
+  background-color: #e07f72;
+  margin-bottom: 5px;
+  width: 80px;
+  border-radius: 5px;
+}
+.cohort-name{
+  color: #e07f72;
+  font-size: 20px;
+}
 a {
   color: white;
 }
-
+h1{
+  font-size: 30px;
+  color: #15479c;
+}
+.student{
+  margin-left: 15px;
+  font-size: 15px;
+}
+.student button{
+  margin-left: 5px;
+}

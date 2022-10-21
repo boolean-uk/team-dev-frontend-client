@@ -136,9 +136,7 @@ const Post = (props) => {
   }
 
   function likeStyleCheck() {
-    console.log('function triggered 1')
     if (likedItem && likedItem.active) {
-      console.log('function triggered 2')
       return 'like-blue'
     }
   }
