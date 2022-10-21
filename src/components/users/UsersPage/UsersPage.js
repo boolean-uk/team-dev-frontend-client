@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react'
 import Dropdown from 'react-dropdown'
 import client from '../../../utils/client'
 import './style.css'
-import SideNavBar from '../../sideNavBar/sideNavBar'
+//import SideNavBar from '../../sideNavBar/sideNavBar'
 import Header from '../../Header/Header'
 
-const UsersPage = () => {
+const UsersPage = ({ userData }) => {
   const [users, setUsers] = useState([])
   const [cohorts, setCohorts] = useState([])
   const [response, setResponse] = useState('')
@@ -15,8 +15,8 @@ const UsersPage = () => {
       setUsers(res.data.data.users)
     })
     client.get('/cohort').then((res) => setCohorts(res.data.data))
-  }, [response])  
-  
+  }, [response])
+
   const isTeacher = () => {
     return sessionStorage.getItem('userRole') === 'TEACHER'
   }
@@ -28,7 +28,7 @@ const UsersPage = () => {
       </>
     )
   }
-  
+
   const removeStudent = (student) => {
     client
       .patch(`/user/${student.id}`, { cohortId: 17 })
@@ -42,7 +42,7 @@ const UsersPage = () => {
     client
       .patch(`/user/${userId}`, { cohortId: destination[0].id })
       .then((res) => setResponse(res))
-  }  
+  }
 
   return isTeacher() ? (
     <>
@@ -54,7 +54,7 @@ const UsersPage = () => {
             {cohorts.map((cohort, index) => (
               <ul key={index} className="cohort-box">
                 <h2 className="cohort-name">
-                  {cohort.id === 4 ? 'No cohort' : cohort.cohortName}
+                  {cohort.id === 17 ? 'No cohort' : cohort.cohortName}
                 </h2>
                 {users.map((user, index) =>
                   user.role === 'TEACHER' ? (
@@ -62,13 +62,13 @@ const UsersPage = () => {
                   ) : user.cohortId === cohort.id ? (
                     <li className="student" key={index}>
                       {`${user.firstName} ${user.lastName}`}
-                      {cohort.id === 4 ? (
+                      {cohort.id === 17 ? (
                         <Dropdown
                           placeholder="Assign to"
                           className="dropdown"
                           onChange={(e) => assignCohort(user.id, e)}
                           options={cohorts.map((element) =>
-                            element.id === 4 ? true : element.cohortName
+                            element.id === 17 ? true : element.cohortName
                           )}
                         />
                       ) : (
