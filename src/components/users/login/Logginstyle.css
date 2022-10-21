@@ -1,0 +1,15 @@
+.login-page {
+    /* border: 5px solid blue; */
+    padding-left: 30%;
+    padding-right: 30%;
+    margin-top: 50px;
+}
+
+#user-registration-link {
+    padding-right: 20px;
+}
+
+.user-submit-button{
+    background-color: blueviolet;
+}
+

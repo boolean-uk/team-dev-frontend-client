@@ -60,11 +60,11 @@ const Header = ({ companyName }) => {
           <Stack spacing={2} direction="row">
             {sessionStorage.getItem('userRole') === 'TEACHER' ? (
               <>
-                <Link to="/add-cohort">
+                <Link to="/add-cohort" style={{ textDecoration: 'none' }}>
                   <Button variant="contained">Add Cohort</Button>
                 </Link>
 
-                <Link to="/add-user">
+                <Link to="/add-user" style={{ textDecoration: 'none' }}>
                   <Button variant="contained">Add User</Button>
                 </Link>
               </>
