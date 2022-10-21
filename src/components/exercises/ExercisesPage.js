@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 
 import client from '../../utils/client'
 import './exercises.css'
-import ExrciseForm from './ExerciseForm'
 import Header from '../Header/Header'
 import SideNavBar from '../sideNavBar/sideNavBar'
 
@@ -11,12 +10,9 @@ const ExercisesPage = ({ userData }) => {
   const [exercisesList, setExercisesList] = useState([])
   useEffect(() => {
     client.get('/exercises').then((res) => {
-      console.log('res: ', res.data.data)
       setExercisesList(res.data.data)
     })
   }, [])
-
-  console.log(sessionStorage.getItem('userRole') === 'TEACHER')
 
   return (
     <>
@@ -25,7 +21,6 @@ const ExercisesPage = ({ userData }) => {
         <SideNavBar />
         <ul className="exercises">
           {exercisesList.map((exercise) => {
-            console.log(exercisesList)
             return (
               <li className="exercise">
                 <span className="exercise-title">Title: </span>

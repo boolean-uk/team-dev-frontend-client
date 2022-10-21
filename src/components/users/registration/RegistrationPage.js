@@ -25,9 +25,6 @@ const RegistrationPage = () => {
       ...user,
       [name]: value
     })
-
-    console.log('new user being entered on registration')
-    console.log(user)
   }
 
   return (

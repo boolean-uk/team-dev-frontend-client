@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
-
 import PostComments from './PostComments'
 import PostCommentsForm from './PostCommentsForm'
 import client from '../../utils/client'
+import './style.css'
 
 const Post = (props) => {
   const { post, setPostResponse, index, userData } = props
@@ -172,7 +172,7 @@ const Post = (props) => {
 
         <div className="post-item-buttons" key={index}>
           <button className={`${likeStyleCheck()}`} onClick={handleClick}>
-            <span>{`Like | ${likesCount}`}</span>
+            {`Like | ${likesCount}`}
           </button>
           <button
             id={post.id}

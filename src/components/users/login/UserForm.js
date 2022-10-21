@@ -22,6 +22,7 @@ const UserForm = ({ handleSubmit, handleChange }) => {
         onChange={handleChange}
         style={{ width: '225px' }}
       />
+      <br />
       <Button
         id="user-submit-button"
         type="submit"

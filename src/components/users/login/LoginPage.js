@@ -34,8 +34,6 @@ const LoginPage = ({ setUserData }) => {
         sessionStorage.setItem('userId', res.data.data.user.id)
         sessionStorage.setItem('cohortId', res.data.data.user.cohortId)
         setLoginResponse(res.data)
-        console.log(res.data)
-
         navigate('../posts', { replace: true })
       })
       .catch((err) => console.log(err.response))

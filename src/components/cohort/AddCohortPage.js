@@ -41,9 +41,16 @@ function AddCohortPage({ userData }) {
   return (
     <>
       <Header companyName={`Cohort Manager 2.0`} userData={userData} />
-
-      <h1>Add new cohort</h1>
-      <AddCohortForm handleChange={handleChange} handleSubmit={handleSubmit} />
+      <div className="mainGridArea ">
+        <SideNavBar />
+        <div className="container main-col">
+          <h1>Add new cohort</h1>
+          <AddCohortForm
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+          />
+        </div>
+      </div>
     </>
   )
 }

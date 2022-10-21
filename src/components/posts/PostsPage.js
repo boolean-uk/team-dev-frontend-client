@@ -1,12 +1,9 @@
 import { useState, useEffect, useRef } from 'react'
-// import { useNavigate } from 'react-router-dom'
 import PostForm from './PostForm'
 import client from '../../utils/client'
 import './style.css'
-// import SideNavBar from '../sideNavBar/sideNavBar'
 import Header from '../Header/Header'
 import Post from './Post'
-import { Link } from 'react-router-dom'
 import SideNavBar from '../sideNavBar/sideNavBar'
 
 const PostsPage = (props) => {
@@ -15,8 +12,6 @@ const PostsPage = (props) => {
   const [post, setPost] = useState({ content: '' })
   const [postResponse, setPostResponse] = useState('')
   const [posts, setPosts] = useState([])
-  const { allCommentsLike, setAllCommentsLike } = useState([])
-  // const navigate = useNavigate()
 
   useEffect(() => {
     client

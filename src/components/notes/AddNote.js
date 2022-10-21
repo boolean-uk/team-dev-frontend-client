@@ -9,8 +9,6 @@ import './style.css'
 
 function AddNote({ userData }) {
   const navigate = useNavigate()
-  const [title, setTitle] = useState('')
-  const [content, setContent] = useState('')
   const [students, setStudents] = useState([])
   const [note, setNote] = useState({
     content: ''
@@ -37,7 +35,6 @@ function AddNote({ userData }) {
     userId = event.target.userId.value
     client
       .post(`/note/${userId}`, note, true)
-      .then((res) => console.log(res.data))
       .catch((err) => console.log(err.response))
     alert(`Your note is now added to student ID ${userId}`)
     navigate('/notes')

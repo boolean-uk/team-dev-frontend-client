@@ -31,13 +31,8 @@ const SettingsPage = ({ userData }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    console.log('user in settingspage')
-    console.log(user)
     client
       .patch(`/user/update/${user.id}`, user, true)
-      .then((res) => {
-        console.log(res)
-      })
       .catch((err) => console.log(err.response))
   }
 
@@ -45,7 +40,6 @@ const SettingsPage = ({ userData }) => {
     <>
       <Header companyName={`Cohort Manager 2.0`} userData={userData} />
       <div className="settings-page">
-        <h1>User Settings</h1>
         <SettingsForm
           user={user}
           handleChange={handleChange}
