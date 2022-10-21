@@ -31,7 +31,6 @@ const PostsPage = (props) => {
 
   useEffect(() => {
     scrollToBottom()
-    console.log('scrollToBottom called')
   }, [posts])
 
   const createPost = async (event) => {
@@ -64,8 +63,6 @@ const PostsPage = (props) => {
     localStorage.setItem(process.env.REACT_APP_USER_TOKEN, '')
     navigate('../', { replace: true })
   }*/
-
-  console.log('user data in postsPage:', userData)
 
   return (
     <div className="content ">
