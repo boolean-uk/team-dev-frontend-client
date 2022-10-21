@@ -13,7 +13,7 @@ const AddUserForm = ({ handleSubmit, handleChange, cohorts }) => {
         name="role"
         id="role"
         onChange={handleChange}
-        className="user-form-input"
+        className="add-user-form-input"
       >
         {roleOptions.map((roleOption, index) => (
           <option key={index} value={roleOption.value}>
@@ -27,7 +27,7 @@ const AddUserForm = ({ handleSubmit, handleChange, cohorts }) => {
         name="cohortId"
         id="cohortId"
         onChange={handleChange}
-        className="user-form-input"
+        className="add-user-form-input"
       >
         {cohorts.map((cohort, index) => (
           <option key={index} value={cohort.id}>
@@ -38,7 +38,7 @@ const AddUserForm = ({ handleSubmit, handleChange, cohorts }) => {
       <br />
       <br />
       <TextField
-        className="user-form-input"
+        className="add-user-form-input"
         label="First Name"
         variant="outlined"
         name="firstName"
@@ -47,7 +47,7 @@ const AddUserForm = ({ handleSubmit, handleChange, cohorts }) => {
       <br />
       <br />
       <TextField
-        className="user-form-input"
+        className="add-user-form-input"
         label="Last Name"
         variant="outlined"
         name="lastName"
@@ -56,7 +56,7 @@ const AddUserForm = ({ handleSubmit, handleChange, cohorts }) => {
       <br />
       <br />
       <TextField
-        className="user-form-input"
+        className="add-user-form-input"
         type="email"
         label="Email"
         variant="outlined"
@@ -66,7 +66,7 @@ const AddUserForm = ({ handleSubmit, handleChange, cohorts }) => {
       <br />
       <br />
       <TextField
-        className="user-form-input"
+        className="add-user-form-input"
         type="password"
         label="Password"
         variant="outlined"
@@ -76,7 +76,7 @@ const AddUserForm = ({ handleSubmit, handleChange, cohorts }) => {
       <br />
       <br />
       <TextField
-        className="user-form-input"
+        className="add-user-form-input"
         label="Bio"
         variant="outlined"
         name="biography"
@@ -85,7 +85,7 @@ const AddUserForm = ({ handleSubmit, handleChange, cohorts }) => {
       <br />
       <br />
       <TextField
-        className="user-form-input"
+        className="add-user-form-input"
         type="url"
         label="GitHub URL"
         variant="outlined"
