@@ -4,6 +4,7 @@ import UserForm from './UserForm'
 import userBlankData from '../utils/userHelpers'
 import client from '../../../utils/client'
 import { useNavigate } from 'react-router-dom'
+import './Logginstyle.css'
 
 const LoginPage = ({ setUserData }) => {
   const [user, setUser] = useState(userBlankData())
@@ -29,6 +30,9 @@ const LoginPage = ({ setUserData }) => {
           res.data.data.token
         )
         setUserData(res.data.data.user)
+        sessionStorage.setItem('userRole', res.data.data.user.role)
+        sessionStorage.setItem('userId', res.data.data.user.id)
+        sessionStorage.setItem('cohortId', res.data.data.user.cohortId)
         setLoginResponse(res.data)
         console.log(res.data)
 
@@ -54,10 +58,10 @@ const LoginPage = ({ setUserData }) => {
         <h1>Cohort Manager 2.0</h1>
       </div>
       <Link id="user-registration-link" to="/signup">
-        sign up
+        Sign up
       </Link>
       <Link id="user-login-link" to="/">
-        login
+        Login
       </Link>
       <h1>Login</h1>
       <span>Status: {loginResponse.status}</span>

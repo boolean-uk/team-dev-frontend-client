@@ -3,6 +3,7 @@ import client from '../../utils/client'
 import AddCohortForm from './AddCohortForm'
 import Header from '../Header/Header'
 import { useNavigate } from 'react-router-dom'
+import SideNavBar from '../sideNavBar/sideNavBar'
 
 function AddCohortPage({ userData }) {
   // console.log('userData in Add Cohort')
@@ -40,6 +41,7 @@ function AddCohortPage({ userData }) {
   return (
     <>
       <Header companyName={`Cohort Manager 2.0`} userData={userData} />
+
       <h1>Add new cohort</h1>
       <AddCohortForm handleChange={handleChange} handleSubmit={handleSubmit} />
     </>

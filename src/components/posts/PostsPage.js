@@ -32,7 +32,6 @@ const PostsPage = (props) => {
 
   useEffect(() => {
     scrollToBottom()
-    console.log('scrollToBottom called')
   }, [posts])
 
   const createPost = async (event) => {

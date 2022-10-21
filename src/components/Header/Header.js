@@ -6,7 +6,7 @@ import InputBase from '@mui/material/InputBase'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 
-const Header = ({ companyName, userData }) => {
+const Header = ({ companyName }) => {
   const navigate = useNavigate()
 
   const handleLogout = (event) => {
@@ -58,20 +58,22 @@ const Header = ({ companyName, userData }) => {
 
         <Box>
           <Stack spacing={2} direction="row">
-            {userData.role === 'TEACHER' ? (
+            {sessionStorage.getItem('userRole') === 'TEACHER' ? (
               <>
-                <Link to="/add-cohort">
+                <Link to="/add-cohort" style={{ textDecoration: 'none' }}>
                   <Button variant="contained">Add Cohort</Button>
                 </Link>
 
-                <Link to="/add-user">
+                <Link to="/add-user" style={{ textDecoration: 'none' }}>
                   <Button variant="contained">Add User</Button>
                 </Link>
               </>
             ) : (
               false
             )}
-            <Button variant="contained" onClick={handleLogout} />
+            <Button variant="contained" onClick={handleLogout}>
+              Logout
+            </Button>
           </Stack>
         </Box>
       </Box>

@@ -9,12 +9,12 @@ const SideNavBar = () => {
           to="/users"
           style={{
             textDecoration: 'none',
-            fontSize: '25px',
+            // fontSize: '25px',
             color: 'white',
             fontWeight: 'bold'
           }}
         >
-          <h2>Cohort</h2>
+          <p>Cohort</p>
         </Link>
       </div>
       <div className="menuNav">
@@ -22,40 +22,39 @@ const SideNavBar = () => {
           to="/posts"
           style={{
             textDecoration: 'none',
-            fontSize: '25px',
-            color: '#1976d2',
+            // fontSize: '25px',
             fontWeight: 'bold'
           }}
         >
-          <h2>Posts</h2>
+          <p>Posts</p>
         </Link>
       </div>
       <div className="menuNav">
         <Link
-          to="/posts"
+          to="/conversations"
           style={{
             textDecoration: 'none',
-            fontSize: '25px',
+            // fontSize: '25px',
             color: 'white',
             fontWeight: 'bold'
           }}
         >
-          <h2>Conversations</h2>
+          <p>Conversations</p>
         </Link>
         <Link
-          to="/"
+          to="/conversations"
           style={{ textDecoration: 'none', fontSize: '1 em', color: 'white' }}
         >
           <p>User 1</p>
         </Link>
         <Link
-          to="/"
+          to="/conversations"
           style={{ textDecoration: 'none', fontSize: '1 em', color: 'white' }}
         >
           <p>User 2</p>
         </Link>
         <Link
-          to="/"
+          to="/conversations"
           style={{ textDecoration: 'none', fontSize: '1 em', color: 'white' }}
         >
           <p>User 3</p>
@@ -67,25 +66,37 @@ const SideNavBar = () => {
           to="/exercises"
           style={{
             textDecoration: 'none',
-            fontSize: '25px',
+            // fontSize: '25px',
             color: 'white',
             fontWeight: 'bold'
           }}
         >
-          <h2>Cohort Exercises</h2>
+          <p>Cohort Exercises</p>
         </Link>
       </div>
       <div className="menuNav">
         <Link
-          to="settings "
+          to="/notes"
           style={{
             textDecoration: 'none',
-            fontSize: '25px',
             color: 'white',
             fontWeight: 'bold'
           }}
         >
-          <h2>User Settings</h2>
+          <p>Teacher Notes</p>
+        </Link>
+      </div>
+      <div className="menuNav">
+        <Link
+          to="/settings "
+          style={{
+            textDecoration: 'none',
+            // fontSize: '25px',
+            color: 'white',
+            fontWeight: 'bold'
+          }}
+        >
+          <p>User Settings</p>
         </Link>
       </div>
     </div>

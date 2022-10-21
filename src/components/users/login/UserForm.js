@@ -11,6 +11,7 @@ const UserForm = ({ handleSubmit, handleChange }) => {
         variant="outlined"
         name="email"
         onChange={handleChange}
+        style={{ width: '225px', marginBottom: '1em' }}
       />
       <TextField
         className="user-form-input"
@@ -19,9 +20,15 @@ const UserForm = ({ handleSubmit, handleChange }) => {
         variant="outlined"
         name="password"
         onChange={handleChange}
+        style={{ width: '225px' }}
       />
-      <Button id="user-submit-button" type="submit" variant="contained">
-        Submit
+      <Button
+        id="user-submit-button"
+        type="submit"
+        variant="contained"
+        style={{ marginLeft: '20px', marginTop: '1em' }}
+      >
+        Login
       </Button>
     </form>
   )
