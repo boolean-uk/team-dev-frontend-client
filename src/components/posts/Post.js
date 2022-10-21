@@ -14,18 +14,12 @@ const Post = (props) => {
   const [likesCount, setLikesCount] = useState(0)
   const [likedItem, setLikedItem] = useState(null)
 
-  // console.log('post is', post)
-  // console.log('post.postLikes is', post.postLikes)
-  // console.log('likes is', likes)
-  // console.log('post.postLikes.length is', post.postLikes.length)
-
   useEffect(() => {
     if (likes.length > 0) {
       likes.forEach((item) => {
         if (item.userId === userData.id) {
           setLikedItem(item)
         }
-        // console.log('useEffect was called', likesCount)
       })
     }
     likeCounter()
@@ -53,7 +47,6 @@ const Post = (props) => {
     client.post(url, data).then((res) => {
       setLikes(res.data.data)
       setLikesCount(likesCount + 1)
-      // console.log('res.data.data is:', res.data.data)
       const myLikeItem = res.data.data
       setLikedItem(myLikeItem)
     })
@@ -61,7 +54,6 @@ const Post = (props) => {
 
   function removeLike() {
     const url = `/post/${post.id}/postLike`
-    //console.log('likedItem.id is:', likedItem.id)
     const data = {
       active: false,
       postLikeId: likedItem.id
@@ -77,21 +69,14 @@ const Post = (props) => {
   const handleClick = () => {
     if (likedItem) {
       if (likedItem.active) {
-        // console.log('like is active and will get removed from: ', item)
         removeLike()
-        // console.log('removed like: ', post.postLikes)
         return
-        // console.log('active is true')
       } else {
-        // console.log('like is not active and will get activated from: ', item)
         likePost()
-        // console.log('added like: ', post.postLikes)
         return
       }
     } else {
-      // console.log('found nothing, add a like')
       firstLikePost()
-      // console.log(post.postLikes)
     }
   }
 
@@ -118,7 +103,7 @@ const Post = (props) => {
         setPostResponse(res.data)
       })
       .catch((data) => {
-        console.log(data)
+        // console.log(data)
       })
     event.target.reset()
   }
@@ -136,9 +121,7 @@ const Post = (props) => {
   }
 
   function likeStyleCheck() {
-    console.log('function triggered 1')
     if (likedItem && likedItem.active) {
-      console.log('function triggered 2')
       return 'like-blue'
     }
   }
