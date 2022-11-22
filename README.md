@@ -1,4 +1,4 @@
-# Team Dev Frontend Client
+# Team Dev Frontend Client Changed
 
 This is the client repository for the frontend team development project.
 
@@ -27,11 +27,9 @@ Below is the beginning of your [Team Dev Frontend Client Project Board](https://
 
 **Teachers and students can have conversations**
 
-_When signed in, a user of id 123 can navigate to `/messages`. They will see a list of users on the left hand side from whom they have had conversations. Clicking on a conversation in the list will show the conversation in the main area. Show the most recent conversation by default. The conversation can continue - in the main area a user will see the conversation messages ordered by date, and an input field and a submit button at the bottom to create a message. For now, other recipients will see these new messages when they refresh their browser page._
+_When signed in, a student user of id 123 can navigate to `/home`. They will see a list of users from their same cohort in a sidebar. They will see a feed of posts from other students and teachers in the main area. Each conversation in a post can continue with users and teachers adding comments or liking posts/comments. Post messages are ordered by date, and an input field and a submit button at the bottom to create a new post. For now, other users will see these new posts when they refresh their browser page._
 
-_A user can create a conversation with any other user(s). At the top of the page, they see a “start new conversation” area. It has a search input field that updates on input to find users. Selecting a user adds it to the conversation about to be created. The signed in user can see which other users they are adding to a new conversation, they can remove a user from the list before creating the conversation. There’s a required input field for the conversation name. When a user is done adding users to the conversation, they create the conversation by clicking a submit button. This should show immediately for the signed in user in the left hand menu of conversations and show be default in the main area._
-
-_Messages are shown by user with consistent background colours. Signed in users always see their messages with a background colour of blue. Other conversation members have random (but consistent colours)._
+_A user can create a new post and this should appear on the feed. Any teacher can edit or delete an existing post or comment, unless the post or comment are made by another teacher. A student may edit or delete only the posts and comments that they have made. Any user can add a comment to an existing post. Any user can like or unlike a comment or a post. Liking is only possible if the user has not already liked that post or comment. Unliking is only possible if the user has already liked or unliked that post or comment._
 
 ## Team Dev Frontend Server
 
@@ -39,13 +37,17 @@ There is more info' about the deployed server at [https://github.com/boolean-uk/
 
 ## Setup
 
-Clone this repository
+Clone this repository (do not fork!)
 
 ```sh
 git clone git@github.com:boolean-uk/team-dev-client.git && cd team-dev-client
 npm ci
 npm start
 ```
+
+By default, the project will run with the `.env.development` environment on your local machine.
+
+Please ensure that `REACT_APP_API_URL` matches the server's url and port (when developing, you'll be running the server locally, not using the production server).
 
 ## Run Tests
 
