@@ -9,6 +9,7 @@ import { Routes, Route, Navigate, Outlet } from 'react-router-dom'
 function App() {
   // fetch logged in user from local storage
   const [loggedInUser, setLoggedInUser] = useState(null)
+  console.log('Render App(); loggedInUser=', loggedInUser)
 
   useEffect(() => {
     // fetch the logged in user data from local storage
