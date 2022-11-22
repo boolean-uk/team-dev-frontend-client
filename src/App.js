@@ -3,13 +3,30 @@ import LoginPage from './components/users/login/LoginPage'
 import RegistrationPage from './components/users/registration/RegistrationPage'
 import PostsPage from './components/posts/PostsPage'
 
+import { useState, useEffect } from 'react'
 import { Routes, Route, Navigate, Outlet } from 'react-router-dom'
 
 function App() {
+  // fetch logged in user from local storage
+  const [loggedInUser, setLoggedInUser] = useState(null)
+
+  useEffect(() => {
+    // fetch the logged in user data from local storage
+    // as a string, if available
+    const loggedInUserStr = localStorage.getItem('loggedInUser')
+    if (loggedInUserStr) {
+      // parse the string into a JS Object
+      setLoggedInUser(JSON.parse(loggedInUserStr))
+    }
+  }, [])
+
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<LoginPage />} />
+        <Route
+          path="/"
+          element={<LoginPage setLoggedInUser={setLoggedInUser} />}
+        />
         <Route path="/signup" element={<RegistrationPage />} />
         <Route element={<AuthenticateUser />}>
           <Route path="/posts" element={<PostsPage />} />

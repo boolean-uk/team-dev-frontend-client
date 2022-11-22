@@ -5,7 +5,7 @@ import userBlankData from '../utils/userHelpers'
 import client from '../../../utils/client'
 import { useNavigate } from 'react-router-dom'
 
-const LoginPage = () => {
+const LoginPage = ({ setLoggedInUser }) => {
   const [user, setUser] = useState(userBlankData())
   const [loginResponse, setLoginResponse] = useState({
     data: { token: '', user: {} }
@@ -28,6 +28,10 @@ const LoginPage = () => {
           res.data.data.token
         )
         setLoginResponse(res.data)
+        // set logged in user in local storage
+        localStorage.setItem('loggedInUser', JSON.stringify(res.data.data.user))
+        setLoggedInUser(res.data.data.user)
+        console.log(res)
         navigate('../posts', { replace: true })
       })
       .catch((err) => console.log(err.response))
