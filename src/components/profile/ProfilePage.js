@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import client from '../../utils/client'
+import Header from '../Header/Header'
 
-function ProfilePage() {
+function ProfilePage({ loggedInUser }) {
   const [currentUser, setCurrentUser] = useState(null)
+
   const { id } = useParams()
 
   useEffect(() => {
@@ -12,7 +14,12 @@ function ProfilePage() {
     })
   }, [id])
 
-  return <p>{currentUser && currentUser.firstName}</p>
+  return (
+    <>
+      <Header loggedInUser={loggedInUser} />
+      <p>{currentUser && currentUser.firstName}</p>
+    </>
+  )
 }
 
 export default ProfilePage

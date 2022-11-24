@@ -31,10 +31,16 @@ function App() {
         />
         <Route path="/signup" element={<RegistrationPage />} />
         <Route element={<AuthenticateUser />}>
-          <Route path="/posts" element={<PostsPage />} />
+          <Route
+            path="/posts"
+            element={<PostsPage loggedInUser={loggedInUser} />}
+          />
         </Route>
         <Route element={<AuthenticateUser />}>
-          <Route path="/profile/:id" element={<ProfilePage />} />
+          <Route
+            path="/profile/:id"
+            element={<ProfilePage loggedInUser={loggedInUser} />}
+          />
         </Route>
       </Routes>
     </div>
