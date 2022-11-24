@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import client from '../../utils/client'
 
-function ProfilePage({ loggedInUser }) {
+function ProfilePage({}) {
   const [currentUser, setCurrentUser] = useState(null)
   const { id } = useParams()
 

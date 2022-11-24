@@ -34,10 +34,7 @@ function App() {
           <Route path="/posts" element={<PostsPage />} />
         </Route>
         <Route element={<AuthenticateUser />}>
-          <Route
-            path="/profile/:id"
-            element={<ProfilePage loggedInUser={loggedInUser} />}
-          />
+          <Route path="/profile/:id" element={<ProfilePage />} />
         </Route>
       </Routes>
     </div>
