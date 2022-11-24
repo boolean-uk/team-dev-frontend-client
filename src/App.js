@@ -36,18 +36,16 @@ function App() {
         <Route element={<AuthenticateUser />}>
           <Route
             path="/profile/:id"
-            element={
-              <ProfilePage loggedInUser={loggedInUser} token={loadedToken} />
-            }
+            element={<ProfilePage loggedInUser={loggedInUser} />}
           />
         </Route>
       </Routes>
     </div>
   )
 }
-let loadedToken
+
 function isLoggedIn() {
-  loadedToken = localStorage.getItem('token')
+  const loadedToken = localStorage.getItem('token')
   return !(loadedToken === '')
 }
 
