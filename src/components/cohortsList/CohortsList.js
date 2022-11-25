@@ -1,9 +1,9 @@
-import client from '../../../utils/client'
+import client from '../../utils/client'
 import { useState, useEffect } from 'react'
 import CohortListItem from './cohortListItem/CohortListItem'
 import './style.css'
 
-function CohortsList() {
+function CohortsList({ renderHeader, renderAddButton }) {
   const [renderCohortPopup, setRenderCohortPopup] = useState(false)
   const [cohortsResponse, setCohortsResponse] = useState([])
 
@@ -31,22 +31,31 @@ function CohortsList() {
         </div>
       ) : null}
 
-      <button
-        onClick={() => {
-          // When the state is true, the popup will appear
-          setRenderCohortPopup(true)
-        }}
-      >
-        Add Cohort
-      </button>
-      {/* Render CohortListItem mapping though the Cohorts List */}
-      {cohortsResponse.length !== 0 ? (
-        cohortsResponse.data.map((cohort, index) => {
-          return <CohortListItem cohort={cohort} key={index} />
-        })
-      ) : (
-        <p>Loading Cohorts...</p>
-      )}
+      {/* Conditional Rendering - Header */}
+      {renderHeader ? <h2>Cohorts</h2> : null}
+
+      {/* Conditional Rendering - Add Button */}
+      {renderAddButton ? (
+        <button
+          onClick={() => {
+            // When the state is true, the popup will appear
+            setRenderCohortPopup(true)
+          }}
+        >
+          Add Cohort
+        </button>
+      ) : null}
+
+      <div className="list-wrapper">
+        {/* Render CohortListItem mapping though the Cohorts List */}
+        {cohortsResponse.length !== 0 ? (
+          cohortsResponse.data.map((cohort, index) => {
+            return <CohortListItem cohort={cohort} key={index} />
+          })
+        ) : (
+          <p>Loading Cohorts...</p>
+        )}
+      </div>
     </section>
   )
 }

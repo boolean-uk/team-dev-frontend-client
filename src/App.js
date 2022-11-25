@@ -36,7 +36,6 @@ function App() {
             path="/posts"
             element={<PostsPage loggedInUser={loggedInUser} />}
           />
-          <Route path="/cohorts" element={<TeachersPage />} />
         </Route>
         <Route element={<AuthenticateUser />}>
           <Route
