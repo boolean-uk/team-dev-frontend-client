@@ -11,7 +11,7 @@ const PostForm = ({ handleSubmit, handleChange }) => {
         <TextField
           className="user-form-input"
           type="text"
-          label="New Post"
+          label="What's on your mind?"
           variant="outlined"
           name="content"
           onChange={handleChange}
