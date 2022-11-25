@@ -1,0 +1,14 @@
+.teachers-list-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  padding: 1rem;
+
+  border: 1px solid white;
+}
+
+.list-wrapper {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
