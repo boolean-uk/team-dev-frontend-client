@@ -6,6 +6,7 @@ import ProfilePage from './components/profile/ProfilePage'
 
 import { useState, useEffect } from 'react'
 import { Routes, Route, Navigate, Outlet } from 'react-router-dom'
+import TeachersPage from './components/Cohorts/CohortsPages/TeachersPage'
 
 function App() {
   // fetch logged in user from local storage
@@ -35,6 +36,7 @@ function App() {
             path="/posts"
             element={<PostsPage loggedInUser={loggedInUser} />}
           />
+          <Route path="/cohorts" element={<TeachersPage />} />
         </Route>
         <Route element={<AuthenticateUser />}>
           <Route
