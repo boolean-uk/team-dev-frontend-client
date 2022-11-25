@@ -47,15 +47,15 @@ function ProfilePage({ loggedInUser }) {
               <li>First Name: {currentUser.firstName}</li>
               <li>Last Name: {currentUser.lastName}</li>
               <li>
-                Username:{' '}
+                <span className="space">Username:</span>
                 {currentUser.username
                   ? currentUser.username
                   : 'No username to display'}
               </li>
               <li>
-                Github:{' '}
+                <span className="space">Github:</span>
                 {currentUser.githubUrl
-                  ? currentUser.githubUr
+                  ? currentUser.githubUrl
                   : 'No link to display'}
               </li>
             </ul>
@@ -65,23 +65,23 @@ function ProfilePage({ loggedInUser }) {
             <h2>Training Info</h2>
             <ul>
               <li>
-                Role:{' '}
+                <span className="space">Role:</span>
                 {currentUser.role ? currentUser.role : 'No role to display'}
               </li>
               <li>
-                Specialism:{' '}
+                <span className="space">Specialism:</span>
                 {currentUser.specialism
                   ? currentUser.specialism
                   : 'No specialism to display'}
               </li>
               <li>
-                Start Date:{' '}
+                <span className="space">Start Date:</span>
                 {currentUser.startDate
                   ? currentUser.startDate
                   : 'No date to display'}
               </li>
               <li>
-                End Date:{' '}
+                <span className="space">End Date:</span>
                 {currentUser.endDate
                   ? currentUser.endDate
                   : 'No date to display'}
@@ -93,17 +93,17 @@ function ProfilePage({ loggedInUser }) {
             <h2>Contact Info</h2>
             <ul>
               <li>
-                Email:{' '}
+                <span className="space">Email:</span>
                 {currentUser.email ? currentUser.email : 'No email to display'}
               </li>
               <li>
-                Mobile:{' '}
+                <span className="space">Mobile:</span>
                 {currentUser.mobile
                   ? currentUser.mobile
                   : 'No number to display'}
               </li>
               <li>
-                Password:{' '}
+                <span className="space">Password:</span>
                 {currentUser.password
                   ? currentUser.password
                   : 'No password to display'}

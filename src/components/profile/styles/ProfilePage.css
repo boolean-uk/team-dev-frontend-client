@@ -1,17 +1,13 @@
 .container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: .3fr repeat(2, 1fr);
+  grid-template-rows: 0.3fr repeat(2, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 0px;
-  
+
   margin-left: 30px;
   margin-right: 30px;
-  }
-  
-  /* .div1 { grid-area: 2 / 2 / 3 / 4; }
-  .div2 { grid-area: 3 / 2 / 4 / 4; }
-  .div3 { grid-area: 4 / 2 / 5 / 4; } */
+}
 
 .profile-header {
   grid-row: 1 / 2;
@@ -25,11 +21,15 @@
   border-radius: 50%;
 }
 
-.basic-info h2, .training-info h2, .contact-info h2, .bio h2 {
+.basic-info h2,
+.training-info h2,
+.contact-info h2,
+.bio h2 {
   margin-bottom: 20px;
 }
 
-div ul, div p {
+div ul,
+div p {
   list-style: none;
   text-align: left;
   margin-left: 30px;
@@ -39,4 +39,8 @@ div ul, div p {
 div hr {
   margin-top: 20px;
   margin-bottom: 20px;
+}
+
+.space {
+  margin-right: 5px;
 }
