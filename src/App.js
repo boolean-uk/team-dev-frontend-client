@@ -6,7 +6,6 @@ import ProfilePage from './components/profile/ProfilePage'
 
 import { useState, useEffect } from 'react'
 import { Routes, Route, Navigate, Outlet } from 'react-router-dom'
-import TeachersPage from './components/Cohorts/CohortsPages/TeachersPage'
 
 function App() {
   // fetch logged in user from local storage
