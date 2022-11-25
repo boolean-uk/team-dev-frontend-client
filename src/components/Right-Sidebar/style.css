@@ -1,0 +1,20 @@
+.search-container {
+    margin-top: 5px;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    background-color: white;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.273);
+}
+.search-button-container {
+    margin: auto
+}
+.search-button {
+    background-color: turquoise;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%
+}
+.user-form-input {
+    border-radius: 10px;
+}
