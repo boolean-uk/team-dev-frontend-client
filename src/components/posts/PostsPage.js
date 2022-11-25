@@ -46,18 +46,20 @@ const PostsPage = ({ loggedInUser }) => {
     <>
       <Header companyName={`Cohort Manager 2.0`} loggedInUser={loggedInUser} />
       <section className="posts-section">
-        <button id="user-signout-button" onClick={signOut}>
+        {/* <button id="user-signout-button" onClick={signOut}>
           sign out
-        </button>
-        <p>Status: {postResponse.status}</p>
+        </button> */}
+        {/* <p>Status: {postResponse.status}</p> */}
         <PostForm handleSubmit={createPost} handleChange={handleChange} />
-        <ul className="posts-list">
+        <section>
+          {/* <ul className="posts-list">
           {posts.map((post, index) => (
             <li key={index} className="post-item">
               {post.content}
             </li>
-          ))}
-        </ul>
+          ))} */}
+          {/* </ul> */}
+        </section>
       </section>
     </>
   )

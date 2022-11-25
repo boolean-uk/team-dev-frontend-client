@@ -1,11 +1,29 @@
 .posts-section {
-
 }
 
-.posts-list {
+.new-post-form-section {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  place-content: center center;
+}
+.post-form {
+  display: grid;
+  grid-template-columns: 1fr 150px;
+}
+
+.profile-picture-container {
+  border: solid white 2px;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  padding-top: 10px;
+  margin-left: 25px;
+  margin-top: 3px;
+}
+/* .posts-list {
   margin: 20px;
-}
+} */
 
-.post-item {
+/* .post-item {
 
-}
+} */
