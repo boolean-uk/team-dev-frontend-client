@@ -92,11 +92,11 @@ const PostsPage = ({ loggedInUser }) => {
           </div>
           <div className="add-new-comment-container">
             <div className="new-comment-user-img-container">
-              <div className="new-comment-user-img"></div>
+              <div className="new-comment-user-img">FA</div>
             </div>
-            <form className="new-comment-form">
+            <form className="post-form">
               <TextField
-                className="new-comment-form-input"
+                className="user-form-input"
                 type="text"
                 label="Add a comment..."
                 variant="outlined"
@@ -104,7 +104,7 @@ const PostsPage = ({ loggedInUser }) => {
                 onChange={handleChange}
               />
               <Button type="submit" variant="contained">
-                Submit
+                Comment
               </Button>
             </form>
           </div>

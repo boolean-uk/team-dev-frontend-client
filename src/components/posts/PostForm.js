@@ -17,7 +17,7 @@ const PostForm = ({ handleSubmit, handleChange }) => {
           onChange={handleChange}
         />
         <Button type="submit" variant="contained">
-          Submit
+          Post
         </Button>
       </form>
     </section>
