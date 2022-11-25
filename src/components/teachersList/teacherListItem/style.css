@@ -3,6 +3,7 @@
   flex-direction: row;
   box-sizing: border-box;
 
+  cursor: pointer;
   align-items: center;
 
   border: 1px solid yellow;

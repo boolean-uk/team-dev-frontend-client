@@ -5,13 +5,30 @@ import TeacherListItem from './teacherListItem/TeacherListItem'
 
 function TeachersList({ renderHeader }) {
   const [usersResponse, setUsersResponse] = useState([])
+  const [teachers, setTeachers] = useState([])
 
+  // Get Users from db
   useEffect(() => {
     client
       .get('/users')
-      .then((res) => setUsersResponse(res.data))
+      .then((res) => {
+        setUsersResponse(res.data)
+      })
       .catch((err) => console.log(err.response))
   }, [])
+
+  // Filter usersResponse storing new array in teachers
+  useEffect(() => {
+    // To avoid call while usersResponse is undefined
+    if (usersResponse.length === 0) return
+
+    const users = usersResponse.data.users
+    const teachersArray = users.filter((user) => {
+      if (user.role === 'TEACHER') return true
+      else return false
+    })
+    setTeachers(teachersArray)
+  }, [usersResponse])
 
   const header = <h2>Teachers</h2>
 
@@ -19,10 +36,10 @@ function TeachersList({ renderHeader }) {
     <section className="teachers-list-panel">
       {renderHeader ? header : null}
 
-      {usersResponse.length !== 0 ? (
+      {teachers.length !== 0 ? (
         <div className="list-wrapper">
-          {usersResponse.data.users.map((user, index) => {
-            return <TeacherListItem user={user} key={index} />
+          {teachers.map((teacher, index) => {
+            return <TeacherListItem teacher={teacher} key={index} />
           })}
         </div>
       ) : (
