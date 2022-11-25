@@ -7,7 +7,7 @@ function TeachersList({ renderHeader }) {
   const [usersResponse, setUsersResponse] = useState([])
   const [teachers, setTeachers] = useState([])
 
-  // Get Users from db
+  // Get Users from db, stores in usersResponse
   useEffect(() => {
     client
       .get('/users')
@@ -30,11 +30,9 @@ function TeachersList({ renderHeader }) {
     setTeachers(teachersArray)
   }, [usersResponse])
 
-  const header = <h2>Teachers</h2>
-
   return (
     <section className="teachers-list-panel">
-      {renderHeader ? header : null}
+      {renderHeader ? <h2>Teachers</h2> : null}
 
       {teachers.length !== 0 ? (
         <div className="list-wrapper">

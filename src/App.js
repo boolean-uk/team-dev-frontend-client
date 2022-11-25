@@ -7,9 +7,6 @@ import ProfilePage from './components/profile/ProfilePage'
 import { useState, useEffect } from 'react'
 import { Routes, Route, Navigate, Outlet } from 'react-router-dom'
 
-// DEBUG TEST COMPONENT REMOVE
-import TestComponent from './components/teachersList/testComponent'
-
 function App() {
   // fetch logged in user from local storage
   const [loggedInUser, setLoggedInUser] = useState(null)
@@ -45,8 +42,6 @@ function App() {
             element={<ProfilePage loggedInUser={loggedInUser} />}
           />
         </Route>
-        {/* DEBUG TEST ROUTE */}
-        <Route path="/test" element={<TestComponent />} />
       </Routes>
     </div>
   )

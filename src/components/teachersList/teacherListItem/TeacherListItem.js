@@ -1,14 +1,12 @@
 import './style.css'
 import { useNavigate } from 'react-router-dom'
-import TestComponent from '../testComponent'
 
 function TeacherListItem({ teacher }) {
   const fullName = teacher.firstName + ' ' + teacher.lastName
   const navigate = useNavigate()
 
   function handleClick() {
-    console.log('clicked')
-    navigate(`/users/${teacher.id}`)
+    navigate(`/profile/${teacher.id}`)
   }
 
   const cohortId = teacher.cohortId
