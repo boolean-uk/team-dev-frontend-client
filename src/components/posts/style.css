@@ -10,9 +10,16 @@
 .post-item {
 
 }
-
 .right-sidebar {
   margin: 20px
 }
-
+.right-sidebar-list {
+  margin: 20px 0px 0px 0px;
+  background-color: white;
+  color: black;
+  border-radius: 10px;
+}
+.right-sidebar-item {
+  padding: 5px
+}
 

@@ -11,10 +11,19 @@ const PostsPage = ({ loggedInUser }) => {
   const [post, setPost] = useState({ content: '' })
   const [postResponse, setPostResponse] = useState('')
   const [posts, setPosts] = useState([])
+  const [cohorts, setCohorts] = useState([])
+  const [students, setStudents] = useState([])
+  const [teachers, setTeachers] = useState([])
+
   let navigate = useNavigate()
 
   useEffect(() => {
     client.get('/posts').then((res) => setPosts(res.data.data.posts))
+    client.get('/cohorts').then((res) => setCohorts(res.data.data))
+    client.get('/users').then((res) => {
+      setStudents(res.data.data.users.filter(user => user.role === 'STUDENT'))})
+    client.get('/users').then((res) => {
+      setTeachers(res.data.data.users.filter(user => user.role === 'TEACHER'))})
   }, [])
 
   const createPost = async (event) => {
@@ -65,7 +74,39 @@ const PostsPage = ({ loggedInUser }) => {
           </section>
         </div>
         <div className="right-sidebar">
-            <Search />
+          <Search />
+          <ul className="right-sidebar-list">
+            <h2>Cohorts</h2>
+            {cohorts.map((cohort, index) => (
+              <li key={index} className="right-sidebar-item">
+                {cohort.cohortName}
+              </li>
+            ))}
+          </ul>
+          <ul className="right-sidebar-list">
+            <h2>Students</h2>
+            {students.map((student, index) => (
+              <li key={index} className="right-sidebar-item">
+                {student.firstName} {student.lastName}
+              </li>
+            ))}
+          </ul>
+          <ul className="right-sidebar-list">
+            <h2>My Cohort</h2>
+            {students.filter(student => student.cohortId === loggedInUser.cohortId).map((student, index) => (
+                <li key={index} className="right-sidebar-item">
+                  {student.firstName} {student.lastName}
+                </li>
+              ))}
+          </ul>
+          <ul className="right-sidebar-list">
+            <h2>Teachers</h2>
+            {teachers.map((teacher, index) => (
+              <li key={index} className="right-sidebar-item">
+                {teacher.firstName} {teacher.lastName}
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </>
