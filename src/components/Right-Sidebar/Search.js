@@ -1,25 +1,25 @@
 import TextField from '@mui/material/TextField'
 import './style.css'
+import InputAdornment from '@mui/material/InputAdornment'
+import SearchIcon from './icons8-search1.svg'
 
 const PostForm = ({ handleSubmit, handleChange }) => {
   return (
-    <div className="search-container">
-        <div>
-    <form className="post-form" onSubmit={handleSubmit}>
+    <form className="search-form" onSubmit={handleSubmit}>
       <TextField
         className="user-form-input"
         type="text"
-        label="Search for people"
         variant="outlined"
         name="content"
+        placeholder="Search"
         onChange={handleChange}
+        InputProps={{
+          startAdornment:<InputAdornment position="start">
+              <img src={SearchIcon} height="30px" alt="search" />
+            </InputAdornment>
+          }}
       />
     </form>
-    </div>
-    <div className="search-button-container">
-        <div className="search-button"></div>
-    </div>
-    </div>
   )
 }
 

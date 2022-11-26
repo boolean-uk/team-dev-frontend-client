@@ -1,20 +1,13 @@
-.search-container {
-    margin-top: 5px;
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    background-color: white;
-    border-radius: 10px;
-    background-color: rgba(0, 0, 0, 0.273);
-}
-.search-button-container {
-    margin: auto
-}
-.search-button {
-    background-color: turquoise;
-    height: 40px;
-    width: 40px;
-    border-radius: 50%
+.search-form {
+    margin-top: 5px
 }
 .user-form-input {
     border-radius: 10px;
+}
+img {
+    filter: opacity(25%) 
+}
+img:hover {
+    filter: opacity(75%);
+    cursor: pointer;
 }
