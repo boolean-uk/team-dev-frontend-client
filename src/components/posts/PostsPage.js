@@ -10,9 +10,10 @@ const PostsPage = ({ loggedInUser }) => {
   const [post, setPost] = useState({ content: '' })
   const [postResponse, setPostResponse] = useState('')
   const [posts, setPosts] = useState([])
-  let navigate = useNavigate()
   const [value, setValue] = useState('')
   const [err, setErr] = useState('')
+  const [helperText, setHelperText] = useState('')
+  let navigate = useNavigate()
 
   useEffect(() => {
     client.get('/posts').then((res) => setPosts(res.data.data.posts))
@@ -23,14 +24,18 @@ const PostsPage = ({ loggedInUser }) => {
     if (post.content.length > 0) {
       client
         .post('/posts', post)
-        .then((res) => setPostResponse(res.data))
+        .then((res) => {
+          console.log(res)
+          setPostResponse(res.data)
+        })
         .catch((err) => {
           console.log(err.message)
           setErr(err.message)
         })
       addPostToFeed(post)
       setValue('')
-    }
+    } 
+    setHelperText('say something...')   
   }
   const addPostToFeed = (post) => {
     posts.unshift(post)
@@ -38,6 +43,7 @@ const PostsPage = ({ loggedInUser }) => {
   }
   const handleChange = (event) => {
     event.preventDefault()
+    setHelperText('')
     setValue(event.target.value)
     const { value, name } = event.target
     setPost({
@@ -69,6 +75,7 @@ const PostsPage = ({ loggedInUser }) => {
               handleSubmit={createPost} 
               handleChange={handleChange} 
               value={value}
+              helperText={helperText}
             />
             <ul className="posts-list">
               {posts.map((post, index) => (

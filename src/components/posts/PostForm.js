@@ -1,7 +1,7 @@
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 
-const PostForm = ({ handleSubmit, handleChange, value }) => {
+const PostForm = ({ handleSubmit, handleChange, value, helperText }) => {
   return (
     <form className="post-form" onSubmit={handleSubmit}>
       <TextField
@@ -9,6 +9,7 @@ const PostForm = ({ handleSubmit, handleChange, value }) => {
         type="text"
         label="New Post"
         value={value}
+        helperText={helperText}
         multiline="default"
         variant="outlined"
         name="content"
