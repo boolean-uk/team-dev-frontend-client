@@ -6,7 +6,7 @@ import './styles/ProfileEdit.css'
 
 function ProfileEdit({ loggedInUser }) {
   const [profileToEdit, setProfileToEdit] = useState(null)
-
+  console.log(profileToEdit)
   const { id } = useParams()
 
   const navigate = useNavigate()
@@ -42,8 +42,8 @@ function ProfileEdit({ loggedInUser }) {
     client
       .patch(`/users/update/${profileToEdit.id}`, { ...profileToEdit })
       .then((data) => {
-        navigate(`/profile/${profileToEdit.id}`)
         console.log(data)
+        navigate(`/profile/${profileToEdit.id}`)
       })
   }
 
