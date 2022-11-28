@@ -3,7 +3,7 @@ import LoginPage from './components/users/login/LoginPage'
 import RegistrationPage from './components/users/registration/RegistrationPage'
 import PostsPage from './components/posts/PostsPage'
 import ProfilePage from './components/profile/ProfilePage'
-import CohortPage from './components/CohortPage'
+import CohortPage from './components/Cohorts/StudentList/CohortPage'
 import { useState, useEffect } from 'react'
 import { Routes, Route, Navigate, Outlet } from 'react-router-dom'
 
@@ -11,7 +11,6 @@ function App() {
   // fetch logged in user from local storage
   const [loggedInUser, setLoggedInUser] = useState(null)
   console.log('Render App(); loggedInUser=', loggedInUser)
-  const [students, setStudents] = useState([])
 
   useEffect(() => {
     // fetch the logged in user data from local storage
