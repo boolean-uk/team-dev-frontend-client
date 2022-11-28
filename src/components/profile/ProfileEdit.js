@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link, useNavigate } from 'react-router-dom'
 
 import client from '../../utils/client'
 import Header from '../Header/Header'
@@ -11,6 +11,8 @@ function ProfileEdit({ loggedInUser }) {
 
   const { id } = useParams()
 
+  const navigate = useNavigate()
+
   useEffect(() => {
     client.get(`/users/${id}`).then((data) => {
       setProfileToEdit(data.data.data.user)
@@ -21,12 +23,35 @@ function ProfileEdit({ loggedInUser }) {
     return <> loading </>
   }
 
+  const handleChange = (e) => {
+    console.log('Handle Change')
+    const name = e.target.name
+    const value = e.target.value
+
+    setProfileToEdit({
+      ...profileToEdit,
+      [name]: value
+    })
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const options = {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ...profileToEdit })
+    }
+    fetch(`localhost/users/update/${profileToEdit.id}`, options)
+
+    navigate(`/profile/${profileToEdit.id}`)
+  }
+
   return (
     <>
       <Header loggedInUser={loggedInUser} />
       <h2>Profile</h2>
-      {/* TODO: Add form control for form */}
-      <form>
+
+      <form onSubmit={handleSubmit}>
         <div className="container">
           <div className="profile-header">
             <img src={profileToEdit.profileUrl} alt="Profile img" />
@@ -47,9 +72,9 @@ function ProfileEdit({ loggedInUser }) {
               id="profileUrl"
               name="profileUrl"
               type="url"
-              // TODO: Add form control
+              onChange={handleChange}
               placeholder="Insert image URL here"
-              value={profileToEdit.profileUrl}
+              value={profileToEdit.profileUrl || ''}
               required
             />
             <label htmlFor="firstName">First Name: </label>
@@ -57,9 +82,9 @@ function ProfileEdit({ loggedInUser }) {
               id="firstName"
               name="firstName"
               type="text"
-              // TODO: Add form control
+              onChange={handleChange}
               placeholder="John"
-              value={profileToEdit.firstName}
+              value={profileToEdit.firstName || ''}
               required
             />
             <label htmlFor="lastName">Last Name: </label>
@@ -67,19 +92,19 @@ function ProfileEdit({ loggedInUser }) {
               id="lastName"
               name="lastName"
               type="text"
-              // TODO: Add form control
+              onChange={handleChange}
               placeholder="Doe"
-              value={profileToEdit.lastName}
+              value={profileToEdit.lastName || ''}
               required
             />
-            <label htmlFor="username">Username: </label>
+            <label htmlFor="userName">Username: </label>
             <input
-              id="username"
-              name="username"
+              id="userName"
+              name="userName"
               type="text"
-              // TODO: Add form control
+              onChange={handleChange}
               placeholder="JohnDeer"
-              value={profileToEdit.userName}
+              value={profileToEdit.userName || ''}
               required
             />
             <label htmlFor="githubUrl">Github: </label>
@@ -87,18 +112,22 @@ function ProfileEdit({ loggedInUser }) {
               id="githubUrl"
               name="githubUrl"
               type="url"
-              // TODO: Add form control
+              onChange={handleChange}
               placeholder="https://github.com/john-doe"
-              value={profileToEdit.githubUrl}
+              value={profileToEdit.githubUrl || ''}
               required
             />
           </div>
           <div className="training-info">
             <hr />
             <h2>Training info</h2>
-            {/* TODO: Add form control for select */}
+
             <label htmlFor="role">Role: </label>
-            <select name="role" value={profileToEdit.role}>
+            <select
+              name="role"
+              value={profileToEdit.role || ''}
+              onChange={handleChange}
+            >
               <option> Select Role...</option>
               <option>TEACHER</option>
               <option>STUDENT</option>
@@ -108,9 +137,9 @@ function ProfileEdit({ loggedInUser }) {
               id="specialism"
               name="specialism"
               type="text"
-              // TODO: Add form control
+              onChange={handleChange}
               placeholder="Software Developer"
-              value={profileToEdit.specialism}
+              value={profileToEdit.specialism || ''}
               required
             />
             <label htmlFor="cohort">Cohort: </label>
@@ -118,9 +147,9 @@ function ProfileEdit({ loggedInUser }) {
               id="cohort"
               name="cohort"
               type="text"
-              // TODO: Add form control
+              onChange={handleChange}
               placeholder="Cohort 8"
-              value={profileToEdit.cohort}
+              value={profileToEdit.cohort || ''}
               required
             />
             <label htmlFor="startDate">Start date: </label>
@@ -128,8 +157,8 @@ function ProfileEdit({ loggedInUser }) {
               id="startDate"
               name="startDate"
               type="date"
-              // TODO: Add form control
-              value={profileToEdit.startDate}
+              onChange={handleChange}
+              value={profileToEdit.startDate || ''}
               required
             />
             <label htmlFor="endDate">End date: </label>
@@ -137,8 +166,8 @@ function ProfileEdit({ loggedInUser }) {
               id="endDate"
               name="endDate"
               type="date"
-              // TODO: Add form control
-              value={profileToEdit.endDate}
+              onChange={handleChange}
+              value={profileToEdit.endDate || ''}
               required
             />
           </div>
@@ -150,9 +179,9 @@ function ProfileEdit({ loggedInUser }) {
               id="email"
               name="email"
               type="email"
-              // TODO: Add form control
+              onChange={handleChange}
               placeholder="John"
-              value={profileToEdit.email}
+              value={profileToEdit.email || ''}
               required
             />
             <label htmlFor="mobile">Mobile: </label>
@@ -160,9 +189,9 @@ function ProfileEdit({ loggedInUser }) {
               id="mobile"
               name="mobile"
               type="tel"
-              // TODO: Add form control
+              onChange={handleChange}
               placeholder="07123456789"
-              value={profileToEdit.mobile}
+              value={profileToEdit.mobile || ''}
               required
             />
             <label htmlFor="password">Password: </label>
@@ -171,8 +200,8 @@ function ProfileEdit({ loggedInUser }) {
               name="password"
               type="password"
               placeholder="******"
-              // TODO: Add form control
-              value={profileToEdit.password}
+              onChange={handleChange}
+              value={profileToEdit.password || ''}
               required
             />
           </div>
@@ -187,8 +216,8 @@ function ProfileEdit({ loggedInUser }) {
               name="biography"
               type="box"
               placeholder="Tell us about yourself!"
-              // TODO: Add form control
-              value={profileToEdit.biography}
+              onChange={handleChange}
+              value={profileToEdit.biography || ''}
             />
           </div>
         </div>

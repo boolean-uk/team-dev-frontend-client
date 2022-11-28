@@ -47,7 +47,7 @@ function ProfilePage({ loggedInUser }) {
                   : 'button'
               }
             >
-              edit
+              Edit
             </button>
           </Link>
         </div>
