@@ -51,10 +51,10 @@ const PostsPage = ({ loggedInUser }) => {
         <div className="left-sidebar"></div>
         <div className="posts-container">
           <section className="posts-section">
-            {/* <button id="user-signout-button" onClick={signOut}>
+            <button id="user-signout-button" onClick={signOut}>
               sign out
-            </button> */}
-            {/* <span>Status: {postResponse.status}</span> */}
+            </button>
+            <span>Status: {postResponse.status}</span>
             <PostForm handleSubmit={createPost} handleChange={handleChange} />
             <section className="single-post">
               <div className="single-post-header">
@@ -112,13 +112,13 @@ const PostsPage = ({ loggedInUser }) => {
                   </Button>
                 </form>
               </div>
-              {/* <ul className="posts-list">
-              {posts.map((post, index) => (
-                <li key={index} className="post-item">
-                  {post.content}
-                </li>
-              ))} */}
-              {/* </ul> */}
+              <ul className="posts-list">
+                {posts.map((post, index) => (
+                  <li key={index} className="post-item">
+                    {post.content}
+                  </li>
+                ))}
+              </ul>
             </section>
           </section>
         </div>
