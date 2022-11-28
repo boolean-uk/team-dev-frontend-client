@@ -3,9 +3,11 @@ import LoginPage from './components/users/login/LoginPage'
 import RegistrationPage from './components/users/registration/RegistrationPage'
 import PostsPage from './components/posts/PostsPage'
 import ProfilePage from './components/profile/ProfilePage'
-import CohortPage from './components/Cohorts/StudentList/CohortPage'
+import ProfileEdit from './components/profile/ProfileEdit'
+
 import { useState, useEffect } from 'react'
 import { Routes, Route, Navigate, Outlet } from 'react-router-dom'
+import { Helmet } from 'react-helmet'
 
 function App() {
   // fetch logged in user from local storage
@@ -24,6 +26,12 @@ function App() {
 
   return (
     <div className="App">
+      <Helmet>
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        />
+      </Helmet>
       <Routes>
         <Route
           path="/"
@@ -31,10 +39,22 @@ function App() {
         />
         <Route path="/signup" element={<RegistrationPage />} />
         <Route element={<AuthenticateUser />}>
-          <Route path="/posts" element={<PostsPage />} />
+          <Route
+            path="/posts"
+            element={<PostsPage loggedInUser={loggedInUser} />}
+          />
         </Route>
         <Route element={<AuthenticateUser />}>
-          <Route path="/profile/:id" element={<ProfilePage />} />
+          <Route
+            path="/profile/:id"
+            element={<ProfilePage loggedInUser={loggedInUser} />}
+          />
+        </Route>
+        <Route element={<AuthenticateUser />}>
+          <Route
+            path="/profile/:id/edit"
+            element={<ProfileEdit loggedInUser={loggedInUser} />}
+          />
         </Route>
       </Routes>
     </div>

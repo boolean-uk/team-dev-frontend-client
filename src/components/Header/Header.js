@@ -3,8 +3,9 @@ import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import { Stack } from '@mui/material'
 import InputBase from '@mui/material/InputBase'
+import { Link } from 'react-router-dom'
 
-const Header = ({ companyName }) => {
+const Header = ({ companyName, loggedInUser }) => {
   return (
     <>
       <Box
@@ -43,6 +44,14 @@ const Header = ({ companyName }) => {
 
         <Box>
           <Stack spacing={2} direction="row">
+            {loggedInUser && (
+              <Link
+                to={`/profile/${loggedInUser.id}`}
+                style={{ textDecoration: 'none' }}
+              >
+                <Button variant="contained">Profile</Button>
+              </Link>
+            )}
             <Button variant="contained">Add Cohort</Button>
             <Button variant="contained">Logout</Button>
           </Stack>

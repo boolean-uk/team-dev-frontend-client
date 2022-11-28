@@ -1,0 +1,42 @@
+.teacher-item-panel {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  box-sizing: border-box;
+
+  cursor: pointer;
+  align-items: center;
+
+  border: 1px solid yellow;
+  text-align: left;
+}
+
+.teacher-item-panel img {
+  grid-area: 1 / 1 / span 2;
+  margin: 0.5rem;
+
+  height: 40px;
+  border-radius: 50%;
+}
+
+.teacher-name {
+  grid-area: 1 2;
+
+  /* Align to bottom */
+  align-self: flex-end;
+
+  /* Ellipses overflow */
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.teacher-cohort {
+  grid-area: 2 / 2;
+
+  /* Align to top */
+  align-self: flex-start;
+
+  font-size: small;
+  color: lightsteelblue;
+  font-style: italic;
+}

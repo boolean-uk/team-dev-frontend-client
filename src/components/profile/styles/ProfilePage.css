@@ -1,0 +1,113 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 0.3fr repeat(2, 1fr);
+  column-gap: 50px;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.profile-header {
+  grid-row: 1 / 2;
+  grid-column: 1 / 2;
+  display: inline-flex;
+}
+
+.profile-header img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.basic-info h2,
+.training-info h2,
+.contact-info h2,
+.bio h2 {
+  margin-bottom: 20px;
+}
+
+div ul,
+div p {
+  list-style: none;
+  text-align: left;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+div hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.space {
+  margin-right: 5px;
+}
+
+/* styling for edit button */
+.button {
+  appearance: none;
+  background-color: #1976d2;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0,
+    rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system, system-ui, 'Segoe UI', Helvetica, Arial,
+    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  list-style: none;
+  padding: 6px 16px;
+  position: relative;
+  transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+  word-wrap: break-word;
+}
+
+.button:hover {
+  background-color: #1565c0;
+  text-decoration: none;
+  transition-duration: 0.1s;
+}
+
+.button:disabled {
+  background-color: #fafbfc;
+  border-color: rgba(27, 31, 35, 0.15);
+  color: #959da5;
+  cursor: default;
+}
+
+.button:active {
+  background-color: #edeff2;
+  box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
+  transition: none 0s;
+}
+
+.button:focus {
+  outline: 1px transparent;
+}
+
+.button:before {
+  display: none;
+}
+
+.button:-webkit-details-marker {
+  display: none;
+}
+
+.buttonDisabled {
+  color: rgb(6, 5, 5);
+  background-color: gray;
+}
+
+.buttonDisabled:hover {
+  background-color: rgb(57, 52, 52);
+}
