@@ -6,7 +6,7 @@ export const StudentListItem = ({ student }) => {
   return (
     <div className="student-list-item">
       <img
-        src={`https://avatars.dicebear.com/api/initials/:${fullName}.svg`}
+        src={`https://avatars.dicebear.com/api/initials/${fullName}.svg`}
         alt="student initials"
       ></img>
       <li className="student-item">

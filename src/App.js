@@ -36,10 +36,6 @@ function App() {
         <Route element={<AuthenticateUser />}>
           <Route path="/profile/:id" element={<ProfilePage />} />
         </Route>
-        <Route
-          path="/cohorts/:id"
-          element={<CohortPage students={students} setStudents={setStudents} />}
-        />
       </Routes>
     </div>
   )
