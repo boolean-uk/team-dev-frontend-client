@@ -5,7 +5,7 @@ const PostForm = ({ handleSubmit, handleChange, value, helperText }) => {
   return (
     <section className="new-post-form-section">
       <div className="profile-picture-container">
-        <div className='"profile-picture'>FA</div>
+        <div className="profile-picture">FA</div>
       </div>
       <form className="post-form" onSubmit={handleSubmit}>
         <TextField
