@@ -3,7 +3,11 @@ import { useNavigate } from 'react-router-dom'
 import PostForm from './PostForm'
 import client from '../../utils/client'
 import './style.css'
-
+import TextField from '@mui/material/TextField'
+import Button from '@mui/material/Button'
+import Search from './Sidebar/Search'
+import CohortsList from '../cohortsList/CohortsList'
+import TeachersList from '../teachersList/TeachersList'
 import Header from '../Header/Header'
 
 const PostsPage = ({ loggedInUser }) => {
@@ -147,7 +151,8 @@ const PostsPage = ({ loggedInUser }) => {
         </div>
         <div className="right-sidebar">
           <Search />
-          <CohortsList className="sidebar-item"/>
+          <CohortsList />
+          <TeachersList />
         </div>
       </div>
     </>
