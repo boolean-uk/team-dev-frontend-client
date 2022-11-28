@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import './style.css'
 import TeacherListItem from './teacherListItem/TeacherListItem'
 
-function TeachersList({ renderHeader }) {
+function TeachersList({ renderHeading }) {
   const [usersResponse, setUsersResponse] = useState([])
   const [teachers, setTeachers] = useState([])
 
@@ -32,7 +32,7 @@ function TeachersList({ renderHeader }) {
 
   return (
     <section className="teachers-list-panel">
-      {renderHeader ? <h2>Teachers</h2> : null}
+      {renderHeading ? <h2>Teachers</h2> : null}
 
       {teachers.length !== 0 ? (
         <div className="list-wrapper">

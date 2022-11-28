@@ -6,7 +6,7 @@ function TeacherListItem({ teacher }) {
   const navigate = useNavigate()
 
   function handleClick() {
-    navigate(`/profile/${teacher.id}`)
+    navigate(`/profiles/${teacher.id}`)
   }
 
   const cohortId = teacher.cohortId
@@ -14,7 +14,7 @@ function TeacherListItem({ teacher }) {
   return (
     <div className="teacher-item-panel" onClick={handleClick}>
       <img
-        src={`https://avatars.dicebear.com/api/initials/:${fullName}.svg`}
+        src={`https://avatars.dicebear.com/api/initials/${fullName}.svg`}
         alt="teacher initials"
       />
       <span className="teacher-name">{fullName}</span>
