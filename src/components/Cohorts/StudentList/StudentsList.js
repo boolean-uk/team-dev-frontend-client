@@ -4,18 +4,12 @@ import { StudentListItem } from './StudentListItem'
 import './list.css'
 import { useParams } from 'react-router-dom'
 
-function StudentsList({
-  cohortId,
-  renderAddBtn,
-  asStudent,
-  renderInfo,
-  renderAllBtn
-}) {
+function StudentsList({ renderAddBtn, asStudent, renderInfo, renderAllBtn }) {
   const [cohortStudents, setCohortStudents] = useState([])
   const [cohort, setCohort] = useState([])
 
   const urlParams = useParams()
-  cohortId = parseInt(urlParams.id)
+  const cohortId = parseInt(urlParams.id)
 
   useEffect(() => {
     client.get(`/cohorts/${cohortId}`).then((cohortsData) => {
