@@ -1,33 +1,21 @@
 import { useState } from 'react'
 import './Style.css'
 import client from '../../utils/client'
+import { useNavigate } from 'react-router-dom'
 
 export default function CohortAddPopUp({ setRenderCohortPopup }) {
+  const navigate = useNavigate()
   const [data, setData] = useState({})
 
   const submitHandler = (event) => {
     event.preventDefault()
     console.log('hello', data)
 
-    // fetch('http://localhost:4000/cohorts', {
-    //   method: 'POST', // or 'PUT'
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify(data)
-    // })
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     console.log('Success:', data)
-    //   })
-    //   .catch((error) => {
-    //     console.error('Error:', error)
-    //   })
-
     client
       .post('/cohorts', data)
-      .then((res) => console.log('hara', res.data))
+      .then(() => setRenderCohortPopup(false))
       .catch((err) => console.log(err.response))
+    navigate('/cohorts')
   }
 
   return (
