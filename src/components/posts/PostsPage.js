@@ -34,8 +34,10 @@ const PostsPage = ({ loggedInUser }) => {
         })
       addPostToFeed(post)
       setValue('')
-    } 
-    setHelperText('say something...')   
+      setPost({ content: '' })
+    } else {
+      setHelperText('say something...')
+    }
   }
   const addPostToFeed = (post) => {
     posts.unshift(post)
