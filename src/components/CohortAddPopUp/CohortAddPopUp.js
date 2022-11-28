@@ -31,41 +31,45 @@ export default function CohortAddPopUp({ setRenderCohortPopup }) {
   }
 
   return (
-    <div>
-      <form className="cohort-form" onSubmit={submitHandler}>
-        <h2>Add Cohort</h2>
-        <button
-          onClick={() => {
-            setRenderCohortPopup(false)
-          }}
-        >
-          Exit
-        </button>
-        <label>
-          <input
-            type="text"
-            placeholder="cohort name"
-            onChange={(e) => setData({ ...data, cohortName: e.target.value })}
-          />
-        </label>
-        <label>
-          Start Date:
-          <input
-            type="date"
-            onChange={(e) => setData({ ...data, startDate: e.target.value })}
-          />
-        </label>
-        <label>
-          End Date:
-          <input
-            type="date"
-            onChange={(e) => setData({ ...data, endDate: e.target.value })}
-          />
-        </label>
-        <label>
-          <button>Creat Cohort</button>
-        </label>
-      </form>
-    </div>
+    <form className="cohort-form" onSubmit={submitHandler}>
+      {/* Exit Button */}
+      <span
+        className="exit-button material-symbols-outlined"
+        onClick={() => {
+          setRenderCohortPopup(false)
+        }}
+      >
+        close
+      </span>
+
+      <h2>Add Cohort</h2>
+
+      <label>
+        Cohort Name
+        <input
+          type="text"
+          placeholder="Cohort Name"
+          onChange={(e) => setData({ ...data, cohortName: e.target.value })}
+        />
+      </label>
+
+      <label>
+        Start Date:
+        <input
+          type="date"
+          onChange={(e) => setData({ ...data, startDate: e.target.value })}
+        />
+      </label>
+
+      <label>
+        End Date:
+        <input
+          type="date"
+          onChange={(e) => setData({ ...data, endDate: e.target.value })}
+        />
+      </label>
+
+      <input className="submit-button" type="submit" value="Create" />
+    </form>
   )
 }
