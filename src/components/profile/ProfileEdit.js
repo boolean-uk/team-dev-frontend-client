@@ -1,13 +1,11 @@
 import { useEffect, useState } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
-
 import client from '../../utils/client'
 import Header from '../Header/Header'
 import './styles/ProfileEdit.css'
 
 function ProfileEdit({ loggedInUser }) {
   const [profileToEdit, setProfileToEdit] = useState(null)
-  console.log(profileToEdit)
 
   const { id } = useParams()
 
@@ -24,7 +22,6 @@ function ProfileEdit({ loggedInUser }) {
   }
 
   const handleChange = (e) => {
-    console.log('Handle Change')
     const name = e.target.name
     const value = e.target.value
 
@@ -36,14 +33,18 @@ function ProfileEdit({ loggedInUser }) {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    const options = {
-      method: 'PATCH',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ ...profileToEdit })
-    }
-    fetch(`localhost/users/update/${profileToEdit.id}`, options)
+    // const options = {
+    //   method: 'PATCH',
+    //   headers: { 'Content-Type': 'application/json' },
+    //   body: JSON.stringify({ ...profileToEdit })
+    // }
 
-    navigate(`/profile/${profileToEdit.id}`)
+    client
+      .patch(`/users/update/${profileToEdit.id}`, { ...profileToEdit })
+      .then((data) => {
+        navigate(`/profile/${profileToEdit.id}`)
+        console.log(data)
+      })
   }
 
   return (
@@ -115,7 +116,6 @@ function ProfileEdit({ loggedInUser }) {
               onChange={handleChange}
               placeholder="https://github.com/john-doe"
               value={profileToEdit.githubUrl || ''}
-              required
             />
           </div>
           <div className="training-info">
@@ -140,7 +140,6 @@ function ProfileEdit({ loggedInUser }) {
               onChange={handleChange}
               placeholder="Software Developer"
               value={profileToEdit.specialism || ''}
-              required
             />
             <label htmlFor="cohort">Cohort: </label>
             <input
@@ -159,7 +158,6 @@ function ProfileEdit({ loggedInUser }) {
               type="date"
               onChange={handleChange}
               value={profileToEdit.startDate || ''}
-              required
             />
             <label htmlFor="endDate">End date: </label>
             <input
@@ -168,7 +166,6 @@ function ProfileEdit({ loggedInUser }) {
               type="date"
               onChange={handleChange}
               value={profileToEdit.endDate || ''}
-              required
             />
           </div>
           <div className="contact-info">
@@ -192,7 +189,6 @@ function ProfileEdit({ loggedInUser }) {
               onChange={handleChange}
               placeholder="07123456789"
               value={profileToEdit.mobile || ''}
-              required
             />
             <label htmlFor="password">Password: </label>
             <input
