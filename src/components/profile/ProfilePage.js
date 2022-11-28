@@ -7,7 +7,6 @@ import './styles/ProfilePage.css'
 
 function ProfilePage({ loggedInUser }) {
   const [profilePageUser, setProfilePageUser] = useState(null)
-  // TODO: Add loading state
 
   const { id } = useParams()
 
@@ -15,11 +14,14 @@ function ProfilePage({ loggedInUser }) {
     client.get(`/users/${id}`).then((data) => {
       setProfilePageUser(data.data.data.user)
     })
-    // TODO: Change loading state here
   }, [id])
 
   if (profilePageUser === null) {
-    return <> </>
+    return (
+      <section className="load">
+        <span class="loader"></span>
+      </section>
+    )
   }
 
   return (
