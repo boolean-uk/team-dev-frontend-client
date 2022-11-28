@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom'
 import PostForm from './PostForm'
 import client from '../../utils/client'
 import './style.css'
+import Search from './Sidebar/Search'
+import CohortsList from '../cohortsList/CohortsList'
 
 import Header from '../Header/Header'
 
@@ -63,7 +65,10 @@ const PostsPage = ({ loggedInUser }) => {
             </ul>
           </section>
         </div>
-        <div className="right-sidebar"></div>
+        <div className="right-sidebar">
+          <Search />
+          <CohortsList className="sidebar-item"/>
+        </div>
       </div>
     </>
   )
