@@ -7,6 +7,7 @@ import ProfileEdit from './components/profile/ProfileEdit'
 
 import { useState, useEffect } from 'react'
 import { Routes, Route, Navigate, Outlet } from 'react-router-dom'
+import { Helmet } from 'react-helmet'
 
 function App() {
   // fetch logged in user from local storage
@@ -25,6 +26,12 @@ function App() {
 
   return (
     <div className="App">
+      <Helmet>
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        />
+      </Helmet>
       <Routes>
         <Route
           path="/"

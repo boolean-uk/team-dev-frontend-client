@@ -12,6 +12,9 @@ const PostsPage = ({ loggedInUser }) => {
   const [post, setPost] = useState({ content: '' })
   const [postResponse, setPostResponse] = useState('')
   const [posts, setPosts] = useState([])
+  const [value, setValue] = useState('')
+  const [err, setErr] = useState('')
+  const [helperText, setHelperText] = useState('')
   let navigate = useNavigate()
 
   useEffect(() => {
@@ -20,16 +23,32 @@ const PostsPage = ({ loggedInUser }) => {
 
   const createPost = async (event) => {
     event.preventDefault()
-    client
-      .post('/post', post)
-      .then((res) => setPostResponse(res.data))
-      .catch((data) => {
-        console.log(data)
-      })
+    if (post.content.length > 0) {
+      client
+        .post('/posts', post)
+        .then((res) => {
+          console.log(res)
+          setPostResponse(res.data)
+        })
+        .catch((err) => {
+          console.log(err.message)
+          setErr(err.message)
+        })
+      addPostToFeed(post)
+      setValue('')
+      setPost({ content: '' })
+    } else {
+      setHelperText('say something...')
+    }
   }
-
+  const addPostToFeed = (post) => {
+    posts.unshift(post)
+    setPosts(posts)
+  }
   const handleChange = (event) => {
     event.preventDefault()
+    setHelperText('')
+    setValue(event.target.value)
     const { value, name } = event.target
     setPost({
       ...post,
@@ -55,7 +74,13 @@ const PostsPage = ({ loggedInUser }) => {
               sign out
             </button>
             <span>Status: {postResponse.status}</span>
-            <PostForm handleSubmit={createPost} handleChange={handleChange} />
+            {err !== '' && <span style={{ color: 'red' }}>{err}!</span>}
+            <PostForm
+              handleSubmit={createPost}
+              handleChange={handleChange}
+              value={value}
+              helperText={helperText}
+            />
             <section className="single-post">
               <div className="single-post-header">
                 <div className="single-post-author-img-container">
@@ -112,15 +137,15 @@ const PostsPage = ({ loggedInUser }) => {
                   </Button>
                 </form>
               </div>
-              <ul className="posts-list">
-                {posts.map((post, index) => (
-                  <li key={index} className="post-item">
-                    {post.content}
-                  </li>
-                ))}
-              </ul>
             </section>
           </section>
+          <ul className="posts-list">
+            {posts.map((post, index) => (
+              <li key={index} className="post-item">
+                {post.content}
+              </li>
+            ))}
+          </ul>
         </div>
         <div className="right-sidebar"></div>
       </div>
