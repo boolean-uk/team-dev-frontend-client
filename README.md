@@ -57,6 +57,24 @@ Cypress setup: https://docs.cypress.io/guides/getting-started/installing-cypress
 npx cypress open
 ```
 
+## Test your build before PRs
+
+Before submitting your PR, please check that your project builds correctly without any failures, since the automatic PR checks will fail your PR if your build comes back with any errors.
+
+Run this command:
+
+```sh
+npm run build CI=true
+```
+
+Fix any erorrs that come out of this command before submitting a PR.
+
+
+Documentation about this: When creating a build of your application with npm run build linter warnings are not checked by default. Like npm test, you can force the build to perform a linter warning check by setting the environment variable CI. If any warnings are encountered then the build fails.
+
+https://create-react-app.dev/docs/running-tests/
+
+
 ## Deployment
 
 The client is automatically deployed to AWS Amplify, at [https://main.d3auuogvq1hhel.amplifyapp.com/](https://main.d3auuogvq1hhel.amplifyapp.com/) each time we push on the main branch.

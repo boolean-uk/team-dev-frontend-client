@@ -1,0 +1,39 @@
+.basic-info,
+.training-info,
+.contact-info,
+.bio {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  text-align: left;
+  margin-left: 5px;
+}
+
+input {
+  border-radius: 5px;
+  padding-left: 5px;
+  height: 30px;
+  margin-bottom: 10px;
+}
+
+select {
+  height: 26px;
+  margin-bottom: 10px;
+}
+
+select,
+textarea {
+  border-radius: 5px;
+}
+
+.edit-buttons {
+  width: 100px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.edit-buttons-container {
+  margin-top: -100px;
+}

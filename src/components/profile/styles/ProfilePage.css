@@ -2,9 +2,9 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: 0.3fr repeat(2, 1fr);
-  column-gap: 30px;
-  margin-left: 30px;
-  margin-right: 30px;
+  column-gap: 50px;
+  margin-left: 50px;
+  margin-right: 50px;
 }
 
 .profile-header {
