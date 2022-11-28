@@ -94,6 +94,28 @@ const PostsPage = ({ loggedInUser }) => {
                 <div className="placeholder"></div>
                 <div className="numberOfLikes">Be the first to like this</div>
               </div>
+              <div className="existing-comment-list">
+                <div className="existing-comment-content">
+                  <div className="comment-example">
+                    Hi mindless mortuis soulless creaturas, imo evil stalking
+                    monstra adventus resi dentevil vultus comedat cerebella
+                    viventium. Qui animated corpse, cricket bat max brucks
+                    terribilem incessu zomby.
+                  </div>
+                  <div className="comment-example">
+                    Hi mindless mortuis soulless creaturas, imo evil stalking
+                    monstra adventus resi dentevil vultus comedat cerebella
+                    viventium. Qui animated corpse, cricket bat max brucks
+                    terribilem incessu zomby.
+                  </div>
+                  <div className="comment-example">
+                    Hi mindless mortuis soulless creaturas, imo evil stalking
+                    monstra adventus resi dentevil vultus comedat cerebella
+                    viventium. Qui animated corpse, cricket bat max brucks
+                    terribilem incessu zomby.
+                  </div>
+                </div>
+              </div>
               <div className="add-new-comment-container">
                 <div className="new-comment-user-img-container">
                   <div className="new-comment-user-img">FA</div>
@@ -112,15 +134,15 @@ const PostsPage = ({ loggedInUser }) => {
                   </Button>
                 </form>
               </div>
-              <ul className="posts-list">
-                {posts.map((post, index) => (
-                  <li key={index} className="post-item">
-                    {post.content}
-                  </li>
-                ))}
-              </ul>
             </section>
           </section>
+          <ul className="posts-list">
+            {posts.map((post, index) => (
+              <li key={index} className="post-item">
+                {post.content}
+              </li>
+            ))}
+          </ul>
         </div>
         <div className="right-sidebar"></div>
       </div>
