@@ -137,15 +137,15 @@ const PostsPage = ({ loggedInUser }) => {
                   </Button>
                 </form>
               </div>
-              <ul className="posts-list">
-                {posts.map((post, index) => (
-                  <li key={index} className="post-item">
-                    {post.content}
-                  </li>
-                ))}
-              </ul>
             </section>
           </section>
+          <ul className="posts-list">
+            {posts.map((post, index) => (
+              <li key={index} className="post-item">
+                {post.content}
+              </li>
+            ))}
+         </ul>
         </div>
         <div className="right-sidebar"></div>
       </div>
