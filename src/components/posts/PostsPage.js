@@ -74,10 +74,10 @@ const PostsPage = ({ loggedInUser }) => {
               sign out
             </button>
             <span>Status: {postResponse.status}</span>
-            {err !== '' && <span style={{ color: "red"}}>{err}!</span>}
-            <PostForm 
-              handleSubmit={createPost} 
-              handleChange={handleChange} 
+            {err !== '' && <span style={{ color: 'red' }}>{err}!</span>}
+            <PostForm
+              handleSubmit={createPost}
+              handleChange={handleChange}
               value={value}
               helperText={helperText}
             />
@@ -145,7 +145,7 @@ const PostsPage = ({ loggedInUser }) => {
                 {post.content}
               </li>
             ))}
-         </ul>
+          </ul>
         </div>
         <div className="right-sidebar"></div>
       </div>

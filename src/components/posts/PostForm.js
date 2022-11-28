@@ -12,9 +12,9 @@ const PostForm = ({ handleSubmit, handleChange, value, helperText }) => {
           className="user-form-input"
           type="text"
           label="What's on your mind?"
-        value={value}
-        helperText={helperText}
-        multiline="default"
+          value={value}
+          helperText={helperText}
+          multiline="default"
           variant="outlined"
           name="content"
           onChange={handleChange}
