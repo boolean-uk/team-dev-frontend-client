@@ -37,7 +37,7 @@ function ProfilePage({ loggedInUser }) {
           </div>
         </div>
         <div className="edit">
-          <Link to={`/profile/${loggedInUser.id}/edit`}>
+          <Link to={`/profile/${profilePageUser.id}/edit`}>
             <button
               className={
                 loggedInUser.role !== 'TEACHER' ||
