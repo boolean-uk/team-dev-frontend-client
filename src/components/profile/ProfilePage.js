@@ -19,7 +19,7 @@ function ProfilePage({ loggedInUser }) {
   if (profilePageUser === null) {
     return (
       <section className="load">
-        <span class="loader"></span>
+        <span className="loader"></span>
       </section>
     )
   }
