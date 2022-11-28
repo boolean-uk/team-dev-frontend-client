@@ -21,7 +21,9 @@
   gap: 20px;
 }
 
-.profile-picture-container, .single-post-author-img-container, .new-comment-user-img-container {
+.profile-picture-container,
+.single-post-author-img-container,
+.new-comment-user-img-container {
   border: solid white 2px;
   border-radius: 50%;
   height: 50px;
@@ -48,7 +50,8 @@
   margin-bottom: 20px;
 }
 
-.name-and-date-container, .single-post-content {
+.name-and-date-container,
+.single-post-content {
   text-align: left;
 }
 
@@ -63,7 +66,7 @@
 }
 
 .single-post-date {
-  font-size: .8rem;
+  font-size: 0.8rem;
 }
 
 .single-post-edit-container {
@@ -86,17 +89,20 @@
   grid-template-columns: 150px 150px 1fr auto;
 }
 
-.like-container, .comment-container {
+.like-container,
+.comment-container {
   place-items: center start;
   display: grid;
   grid-template-columns: 50px auto;
 }
 
-.like, .comment {
+.like,
+.comment {
   cursor: pointer;
 }
 
-.like-icon, .comment-icon {
+.like-icon,
+.comment-icon {
   width: 30px;
   height: 30px;
   border: 2px solid white;
@@ -105,9 +111,10 @@
   font-size: 2rem;
   line-height: 0.25;
   display: inline-block;
-} 
+}
 
-.like, .comment {
+.like,
+.comment {
   display: inline-block;
 }
 
@@ -116,11 +123,14 @@
   display: grid;
   grid-template-columns: 80px 1fr;
 }
+.home-page {
+  display: grid;
+  grid-template-columns: 150px 1fr 300px;
+}
 
-/* .posts-list {
+.posts-list {
   margin: 20px;
-} */
+}
 
-/* .post-item {
-
-} */
+.post-item {
+}

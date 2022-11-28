@@ -1,0 +1,33 @@
+.cohort-item-panel {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  box-sizing: border-box;
+
+  border: 1px solid yellow;
+  text-align: left;
+}
+
+.cohort-item-panel img {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+
+  margin: 0.5rem;
+
+  height: 40px;
+  border-radius: 50%;
+}
+
+.cohort-name {
+  grid-column: 2;
+  grid-row: 1;
+
+  /* Ellipses overflow */
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.cohort-id {
+  grid-column: 2;
+  grid-row: 2;
+}
