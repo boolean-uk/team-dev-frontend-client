@@ -2,14 +2,14 @@ import client from '../../../utils/client'
 import { useEffect, useState } from 'react'
 import { StudentListItem } from './StudentListItem'
 import './list.css'
-import { useParams } from 'react-router-dom'
 
-function StudentsList({ renderAddBtn, asStudent, renderInfo, renderAllBtn }) {
+function StudentsList({ renderAddBtn, renderInfo, renderAllBtn, user }) {
   const [cohortStudents, setCohortStudents] = useState([])
   const [cohort, setCohort] = useState([])
+  const [students, setStudents] = useState([])
 
-  const urlParams = useParams()
-  const cohortId = parseInt(urlParams.id)
+  const cohortId = user.cohortId
+  const asStudent = user.role === 'STUDENT' ? true : false
 
   useEffect(() => {
     client.get(`/cohorts/${cohortId}`).then((cohortsData) => {
@@ -25,7 +25,7 @@ function StudentsList({ renderAddBtn, asStudent, renderInfo, renderAllBtn }) {
       const studentsOnly = allUsers.filter((user) => {
         return user.role === 'STUDENT'
       })
-
+      setStudents(studentsOnly)
       const filteredCohort = studentsOnly.filter((student) => {
         return student.cohortId === cohortId
       })
@@ -56,6 +56,12 @@ function StudentsList({ renderAddBtn, asStudent, renderInfo, renderAllBtn }) {
       Cohort {cohort.id}
     </header>
   )
+  const mapOfCohort = cohortStudents.map((student, index) => {
+    return <StudentListItem key={index} student={student} />
+  })
+  const mapOfStudents = students.map((student, index) => {
+    return <StudentListItem key={index} student={student} />
+  })
 
   return (
     <>
@@ -66,9 +72,7 @@ function StudentsList({ renderAddBtn, asStudent, renderInfo, renderAllBtn }) {
       {renderAddBtn === true ? moreButtons : null}
 
       <ul className="cohort-list">
-        {cohortStudents.map((student, index) => {
-          return <StudentListItem key={index} student={student} />
-        })}
+        {asStudent === true ? mapOfCohort : mapOfStudents}
         {renderAllBtn === true ? (
           <button className="all-btn">All Students</button>
         ) : null}
