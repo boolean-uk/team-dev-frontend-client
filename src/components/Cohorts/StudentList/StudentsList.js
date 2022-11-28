@@ -13,7 +13,7 @@ function StudentsList({
 }) {
   const [cohortStudents, setCohortStudents] = useState([])
   const [cohort, setCohort] = useState([])
-  const [students, setStudents] = useState([])
+
   const urlParams = useParams()
   cohortId = parseInt(urlParams.id)
 
@@ -31,7 +31,7 @@ function StudentsList({
       const studentsOnly = allUsers.filter((user) => {
         return user.role === 'STUDENT'
       })
-      setStudents(studentsOnly)
+
       const filteredCohort = studentsOnly.filter((student) => {
         return student.cohortId === cohortId
       })
@@ -50,9 +50,9 @@ function StudentsList({
     <header>
       {cohort.cohortName}
       Cohort {cohort.id}
-      <p>
+      <div>
         <u>{cohort.startDate}</u> -<u>{cohort.endDate}</u>
-      </p>
+      </div>
     </header>
   )
 
@@ -67,11 +67,8 @@ function StudentsList({
     <>
       {asStudent === true ? <h1>My cohort</h1> : <h1>Students</h1>}
 
-      {renderInfo === false
-        ? null
-        : renderInfo === 'fullInfo'
-        ? fullInfo
-        : simpleInfo}
+      {renderInfo === 'fullInfo' && fullInfo}
+      {renderInfo && renderInfo !== 'fullInfo' && simpleInfo}
       {renderAddBtn === true ? moreButtons : null}
 
       <ul className="cohort-list">
