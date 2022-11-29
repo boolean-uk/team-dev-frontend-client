@@ -53,7 +53,9 @@ const Header = ({ companyName, loggedInUser }) => {
               </Link>
             )}
             <Button variant="contained">Add Cohort</Button>
-            <Button variant="contained">Logout</Button>
+            <Link to={`/`} style={{ textDecoration: 'none' }}>
+              <Button variant="contained">Logout</Button>
+            </Link>
           </Stack>
         </Box>
       </Box>
