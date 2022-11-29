@@ -9,7 +9,7 @@ import { CohortsPage } from './components/cohorts/CohortsPage'
 import { useState } from 'react'
 import { Routes, Route, Navigate, Outlet } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
-import CohortsPageTeachers from './components/Cohorts/CohortsPage/CohortsPageTeacher'
+import CohortsPageTeachers from './components/cohorts/CohortsPage/CohortsPageTeacher'
 
 function App() {
   // fetch logged in user from local storage
