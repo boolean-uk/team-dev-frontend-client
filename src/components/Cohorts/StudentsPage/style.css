@@ -1,0 +1,19 @@
+.container {
+  display: grid;
+  height: 100vh;
+  grid-template:
+    ' studentSlist teachersList' 35%
+    'studentsList myExercises ' 40% /
+    auto 35%;
+  border: 1px slategray solid;
+  box-sizing: border-box;
+}
+.students-list {
+  grid-area: studentSlist;
+}
+.teachers-list {
+  grid-area: teachersList;
+}
+.exercises-list {
+  grid-area: myExercise;
+}
