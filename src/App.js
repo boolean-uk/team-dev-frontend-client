@@ -77,7 +77,6 @@ export default App
 
 const AuthenticateUser = ({ children, redirectPath = '/' }) => {
   if (!isLoggedIn()) {
-    console.log('user is not logged in')
     return <Navigate to={redirectPath} replace />
   }
 

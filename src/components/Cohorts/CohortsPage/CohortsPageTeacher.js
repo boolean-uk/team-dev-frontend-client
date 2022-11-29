@@ -5,7 +5,6 @@ import CohortsList from '../../cohortsList/CohortsList'
 import './style.css'
 
 function CohortsPageTeachers({ loggedInUser }) {
-  console.log(loggedInUser)
   const [users, setUsers] = useState([])
   const [cohorts, setCohorts] = useState([])
   useEffect(() => {
@@ -21,14 +20,12 @@ function CohortsPageTeachers({ loggedInUser }) {
       .then((res) => setCohorts(res.data))
       .catch((err) => console.log(err.response))
   }, [])
-  console.log(users)
-  console.log(cohorts)
+
   return (
-    <body>
-      <header>
-        {/*Header may change*/}
-        <Header />
-      </header>
+    <>
+      {/*Header may change*/}
+      <Header />
+
       {/*may not use nav bar*/}
       <main>
         <nav>
@@ -57,7 +54,7 @@ function CohortsPageTeachers({ loggedInUser }) {
           </ul>
         </nav>
 
-        <section>
+        <section className="content">
           <h2>
             <span className="title1">Cohorts</span>
             <span className="title2"> Students</span>
@@ -74,7 +71,7 @@ function CohortsPageTeachers({ loggedInUser }) {
           </div>
         </section>
       </main>
-    </body>
+    </>
   )
 }
 
