@@ -3,7 +3,9 @@ import { useNavigate } from 'react-router-dom'
 import PostForm from './PostForm'
 import client from '../../utils/client'
 import './style.css'
-import CommentsList from './CommentsList'
+import TextField from '@mui/material/TextField'
+import Button from '@mui/material/Button'
+
 import Header from '../Header/Header'
 import Post from './Post'
 

@@ -15,6 +15,7 @@ const Post = ({ handleChange, post, loggedInUser }) => {
             <div className="single-post-author-img">
               <img
                 src={`https://ui-avatars.com/api/?name=${firstName}+${lastName}&background=random&color=fff&rounded=true`}
+                alt="avatar"
                 height="50px"
               ></img>
             </div>
@@ -47,6 +48,7 @@ const Post = ({ handleChange, post, loggedInUser }) => {
             <div className="new-comment-user-img">
               <img
                 src={`https://ui-avatars.com/api/?name=${loggedInFirstName}+${loggedInLastName}&background=random&color=fff&rounded=true`}
+                alt="avatar"
                 height="50px"
               ></img>
             </div>
