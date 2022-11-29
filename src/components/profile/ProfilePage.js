@@ -73,7 +73,7 @@ function ProfilePage({ loggedInUser }) {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  profilePageUser.githubUrl
+                  {profilePageUser.githubUrl}
                 </a>
               ) : (
                 'No link to display'
