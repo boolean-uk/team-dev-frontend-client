@@ -6,6 +6,7 @@ import './styles/ProfileEdit.css'
 
 function ProfileEdit({ loggedInUser }) {
   const [profileToEdit, setProfileToEdit] = useState(null)
+  const [cohorts, setCohorts] = useState(null)
 
   const { id } = useParams()
 
@@ -16,6 +17,12 @@ function ProfileEdit({ loggedInUser }) {
       setProfileToEdit(data.data.data.user)
     })
   }, [id])
+
+  useEffect(() => {
+    client.get('/cohorts').then((data) => {
+      setCohorts(data.data.data)
+    })
+  }, [])
 
   if (profileToEdit === null) {
     return (
@@ -140,15 +147,16 @@ function ProfileEdit({ loggedInUser }) {
               value={profileToEdit.specialism || ''}
             />
             <label htmlFor="cohort">Cohort: </label>
-            <input
-              id="cohort"
+            <select
               name="cohort"
-              type="text"
               onChange={handleChange}
-              placeholder="Cohort 8"
-              value={profileToEdit.cohort || ''}
-              required
-            />
+              value={`Cohort ${profileToEdit.cohortId}` || ''}
+            >
+              <option>Select Cohort...</option>
+              {cohorts.map((cohort) => {
+                return <option key={cohort.id}>{cohort.cohortName}</option>
+              })}
+            </select>
             <label htmlFor="startDate">Start date: </label>
             <input
               id="startDate"
