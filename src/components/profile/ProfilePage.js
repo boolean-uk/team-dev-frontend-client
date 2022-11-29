@@ -67,9 +67,17 @@ function ProfilePage({ loggedInUser }) {
             </li>
             <li>
               <span className="space">Github:</span>
-              {profilePageUser.githubUrl
-                ? profilePageUser.githubUrl
-                : 'No link to display'}
+              {profilePageUser.githubUrl ? (
+                <a
+                  href={`${profilePageUser.githubUrl}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  profilePageUser.githubUrl
+                </a>
+              ) : (
+                'No link to display'
+              )}
             </li>
           </ul>
         </div>
