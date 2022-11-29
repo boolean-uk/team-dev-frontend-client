@@ -5,22 +5,6 @@ import CohortsList from '../../cohortsList/CohortsList'
 import './style.css'
 
 function CohortsPageTeachers({ loggedInUser }) {
-  const [users, setUsers] = useState([])
-  const [cohorts, setCohorts] = useState([])
-  useEffect(() => {
-    client
-      .get('/users')
-      .then((res) => setUsers(res.data))
-      .catch((err) => console.log(err.response))
-  }, [])
-
-  useEffect(() => {
-    client
-      .get('/cohorts')
-      .then((res) => setCohorts(res.data))
-      .catch((err) => console.log(err.response))
-  }, [])
-
   return (
     <>
       {/*Header may change*/}
@@ -66,9 +50,7 @@ function CohortsPageTeachers({ loggedInUser }) {
             renderAddButton={true}
           />
 
-          <div className="studentlist">
-            student list component, should appear when a cohort is selected
-          </div>
+          <div className="studentlist"></div>
         </section>
       </main>
     </>
