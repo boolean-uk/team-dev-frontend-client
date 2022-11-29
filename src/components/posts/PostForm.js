@@ -1,7 +1,7 @@
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 
-const PostForm = ({ handleSubmit, handleChange }) => {
+const PostForm = ({ handleSubmit, handleChange, value, helperText }) => {
   return (
     <section className="new-post-form-section">
       <div className="profile-picture-container">
@@ -12,6 +12,9 @@ const PostForm = ({ handleSubmit, handleChange }) => {
           className="user-form-input"
           type="text"
           label="What's on your mind?"
+          value={value}
+          helperText={helperText}
+          multiline="default"
           variant="outlined"
           name="content"
           onChange={handleChange}
