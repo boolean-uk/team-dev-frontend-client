@@ -44,6 +44,9 @@ const Header = ({ companyName, loggedInUser }) => {
 
         <Box>
           <Stack spacing={2} direction="row">
+            <Link to={'/posts'} style={{ textDecoration: 'none' }}>
+              <Button variant="contained">Home</Button>
+            </Link>
             {loggedInUser && (
               <Link
                 to={`/profile/${loggedInUser.id}`}
@@ -52,6 +55,7 @@ const Header = ({ companyName, loggedInUser }) => {
                 <Button variant="contained">Profile</Button>
               </Link>
             )}
+
             <Button variant="contained">Add Cohort</Button>
             <Link to={`/`} style={{ textDecoration: 'none' }}>
               <Button variant="contained">Logout</Button>
