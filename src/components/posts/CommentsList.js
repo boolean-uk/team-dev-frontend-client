@@ -1,9 +1,16 @@
 import Comment from './Comment'
+import { useState, useEffect } from 'react'
 
-export default function CommentsList() {
-  // This is just a placeholder const,
-  // should be deleted when adding functionality
-  const comments = [1, 2, 3, 4, 5]
+export default function CommentsList({ post }) {
+  const [comments, setComments] = useState([])
+
+  useEffect(() => {
+    console.log('post in CommentsList is:', post)
+    setComments(post.postComments)
+  }, [post])
+
+  // console.log('comments in CommentsList is after setting stuff:', comments)
+
   return (
     <>
       {/* Not sure how to implement see previous comments functionality yet /}
@@ -11,9 +18,15 @@ export default function CommentsList() {
         <span className="previous-comments-link">See previous comments</span>
       </div>
       {/ Map through the actual comments state when we get there */}
-      {comments.map((comment, index) => {
-        return <Comment comment={comment} key={index} />
-      })}
+      {/* {comments ? getCommentsComponent() : <div>Hello</div>} */}
+      {comments ? (
+        comments.map((comment, index) => {
+          console.log('Comment inside map is', comment)
+          return <Comment key={index} comment={comment} />
+        })
+      ) : (
+        <div>This doesn't exist</div>
+      )}
     </>
   )
 }

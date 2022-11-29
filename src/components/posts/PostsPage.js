@@ -19,7 +19,13 @@ const PostsPage = ({ loggedInUser }) => {
   let navigate = useNavigate()
 
   useEffect(() => {
-    client.get('/posts').then((res) => setPosts(res.data.data.posts))
+    client.get('/posts').then((res) => {
+      setPosts(res.data.data.posts)
+      console.log('Posts are the following:', posts) // SETTING DUMMY POST FOR COMMENT DISPLAY, DELETE THIS WHEN MERGING AND SET UP POST PROPERLY
+      console.log('Posts[6] is the following:', posts[6])
+      setPost(res.data.data.posts[6])
+      console.log('Dummy post in PostsPage after useEffect is:', post) // DUMMY POST SETTING ENDS
+    })
   }, [])
 
   const createPost = async (event) => {
@@ -120,7 +126,7 @@ const PostsPage = ({ loggedInUser }) => {
                 <div className="placeholder"></div>
                 <div className="numberOfLikes">Be the first to like this</div>
               </div>
-              <CommentsList />
+              {post && <CommentsList post={post} />}
               <div className="add-new-comment-container">
                 <div className="new-comment-user-img-container">
                   <div className="new-comment-user-img">FA</div>
