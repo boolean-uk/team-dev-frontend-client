@@ -2,6 +2,7 @@ import client from '../../utils/client'
 import { useState, useEffect } from 'react'
 import CohortListItem from './cohortListItem/CohortListItem'
 import './style.css'
+import CohortAddPopUp from '../CohortAddPopUp/CohortAddPopUp'
 
 function CohortsList({ renderHeader, renderAddButton }) {
   const [renderCohortPopup, setRenderCohortPopup] = useState(false)
@@ -42,7 +43,11 @@ function CohortsList({ renderHeader, renderAddButton }) {
   return (
     <section className="cohorts-list-panel">
       {/* Conditional Rendering - Add Popup #115 */}
-      {renderCohortPopup ? temporaryAddPopup : null}
+
+      {/* {renderCohortPopup ? temporaryAddPopup : null} */}
+      {renderCohortPopup ? (
+        <CohortAddPopUp setRenderCohortPopup={setRenderCohortPopup} />
+      ) : null}
 
       {/* Conditional Rendering - Header */}
       {renderHeader ? header : null}
