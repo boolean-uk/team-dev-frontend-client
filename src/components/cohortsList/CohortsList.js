@@ -17,18 +17,7 @@ function CohortsList({ renderHeader, renderAddButton }) {
   }, [])
 
   const header = <h2>Cohorts</h2>
-  const temporaryAddPopup = (
-    <div className="DEBUG-popup">
-      <h2>Temporary Add popup</h2>
-      <button
-        onClick={() => {
-          setRenderCohortPopup(false)
-        }}
-      >
-        Close popup
-      </button>
-    </div>
-  )
+
   const addButton = (
     <button
       onClick={() => {
