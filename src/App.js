@@ -8,6 +8,7 @@ import ProfileEdit from './components/profile/ProfileEdit'
 import { useState, useEffect } from 'react'
 import { Routes, Route, Navigate, Outlet } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
+import { StudentsPage } from './components/StudentsPage/StudentsPage'
 
 function App() {
   // fetch logged in user from local storage
@@ -42,6 +43,12 @@ function App() {
           <Route
             path="/posts"
             element={<PostsPage loggedInUser={loggedInUser} />}
+          />
+        </Route>
+        <Route element={<AuthenticateUser />}>
+          <Route
+            path="/cohorts/:id"
+            element={<StudentsPage loggedInUser={loggedInUser} />}
           />
         </Route>
         <Route element={<AuthenticateUser />}>
