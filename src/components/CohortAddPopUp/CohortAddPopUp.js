@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import './Style.css'
 import client from '../../utils/client'
 
@@ -16,7 +16,6 @@ export default function CohortAddPopUp({ setRenderCohortPopup }) {
 
   return (
     <form className="cohort-form" onSubmit={submitHandler}>
-      {/* Exit Button */}
       <span
         className="exit-button material-symbols-outlined"
         onClick={() => {
