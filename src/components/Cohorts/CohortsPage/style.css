@@ -14,21 +14,27 @@ nav {
 }
 ul {
   border: 2px solid grey;
+  border-radius: 5px;
 }
 li {
   list-style: none;
   margin: 50px;
-  width: 60px;
+  width: 100px;
+}
+hr {
+  width: 100px;
+  margin-left: 20%;
 }
 .title1 {
   margin-right: 300px;
 }
 section {
+  margin-left: 100px;
   display: grid;
   grid-template-areas:
     'header header'
     'list1 list2 ';
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 60% 1fr;
   grid-template-rows: 60px 1fr;
 }
 h2 {

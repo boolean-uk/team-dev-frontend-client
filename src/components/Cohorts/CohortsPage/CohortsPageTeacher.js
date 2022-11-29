@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import client from '../../../utils/client'
 import Header from '../../Header/Header'
+import CohortsList from '../../cohortsList/CohortsList'
 import './style.css'
 
 function CohortsPageTeachers({ loggedInUser }) {
@@ -25,18 +26,35 @@ function CohortsPageTeachers({ loggedInUser }) {
   return (
     <body>
       <header>
+        {/*Header may change*/}
         <Header />
       </header>
       {/*may not use nav bar*/}
       <main>
         <nav>
           <ul>
-            <li>Test 1</li>
-            <li>Test 2</li>
-            <li>Test 3</li>
-            <li>Test 4</li>
+            <li>
+              <span className="material-symbols-outlined">Home</span>Home
+            </li>
+            <li>
+              <span className="material-symbols-outlined">Account_Circle</span>
+              Profile
+            </li>
+            <li>
+              <span className="material-symbols-outlined">School</span>Cohorts
+            </li>
+            <li>
+              <span className="material-symbols-outlined">Task</span>Exercises
+            </li>
+
+            <hr></hr>
+            <li>
+              <span className="material-symbols-outlined">Notes</span>Notes
+            </li>
+            <li>
+              <span className="material-symbols-outlined">Analytics</span>Logs
+            </li>
           </ul>
-          <hr></hr>
         </nav>
 
         <section>
@@ -44,8 +62,16 @@ function CohortsPageTeachers({ loggedInUser }) {
             <span className="title1">Cohorts</span>
             <span className="title2"> Students</span>
           </h2>
-          <div className="cohortlist">Cohort list</div>
-          <div className="studentlist">student list</div>
+
+          <CohortsList
+            className="cohortlist"
+            renderHeader={true}
+            renderAddButton={true}
+          />
+
+          <div className="studentlist">
+            student list component, should appear when a cohort is selected
+          </div>
         </section>
       </main>
     </body>
