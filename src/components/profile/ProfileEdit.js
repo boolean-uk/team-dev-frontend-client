@@ -34,7 +34,12 @@ function ProfileEdit({ loggedInUser }) {
 
   const handleChange = (e) => {
     const name = e.target.name
-    const value = e.target.value
+    let value = e.target.value
+
+    // If the cohortId has changed, we change the value from a string to a number so it can be added to ProfileToEdit correctly
+    if (name === 'cohortId') {
+      value = parseInt(value)
+    }
 
     setProfileToEdit({
       ...profileToEdit,
@@ -48,7 +53,12 @@ function ProfileEdit({ loggedInUser }) {
     client
       .patch(`/users/update/${profileToEdit.id}`, { ...profileToEdit })
       .then((data) => {
-        navigate(`/profile/${profileToEdit.id}`)
+        client
+          .patch(`/users/${profileToEdit.id}`, {
+            ...profileToEdit,
+            cohortId: profileToEdit.cohortId
+          })
+          .then((data) => navigate(`/profile/${profileToEdit.id}`))
       })
   }
 
@@ -111,7 +121,6 @@ function ProfileEdit({ loggedInUser }) {
               onChange={handleChange}
               placeholder="JohnDeer"
               value={profileToEdit.userName || ''}
-              required
             />
             <label htmlFor="githubUrl">Github: </label>
             <input
@@ -146,17 +155,23 @@ function ProfileEdit({ loggedInUser }) {
               placeholder="Software Developer"
               value={profileToEdit.specialism || ''}
             />
-            <label htmlFor="cohort">Cohort: </label>
-            <select
-              name="cohort"
-              onChange={handleChange}
-              value={`Cohort ${profileToEdit.cohortId}` || ''}
-            >
-              <option>Select Cohort...</option>
-              {cohorts.map((cohort) => {
-                return <option key={cohort.id}>{cohort.cohortName}</option>
-              })}
-            </select>
+            {cohorts && (
+              <>
+                <label htmlFor="cohortId">Cohort: </label>
+                <select name="cohortId" onChange={handleChange}>
+                  <option>Select Cohort...</option>
+                  {cohorts.map((cohort) => {
+                    const { id, cohortName } = cohort
+                    return (
+                      <option key={id} value={id}>
+                        {cohortName}
+                      </option>
+                    )
+                  })}
+                </select>
+              </>
+            )}
+
             <label htmlFor="startDate">Start date: </label>
             <input
               id="startDate"
