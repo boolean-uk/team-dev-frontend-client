@@ -19,11 +19,14 @@ const PostsPage = ({ loggedInUser }) => {
   const [helperText, setHelperText] = useState('')
   let navigate = useNavigate()
 
+  const isTeacher = loggedInUser !== null && loggedInUser.role === 'TEACHER'
+
   useEffect(() => {
     client.get('/posts').then((res) => setPosts(res.data.data.posts))
   }, [])
 
   const createPost = async (event) => {
+    console.log(loggedInUser)
     event.preventDefault()
     if (post.content.length > 0) {
       client
@@ -151,7 +154,7 @@ const PostsPage = ({ loggedInUser }) => {
         </div>
         <div className="right-sidebar">
           <Search />
-          <CohortsList />
+          {isTeacher && <CohortsList />}
           <TeachersList />
         </div>
       </div>
