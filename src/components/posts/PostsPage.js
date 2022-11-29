@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import PostForm from './PostForm'
 import client from '../../utils/client'
 import './style.css'
+import CommentsList from './CommentsList'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 
@@ -94,28 +95,7 @@ const PostsPage = ({ loggedInUser }) => {
                 <div className="placeholder"></div>
                 <div className="numberOfLikes">Be the first to like this</div>
               </div>
-              <div className="existing-comment-list">
-                <div className="existing-comment-content">
-                  <div className="comment-example">
-                    Hi mindless mortuis soulless creaturas, imo evil stalking
-                    monstra adventus resi dentevil vultus comedat cerebella
-                    viventium. Qui animated corpse, cricket bat max brucks
-                    terribilem incessu zomby.
-                  </div>
-                  <div className="comment-example">
-                    Hi mindless mortuis soulless creaturas, imo evil stalking
-                    monstra adventus resi dentevil vultus comedat cerebella
-                    viventium. Qui animated corpse, cricket bat max brucks
-                    terribilem incessu zomby.
-                  </div>
-                  <div className="comment-example">
-                    Hi mindless mortuis soulless creaturas, imo evil stalking
-                    monstra adventus resi dentevil vultus comedat cerebella
-                    viventium. Qui animated corpse, cricket bat max brucks
-                    terribilem incessu zomby.
-                  </div>
-                </div>
-              </div>
+              <CommentsList />
               <div className="add-new-comment-container">
                 <div className="new-comment-user-img-container">
                   <div className="new-comment-user-img">FA</div>
