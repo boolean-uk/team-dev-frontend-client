@@ -4,12 +4,12 @@ import RegistrationPage from './components/users/registration/RegistrationPage'
 import PostsPage from './components/posts/PostsPage'
 import ProfilePage from './components/profile/ProfilePage'
 import ProfileEdit from './components/profile/ProfileEdit'
-import { CohortsPage } from './components/cohorts/CohortsPage'
+import { CohortsPage } from './components/Cohorts/CohortsPage'
 
 import { useState } from 'react'
 import { Routes, Route, Navigate, Outlet } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
-import CohortsPageTeachers from './components/cohorts/CohortsPage/CohortsPageTeacher'
+import CohortsPageTeachers from './components/Cohorts/CohortsPage/CohortsPageTeacher'
 
 function App() {
   // fetch logged in user from local storage
