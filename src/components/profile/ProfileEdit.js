@@ -18,7 +18,11 @@ function ProfileEdit({ loggedInUser }) {
   }, [id])
 
   if (profileToEdit === null) {
-    return <> loading </>
+    return (
+      <section className="load">
+        <span className="loader"></span>
+      </section>
+    )
   }
 
   return (
