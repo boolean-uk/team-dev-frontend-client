@@ -5,25 +5,24 @@ import PostsPage from './components/posts/PostsPage'
 import ProfilePage from './components/profile/ProfilePage'
 import ProfileEdit from './components/profile/ProfileEdit'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Routes, Route, Navigate, Outlet } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
-import { StudentsPage } from './components/StudentsPage/StudentsPage'
+import CohortsPageTeachers from './components/Cohorts/CohortsPage/CohortsPageTeacher'
 
 function App() {
   // fetch logged in user from local storage
   const [loggedInUser, setLoggedInUser] = useState(null)
   console.log('Render App(); loggedInUser=', loggedInUser)
 
-  useEffect(() => {
-    // fetch the logged in user data from local storage
-    // as a string, if available
+  // Replaced useEffect for loading loggedInUser to avoid delays in having this state
+  if (loggedInUser === null) {
     const loggedInUserStr = localStorage.getItem('loggedInUser')
     if (loggedInUserStr) {
       // parse the string into a JS Object
       setLoggedInUser(JSON.parse(loggedInUserStr))
     }
-  }, [])
+  }
 
   return (
     <div className="App">
@@ -43,6 +42,15 @@ function App() {
           <Route
             path="/posts"
             element={<PostsPage loggedInUser={loggedInUser} />}
+          />
+        </Route>
+
+        <Route
+          element={<AuthenticateTeacherUser loggedInUser={loggedInUser} />}
+        >
+          <Route
+            path="/cohorts"
+            element={<CohortsPageTeachers loggedInUser={loggedInUser} />}
           />
         </Route>
         <Route element={<AuthenticateUser />}>
@@ -77,6 +85,18 @@ export default App
 
 const AuthenticateUser = ({ children, redirectPath = '/' }) => {
   if (!isLoggedIn()) {
+    return <Navigate to={redirectPath} replace />
+  }
+
+  return <Outlet />
+}
+
+const AuthenticateTeacherUser = ({
+  children,
+  loggedInUser,
+  redirectPath = '/'
+}) => {
+  if (!isLoggedIn() || loggedInUser.role !== 'TEACHER') {
     return <Navigate to={redirectPath} replace />
   }
 
