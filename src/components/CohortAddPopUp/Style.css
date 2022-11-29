@@ -3,6 +3,7 @@
 
   display: flex;
   flex-direction: column;
+  gap: 20px;
 
   align-items: center;
   justify-content: center;
@@ -19,9 +20,14 @@ label {
   display: flex;
   flex-direction: column;
 }
+input {
+  padding: 10px;
+  border-radius: 25px;
+}
 
 .submit-button {
   padding: 12px 36px;
+  border-radius: 25px;
 }
 
 .exit-button {
@@ -41,4 +47,12 @@ label {
   padding: 1rem;
 
   border-radius: 100%;
+}
+.cohort-start-end-dates {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.submit-button {
+  background-color: greenyellow;
 }

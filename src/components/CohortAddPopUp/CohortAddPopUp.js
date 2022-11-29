@@ -1,21 +1,17 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './Style.css'
 import client from '../../utils/client'
-import { useNavigate } from 'react-router-dom'
 
 export default function CohortAddPopUp({ setRenderCohortPopup }) {
-  const navigate = useNavigate()
   const [data, setData] = useState({})
 
   const submitHandler = (event) => {
     event.preventDefault()
-    console.log('hello', data)
 
     client
       .post('/cohorts', data)
       .then(() => setRenderCohortPopup(false))
       .catch((err) => console.log(err.response))
-    navigate('/cohorts')
   }
 
   return (
@@ -38,25 +34,28 @@ export default function CohortAddPopUp({ setRenderCohortPopup }) {
           type="text"
           placeholder="Cohort Name"
           onChange={(e) => setData({ ...data, cohortName: e.target.value })}
+          required
         />
       </label>
+      <div className="cohort-start-end-dates">
+        <label>
+          Start Date:
+          <input
+            type="date"
+            onChange={(e) => setData({ ...data, startDate: e.target.value })}
+            required
+          />
+        </label>
 
-      <label>
-        Start Date:
-        <input
-          type="date"
-          onChange={(e) => setData({ ...data, startDate: e.target.value })}
-        />
-      </label>
-
-      <label>
-        End Date:
-        <input
-          type="date"
-          onChange={(e) => setData({ ...data, endDate: e.target.value })}
-        />
-      </label>
-
+        <label>
+          End Date:
+          <input
+            type="date"
+            onChange={(e) => setData({ ...data, endDate: e.target.value })}
+            required
+          />
+        </label>
+      </div>
       <input className="submit-button" type="submit" value="Create" />
     </form>
   )
