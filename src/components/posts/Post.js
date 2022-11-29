@@ -2,6 +2,9 @@ import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 
 const Post = ({ handleChange, post, loggedInUser }) => {
+  if (!post.user) {
+    return <></>
+  }
   const firstName = post.user.profile.firstName
   const lastName = post.user.profile.lastName
   const loggedInFirstName = loggedInUser.firstName
