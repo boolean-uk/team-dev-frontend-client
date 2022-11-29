@@ -6,7 +6,7 @@ import './styles/ProfileEdit.css'
 
 function ProfileEdit({ loggedInUser }) {
   const [profileToEdit, setProfileToEdit] = useState(null)
-  console.log(profileToEdit)
+  console.log(loggedInUser)
   const { id } = useParams()
 
   const navigate = useNavigate()
@@ -14,6 +14,7 @@ function ProfileEdit({ loggedInUser }) {
   useEffect(() => {
     client.get(`/users/${id}`).then((data) => {
       setProfileToEdit(data.data.data.user)
+      console.log(data)
     })
   }, [id])
 
@@ -33,11 +34,6 @@ function ProfileEdit({ loggedInUser }) {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    // const options = {
-    //   method: 'PATCH',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify({ ...profileToEdit })
-    // }
 
     client
       .patch(`/users/update/${profileToEdit.id}`, { ...profileToEdit })
@@ -190,15 +186,13 @@ function ProfileEdit({ loggedInUser }) {
               placeholder="07123456789"
               value={profileToEdit.mobile || ''}
             />
-            <label htmlFor="password">Password: </label>
+            <label htmlFor="password">New Password: </label>
             <input
               id="password"
               name="password"
               type="password"
               placeholder="******"
               onChange={handleChange}
-              value={profileToEdit.password || ''}
-              required
             />
           </div>
           <div className="bio">
