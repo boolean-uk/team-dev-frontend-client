@@ -15,6 +15,7 @@ const PostForm = ({
           {loggedInUser && (
             <img
               src={`https://ui-avatars.com/api/?name=${loggedInUser.firstName}+${loggedInUser.lastName}&background=random&color=fff&rounded=true`}
+              alt="avatar"
               height="50px"
             ></img>
           )}
