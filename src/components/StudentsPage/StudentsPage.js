@@ -1,4 +1,4 @@
-import TeachersList 
+// import TeachersList from './teachersList/TeachersList'
 
 export const StudentsPage = () => {
   return (
