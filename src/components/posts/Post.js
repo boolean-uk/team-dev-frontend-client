@@ -7,7 +7,6 @@ const Post = ({ handleChange, post, loggedInUser }) => {
   const loggedInFirstName = loggedInUser.firstName
   const loggedInLastName = loggedInUser.lastName
 
-  // console.log(post)
   return (
     <>
       <section className="single-post">
@@ -16,7 +15,7 @@ const Post = ({ handleChange, post, loggedInUser }) => {
             <div className="single-post-author-img">
               <img
                 src={`https://ui-avatars.com/api/?name=${firstName}+${lastName}&background=random&color=fff&rounded=true`}
-                height="40px"
+                height="50px"
               ></img>
             </div>
           </div>
@@ -48,7 +47,7 @@ const Post = ({ handleChange, post, loggedInUser }) => {
             <div className="new-comment-user-img">
               <img
                 src={`https://ui-avatars.com/api/?name=${loggedInFirstName}+${loggedInLastName}&background=random&color=fff&rounded=true`}
-                height="40px"
+                height="50px"
               ></img>
             </div>
           </div>

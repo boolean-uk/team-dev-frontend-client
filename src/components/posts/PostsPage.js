@@ -3,9 +3,6 @@ import { useNavigate } from 'react-router-dom'
 import PostForm from './PostForm'
 import client from '../../utils/client'
 import './style.css'
-import TextField from '@mui/material/TextField'
-import Button from '@mui/material/Button'
-
 import Header from '../Header/Header'
 import Post from './Post'
 
@@ -31,8 +28,6 @@ const PostsPage = ({ loggedInUser }) => {
   }, [])
 
   const createPost = async (event) => {
-    console.log(post)
-    console.log(posts)
     event.preventDefault()
 
     if (post.content.length > 0) {
@@ -66,14 +61,12 @@ const PostsPage = ({ loggedInUser }) => {
       [name]: value
     })
   }
-
   const signOut = (event) => {
     event.preventDefault()
     localStorage.setItem(process.env.REACT_APP_USER_TOKEN, '')
     localStorage.setItem('loggedInUser', '')
     navigate('../', { replace: true })
   }
-
   return (
     <>
       <Header companyName={`Cohort Manager 2.0`} loggedInUser={loggedInUser} />
@@ -97,7 +90,11 @@ const PostsPage = ({ loggedInUser }) => {
           <ul className="posts-list">
             {posts.map((post, index) => (
               <li key={index} className="post-item">
-                <Post handleChange={handleChange} post={post} loggedInUser={loggedInUser} />
+                <Post
+                  handleChange={handleChange}
+                  post={post}
+                  loggedInUser={loggedInUser}
+                />
               </li>
             ))}
           </ul>
