@@ -4,7 +4,6 @@ import RegistrationPage from './components/users/registration/RegistrationPage'
 import PostsPage from './components/posts/PostsPage'
 import ProfilePage from './components/profile/ProfilePage'
 import ProfileEdit from './components/profile/ProfileEdit'
-import { CohortsPage } from './components/Cohorts/CohortsPage'
 
 import { useState } from 'react'
 import { Routes, Route, Navigate, Outlet } from 'react-router-dom'
@@ -51,7 +50,7 @@ function App() {
         >
           <Route
             path="/cohorts"
-            element={<CohortsPage loggedInUser={loggedInUser} />}
+            element={<CohortsPageTeachers loggedInUser={loggedInUser} />}
           />
         </Route>
         <Route element={<AuthenticateUser />}>
@@ -64,12 +63,6 @@ function App() {
           <Route
             path="/profile/:id/edit"
             element={<ProfileEdit loggedInUser={loggedInUser} />}
-          />
-        </Route>
-        <Route element={<AuthenticateUser />}>
-          <Route
-            path="/cohorts"
-            element={<CohortsPageTeachers loggedInUser={loggedInUser} />}
           />
         </Route>
       </Routes>
