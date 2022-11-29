@@ -1,5 +1,3 @@
-import { useEffect, useState } from 'react'
-import client from '../../../utils/client'
 import Header from '../../Header/Header'
 import CohortsList from '../../cohortsList/CohortsList'
 import './style.css'
