@@ -16,9 +16,6 @@ export default function CommentsList({ post, loggedInUser }) {
     setNewComment(event.target.value)
   }
 
-  console.log('loggedInUser is: ', loggedInUser)
-  console.log('comments is: ', comments)
-
   const submitForm = (event) => {
     event.preventDefault()
     client
@@ -53,7 +50,10 @@ export default function CommentsList({ post, loggedInUser }) {
       )}
       <div className="add-new-comment-container">
         <div className="new-comment-user-img-container">
-          <div className="new-comment-user-img">FA</div>
+          <div className="new-comment-user-img">
+            {loggedInUser && (loggedInUser.firstName[0] || '')}
+            {loggedInUser && (loggedInUser.lastName[0] || '')}
+          </div>
         </div>
         <form className="post-form" onSubmit={submitForm}>
           <TextField
