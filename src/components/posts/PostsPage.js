@@ -68,9 +68,6 @@ const PostsPage = ({ loggedInUser }) => {
         <div className="left-sidebar"></div>
         <div className="posts-container">
           <section className="posts-section">
-            <button id="user-signout-button" onClick={signOut}>
-              sign out
-            </button>
             <span>Status: {postResponse.status}</span>
             {err !== '' && <span style={{ color: 'red' }}>{err}!</span>}
             <PostForm
