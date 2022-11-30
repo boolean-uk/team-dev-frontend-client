@@ -27,7 +27,6 @@ const Post = ({ post, loggedInUser, client, setPosts, posts, setErr }) => {
   const editPost = async (event) => {
     event.preventDefault()
     setBeingEdited(!beingEdited)
-    console.log(beingEdited)
   }
   const handleChange = (event) => {
     event.preventDefault()
