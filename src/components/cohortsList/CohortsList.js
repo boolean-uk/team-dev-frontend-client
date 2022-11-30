@@ -17,7 +17,6 @@ function CohortsList({ renderHeader, renderAddButton }) {
   }, [])
 
   const header = <h2>Cohorts</h2>
-
   const addButton = (
     <button
       onClick={() => {
