@@ -127,24 +127,6 @@ const PostsPage = ({ loggedInUser }) => {
                 <div className="numberOfLikes">Be the first to like this</div>
               </div>
               {post && <CommentsList post={post} />}
-              <div className="add-new-comment-container">
-                <div className="new-comment-user-img-container">
-                  <div className="new-comment-user-img">FA</div>
-                </div>
-                <form className="post-form">
-                  <TextField
-                    className="user-form-input"
-                    type="text"
-                    label="Add a comment..."
-                    variant="outlined"
-                    name="content"
-                    onChange={handleChange}
-                  />
-                  <Button type="submit" variant="contained">
-                    Comment
-                  </Button>
-                </form>
-              </div>
             </section>
           </section>
           <ul className="posts-list">
