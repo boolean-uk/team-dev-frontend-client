@@ -62,13 +62,11 @@
   font-size: 0.8rem;
 }
 
-.single-post-edit-container,
 .comment-edit-container {
   padding-top: 10px;
   padding-left: 20px;
 }
 
-.single-post-edit,
 .comment-edit-button {
   width: 30px;
   height: 30px;
@@ -162,4 +160,14 @@
   border: 2px solid white;
   border-radius: 10px;
   margin-left: 30px;
+}
+.single-post-edit-container {
+}
+
+.edit-delete-buttons {
+  filter: invert() 
+}
+.edit-delete-buttons:hover {
+  filter: invert() blur(2px);
+  cursor: pointer
 }

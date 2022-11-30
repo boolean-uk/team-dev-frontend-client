@@ -79,6 +79,11 @@ const PostsPage = ({ loggedInUser }) => {
                   handleChange={handleChange}
                   post={post}
                   loggedInUser={loggedInUser}
+                  client={client}
+                  posts={posts}
+                  setPosts={setPosts}
+                  value={value}
+                  setErr={setErr}
                 />
               </li>
             ))}
