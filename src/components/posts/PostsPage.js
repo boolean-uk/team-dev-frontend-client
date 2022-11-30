@@ -5,6 +5,7 @@ import './style.css'
 
 import Header from '../Header/Header'
 import Post from './Post'
+import NavigationRail from '../NavigationRail/NavigationRail'
 
 const initialPostState = {
   content: ''
@@ -59,6 +60,9 @@ const PostsPage = ({ loggedInUser }) => {
   return (
     <>
       <Header companyName={`Cohort Manager 2.0`} loggedInUser={loggedInUser} />
+
+      <NavigationRail user={loggedInUser} />
+
       <div className="home-page">
         <div className="left-sidebar"></div>
         <div className="posts-container">

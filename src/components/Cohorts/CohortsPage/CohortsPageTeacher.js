@@ -1,12 +1,15 @@
 import Header from '../../Header/Header'
 import CohortsList from '../../cohortsList/CohortsList'
 import './teachers.css'
+import NavigationRail from '../../NavigationRail/NavigationRail'
 
 function CohortsPageTeachers({ loggedInUser }) {
   return (
     <>
       {/*Header may change*/}
       <Header />
+
+      <NavigationRail user={loggedInUser} />
 
       {/*may not use nav bar*/}
       <main className="teachers-cohorts-main">
