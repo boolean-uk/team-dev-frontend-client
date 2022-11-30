@@ -1,4 +1,12 @@
-export default function Comment({ comment }) {
+import CommentEditButton from './CommentEditButton'
+
+export default function Comment({ comment, loggedInUser }) {
+  const displayEditButton = () => {
+    if (loggedInUser.role === 'TEACHER' || loggedInUser.id === comment.userId) {
+      return <CommentEditButton />
+    }
+  }
+
   return (
     <section className="comments-container">
       <div className="comment-profile-img-container">
@@ -8,9 +16,7 @@ export default function Comment({ comment }) {
         </div>
       </div>
       <article className="comment-text">{comment.content}</article>
-      <div className="comment-edit-container">
-        <div className="comment-edit-button">...</div>
-      </div>
+      <div className="comment-edit-container">{displayEditButton()}</div>
     </section>
   )
 }

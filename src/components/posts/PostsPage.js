@@ -126,7 +126,7 @@ const PostsPage = ({ loggedInUser }) => {
                 <div className="placeholder"></div>
                 <div className="numberOfLikes">Be the first to like this</div>
               </div>
-              {post && <CommentsList post={post} />}
+              {post && <CommentsList post={post} loggedInUser={loggedInUser} />}
             </section>
           </section>
           <ul className="posts-list">

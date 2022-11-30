@@ -2,21 +2,34 @@ import Comment from './Comment'
 import { useState, useEffect } from 'react'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
+import client from '../../utils/client'
 
-export default function CommentsList({ post }) {
+export default function CommentsList({ post, loggedInUser }) {
   const [comments, setComments] = useState([])
   const [newComment, setNewComment] = useState('')
 
   useEffect(() => {
-    console.log('post in CommentsList is:', post)
     setComments(post.postComments)
   }, [post])
 
   const handleChange = (event) => {
-    event.preventDefault()
+    setNewComment(event.target.value)
   }
 
-  // console.log('comments in CommentsList is after setting stuff:', comments)
+  console.log('loggedInUser is: ', loggedInUser)
+  console.log('comments is: ', comments)
+
+  const submitForm = (event) => {
+    event.preventDefault()
+    client
+      .post('/posts/1/comment', { content: newComment })
+      // CHANGE THE ABOVE NUMBER ACCORDING TO WHICH POST WE ARE ON WITH INTERPOLATION
+
+      .then((result) => {
+        setComments([...comments, result.data.data])
+      })
+    setNewComment('')
+  }
 
   return (
     <>
@@ -25,11 +38,15 @@ export default function CommentsList({ post }) {
         <span className="previous-comments-link">See previous comments</span>
       </div>
       {/ Map through the actual comments state when we get there */}
-      {/* {comments ? getCommentsComponent() : <div>Hello</div>} */}
       {comments ? (
         comments.map((comment, index) => {
-          console.log('Comment inside map is', comment)
-          return <Comment key={index} comment={comment} />
+          return (
+            <Comment
+              key={index}
+              comment={comment}
+              loggedInUser={loggedInUser}
+            />
+          )
         })
       ) : (
         <div>This doesn't exist</div>
@@ -38,7 +55,7 @@ export default function CommentsList({ post }) {
         <div className="new-comment-user-img-container">
           <div className="new-comment-user-img">FA</div>
         </div>
-        <form className="post-form">
+        <form className="post-form" onSubmit={submitForm}>
           <TextField
             className="user-form-input"
             type="text"
@@ -46,6 +63,7 @@ export default function CommentsList({ post }) {
             variant="outlined"
             name="content"
             onChange={handleChange}
+            value={newComment}
           />
           <Button type="submit" variant="contained">
             Comment
