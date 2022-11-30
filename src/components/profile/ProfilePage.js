@@ -44,7 +44,7 @@ function ProfilePage({ loggedInUser }) {
             <h2>
               {profilePageUser.firstName} {profilePageUser.lastName}
             </h2>
-            <p>
+            <p className="profile--display_para">
               {profilePageUser.role} - {cohort ? cohort : 'No cohort'}
             </p>
           </div>
@@ -65,9 +65,9 @@ function ProfilePage({ loggedInUser }) {
           </Link>
         </div>
         <div className="basic-info">
-          <hr />
+          <hr className="profile--divider" />
           <h2>Basic Info</h2>
-          <ul>
+          <ul className="profile--display__list">
             <li>First Name: {profilePageUser.firstName}</li>
             <li>Last Name: {profilePageUser.lastName}</li>
             <li>
@@ -93,9 +93,9 @@ function ProfilePage({ loggedInUser }) {
           </ul>
         </div>
         <div className="training-info">
-          <hr />
+          <hr className="profile--divider" />
           <h2>Training Info</h2>
-          <ul>
+          <ul className="profile--display__list">
             <li>
               <span className="space">Role:</span>
               {profilePageUser.role
@@ -127,9 +127,9 @@ function ProfilePage({ loggedInUser }) {
           </ul>
         </div>
         <div className="contact-info">
-          <hr />
+          <hr className="profile--divider" />
           <h2>Contact Info</h2>
-          <ul>
+          <ul className="profile--display__list">
             <li>
               <span className="space">Email:</span>
               {profilePageUser.email
@@ -151,9 +151,9 @@ function ProfilePage({ loggedInUser }) {
           </ul>
         </div>
         <div className="bio">
-          <hr />
+          <hr className="profile--divider" />
           <h2>Bio</h2>
-          <p>{profilePageUser.biography}</p>
+          <p className="profile--display_para">{profilePageUser.biography}</p>
         </div>
       </div>
     </>
