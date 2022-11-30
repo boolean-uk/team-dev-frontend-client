@@ -32,6 +32,24 @@ function ProfileEdit({ loggedInUser }) {
     )
   }
 
+  // Authentication start
+  if (loggedInUser.role === 'STUDENT' && loggedInUser.id !== profileToEdit.id) {
+    navigate(`/profile/${profileToEdit.id}`)
+  }
+
+  let cohortDisabled = false
+  let passwordDisabled = false
+
+  if (loggedInUser.role === 'STUDENT') {
+    cohortDisabled = true
+  }
+
+  if (loggedInUser.role === 'TEACHER' && loggedInUser.id !== profileToEdit.id) {
+    passwordDisabled = true
+  }
+
+  // Authentication end
+
   const handleChange = (e) => {
     const name = e.target.name
     let value = e.target.value
@@ -185,6 +203,7 @@ function ProfileEdit({ loggedInUser }) {
                   className="edit--form__select"
                   name="cohortId"
                   onChange={handleChange}
+                  disabled={cohortDisabled}
                 >
                   <option>Select Cohort...</option>
                   {cohorts.map((cohort) => {
@@ -254,6 +273,7 @@ function ProfileEdit({ loggedInUser }) {
               New Password:{' '}
             </label>
             <input
+              disabled={passwordDisabled}
               className="edit--form__input"
               id="password"
               name="password"
