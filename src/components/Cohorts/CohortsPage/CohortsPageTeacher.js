@@ -1,6 +1,6 @@
 import Header from '../../Header/Header'
 import CohortsList from '../../cohortsList/CohortsList'
-import './style.css'
+import './teachers.css'
 
 function CohortsPageTeachers({ loggedInUser }) {
   return (
@@ -9,46 +9,46 @@ function CohortsPageTeachers({ loggedInUser }) {
       <Header />
 
       {/*may not use nav bar*/}
-      <main>
-        <nav>
-          <ul>
-            <li>
+      <main className="teachers-cohorts-main">
+        <nav className="teachers-cohorts-nav">
+          <ul className="teachers-cohorts-ul">
+            <li className="teacher-cohorts-li">
               <span className="material-symbols-outlined">Home</span>Home
             </li>
-            <li>
+            <li className="teacher-cohorts-li">
               <span className="material-symbols-outlined">Account_Circle</span>
               Profile
             </li>
-            <li>
+            <li className="teacher-cohorts-li">
               <span className="material-symbols-outlined">School</span>Cohorts
             </li>
-            <li>
+            <li className="teacher-cohorts-li">
               <span className="material-symbols-outlined">Task</span>Exercises
             </li>
 
-            <hr></hr>
-            <li>
+            <hr className="teachers-cohorts-hr"></hr>
+            <li className="teacher-cohorts-li">
               <span className="material-symbols-outlined">Notes</span>Notes
             </li>
-            <li>
+            <li className="teacher-cohorts-li">
               <span className="material-symbols-outlined">Analytics</span>Logs
             </li>
           </ul>
         </nav>
 
         <section className="content">
-          <h2>
-            <span className="title1">Cohorts</span>
-            <span className="title2"> Students</span>
+          <h2 className="teachers-cohorts-h2">
+            <span className="teachers-cohorts-title1">Cohorts</span>
+            <span className="teachers-cohorts-title2"> Students</span>
           </h2>
 
           <CohortsList
-            className="cohortlist"
+            className="teachers-cohortlist"
             renderHeader={true}
             renderAddButton={true}
           />
 
-          <div className="studentlist"></div>
+          <div className="teachers-studentlist"></div>
         </section>
       </main>
     </>

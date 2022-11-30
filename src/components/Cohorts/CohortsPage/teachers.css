@@ -1,35 +1,37 @@
-main {
+.teachers-cohorts-main {
   display: grid;
   grid-template-columns: 100px auto;
-  width: 100vh;
+  width: 100vw;
   margin-right: 25%;
+  height: 80vh;
 }
 
-nav {
-  width: 10%;
-
+.teachers-cohorts-nav {
   display: grid;
   grid-template-rows: auto;
   margin-top: 5px;
+  width: 20%;
 }
-ul {
+.teachers-cohorts-ul {
   border: 2px solid grey;
   border-radius: 5px;
+  height: 40%;
+  width: 90%;
 }
-li {
+.teachers-cohorts-li {
   list-style: none;
   margin: 50px;
   width: 100px;
 }
-hr {
+.teachers-cohorts-hr {
   width: 100px;
   margin-left: 20%;
 }
-.title1 {
+.teachers-cohorts-title1 {
   margin-right: 250px;
 }
 .content {
-  margin-left: 200px;
+  margin-left: 100px;
   display: grid;
   grid-template-areas:
     'header header'
@@ -40,14 +42,16 @@ hr {
   margin-top: 5px;
   border-radius: 5px;
 }
-h2 {
+h2,
+.teacher-cohorts-h2 {
   margin-top: 10px;
   grid-area: header;
   height: 30px;
 }
-.cohortlist {
+.teachers-cohortlist {
   grid-area: list1;
+  height: 80%;
 }
-.studentlist {
+.teachers-studentlist {
   grid-area: list2;
 }
