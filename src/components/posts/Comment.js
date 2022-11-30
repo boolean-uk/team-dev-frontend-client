@@ -3,7 +3,7 @@ import CommentEditButton from './CommentEditButton'
 export default function Comment({ comment, loggedInUser }) {
   const displayEditButton = () => {
     if (loggedInUser.role === 'TEACHER' || loggedInUser.id === comment.userId) {
-      return <CommentEditButton />
+      return <CommentEditButton comment={comment} loggedInUser={loggedInUser} />
     }
   }
 
