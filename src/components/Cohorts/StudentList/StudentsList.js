@@ -36,7 +36,9 @@ function StudentsList({ renderAddBtn, renderInfo, renderAllBtn, user }) {
   const moreButtons = (
     <nav className="teacher-nav">
       <button className="add-btn">Add</button>
-      <button className="btn-more"> ... </button>
+      <button className="btn-more">
+        <span className="material-symbols-outlined">more_horiz</span>
+      </button>
     </nav>
   )
 
@@ -64,7 +66,7 @@ function StudentsList({ renderAddBtn, renderInfo, renderAllBtn, user }) {
   })
 
   return (
-    <>
+    <div className="container">
       {asStudent === true ? <h1>My cohort</h1> : <h1>Students</h1>}
 
       {renderInfo === 'fullInfo' && fullInfo}
@@ -77,7 +79,7 @@ function StudentsList({ renderAddBtn, renderInfo, renderAllBtn, user }) {
           <button className="all-btn">All Students</button>
         ) : null}
       </ul>
-    </>
+    </div>
   )
 }
 export default StudentsList

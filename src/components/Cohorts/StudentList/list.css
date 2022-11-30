@@ -1,15 +1,44 @@
-.student-list-item {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  border: 1px solid rgb(40, 5, 105);
-  text-align: left;
-  color: black;
-  background-color: aliceblue;
-  list-style: none;
-  text-transform: capitalize;
-  height: 56px;
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  padding: 1rem;
+
+  border: 1px solid white;
+  min-width: fit-content;
 }
 
+.student-list-item {
+  display: flex;
+  min-width: fit-content;
+  border: 1px solid yellow;
+  text-align: left;
+  color: white;
+  list-style: none;
+  height: 56px;
+}
+.student-item {
+  display: grid;
+  grid-template-columns: auto 40px;
+  text-decoration: none;
+  justify-content: center;
+}
+.link-student-item {
+  display: block;
+  text-decoration: none;
+  color: rgb(239, 239, 239);
+  height: 100%;
+}
+.list-student-name {
+  display: flex;
+  flex-direction: column;
+  text-transform: capitalize;
+  align-items: flex-start;
+  padding-left: 10px;
+  height: 100%;
+  justify-self: center;
+}
 .student-list-item img {
   grid-column: 1;
   grid-row: 1 / span 2;
@@ -17,27 +46,29 @@
   height: 40px;
   border-radius: 50px;
 }
-
-.student-item {
-  text-decoration: none;
-  align-items: center;
-  height: 100%;
+.teacher-nav {
+  display: inline-block;
+  flex-direction: column;
+  align-items: flex-end;
+  height: fit-content;
+}
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
 }
 
+.btn-more-item,
 .btn-more {
-  margin-left: 10px;
-  padding: 5px;
-  width: 25px;
   margin-top: 10px;
   border: solid 1px black;
   border-radius: 50%;
-  font-size: 15px;
-  text-justify: center;
+  width: fit-content;
+  height: fit-content;
   font-weight: bolder;
   align-self: center;
+  background-color: rgb(239, 239, 239);
 }
 .add-btn {
-  width: 55px;
+  width: 70px;
   height: 25px;
 }
 .all-btn {

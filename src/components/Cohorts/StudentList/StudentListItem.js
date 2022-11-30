@@ -10,10 +10,14 @@ export const StudentListItem = ({ student }) => {
         alt="student initials"
       ></img>
       <li className="student-item">
-        <Link to={`/users/${student.id}`}>
-          {student.firstName} {student.lastName}
+        <Link className="link-student-item" to={`/users/${student.id}`}>
+          <span className="list-student-name">
+            {student.firstName} {student.lastName}
+          </span>
         </Link>
-        <button className="btn-more">...</button>
+        <button className="btn-more-item">
+          <span className="material-symbols-outlined">more_horiz</span>
+        </button>
       </li>
     </div>
   )
