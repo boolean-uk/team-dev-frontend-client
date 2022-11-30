@@ -26,15 +26,15 @@
   margin-bottom: 20px;
 }
 
-div ul,
-div p {
+.profile--display__list,
+.profile--display_para {
   list-style: none;
   text-align: left;
   margin-left: 30px;
   margin-right: 30px;
 }
 
-div hr {
+.profile--divider {
   margin-top: 20px;
   margin-bottom: 20px;
 }
