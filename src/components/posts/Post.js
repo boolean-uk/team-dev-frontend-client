@@ -1,7 +1,12 @@
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
+import Edit from './images/edit.svg'
+import Delete from './images/delete.svg'
+import { useState } from 'react'
 
-const Post = ({ handleChange, post, loggedInUser }) => {
+const Post = ({ post, loggedInUser, client, setPosts, posts, setErr }) => {
+  const [beingEdited, setBeingEdited] = useState(null)
+  const [editValue, setEditValue] = useState(post.content)
   if (!post.user) {
     return <></>
   }
@@ -9,6 +14,38 @@ const Post = ({ handleChange, post, loggedInUser }) => {
   const lastName = post.user.profile.lastName
   const loggedInFirstName = loggedInUser.firstName
   const loggedInLastName = loggedInUser.lastName
+  const canEditOrDelete =
+    (loggedInUser !== null && loggedInUser.role === 'TEACHER') ||
+    loggedInUser.id === post.user.id
+
+  const deletePost = async (event) => {
+    event.preventDefault()
+    client.delete(`/posts/${post.id}`).then((res) => {
+      setPosts(posts.filter((storedPost) => storedPost.id !== post.id))
+    })
+  }
+  const editPost = async (event) => {
+    event.preventDefault()
+    setBeingEdited(!beingEdited)
+    console.log(beingEdited)
+  }
+  const handleChange = (event) => {
+    event.preventDefault()
+    setEditValue(event.target.value)
+  }
+  const submitEdit = async (event) => {
+    event.preventDefault()
+    client
+      .patch(`/posts/${post.id}`, { content: editValue })
+      .then((res) => {
+        post.content = res.data.data.content
+        setBeingEdited(!beingEdited)
+      })
+      .catch((err) => {
+        console.log(err.message)
+        setErr(err.message)
+      })
+  }
 
   return (
     <>
@@ -30,10 +67,45 @@ const Post = ({ handleChange, post, loggedInUser }) => {
             <div className="single-post-date">{post.createdAt}</div>
           </div>
           <div className="single-post-edit-container">
-            <div className="single-post-edit">...</div>
+            {canEditOrDelete && (
+              <div className="single-post-edit">
+                <img
+                  onClick={editPost}
+                  className="edit-delete-buttons"
+                  src={Edit}
+                  height="30px"
+                  alt="edit button"
+                />
+                <img
+                  onClick={deletePost}
+                  className="edit-delete-buttons"
+                  src={Delete}
+                  height="30px"
+                  alt="delete-button"
+                />
+              </div>
+            )}
           </div>
         </div>
-        <article className="single-post-content"> {post.content}</article>
+        {!beingEdited ? (
+          <article className="single-post-content">{post.content}</article>
+        ) : (
+          <form className="post-form" onSubmit={submitEdit}>
+            <TextField
+              className="user-form-input"
+              type="text"
+              value={editValue}
+              onChange={handleChange}
+              multiline
+              variant="outlined"
+              name="content"
+            />
+            <Button type="submit" variant="contained">
+              Submit Changes
+            </Button>
+          </form>
+        )}
+
         <div className="like-and-comment-container">
           <div className="like-container">
             <div className="like-icon"></div>
