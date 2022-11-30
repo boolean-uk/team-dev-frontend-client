@@ -28,7 +28,7 @@ const PostForm = ({
           label="What's on your mind?"
           value={value}
           helperText={helperText}
-          multiline="default"
+          multiline
           variant="outlined"
           name="content"
           onChange={handleChange}

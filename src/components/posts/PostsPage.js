@@ -6,12 +6,10 @@ import './style.css'
 import Header from '../Header/Header'
 import Post from './Post'
 
+const initialPostState = {
+  content: ''
+}
 const PostsPage = ({ loggedInUser }) => {
-  const initialPostState = {
-    content: '',
-    firstName: '',
-    lastName: ''
-  }
   const [post, setPost] = useState(initialPostState)
   const [postResponse, setPostResponse] = useState('')
   const [posts, setPosts] = useState([])
@@ -21,7 +19,6 @@ const PostsPage = ({ loggedInUser }) => {
 
   useEffect(() => {
     client.get('/posts').then((res) => {
-      console.log(res.data.data.posts)
       setPosts(res.data.data.posts)
     })
   }, [])
@@ -33,9 +30,9 @@ const PostsPage = ({ loggedInUser }) => {
       client
         .post('/posts', post)
         .then((res) => {
-          console.log('created post', res)
           addPostToFeed(res.data.data)
           setPostResponse(res.data.data.statusText)
+          setPosts([post, ...posts])
         })
         .catch((err) => {
           console.log(err.message)
@@ -68,7 +65,6 @@ const PostsPage = ({ loggedInUser }) => {
         <div className="left-sidebar"></div>
         <div className="posts-container">
           <section className="posts-section">
-            <span>Status: {postResponse.status}</span>
             {err !== '' && <span style={{ color: 'red' }}>{err}!</span>}
             <PostForm
               loggedInUser={loggedInUser}
