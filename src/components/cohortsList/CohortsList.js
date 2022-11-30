@@ -47,7 +47,7 @@ function CohortsList({ renderHeader, renderAddButton }) {
       ) : null}
 
       {/* Conditional Rendering - Header */}
-      {renderHeader ? <h2>Cohorts</h2> : null}
+      {renderHeader && <h2>Cohorts</h2>}
 
       {/* Conditional Rendering - Add Button */}
       {renderAddButton ? addButton : null}
