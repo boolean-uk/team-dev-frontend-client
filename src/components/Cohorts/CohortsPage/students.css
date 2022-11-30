@@ -2,10 +2,10 @@
   display: grid;
   height: 100vh;
   grid-template:
-    ' studentSlist teachersList' 35%
+    ' studentSlist teachersList' auto
     'studentsList myExercises ' 40% /
-    auto 35%;
-  border: 1px slategray solid;
+    auto auto;
+  border: 2px slategray solid;
   box-sizing: border-box;
 }
 .students-list {
