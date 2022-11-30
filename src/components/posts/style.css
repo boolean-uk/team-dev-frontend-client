@@ -104,7 +104,6 @@
   cursor: pointer;
 }
 
-.like-icon,
 .comment-icon {
   width: 30px;
   height: 30px;
@@ -114,6 +113,33 @@
   font-size: 2rem;
   line-height: 0.25;
   display: inline-block;
+}
+
+.like-icon {
+  cursor: pointer;
+  position: relative;
+  width: 50px;
+  height: 50px;
+}
+
+.like-icon:before,
+.like-icon:after {
+  background-color: rgb(208, 30, 30);
+  position: absolute;
+  content: '';
+  left: 25px;
+  top: 0;
+  width: 25px;
+  height: 40px;
+  border-radius: 50px 50px 0 0;
+  transform: rotate(-45deg);
+  transform-origin: 0 100%;
+}
+
+.like-icon:after {
+  left: 0;
+  transform: rotate(45deg);
+  transform-origin: 100% 100%;
 }
 
 .like-link,

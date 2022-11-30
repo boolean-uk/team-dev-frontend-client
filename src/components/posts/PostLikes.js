@@ -9,5 +9,10 @@
 // This will make me cry
 
 export default function PostLikes() {
-  return <>{/* where the jsx will sit */}</>
+  return (
+    <div className="like-container">
+      <div className="like-icon"></div>
+      <div className="like">Like</div>
+    </div>
+  )
 }

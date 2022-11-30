@@ -3,6 +3,7 @@ import PostForm from './PostForm'
 import client from '../../utils/client'
 import './style.css'
 import CommentsList from './CommentsList'
+import PostLikes from './PostLikes'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 
@@ -97,10 +98,7 @@ const PostsPage = ({ loggedInUser }) => {
                 tofth eliv ingdead.
               </article>
               <div className="like-and-comment-container">
-                <div className="like-container">
-                  <div className="like-icon"></div>
-                  <div className="like">Like</div>
-                </div>
+                <PostLikes />
                 <div className="comment-container">
                   <div className="comment-icon"></div>
                   <div className="comment">Comment</div>
