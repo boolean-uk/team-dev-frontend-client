@@ -36,7 +36,7 @@ function ProfilePage({ loggedInUser }) {
   return (
     <>
       <Header loggedInUser={loggedInUser} />
-      <h2>Profile</h2>
+      <h2 className="profile-h2">Profile</h2>
       <div className="container">
         <div className="profile-header">
           <img src={profilePageUser.profileUrl} alt="Profile img" />
@@ -68,8 +68,15 @@ function ProfilePage({ loggedInUser }) {
           <hr className="profile--divider" />
           <h2>Basic Info</h2>
           <ul className="profile--display__list">
-            <li>First Name: {profilePageUser.firstName}</li>
-            <li>Last Name: {profilePageUser.lastName}</li>
+            <li>
+              {' '}
+              <span className="space"> First Name:</span>{' '}
+              {profilePageUser.firstName}
+            </li>
+            <li>
+              <span className="space"> Last Name: </span>
+              {profilePageUser.lastName}
+            </li>
             <li>
               <span className="space">Username:</span>
               {profilePageUser.username
@@ -153,7 +160,9 @@ function ProfilePage({ loggedInUser }) {
         <div className="bio">
           <hr className="profile--divider" />
           <h2>Bio</h2>
-          <p className="profile--display_para">{profilePageUser.biography}</p>
+          <p className="profile--display_para profile--display_bio">
+            {profilePageUser.biography}
+          </p>
         </div>
       </div>
     </>
