@@ -19,8 +19,9 @@ input {
 }
 
 select {
-  height: 26px;
+  height: 29px;
   margin-bottom: 10px;
+  padding-left: 5px;
 }
 
 select,
