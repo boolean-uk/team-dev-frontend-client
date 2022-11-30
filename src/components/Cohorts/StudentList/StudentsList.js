@@ -2,11 +2,13 @@ import client from '../../../utils/client'
 import { useEffect, useState } from 'react'
 import { StudentListItem } from './StudentListItem'
 import './list.css'
+import AddStudentPopUp from '../AddStudentPopUp/AddStudentPopUp'
 
 function StudentsList({ renderAddBtn, renderInfo, renderAllBtn, user }) {
   const [cohortStudents, setCohortStudents] = useState([])
   const [cohort, setCohort] = useState([])
   const [students, setStudents] = useState([])
+  const [renderStudentsPopup, setRenderStudentsPopup] = useState(false)
 
   const cohortId = user.cohortId
   const asStudent = user.role === 'STUDENT' ? true : false
@@ -35,7 +37,15 @@ function StudentsList({ renderAddBtn, renderInfo, renderAllBtn, user }) {
 
   const moreButtons = (
     <nav className="teacher-nav">
-      <button className="add-btn">Add</button>
+      <button
+        className="add-btn"
+        onClick={() => {
+          // When the state is true, the popup will appear
+          setRenderStudentsPopup(true)
+        }}
+      >
+        Add
+      </button>
       <button className="btn-more"> ... </button>
     </nav>
   )
@@ -65,6 +75,9 @@ function StudentsList({ renderAddBtn, renderInfo, renderAllBtn, user }) {
 
   return (
     <>
+      {renderStudentsPopup ? (
+        <AddStudentPopUp setRenderStudentsPopup={setRenderStudentsPopup} />
+      ) : null}
       {asStudent === true ? <h1>My cohort</h1> : <h1>Students</h1>}
 
       {renderInfo === 'fullInfo' && fullInfo}

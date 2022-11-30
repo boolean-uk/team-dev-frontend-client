@@ -1,6 +1,7 @@
 import Header from '../../Header/Header'
 import CohortsList from '../../cohortsList/CohortsList'
 import './style.css'
+import StudentsList from '../StudentList/StudentsList'
 
 function CohortsPageTeachers({ loggedInUser }) {
   return (
@@ -46,6 +47,12 @@ function CohortsPageTeachers({ loggedInUser }) {
             className="cohortlist"
             renderHeader={true}
             renderAddButton={true}
+          />
+          <StudentsList
+            user={loggedInUser}
+            renderAddBtn={true}
+            renderInfo={'fullInfo'}
+            renderAllbtn={true}
           />
 
           <div className="studentlist"></div>
