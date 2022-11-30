@@ -11,7 +11,6 @@ const initialPostState = {
 }
 const PostsPage = ({ loggedInUser }) => {
   const [post, setPost] = useState(initialPostState)
-  const [postResponse, setPostResponse] = useState('')
   const [posts, setPosts] = useState([])
   const [value, setValue] = useState('')
   const [err, setErr] = useState('')
@@ -31,7 +30,6 @@ const PostsPage = ({ loggedInUser }) => {
         .post('/posts', post)
         .then((res) => {
           addPostToFeed(res.data.data)
-          setPostResponse(res.data.data.statusText)
           setPosts([post, ...posts])
         })
         .catch((err) => {

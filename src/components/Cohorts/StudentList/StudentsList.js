@@ -31,7 +31,7 @@ function StudentsList({ renderAddBtn, renderInfo, renderAllBtn, user }) {
       })
       setCohortStudents(filteredCohort)
     })
-  }, [])
+  }, [cohortId])
 
   const moreButtons = (
     <nav className="teacher-nav">
