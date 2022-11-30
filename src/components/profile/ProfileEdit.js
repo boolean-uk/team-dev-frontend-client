@@ -291,7 +291,7 @@ function ProfileEdit({ loggedInUser }) {
             <textarea
               className="edit--form__textarea"
               cols={40}
-              rows={11}
+              rows={10}
               id="biography"
               name="biography"
               type="box"
