@@ -1,32 +1,11 @@
 .teachers-cohorts-main {
   display: grid;
-  grid-template-columns: 100px auto;
+  grid-template-columns: 1fr;
   width: 100vw;
   margin-right: 25%;
   height: 80vh;
 }
 
-.teachers-cohorts-nav {
-  display: grid;
-  grid-template-rows: auto;
-  margin-top: 5px;
-  width: 20%;
-}
-.teachers-cohorts-ul {
-  border: 2px solid grey;
-  border-radius: 5px;
-  height: 40%;
-  width: 90%;
-}
-.teachers-cohorts-li {
-  list-style: none;
-  margin: 50px;
-  width: 100px;
-}
-.teachers-cohorts-hr {
-  width: 100px;
-  margin-left: 20%;
-}
 .teachers-cohorts-title1 {
   margin-right: 250px;
 }
