@@ -1,0 +1,53 @@
+main {
+  display: grid;
+  grid-template-columns: 100px auto;
+  width: 100vh;
+  margin-right: 25%;
+}
+
+nav {
+  width: 10%;
+
+  display: grid;
+  grid-template-rows: auto;
+  margin-top: 5px;
+}
+ul {
+  border: 2px solid grey;
+  border-radius: 5px;
+}
+li {
+  list-style: none;
+  margin: 50px;
+  width: 100px;
+}
+hr {
+  width: 100px;
+  margin-left: 20%;
+}
+.title1 {
+  margin-right: 250px;
+}
+.content {
+  margin-left: 200px;
+  display: grid;
+  grid-template-areas:
+    'header header'
+    'list1 list2 ';
+  grid-template-columns: 45% 55%;
+  grid-template-rows: 60px 1fr;
+  border: 2px solid gray;
+  margin-top: 5px;
+  border-radius: 5px;
+}
+h2 {
+  margin-top: 10px;
+  grid-area: header;
+  height: 30px;
+}
+.cohortlist {
+  grid-area: list1;
+}
+.studentlist {
+  grid-area: list2;
+}

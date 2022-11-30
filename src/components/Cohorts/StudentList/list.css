@@ -1,0 +1,46 @@
+.student-list-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  border: 1px solid rgb(40, 5, 105);
+  text-align: left;
+  color: black;
+  background-color: aliceblue;
+  list-style: none;
+  text-transform: capitalize;
+  height: 56px;
+}
+
+.student-list-item img {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  margin: 0.5rem;
+  height: 40px;
+  border-radius: 50px;
+}
+
+.student-item {
+  text-decoration: none;
+  align-items: center;
+  height: 100%;
+}
+
+.btn-more {
+  margin-left: 10px;
+  padding: 5px;
+  width: 25px;
+  margin-top: 10px;
+  border: solid 1px black;
+  border-radius: 50%;
+  font-size: 15px;
+  text-justify: center;
+  font-weight: bolder;
+  align-self: center;
+}
+.add-btn {
+  width: 55px;
+  height: 25px;
+}
+.all-btn {
+  width: 80px;
+  height: 25px;
+}

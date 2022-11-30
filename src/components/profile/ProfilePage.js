@@ -7,6 +7,7 @@ import './styles/ProfilePage.css'
 
 function ProfilePage({ loggedInUser }) {
   const [profilePageUser, setProfilePageUser] = useState(null)
+  const [cohort, setCohort] = useState(null)
 
   const { id } = useParams()
 
@@ -15,6 +16,14 @@ function ProfilePage({ loggedInUser }) {
       setProfilePageUser(data.data.data.user)
     })
   }, [id])
+
+  useEffect(() => {
+    if (profilePageUser && profilePageUser.cohortId) {
+      client.get(`/cohorts/${profilePageUser.cohortId}`).then((data) => {
+        setCohort(data.data.data.cohortName)
+      })
+    }
+  }, [id, profilePageUser])
 
   if (profilePageUser === null) {
     return (
@@ -35,7 +44,9 @@ function ProfilePage({ loggedInUser }) {
             <h2>
               {profilePageUser.firstName} {profilePageUser.lastName}
             </h2>
-            <p>{profilePageUser.role}</p>
+            <p>
+              {profilePageUser.role} - {cohort ? cohort : 'No cohort'}
+            </p>
           </div>
         </div>
         <div className="edit">
@@ -90,6 +101,10 @@ function ProfilePage({ loggedInUser }) {
               {profilePageUser.role
                 ? profilePageUser.role
                 : 'No role to display'}
+            </li>
+            <li>
+              <span className="space">Cohort:</span>
+              {cohort ? cohort : 'No cohort to display'}
             </li>
             <li>
               <span className="space">Specialism:</span>
