@@ -10,7 +10,7 @@
   margin-right: 250px;
 }
 .content {
-  margin-left: 100px;
+  margin-left: 96px;
   display: grid;
   grid-template-areas:
     'header header'
