@@ -1,3 +1,15 @@
 export default function CommentEditButton() {
-  return <div className="comment-edit-button">...</div>
+  const editButtonClicked = () => {
+    console.log('Edit button has been clicked!')
+  }
+  return (
+    <div
+      className="comment-edit-button"
+      onClick={() => {
+        editButtonClicked()
+      }}
+    >
+      ...
+    </div>
+  )
 }
