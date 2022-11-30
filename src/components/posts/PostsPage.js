@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
 import PostForm from './PostForm'
 import client from '../../utils/client'
 import './style.css'
@@ -16,7 +15,6 @@ const PostsPage = ({ loggedInUser }) => {
   const [value, setValue] = useState('')
   const [err, setErr] = useState('')
   const [helperText, setHelperText] = useState('')
-  let navigate = useNavigate()
 
   useEffect(() => {
     client.get('/posts').then((res) => setPosts(res.data.data.posts))
@@ -57,13 +55,6 @@ const PostsPage = ({ loggedInUser }) => {
     })
   }
 
-  const signOut = (event) => {
-    event.preventDefault()
-    localStorage.setItem(process.env.REACT_APP_USER_TOKEN, '')
-    localStorage.setItem('loggedInUser', '')
-    navigate('../', { replace: true })
-  }
-
   return (
     <>
       <Header companyName={`Cohort Manager 2.0`} loggedInUser={loggedInUser} />
@@ -71,9 +62,6 @@ const PostsPage = ({ loggedInUser }) => {
         <div className="left-sidebar"></div>
         <div className="posts-container">
           <section className="posts-section">
-            <button id="user-signout-button" onClick={signOut}>
-              sign out
-            </button>
             <span>Status: {postResponse.status}</span>
             {err !== '' && <span style={{ color: 'red' }}>{err}!</span>}
             <PostForm
