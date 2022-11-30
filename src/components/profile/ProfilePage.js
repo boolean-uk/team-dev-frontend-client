@@ -160,7 +160,9 @@ function ProfilePage({ loggedInUser }) {
         <div className="bio">
           <hr className="profile--divider" />
           <h2>Bio</h2>
-          <p className="profile--display_para">{profilePageUser.biography}</p>
+          <p className="profile--display_para profile--display_bio">
+            {profilePageUser.biography}
+          </p>
         </div>
       </div>
     </>
