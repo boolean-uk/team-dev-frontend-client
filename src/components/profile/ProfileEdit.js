@@ -65,7 +65,7 @@ function ProfileEdit({ loggedInUser }) {
   return (
     <>
       <Header loggedInUser={loggedInUser} />
-      <h2>Profile</h2>
+      <h2 className="profile-h2">Profile</h2>
 
       <form onSubmit={handleSubmit}>
         <div className="container">
@@ -75,7 +75,7 @@ function ProfileEdit({ loggedInUser }) {
               <h2>
                 {profileToEdit.firstName} {profileToEdit.lastName}
               </h2>
-              <p>{profileToEdit.role}</p>
+              <p className="profile--display_para">{profileToEdit.role}</p>
             </div>
           </div>
           <div className="edit"></div>
