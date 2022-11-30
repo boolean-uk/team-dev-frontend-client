@@ -41,7 +41,7 @@ const Post = ({ post, loggedInUser, client, setPosts, posts, setErr }) => {
         setBeingEdited(!beingEdited)
       })
       .catch((err) => {
-        console.log(err.message)
+        console.error(err.message)
         setErr(err.message)
       })
   }

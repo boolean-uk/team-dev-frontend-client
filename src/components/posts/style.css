@@ -62,12 +62,11 @@
   font-size: 0.8rem;
 }
 
-/* .single-post-edit-container, */
 .comment-edit-container {
   padding-top: 10px;
   padding-left: 20px;
 }
-/* .single-post-edit, */
+
 .comment-edit-button {
   width: 30px;
   height: 30px;
