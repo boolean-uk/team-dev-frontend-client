@@ -32,6 +32,10 @@ function ProfileEdit({ loggedInUser }) {
     )
   }
 
+  if ((loggedInUser.role = 'STUDENT' && loggedInUser.id !== profileToEdit.id)) {
+    navigate(`/profile/${profileToEdit.id}`)
+  }
+
   const handleChange = (e) => {
     const name = e.target.name
     let value = e.target.value
