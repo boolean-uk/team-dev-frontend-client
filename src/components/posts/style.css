@@ -21,16 +21,8 @@
   gap: 20px;
 }
 
-.profile-picture-container,
-.single-post-author-img-container,
-.new-comment-user-img-container,
-.comment-profile-img-container {
-  border: solid white 2px;
-  border-radius: 50%;
-  height: 50px;
-  width: 50px;
-  padding-top: 10px;
-  margin-top: 3px;
+.profile-picture-container {
+  text-align: left;
 }
 
 .single-post-author-img-container {
@@ -70,13 +62,11 @@
   font-size: 0.8rem;
 }
 
-.single-post-edit-container,
 .comment-edit-container {
   padding-top: 10px;
   padding-left: 20px;
 }
 
-.single-post-edit,
 .comment-edit-button {
   width: 30px;
   height: 30px;
@@ -129,14 +119,15 @@
 .home-page {
   display: grid;
   grid-template-columns: 150px 1fr 300px;
+
+  margin-left: 80px;
 }
 
 .posts-list {
-  margin: 20px;
+  margin: 0px;
 }
 
 .post-item {
-  white-space: pre;
   white-space: pre;
 }
 
@@ -164,4 +155,21 @@
   border: 2px solid white;
   border-radius: 10px;
   margin-left: 30px;
+}
+
+.comment-text {
+  padding: 20px;
+  border: 2px solid white;
+  border-radius: 10px;
+  margin-left: 30px;
+}
+.single-post-edit-container {
+}
+
+.edit-delete-buttons {
+  filter: invert() 
+}
+.edit-delete-buttons:hover {
+  filter: invert() blur(2px);
+  cursor: pointer
 }

@@ -30,6 +30,15 @@ const client = {
       headers['Authorization'] = `Bearer ${token}`
     }
     return axios.patch(url, data, { headers })
+  },
+
+  delete: (path) => {
+    const url = `${host}${path}`
+    const headers = {
+      Authorization: `Bearer ${localStorage.getItem(tokenKey)}`
+    }
+
+    return axios.delete(url, { headers })
   }
 }
 

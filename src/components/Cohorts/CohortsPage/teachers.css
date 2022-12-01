@@ -1,0 +1,34 @@
+.teachers-cohorts-main {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100vw;
+  margin-right: 25%;
+  height: 80vh;
+}
+
+.teachers-cohorts-title1 {
+  margin-right: 250px;
+}
+.content {
+  margin: 5px 5px 16px 96px;
+  display: grid;
+  grid-template-areas:
+    'header header'
+    'list1 list2 ';
+  grid-template-columns: 45% 55%;
+  grid-template-rows: 60px 1fr;
+  border: 2px solid gray;
+  border-radius: 5px;
+}
+.teachers-cohorts-h2 {
+  margin-top: 10px;
+  grid-area: header;
+  height: 30px;
+}
+.teachers-cohortlist {
+  grid-area: list1;
+  height: 80%;
+}
+.teachers-studentlist {
+  grid-area: list2;
+}
