@@ -20,6 +20,7 @@ function StudentsList({ renderAddBtn, renderInfo, renderAllBtn, user }) {
       let endDate = new Date(endDateMS).toString().slice(3, 15)
       setCohort({ ...cohortData, startDate, endDate })
     })
+
     client.get('/users').then((usersData) => {
       const allUsers = usersData.data.data.users
       const studentsOnly = allUsers.filter((user) => {
