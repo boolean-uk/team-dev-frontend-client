@@ -6,21 +6,20 @@ function MyExercises({ User }) {
   const [myExercises, setMyExercises] = useState([])
   useEffect(() => {
     client
-      .get(`/cohorts/${User.id}/cohortExercises`)
+      .get(`/cohorts/${User.cohortId}/cohortExercises`)
       .then((res) => setMyExercises(res.data.data.cohortExercises))
       .catch((err) => console.log(err.response))
-  }, [User.id])
+  }, [User.cohortId])
 
   return (
     <div className="exercises-list">
       <h1 className="exercises-title">My Exercises</h1>
-      {myExercises.map((exercise) => {
+      {myExercises.map((exercise, index) => {
+        const exerciseUrl = exercise.cohortExercise.exercise.githubUrl
+        const exercise_Name = exercise.cohortExercise.exercise.exerciseName
         return (
-          <div className="exercises-list-item">
-            {exercise.cohortExercise.exercise.exerciseName} :{' '}
-            <a href={exercise.cohortExercise.exercise.githubUrl}>
-              {exercise.cohortExercise.exercise.githubUrl}
-            </a>
+          <div key={index} className="exercises-list-item">
+            {exercise_Name} : <a href={exerciseUrl}>{exerciseUrl}</a>
           </div>
         )
       })}
