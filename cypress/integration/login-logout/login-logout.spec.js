@@ -3,13 +3,13 @@ describe('User Login Logout', () => {
     beforeEach(() => {
       cy.intercept('POST', 'http://localhost:4000/user', {
         fixture: 'registration/valid-user.json'
-      })
+      }).as('register')
       cy.intercept('POST', 'http://localhost:4000/login', {
         fixture: 'login-logout/valid-user.json'
-      })
+      }).as('login')
       cy.intercept('GET', 'http://localhost:4000/posts', {
         fixture: 'posts/valid-posts.json'
-      }).as("getPosts")
+      }).as('getPosts')
       cy.visit('/')
     })
 
@@ -48,15 +48,16 @@ describe('User Login Logout', () => {
       cy.get('#user-submit-button').click()
 
       cy.get('#user-login-link').click()
+      cy.wait('@register')
       cy.url().should('eq', `${Cypress.config('baseUrl')}/`)
 
       cy.get('input[name=email]').type('test@test.com')
       cy.get('input[name=password]').type('test12')
       cy.get('#user-submit-button').click()
+      cy.wait('@login')
 
       cy.url().should('eq', `${Cypress.config('baseUrl')}/posts`)
-      cy.wait('@getPosts').its('response.statusCode').should('equal', 200)
-
+      cy.wait('@getPosts')
       cy.get('#user-signout-button').click()
       cy.url().should('eq', `${Cypress.config('baseUrl')}/`)
     })
