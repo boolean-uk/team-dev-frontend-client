@@ -1,9 +1,20 @@
 import Header from '../Header/Header'
 import NavigationRail from '../NavigationRail/NavigationRail'
+import { useLocation, useSearchParams } from 'react-router-dom'
 
 import './styles/SearchResults.css'
+import { useEffect, useState } from 'react'
 
 function SearchResults({ loggedInUser }) {
+  const [searchQuery, setSearchQuery] = useState('')
+  const [searchParams, setSearchParams] = useSearchParams()
+
+  const location = useLocation()
+
+  useEffect(() => {
+    setSearchParams({ query: location.state })
+  }, [])
+
   return (
     <>
       <Header loggedInUser={loggedInUser} />
