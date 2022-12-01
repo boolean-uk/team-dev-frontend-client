@@ -1,0 +1,10 @@
+.exercises-list {
+  display: grid;
+  max-width: 700px;
+  grid-auto-rows: max-content;
+}
+.exercises-list-item {
+  border: 1px solid gray;
+  margin: 5px;
+  margin-left: 50px;
+}

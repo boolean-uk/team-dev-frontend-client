@@ -1,6 +1,7 @@
 import Header from '../../Header/Header'
 import CohortsList from '../../cohortsList/CohortsList'
 import './teachers.css'
+import MyExercises from '../myExercises/MyExercises'
 
 function CohortsPageTeachers({ loggedInUser }) {
   return (
