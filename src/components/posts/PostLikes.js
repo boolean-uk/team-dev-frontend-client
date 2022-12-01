@@ -1,28 +1,33 @@
 import { useState } from 'react'
-// This is where the component for liking will live
-// A function called PostLikes => no props at this moment
-// Need to take the whole jsx section for likes
-// The return () for this function will contain jsx of like button + interpolate values of likes
+import { useEffect } from 'react'
+import client from '../../utils/client'
+
 // NameClass for a toggle function that works with css to make like button blue will also need to be pressnt in the jsx
 // {need to go over toggling and conditional rendering}
 
-// need to export the function to PostPages.js + call it in the right place
-// This will make me cry
+// need to create a get request to the API to fetch the list of likes on post already
+// do I need to do that or is this a static post so it doesnt exist in api???
+// use a check box to show wether the like button is pressed and use toggle to have checked or unchceked
 
 export default function PostLikes() {
-  const [count, setCount] = useState(0)
+  const [likeCount, setLikeCount] = useState([])
+
   const handleLike = () => {
-    const newCount = count + 1
-    setCount(newCount)
     console.log('this was clicked!')
-    console.log(count)
   }
+
+  //   need to use a get request initially or do i???
+  useEffect(() => {
+    client.get(`/posts/postLike`).then((data) => {
+      setLikeCount(data)
+    })
+  }, [])
+
   return (
     <div className="like-container">
       <div className="like-icon" onClick={handleLike}></div>
       <div className="like">Like</div>
-      <div className="number-of-likes">{count} likes</div>
-      {/* instead of 0 array length should be interpolated here */}
+      <div className="number-of-likes">{likeCount} likes</div>
     </div>
   )
 }
