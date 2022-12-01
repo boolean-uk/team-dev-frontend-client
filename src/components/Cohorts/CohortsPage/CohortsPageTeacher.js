@@ -1,6 +1,7 @@
 import Header from '../../Header/Header'
 import CohortsList from '../../cohortsList/CohortsList'
 import './teachers.css'
+import StudentsList from '../StudentList/StudentsList'
 import NavigationRail from '../../NavigationRail/NavigationRail'
 
 function CohortsPageTeachers({ loggedInUser }) {
@@ -25,7 +26,14 @@ function CohortsPageTeachers({ loggedInUser }) {
             renderAddButton={true}
           />
 
-          <div className="teachers-studentlist"></div>
+          <div className="teachers-studentlist">
+            <StudentsList
+              user={loggedInUser}
+              renderAddBtn={true}
+              renderInfo={false}
+              renderAllBtn={true}
+            />
+          </div>
         </section>
       </main>
     </>

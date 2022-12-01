@@ -20,6 +20,7 @@ function StudentsList({ renderAddBtn, renderInfo, renderAllBtn, user }) {
       let endDate = new Date(endDateMS).toString().slice(3, 15)
       setCohort({ ...cohortData, startDate, endDate })
     })
+
     client.get('/users').then((usersData) => {
       const allUsers = usersData.data.data.users
       const studentsOnly = allUsers.filter((user) => {
@@ -35,8 +36,13 @@ function StudentsList({ renderAddBtn, renderInfo, renderAllBtn, user }) {
 
   const moreButtons = (
     <nav className="teacher-nav">
-      <button className="add-btn">Add</button>
-      <button className="btn-more"> ... </button>
+      <button className="add-btn">
+        <span className="material-symbols-outlined">add</span>
+        <span>Add</span>
+      </button>
+      <button className="btn-more">
+        <span className="material-symbols-outlined">more_horiz</span>
+      </button>
     </nav>
   )
 
@@ -64,20 +70,27 @@ function StudentsList({ renderAddBtn, renderInfo, renderAllBtn, user }) {
   })
 
   return (
-    <>
-      {asStudent === true ? <h1>My cohort</h1> : <h1>Students</h1>}
+    <div className="container">
+      <div className="students-header">
+        {asStudent === true ? (
+          <h1 className="header-list">My cohort</h1>
+        ) : (
+          <h1 className="header-list">Students</h1>
+        )}
 
-      {renderInfo === 'fullInfo' && fullInfo}
-      {renderInfo && renderInfo !== 'fullInfo' && simpleInfo}
-      {renderAddBtn === true ? moreButtons : null}
-
-      <ul className="cohort-list">
+        {renderInfo === 'fullInfo' && fullInfo}
+        {renderInfo && renderInfo !== 'fullInfo' && simpleInfo}
+        {renderAddBtn === true ? moreButtons : null}
+      </div>
+      <ul className="students-list">
         {asStudent === true ? mapOfCohort : mapOfStudents}
-        {renderAllBtn === true ? (
-          <button className="all-btn">All Students</button>
-        ) : null}
       </ul>
-    </>
+      {renderAllBtn === true ? (
+        <button className="all-btn">
+          <span> All Students</span>
+        </button>
+      ) : null}
+    </div>
   )
 }
 export default StudentsList
