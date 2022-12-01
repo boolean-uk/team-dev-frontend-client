@@ -10,7 +10,7 @@ function SearchResults({ loggedInUser }) {
   const [searchParams, setSearchParams] = useSearchParams()
   const [people, setPeople] = useState(null)
   const [cohorts, setCohorts] = useState(null)
-
+  const [peopleDisplay, setPeopleDisplay] = useState(null)
   const location = useLocation()
 
   useEffect(() => {
@@ -29,6 +29,18 @@ function SearchResults({ loggedInUser }) {
   const handleSubmit = (e) => {
     e.preventDefault()
     setSearchParams({ query: searchQuery })
+    const filteredPeopleByFirstName = people.filter((person) => {
+      return person.firstName.toLowerCase().includes(searchQuery.toLowerCase())
+    })
+    const filteredPeopleByLastName = people.filter((person) => {
+      return person.lastName.toLowerCase().includes(searchQuery.toLowerCase())
+    })
+    const filteredPeople = [
+      ...filteredPeopleByFirstName,
+      ...filteredPeopleByLastName
+    ]
+    const filteredPeopleUnique = [...new Set(filteredPeople)]
+    setPeopleDisplay(filteredPeopleUnique)
   }
 
   return (
@@ -53,6 +65,11 @@ function SearchResults({ loggedInUser }) {
         <hr className="results--divider" />
         {/* TODO: Call SearchResult component here using map to determine how many 
         users to display*/}
+        {peopleDisplay.length > 0
+          ? peopleDisplay.map((person) => {
+              return <p>{person.firstName}</p>
+            })
+          : 'no people to display'}
       </div>
       <div className="results--container">
         <h3>Cohorts:</h3>
