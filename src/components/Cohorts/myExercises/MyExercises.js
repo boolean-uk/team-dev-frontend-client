@@ -2,17 +2,18 @@ import { useEffect, useState } from 'react'
 import client from '../../../utils/client'
 import './exercises.css'
 
-function MyExercises({ loggedInUser }) {
+function MyExercises({ user }) {
   const [myExercises, setMyExercises] = useState([])
   useEffect(() => {
     client
-      .get(`/cohorts/${loggedInUser.id}/cohortExercises`)
+      .get(`/cohorts/${user.id}/cohortExercises`)
       .then((res) => setMyExercises(res.data.data.cohortExercises))
       .catch((err) => console.log(err.response))
-  }, [loggedInUser.id])
+  }, [user.id])
 
   return (
     <div className="exercises-list">
+      <h1 className="exercises-title">My Exercises</h1>
       {myExercises.map((exercise) => {
         return (
           <div className="exercises-list-item">
