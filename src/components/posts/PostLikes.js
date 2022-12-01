@@ -10,19 +10,28 @@ import client from '../../utils/client'
 // use a check box to show wether the like button is pressed and use toggle to have checked or unchceked
 
 export default function PostLikes() {
-  const [likeCount, setLikeCount] = useState([])
+  const [likeCount, setLikeCount] = useState(0)
 
   const handleLike = () => {
     console.log('this was clicked!')
   }
 
-  //   need to use a get request initially or do i???
+  // currently only checking likes on postId  6
+  //   6 needs to changed to current postId using string interpolation
   useEffect(() => {
-    client.get(`/posts/postLike`).then((data) => {
-      setLikeCount(data)
+    client.get('/posts/postLike').then((data) => {
+      const allLikes = data.data.data.postLikes
+      console.log(data)
+      const filterLikes = allLikes.filter((likeObject) => {
+        if (likeObject.postId === 6 && likeObject.active === true) {
+          return true
+        }
+      })
+      setLikeCount(filterLikes.length)
     })
   }, [])
 
+  //   need to get the click
   return (
     <div className="like-container">
       <div className="like-icon" onClick={handleLike}></div>
