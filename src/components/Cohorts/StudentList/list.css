@@ -19,7 +19,6 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-template-rows: repeat(auto-fit, 56px);
-  height: 400px;
   padding-bottom: 70px;
   overflow-y: auto;
   gap: 6px;
@@ -28,7 +27,6 @@
   display: flex;
   flex-direction: row;
   min-width: fit-content;
-  /* max-width: 600px; */
   border: 1px solid slategray;
   border-radius: 6px;
   text-align: left;
