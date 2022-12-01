@@ -7,19 +7,21 @@ export const StudentsPage = ({ loggedInUser }) => {
   return (
     <>
       <NavigationRail user={loggedInUser} />
-      <div className="container">
-        <div className="students-list">
+      <div className="student-page-container">
+        <div className="students-list-space">
           <StudentsList
             user={loggedInUser}
             renderAddBtn={false}
             renderInfo={'fullInfo'}
-            renderAllbtn={false}
+            renderAllBtn={false}
           />
         </div>
-        <div className="teachers-list">
-          <TeachersList renderHeading={true} />
-        </div>
-        <div className="exercises-list"></div>
+        <section className="rigth-section-student-page">
+          <div className="teachers-list-space">
+            <TeachersList renderHeading={true} />
+          </div>
+          <div className="exercises-list-space">exercises here</div>
+        </section>
       </div>
     </>
   )

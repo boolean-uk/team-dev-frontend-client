@@ -1,24 +1,28 @@
-.container {
-  margin: 0;
-  padding: 10;
+.student-page-container {
   display: grid;
+  grid-template-columns: 70% 30%;
   height: 100vh;
+  gap: 20px;
+  padding-top: 10px;
+  align-items: stretch;
+  overflow: hidden;
+  width: 100vw;
+  padding-left: 90px;
+  padding-right: 50px;
+  margin: 0;
+  max-width: 100%;
+}
+.students-list-space {
   width: 100%;
-  grid-template:
-    ' studentSlist teachersList'
-    'studentsList myExercises ';
+}
+.teachers-list-space,
+.exercises-list-space {
+  width: 100%;
+  margin-right: 10px;
+}
 
-  border: 2px slategray solid;
-  box-sizing: border-box;
-}
-.students-list {
-  grid-area: studentSlist;
-  width: 100%;
-}
-.teachers-list {
-  grid-area: teachersList;
-  width: 100%;
-}
-.exercises-list {
-  grid-area: myExercise;
+.rigth-section-student-page {
+  display: flex;
+  flex-direction: column;
+  min-width: fit-content;
 }
