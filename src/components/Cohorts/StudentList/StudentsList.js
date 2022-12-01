@@ -31,11 +31,14 @@ function StudentsList({ renderAddBtn, renderInfo, renderAllBtn, user }) {
       })
       setCohortStudents(filteredCohort)
     })
-  }, [])
+  }, [cohortId])
 
   const moreButtons = (
     <nav className="teacher-nav">
-      <button className="add-btn">Add</button>
+      <button className="add-btn">
+        <span className="material-symbols-outlined">add</span>
+        <span>Add</span>
+      </button>
       <button className="btn-more">
         <span className="material-symbols-outlined">more_horiz</span>
       </button>
@@ -67,22 +70,25 @@ function StudentsList({ renderAddBtn, renderInfo, renderAllBtn, user }) {
 
   return (
     <div className="container">
-      {asStudent === true ? (
-        <h1 className="header-list">My cohort</h1>
-      ) : (
-        <h1 className="header-list">Students</h1>
-      )}
+      <div className="students-header">
+        {asStudent === true ? (
+          <h1 className="header-list">My cohort</h1>
+        ) : (
+          <h1 className="header-list">Students</h1>
+        )}
 
-      {renderInfo === 'fullInfo' && fullInfo}
-      {renderInfo && renderInfo !== 'fullInfo' && simpleInfo}
-      {renderAddBtn === true ? moreButtons : null}
-
+        {renderInfo === 'fullInfo' && fullInfo}
+        {renderInfo && renderInfo !== 'fullInfo' && simpleInfo}
+        {renderAddBtn === true ? moreButtons : null}
+      </div>
       <ul className="students-list">
         {asStudent === true ? mapOfCohort : mapOfStudents}
-        {renderAllBtn === true ? (
-          <button className="all-btn">All Students</button>
-        ) : null}
       </ul>
+      {renderAllBtn === true ? (
+        <button className="all-btn">
+          <span> All Students</span>
+        </button>
+      ) : null}
     </div>
   )
 }

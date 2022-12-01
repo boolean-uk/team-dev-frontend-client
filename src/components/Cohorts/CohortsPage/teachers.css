@@ -10,7 +10,7 @@
   margin-right: 250px;
 }
 .content {
-  margin-left: 100px;
+  margin: 5px 5px 16px 96px;
   display: grid;
   grid-template-areas:
     'header header'
@@ -18,7 +18,6 @@
   grid-template-columns: 45% 55%;
   grid-template-rows: 60px 1fr;
   border: 2px solid gray;
-  margin-top: 5px;
   border-radius: 5px;
 }
 .teachers-cohorts-h2 {

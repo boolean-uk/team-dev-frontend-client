@@ -1,29 +1,44 @@
 .container {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  display: grid;
+  grid-template:
+    'students-header' auto
+    'students-list' 1fr/
+    1fr;
   padding: 1rem;
   border: 1px solid white;
   min-width: fit-content;
+  height: fit-content;
+  position: relative;
+}
+.students-header {
+  grid-area: students-header;
+  height: fit-content;
 }
 .students-list {
+  grid-area: students-list;
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-rows: repeat(auto-fit, 56px);
+  height: 400px;
+  padding-bottom: 70px;
+  overflow-y: auto;
+  gap: 6px;
 }
 .student-list-item {
   display: flex;
+  flex-direction: row;
   min-width: fit-content;
-  max-width: 600px;
-  border: 1px solid yellow;
+  /* max-width: 600px; */
+  border: 1px solid slategray;
+  border-radius: 6px;
   text-align: left;
   color: white;
   list-style: none;
   height: 56px;
-}
-.student-item {
-  display: flex;
   text-decoration: none;
-  justify-content: center;
+  padding-right: 6px;
 }
+
 .link-student-item {
   display: flex;
   text-decoration: none;
@@ -51,31 +66,63 @@
   border-radius: 50px;
 }
 .teacher-nav {
-  display: inline-block;
+  width: 100%;
+  display: flex;
   grid-column: auto;
   height: fit-content;
-  justify-self: flex-endgit;
-}
-.material-symbols-outlined {
-  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+  justify-content: end;
+  align-content: center;
 }
 
 .btn-more-item,
 .btn-more {
-  /* margin-top: 10px; */
-  border: solid 1px black;
   border-radius: 50%;
-  width: fit-content;
-  height: fit-content;
-  font-weight: bolder;
   align-self: center;
-  background-color: rgb(239, 239, 239);
+  justify-self: flex-end;
+  background-color: #166ac5;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  color: white;
+  cursor: pointer;
 }
+.btn-more-item {
+  margin-left: auto;
+}
+/* .add-btn {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  width: minmax(80px, fit-content);
+  height: 56px;
+  margin-bottom: 16px;
+  margin-right: 16px;
+  align-items: center;
+  border-radius: 16px;
+  padding: 16px;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  background-color: #166ac5;
+  cursor: pointer;
+  color: white;
+  font-family: -apple-system, system-ui, 'Segoe UI', Helvetica, Arial,
+    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji'; */
+/* } */
+.all-btn,
 .add-btn {
-  width: 70px;
-  height: 25px;
-}
-.all-btn {
-  width: 80px;
-  height: 25px;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  width: 90px;
+  height: 56px;
+  align-items: center;
+  border-radius: 16px;
+  padding: 16px;
+  margin-top: 6px;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  background-color: #166ac5;
+  box-shadow: rgb(27 31 35 / 4%) 0 1px 0, rgb(255 255 255 / 25%) 0 1px 0 inset;
+  cursor: pointer;
+  color: white;
+  font-family: -apple-system, system-ui, 'Segoe UI', Helvetica, Arial,
+    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+  font-weight: 500;
+  margin-right: 6px;
 }

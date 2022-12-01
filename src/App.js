@@ -55,6 +55,20 @@ function App() {
         </Route>
         <Route element={<AuthenticateUser />}>
           <Route
+            path="/cohorts/:cohortId"
+            element={
+              <>
+                <h1>Page Under construction</h1>{' '}
+                <h3>
+                  Go to <i>/posts/</i>
+                </h3>
+              </>
+            }
+          />
+        </Route>
+
+        <Route element={<AuthenticateUser />}>
+          <Route
             path="/profile/:id"
             element={<ProfilePage loggedInUser={loggedInUser} />}
           />
