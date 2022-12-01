@@ -3,6 +3,7 @@ import Button from '@mui/material/Button'
 import Edit from './images/edit.svg'
 import Delete from './images/delete.svg'
 import { useState } from 'react'
+import { format, parseISO } from 'date-fns'
 
 const Post = ({ post, loggedInUser, client, setPosts, posts, setErr }) => {
   const [beingEdited, setBeingEdited] = useState(null)
@@ -45,14 +46,9 @@ const Post = ({ post, loggedInUser, client, setPosts, posts, setErr }) => {
         setErr(err.message)
       })
   }
-  const handleDateAndTime = () => {
-    const current = new Date()
-    const date = `${current.getDate()}/${
-      current.getMonth() + 1
-    }/${current.getFullYear()}`
-    const hours = new Date().getHours()
-    const minutes = new Date().getMinutes()
-    return `${date} - ${hours}:${minutes}`
+  const computePostDateAndTimeString = () => {
+    const date = format(parseISO(post.createdAt), 'MMMM d, yyyy h:mm a')
+    return date
   }
 
   return (
@@ -72,7 +68,9 @@ const Post = ({ post, loggedInUser, client, setPosts, posts, setErr }) => {
             <div className="single-post-name">
               {firstName} {lastName}
             </div>
-            <div className="single-post-date">{handleDateAndTime()}</div>
+            <div className="single-post-date">
+              {computePostDateAndTimeString()}
+            </div>
           </div>
           <div className="single-post-edit-container">
             {canEditOrDelete && (
