@@ -67,13 +67,17 @@ function StudentsList({ renderAddBtn, renderInfo, renderAllBtn, user }) {
 
   return (
     <div className="container">
-      {asStudent === true ? <h1>My cohort</h1> : <h1>Students</h1>}
+      {asStudent === true ? (
+        <h1 className="header-list">My cohort</h1>
+      ) : (
+        <h1 className="header-list">Students</h1>
+      )}
 
       {renderInfo === 'fullInfo' && fullInfo}
       {renderInfo && renderInfo !== 'fullInfo' && simpleInfo}
       {renderAddBtn === true ? moreButtons : null}
 
-      <ul className="cohort-list">
+      <ul className="students-list">
         {asStudent === true ? mapOfCohort : mapOfStudents}
         {renderAllBtn === true ? (
           <button className="all-btn">All Students</button>
