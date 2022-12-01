@@ -109,7 +109,7 @@ const AuthenticateUser = ({ children, redirectPath = '/' }) => {
 const AuthenticateTeacherUser = ({
   children,
   loggedInUser,
-  redirectPath = '/'
+  redirectPath = '/posts'
 }) => {
   if (!isLoggedIn() || loggedInUser.role !== 'TEACHER') {
     return <Navigate to={redirectPath} replace />
