@@ -19,9 +19,7 @@ const PostsPage = ({ loggedInUser }) => {
 
   useEffect(() => {
     client.get('/posts').then((res) => {
-      if (res.data.data.posts) {
-        setPosts(res.data.data.posts)
-      }
+      setPosts(res.data.data.posts)
     })
   }, [])
 
