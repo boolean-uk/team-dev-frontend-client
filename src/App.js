@@ -28,6 +28,7 @@ function App() {
   return (
     <div className="App">
       <Helmet>
+        <title>Cohort Manager 2.0</title>
         <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
@@ -109,7 +110,7 @@ const AuthenticateUser = ({ children, redirectPath = '/' }) => {
 const AuthenticateTeacherUser = ({
   children,
   loggedInUser,
-  redirectPath = '/'
+  redirectPath = '/posts'
 }) => {
   if (!isLoggedIn() || loggedInUser.role !== 'TEACHER') {
     return <Navigate to={redirectPath} replace />
