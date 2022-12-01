@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import client from '../../utils/client'
 import Header from '../Header/Header'
+import NavigationRail from '../NavigationRail/NavigationRail'
 import './styles/ProfileEdit.css'
 
 function ProfileEdit({ loggedInUser }) {
@@ -31,6 +32,24 @@ function ProfileEdit({ loggedInUser }) {
       </section>
     )
   }
+
+  // Authentication start
+  if (loggedInUser.role === 'STUDENT' && loggedInUser.id !== profileToEdit.id) {
+    navigate(`/profile/${profileToEdit.id}`)
+  }
+
+  let cohortDisabled = false
+  let passwordDisabled = false
+
+  if (loggedInUser.role === 'STUDENT') {
+    cohortDisabled = true
+  }
+
+  if (loggedInUser.role === 'TEACHER' && loggedInUser.id !== profileToEdit.id) {
+    passwordDisabled = true
+  }
+
+  // Authentication end
 
   const handleChange = (e) => {
     const name = e.target.name
@@ -65,7 +84,10 @@ function ProfileEdit({ loggedInUser }) {
   return (
     <>
       <Header loggedInUser={loggedInUser} />
-      <h2>Profile</h2>
+
+      <NavigationRail user={loggedInUser} />
+
+      <h2 className="profile-h2">Profile</h2>
 
       <form onSubmit={handleSubmit}>
         <div className="container">
@@ -75,7 +97,7 @@ function ProfileEdit({ loggedInUser }) {
               <h2>
                 {profileToEdit.firstName} {profileToEdit.lastName}
               </h2>
-              <p>{profileToEdit.role}</p>
+              <p className="profile--display_para">{profileToEdit.role}</p>
             </div>
           </div>
           <div className="edit"></div>
@@ -185,6 +207,7 @@ function ProfileEdit({ loggedInUser }) {
                   className="edit--form__select"
                   name="cohortId"
                   onChange={handleChange}
+                  disabled={cohortDisabled}
                 >
                   <option>Select Cohort...</option>
                   {cohorts.map((cohort) => {
@@ -254,6 +277,7 @@ function ProfileEdit({ loggedInUser }) {
               New Password:{' '}
             </label>
             <input
+              disabled={passwordDisabled}
               className="edit--form__input"
               id="password"
               name="password"
@@ -271,7 +295,7 @@ function ProfileEdit({ loggedInUser }) {
             <textarea
               className="edit--form__textarea"
               cols={40}
-              rows={11}
+              rows={10}
               id="biography"
               name="biography"
               type="box"

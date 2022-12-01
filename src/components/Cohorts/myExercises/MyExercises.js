@@ -10,7 +10,7 @@ function MyExercises({ loggedInUser }) {
       .then((res) => setMyExercises(res.data.data.cohortExercises))
       .catch((err) => console.log(err.response))
   }, [loggedInUser.id])
-  console.log('myexercise:', myExercises)
+
   return (
     <div className="exercises-list">
       {myExercises.map((exercise) => {
