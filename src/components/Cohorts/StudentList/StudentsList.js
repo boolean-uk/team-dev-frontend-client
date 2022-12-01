@@ -70,7 +70,7 @@ function StudentsList({ renderAddBtn, renderInfo, renderAllBtn, user }) {
   })
 
   return (
-    <div className="container">
+    <div className="student-list-container">
       <div className="students-header">
         {asStudent === true ? (
           <h1 className="header-list">My cohort</h1>
