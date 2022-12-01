@@ -70,9 +70,12 @@
   font-size: 0.8rem;
 }
 
-.single-post-edit-container,
-.comment-edit-container {
+.single-post-edit-container {
   padding-top: 10px;
+  padding-left: 20px;
+}
+
+.comment-edit-container {
   padding-left: 20px;
 }
 
@@ -165,4 +168,9 @@
   border: 2px solid white;
   border-radius: 10px;
   margin-left: 30px;
+}
+
+.comment-edit-button, .editButton, .deleteButton {
+  display: inline-block;
+  margin-right: 20px;
 }
