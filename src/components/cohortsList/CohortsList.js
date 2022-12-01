@@ -2,6 +2,7 @@ import client from '../../utils/client'
 import { useState, useEffect } from 'react'
 import CohortListItem from './cohortListItem/CohortListItem'
 import './style.css'
+import CohortAddPopUp from '../CohortAddPopUp/CohortAddPopUp'
 
 function CohortsList({ renderHeader, renderAddButton }) {
   const [renderCohortPopup, setRenderCohortPopup] = useState(false)
@@ -15,19 +16,13 @@ function CohortsList({ renderHeader, renderAddButton }) {
       .catch((err) => console.log(err.response))
   }, [])
 
-  const header = <h2>Cohorts</h2>
-  const temporaryAddPopup = (
-    <div className="DEBUG-popup">
-      <h2>Temporary Add popup</h2>
-      <button
-        onClick={() => {
-          setRenderCohortPopup(false)
-        }}
-      >
-        Close popup
-      </button>
-    </div>
-  )
+  function updateCohortsList() {
+    client
+      .get('/cohorts')
+      .then((res) => setCohortsResponse(res.data))
+      .catch((err) => console.log(err.response))
+  }
+
   const addButton = (
     <button
       onClick={() => {
@@ -42,10 +37,17 @@ function CohortsList({ renderHeader, renderAddButton }) {
   return (
     <section className="cohorts-list-panel">
       {/* Conditional Rendering - Add Popup #115 */}
-      {renderCohortPopup ? temporaryAddPopup : null}
+
+      {/* {renderCohortPopup ? temporaryAddPopup : null} */}
+      {renderCohortPopup ? (
+        <CohortAddPopUp
+          updateCohortsList={updateCohortsList}
+          setRenderCohortPopup={setRenderCohortPopup}
+        />
+      ) : null}
 
       {/* Conditional Rendering - Header */}
-      {renderHeader ? header : null}
+      {renderHeader && <h2>Cohorts</h2>}
 
       {/* Conditional Rendering - Add Button */}
       {renderAddButton ? addButton : null}

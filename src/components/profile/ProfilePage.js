@@ -2,12 +2,13 @@ import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import client from '../../utils/client'
 import Header from '../Header/Header'
+import NavigationRail from '../NavigationRail/NavigationRail'
 
 import './styles/ProfilePage.css'
 
 function ProfilePage({ loggedInUser }) {
   const [profilePageUser, setProfilePageUser] = useState(null)
-  // TODO: Add loading state
+  const [cohort, setCohort] = useState(null)
 
   const { id } = useParams()
 
@@ -15,17 +16,31 @@ function ProfilePage({ loggedInUser }) {
     client.get(`/users/${id}`).then((data) => {
       setProfilePageUser(data.data.data.user)
     })
-    // TODO: Change loading state here
   }, [id])
 
+  useEffect(() => {
+    if (profilePageUser && profilePageUser.cohortId) {
+      client.get(`/cohorts/${profilePageUser.cohortId}`).then((data) => {
+        setCohort(data.data.data.cohortName)
+      })
+    }
+  }, [id, profilePageUser])
+
   if (profilePageUser === null) {
-    return <> </>
+    return (
+      <section className="load">
+        <span className="loader"></span>
+      </section>
+    )
   }
 
   return (
     <>
       <Header loggedInUser={loggedInUser} />
-      <h2>Profile</h2>
+
+      <NavigationRail user={loggedInUser} />
+
+      <h2 className="profile-h2">Profile</h2>
       <div className="container">
         <div className="profile-header">
           <img src={profilePageUser.profileUrl} alt="Profile img" />
@@ -33,11 +48,13 @@ function ProfilePage({ loggedInUser }) {
             <h2>
               {profilePageUser.firstName} {profilePageUser.lastName}
             </h2>
-            <p>{profilePageUser.role}</p>
+            <p className="profile--display_para">
+              {profilePageUser.role} - {cohort ? cohort : 'No cohort'}
+            </p>
           </div>
         </div>
         <div className="edit">
-          <Link to={`/profile/${loggedInUser.id}/edit`}>
+          <Link to={`/profile/${profilePageUser.id}/edit`}>
             <button
               className={
                 loggedInUser.role !== 'TEACHER' ||
@@ -47,16 +64,23 @@ function ProfilePage({ loggedInUser }) {
                   : 'button'
               }
             >
-              edit
+              Edit
             </button>
           </Link>
         </div>
         <div className="basic-info">
-          <hr />
+          <hr className="profile--divider" />
           <h2>Basic Info</h2>
-          <ul>
-            <li>First Name: {profilePageUser.firstName}</li>
-            <li>Last Name: {profilePageUser.lastName}</li>
+          <ul className="profile--display__list">
+            <li>
+              {' '}
+              <span className="space"> First Name:</span>{' '}
+              {profilePageUser.firstName}
+            </li>
+            <li>
+              <span className="space"> Last Name: </span>
+              {profilePageUser.lastName}
+            </li>
             <li>
               <span className="space">Username:</span>
               {profilePageUser.username
@@ -65,21 +89,33 @@ function ProfilePage({ loggedInUser }) {
             </li>
             <li>
               <span className="space">Github:</span>
-              {profilePageUser.githubUrl
-                ? profilePageUser.githubUrl
-                : 'No link to display'}
+              {profilePageUser.githubUrl ? (
+                <a
+                  href={`${profilePageUser.githubUrl}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {profilePageUser.githubUrl}
+                </a>
+              ) : (
+                'No link to display'
+              )}
             </li>
           </ul>
         </div>
         <div className="training-info">
-          <hr />
+          <hr className="profile--divider" />
           <h2>Training Info</h2>
-          <ul>
+          <ul className="profile--display__list">
             <li>
               <span className="space">Role:</span>
               {profilePageUser.role
                 ? profilePageUser.role
                 : 'No role to display'}
+            </li>
+            <li>
+              <span className="space">Cohort:</span>
+              {cohort ? cohort : 'No cohort to display'}
             </li>
             <li>
               <span className="space">Specialism:</span>
@@ -102,9 +138,9 @@ function ProfilePage({ loggedInUser }) {
           </ul>
         </div>
         <div className="contact-info">
-          <hr />
+          <hr className="profile--divider" />
           <h2>Contact Info</h2>
-          <ul>
+          <ul className="profile--display__list">
             <li>
               <span className="space">Email:</span>
               {profilePageUser.email
@@ -126,9 +162,11 @@ function ProfilePage({ loggedInUser }) {
           </ul>
         </div>
         <div className="bio">
-          <hr />
+          <hr className="profile--divider" />
           <h2>Bio</h2>
-          <p>{profilePageUser.biography}</p>
+          <p className="profile--display_para profile--display_bio">
+            {profilePageUser.biography}
+          </p>
         </div>
       </div>
     </>

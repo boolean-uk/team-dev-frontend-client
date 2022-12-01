@@ -21,15 +21,8 @@
   gap: 20px;
 }
 
-.profile-picture-container,
-.single-post-author-img-container,
-.new-comment-user-img-container {
-  border: solid white 2px;
-  border-radius: 50%;
-  height: 50px;
-  width: 50px;
-  padding-top: 10px;
-  margin-top: 3px;
+.profile-picture-container {
+  text-align: left;
 }
 
 .single-post-author-img-container {
@@ -69,12 +62,12 @@
   font-size: 0.8rem;
 }
 
-.single-post-edit-container {
+.comment-edit-container {
   padding-top: 10px;
   padding-left: 20px;
 }
 
-.single-post-edit {
+.comment-edit-button {
   width: 30px;
   height: 30px;
   border: 2px solid white;
@@ -89,8 +82,8 @@
   grid-template-columns: 150px 150px 1fr auto;
 }
 
-.like-container,
-.comment-container {
+.like-link-container,
+.comment-link-container {
   place-items: center start;
   display: grid;
   grid-template-columns: 50px auto;
@@ -113,8 +106,8 @@
   display: inline-block;
 }
 
-.like,
-.comment {
+.like-link,
+.comment-link {
   display: inline-block;
 }
 
@@ -126,10 +119,12 @@
 .home-page {
   display: grid;
   grid-template-columns: 150px 1fr 300px;
+
+  margin-left: 80px;
 }
 
 .posts-list {
-  margin: 20px;
+  margin: 0px;
 }
 
 .post-item {
@@ -148,3 +143,45 @@
   margin-top: 20px;
 }
 
+.previous-comments-container {
+  padding-top: 20px;
+  border-top: 1px solid white;
+  margin-top: 20px;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.previous-comments-link {
+  cursor: pointer;
+}
+
+.comments-container {
+  place-items: center start;
+  display: grid;
+  grid-template-columns: 50px auto 1fr;
+  margin: 20px 0;
+}
+
+.comment-text {
+  padding: 20px;
+  border: 2px solid white;
+  border-radius: 10px;
+  margin-left: 30px;
+}
+
+.comment-text {
+  padding: 20px;
+  border: 2px solid white;
+  border-radius: 10px;
+  margin-left: 30px;
+}
+.single-post-edit-container {
+}
+
+.edit-delete-buttons {
+  filter: invert() 
+}
+.edit-delete-buttons:hover {
+  filter: invert() blur(2px);
+  cursor: pointer
+}

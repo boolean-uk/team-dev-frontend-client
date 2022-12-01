@@ -1,22 +1,35 @@
 .container {
+  border: solid 2px #c8d2e6;
+  border-radius: 20px;
+  padding: 20px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: 0.3fr repeat(2, 1fr);
-  column-gap: 30px;
-  margin-left: 30px;
-  margin-right: 30px;
+  column-gap: 50px;
+  margin-left: 130px; /*50+80*/
+  margin-right: 50px;
+}
+
+.profile-h2 {
+  text-align: left;
+  margin-left: 130px; /*3.2ch + 50px*/
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 .profile-header {
   grid-row: 1 / 2;
   grid-column: 1 / 2;
   display: inline-flex;
+  align-self: center;
 }
 
 .profile-header img {
   width: 50px;
   height: 50px;
   border-radius: 50%;
+  margin-right: 2ch;
+  margin-top: 1ch;
 }
 
 .basic-info h2,
@@ -26,35 +39,61 @@
   margin-bottom: 20px;
 }
 
-div ul,
-div p {
+.profile--display_para {
+  text-align: left;
+}
+
+.profile--display_bio {
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.profile--display__list {
   list-style: none;
   text-align: left;
   margin-left: 30px;
   margin-right: 30px;
 }
+.profile--display__list li {
+  margin-bottom: 15px;
+}
 
-div hr {
+.profile--divider {
   margin-top: 20px;
   margin-bottom: 20px;
+  height: 2px;
+  background-color: #c8d2e6;
+  border: none;
 }
 
 .space {
+  font-weight: bold;
+  color: #000000;
   margin-right: 5px;
+  background-color: rgb(200, 210, 230);
+  border-radius: 12px;
+  padding: 3px;
 }
 
 /* styling for edit button */
+
+.edit {
+  align-self: center;
+}
+
 .button {
   appearance: none;
-  background-color: #1976D2;
+  background-color: #1976d2;
   border: 1px solid rgba(27, 31, 35, 0.15);
   border-radius: 6px;
-  box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+  box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0,
+    rgba(255, 255, 255, 0.25) 0 1px 0 inset;
   box-sizing: border-box;
   color: #fff;
   cursor: pointer;
   display: inline-block;
-  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-family: -apple-system, system-ui, 'Segoe UI', Helvetica, Arial,
+    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
@@ -71,21 +110,20 @@ div hr {
 }
 
 .button:hover {
-  background-color: #1565C0;
+  background-color: #1565c0;
   text-decoration: none;
   transition-duration: 0.1s;
-  
 }
 
 .button:disabled {
-  background-color: #FAFBFC;
+  background-color: #fafbfc;
   border-color: rgba(27, 31, 35, 0.15);
-  color: #959DA5;
+  color: #959da5;
   cursor: default;
 }
 
 .button:active {
-  background-color: #EDEFF2;
+  background-color: #edeff2;
   box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
   transition: none 0s;
 }
@@ -109,4 +147,47 @@ div hr {
 
 .buttonDisabled:hover {
   background-color: rgb(57, 52, 52);
+}
+
+/* loading spinner */
+
+.load {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: inline-block;
+  border-top: 4px solid #fff;
+  border-right: 4px solid transparent;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+.loader::after {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border-left: 4px solid #ff3d00;
+  border-bottom: 4px solid transparent;
+  animation: rotation 0.5s linear infinite reverse;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

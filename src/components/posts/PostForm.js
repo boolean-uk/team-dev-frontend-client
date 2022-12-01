@@ -1,11 +1,25 @@
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 
-const PostForm = ({ handleSubmit, handleChange, value, helperText }) => {
+const PostForm = ({
+  handleSubmit,
+  handleChange,
+  value,
+  helperText,
+  loggedInUser
+}) => {
   return (
     <section className="new-post-form-section">
       <div className="profile-picture-container">
-        <div className='"profile-picture'>FA</div>
+        <div className="profile-picture">
+          {loggedInUser && (
+            <img
+              src={`https://ui-avatars.com/api/?name=${loggedInUser.firstName}+${loggedInUser.lastName}&background=random&color=fff&rounded=true`}
+              alt="avatar"
+              height="50px"
+            ></img>
+          )}
+        </div>
       </div>
       <form className="post-form" onSubmit={handleSubmit}>
         <TextField
@@ -14,7 +28,7 @@ const PostForm = ({ handleSubmit, handleChange, value, helperText }) => {
           label="What's on your mind?"
           value={value}
           helperText={helperText}
-          multiline="default"
+          multiline
           variant="outlined"
           name="content"
           onChange={handleChange}
