@@ -70,7 +70,7 @@
   display: flex;
   grid-column: auto;
   height: fit-content;
-  justify-content: end;
+  justify-content: flex-end;
   align-content: center;
 }
 
@@ -87,24 +87,7 @@
 .btn-more-item {
   margin-left: auto;
 }
-/* .add-btn {
-  display: flex;
-  flex-direction: row;
-  gap: 8px;
-  width: minmax(80px, fit-content);
-  height: 56px;
-  margin-bottom: 16px;
-  margin-right: 16px;
-  align-items: center;
-  border-radius: 16px;
-  padding: 16px;
-  border: 1px solid rgba(27, 31, 35, 0.15);
-  background-color: #166ac5;
-  cursor: pointer;
-  color: white;
-  font-family: -apple-system, system-ui, 'Segoe UI', Helvetica, Arial,
-    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji'; */
-/* } */
+
 .all-btn,
 .add-btn {
   display: flex;
