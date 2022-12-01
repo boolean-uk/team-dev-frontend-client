@@ -1,3 +1,4 @@
+import { useState } from 'react'
 // This is where the component for liking will live
 // A function called PostLikes => no props at this moment
 // Need to take the whole jsx section for likes
@@ -9,10 +10,19 @@
 // This will make me cry
 
 export default function PostLikes() {
+  const [count, setCount] = useState(0)
+  const handleLike = () => {
+    const newCount = count + 1
+    setCount(newCount)
+    console.log('this was clicked!')
+    console.log(count)
+  }
   return (
     <div className="like-container">
-      <div className="like-icon"></div>
+      <div className="like-icon" onClick={handleLike}></div>
       <div className="like">Like</div>
+      <div className="number-of-likes">{count} likes</div>
+      {/* instead of 0 array length should be interpolated here */}
     </div>
   )
 }
