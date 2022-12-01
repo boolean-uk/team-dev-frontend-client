@@ -1,18 +1,23 @@
 .container {
+  margin: 0;
+  padding: 10;
   display: grid;
   height: 100vh;
+  width: 100%;
   grid-template:
-    ' studentSlist teachersList' auto
-    'studentsList myExercises ' 40% /
-    auto auto;
+    ' studentSlist teachersList'
+    'studentsList myExercises ';
+
   border: 2px slategray solid;
   box-sizing: border-box;
 }
 .students-list {
   grid-area: studentSlist;
+  width: 100%;
 }
 .teachers-list {
   grid-area: teachersList;
+  width: 100%;
 }
 .exercises-list {
   grid-area: myExercise;
