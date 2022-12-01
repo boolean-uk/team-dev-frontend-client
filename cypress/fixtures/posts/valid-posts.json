@@ -3,32 +3,88 @@
   "data": {
     "posts": [
       {
-        "id": 1,
-        "content": "Hello world!",
-        "author": {
+        "content": "new post",
+        "id": 183,
+        "createdAt": "2022-12-01T12:33:05.738Z",
+        "postComments": [],
+        "edited": false,
+        "user": {
           "id": 5,
-          "cohortId": null,
-          "firstName": "Nathan",
-          "lastName": "King",
-          "email": "ngk2@gmail.com",
-          "bio": "Hello world",
-          "githubUrl": "https://github.com/vherus",
-          "role": "STUDENT"
-        }
+          "email": "test4@test.com",
+          "password": "$2b$08$0QxmZC0093nnL3L7IF7yiuhJPXCF6QLaaNaOCFdvY.OCCy/ifLEK6",
+          "role": "STUDENT",
+          "cohortId": 1,
+          "createdAt": "2022-11-23T13:09:46.308Z",
+          "updatedAt": "2022-11-23T13:09:46.308Z",
+          "profile": {
+            "id": 5,
+            "userId": 5,
+            "firstName": "name4",
+            "lastName": "surname4",
+            "bio": "Here i am, coding like a hurricane",
+            "profileUrl": "https://images.unsplash.com/photo-1494256997604-768d1f608cac?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1829&q=80",
+            "githubUrl": null,
+            "createdAt": "2022-11-23T13:09:46.308Z",
+            "updatedAt": "2022-11-23T13:09:46.308Z"
+          }
+        },
+        "postLikes": []
       },
       {
-        "id": 2,
-        "content": "Hello from the void!",
-        "author": {
-          "id": 5,
+        "content": "\nwhat's with these dots someone should get rid of them..",
+        "id": 181,
+        "createdAt": "2022-11-30T17:40:39.302Z",
+        "postComments": [],
+        "edited": true,
+        "user": {
+          "id": 1,
+          "email": "teacher@teacher.com",
+          "password": "$2b$08$0QxmZC0093nnL3L7IF7yiuhJPXCF6QLaaNaOCFdvY.OCCy/ifLEK6",
+          "role": "TEACHER",
           "cohortId": null,
-          "firstName": "Nathan",
-          "lastName": "King",
-          "email": "ngk2@gmail.com",
-          "bio": "Hello world",
-          "githubUrl": "https://github.com/vherus",
-          "role": "STUDENT"
-        }
+          "createdAt": "2022-11-23T13:09:44.237Z",
+          "updatedAt": "2022-11-23T13:09:44.238Z",
+          "profile": {
+            "id": 1,
+            "userId": 1,
+            "firstName": "Teacher",
+            "lastName": "Boolean",
+            "bio": "If dinosaurs are so great how come more sweeties are based on aliens?",
+            "profileUrl": "https://images.unsplash.com/photo-1614027164847-1b28cfe1df60?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=972&q=80",
+            "githubUrl": null,
+            "createdAt": "2022-11-23T13:09:44.664Z",
+            "updatedAt": "2022-11-23T13:09:44.665Z"
+          }
+        },
+        "postLikes": []
+      },
+      {
+        "content": "Wish there were other people on here :(",
+        "id": 180,
+        "createdAt": "2022-11-30T17:40:13.979Z",
+        "postComments": [],
+        "edited": true,
+        "user": {
+          "id": 1,
+          "email": "teacher@teacher.com",
+          "password": "$2b$08$0QxmZC0093nnL3L7IF7yiuhJPXCF6QLaaNaOCFdvY.OCCy/ifLEK6",
+          "role": "TEACHER",
+          "cohortId": null,
+          "createdAt": "2022-11-23T13:09:44.237Z",
+          "updatedAt": "2022-11-23T13:09:44.238Z",
+          "profile": {
+            "id": 1,
+            "userId": 1,
+            "firstName": "Teacher",
+            "lastName": "Boolean",
+            "bio": "If dinosaurs are so great how come more sweeties are based on aliens?",
+            "profileUrl": "https://images.unsplash.com/photo-1614027164847-1b28cfe1df60?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=972&q=80",
+            "githubUrl": null,
+            "createdAt": "2022-11-23T13:09:44.664Z",
+            "updatedAt": "2022-11-23T13:09:44.665Z"
+          }
+        },
+        "postLikes": []
       }
     ]
   }
