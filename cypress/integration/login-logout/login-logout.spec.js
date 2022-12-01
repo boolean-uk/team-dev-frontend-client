@@ -35,7 +35,7 @@ describe('User Login Logout', () => {
       cy.url().should('eq', `${Cypress.config('baseUrl')}/posts`)
     })
 
-    it('can log out after login', async () => {
+    it('can log out after login', () => {
       cy.get('#user-registration-link').click()
       cy.url().should('eq', `${Cypress.config('baseUrl')}/signup`)
 
@@ -55,7 +55,7 @@ describe('User Login Logout', () => {
       cy.get('#user-submit-button').click()
 
       cy.url().should('eq', `${Cypress.config('baseUrl')}/posts`)
-      await cy.wait('@getPosts').its('response.statusCode').should('equal', 200)
+      cy.wait('@getPosts').its('response.statusCode').should('equal', 200)
 
       cy.get('#user-signout-button').click()
       cy.url().should('eq', `${Cypress.config('baseUrl')}/`)
