@@ -21,16 +21,8 @@
   gap: 20px;
 }
 
-.profile-picture-container,
-.single-post-author-img-container,
-.new-comment-user-img-container,
-.comment-profile-img-container {
-  border: solid white 2px;
-  border-radius: 50%;
-  height: 50px;
-  width: 50px;
-  padding-top: 10px;
-  margin-top: 3px;
+.profile-picture-container {
+  text-align: left;
 }
 
 .single-post-author-img-container {
@@ -132,11 +124,10 @@
 }
 
 .posts-list {
-  margin: 20px;
+  margin: 0px
 }
 
 .post-item {
-  white-space: pre;
   white-space: pre;
 }
 
@@ -157,6 +148,13 @@
   display: grid;
   grid-template-columns: 50px auto 1fr;
   margin: 20px 0;
+}
+
+.comment-text {
+  padding: 20px;
+  border: 2px solid white;
+  border-radius: 10px;
+  margin-left: 30px;
 }
 
 .comment-text {

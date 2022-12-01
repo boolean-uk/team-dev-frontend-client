@@ -32,6 +32,24 @@ function ProfileEdit({ loggedInUser }) {
     )
   }
 
+  // Authentication start
+  if (loggedInUser.role === 'STUDENT' && loggedInUser.id !== profileToEdit.id) {
+    navigate(`/profile/${profileToEdit.id}`)
+  }
+
+  let cohortDisabled = false
+  let passwordDisabled = false
+
+  if (loggedInUser.role === 'STUDENT') {
+    cohortDisabled = true
+  }
+
+  if (loggedInUser.role === 'TEACHER' && loggedInUser.id !== profileToEdit.id) {
+    passwordDisabled = true
+  }
+
+  // Authentication end
+
   const handleChange = (e) => {
     const name = e.target.name
     let value = e.target.value
@@ -65,7 +83,7 @@ function ProfileEdit({ loggedInUser }) {
   return (
     <>
       <Header loggedInUser={loggedInUser} />
-      <h2>Profile</h2>
+      <h2 className="profile-h2">Profile</h2>
 
       <form onSubmit={handleSubmit}>
         <div className="container">
@@ -75,7 +93,7 @@ function ProfileEdit({ loggedInUser }) {
               <h2>
                 {profileToEdit.firstName} {profileToEdit.lastName}
               </h2>
-              <p>{profileToEdit.role}</p>
+              <p className="profile--display_para">{profileToEdit.role}</p>
             </div>
           </div>
           <div className="edit"></div>
@@ -83,8 +101,11 @@ function ProfileEdit({ loggedInUser }) {
           <div className="basic-info">
             <hr />
             <h2>Basic Info</h2>
-            <label htmlFor="profileUrl">Profile Picture: </label>
+            <label htmlFor="profileUrl" className="edit--form__label">
+              Profile Picture:{' '}
+            </label>
             <input
+              className="edit--form__input"
               id="profileUrl"
               name="profileUrl"
               type="url"
@@ -93,8 +114,11 @@ function ProfileEdit({ loggedInUser }) {
               value={profileToEdit.profileUrl || ''}
               required
             />
-            <label htmlFor="firstName">First Name: </label>
+            <label htmlFor="firstName" className="edit--form__label">
+              First Name:{' '}
+            </label>
             <input
+              className="edit--form__input"
               id="firstName"
               name="firstName"
               type="text"
@@ -103,8 +127,11 @@ function ProfileEdit({ loggedInUser }) {
               value={profileToEdit.firstName || ''}
               required
             />
-            <label htmlFor="lastName">Last Name: </label>
+            <label htmlFor="lastName" className="edit--form__label">
+              Last Name:{' '}
+            </label>
             <input
+              className="edit--form__input"
               id="lastName"
               name="lastName"
               type="text"
@@ -113,8 +140,11 @@ function ProfileEdit({ loggedInUser }) {
               value={profileToEdit.lastName || ''}
               required
             />
-            <label htmlFor="userName">Username: </label>
+            <label htmlFor="userName" className="edit--form__label">
+              Username:{' '}
+            </label>
             <input
+              className="edit--form__input"
               id="userName"
               name="userName"
               type="text"
@@ -122,8 +152,11 @@ function ProfileEdit({ loggedInUser }) {
               placeholder="JohnDeer"
               value={profileToEdit.userName || ''}
             />
-            <label htmlFor="githubUrl">Github: </label>
+            <label htmlFor="githubUrl" className="edit--form__label">
+              Github:{' '}
+            </label>
             <input
+              className="edit--form__input"
               id="githubUrl"
               name="githubUrl"
               type="url"
@@ -136,8 +169,11 @@ function ProfileEdit({ loggedInUser }) {
             <hr />
             <h2>Training info</h2>
 
-            <label htmlFor="role">Role: </label>
+            <label htmlFor="role" className="edit--form__label">
+              Role:{' '}
+            </label>
             <select
+              className="edit--form__select"
               name="role"
               value={profileToEdit.role || ''}
               onChange={handleChange}
@@ -146,8 +182,11 @@ function ProfileEdit({ loggedInUser }) {
               <option>TEACHER</option>
               <option>STUDENT</option>
             </select>
-            <label htmlFor="specialism">Specialism: </label>
+            <label htmlFor="specialism" className="edit--form__label">
+              Specialism:{' '}
+            </label>
             <input
+              className="edit--form__input"
               id="specialism"
               name="specialism"
               type="text"
@@ -157,8 +196,15 @@ function ProfileEdit({ loggedInUser }) {
             />
             {cohorts && (
               <>
-                <label htmlFor="cohortId">Cohort: </label>
-                <select name="cohortId" onChange={handleChange}>
+                <label htmlFor="cohortId" className="edit--form__label">
+                  Cohort:{' '}
+                </label>
+                <select
+                  className="edit--form__select"
+                  name="cohortId"
+                  onChange={handleChange}
+                  disabled={cohortDisabled}
+                >
                   <option>Select Cohort...</option>
                   {cohorts.map((cohort) => {
                     const { id, cohortName } = cohort
@@ -172,16 +218,22 @@ function ProfileEdit({ loggedInUser }) {
               </>
             )}
 
-            <label htmlFor="startDate">Start date: </label>
+            <label htmlFor="startDate" className="edit--form__label">
+              Start date:{' '}
+            </label>
             <input
+              className="edit--form__input"
               id="startDate"
               name="startDate"
               type="date"
               onChange={handleChange}
               value={profileToEdit.startDate || ''}
             />
-            <label htmlFor="endDate">End date: </label>
+            <label htmlFor="endDate" className="edit--form__label">
+              End date:{' '}
+            </label>
             <input
+              className="edit--form__input"
               id="endDate"
               name="endDate"
               type="date"
@@ -192,8 +244,11 @@ function ProfileEdit({ loggedInUser }) {
           <div className="contact-info">
             <hr />
             <h2>Contact info</h2>
-            <label htmlFor="email">Email: </label>
+            <label htmlFor="email" className="edit--form__label">
+              Email:{' '}
+            </label>
             <input
+              className="edit--form__input"
               id="email"
               name="email"
               type="email"
@@ -202,8 +257,11 @@ function ProfileEdit({ loggedInUser }) {
               value={profileToEdit.email || ''}
               required
             />
-            <label htmlFor="mobile">Mobile: </label>
+            <label htmlFor="mobile" className="edit--form__label">
+              Mobile:{' '}
+            </label>
             <input
+              className="edit--form__input"
               id="mobile"
               name="mobile"
               type="tel"
@@ -211,8 +269,12 @@ function ProfileEdit({ loggedInUser }) {
               placeholder="07123456789"
               value={profileToEdit.mobile || ''}
             />
-            <label htmlFor="password">New Password: </label>
+            <label htmlFor="password" className="edit--form__label">
+              New Password:{' '}
+            </label>
             <input
+              disabled={passwordDisabled}
+              className="edit--form__input"
               id="password"
               name="password"
               type="password"
@@ -223,8 +285,11 @@ function ProfileEdit({ loggedInUser }) {
           <div className="bio">
             <hr />
             <h2>Bio</h2>
-            <label htmlFor="biography">Bio: </label>
+            <label htmlFor="biography" className="edit--form__label">
+              Bio:{' '}
+            </label>
             <textarea
+              className="edit--form__textarea"
               cols={40}
               rows={11}
               id="biography"
