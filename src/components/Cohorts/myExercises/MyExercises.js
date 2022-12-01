@@ -2,14 +2,14 @@ import { useEffect, useState } from 'react'
 import client from '../../../utils/client'
 import './exercises.css'
 
-function MyExercises({ user }) {
+function MyExercises({ User }) {
   const [myExercises, setMyExercises] = useState([])
   useEffect(() => {
     client
-      .get(`/cohorts/${user.id}/cohortExercises`)
+      .get(`/cohorts/${User.id}/cohortExercises`)
       .then((res) => setMyExercises(res.data.data.cohortExercises))
       .catch((err) => console.log(err.response))
-  }, [user.id])
+  }, [User.id])
 
   return (
     <div className="exercises-list">

@@ -4,7 +4,6 @@ import './teachers.css'
 
 import StudentsList from '../StudentList/StudentsList'
 import NavigationRail from '../../NavigationRail/NavigationRail'
-import MyExercises from '../myExercises/MyExercises'
 
 function CohortsPageTeachers({ loggedInUser }) {
   return (
@@ -36,7 +35,6 @@ function CohortsPageTeachers({ loggedInUser }) {
               renderAllBtn={true}
             />
           </div>
-          <MyExercises user={loggedInUser} />
         </section>
       </main>
     </>
