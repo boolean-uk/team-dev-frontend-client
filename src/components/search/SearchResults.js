@@ -1,13 +1,15 @@
 import Header from '../Header/Header'
 import NavigationRail from '../NavigationRail/NavigationRail'
 import { useLocation, useSearchParams } from 'react-router-dom'
-
+import client from '../../utils/client'
 import './styles/SearchResults.css'
 import { useEffect, useState } from 'react'
 
 function SearchResults({ loggedInUser }) {
   const [searchQuery, setSearchQuery] = useState('')
   const [searchParams, setSearchParams] = useSearchParams()
+  const [people, setPeople] = useState(null)
+  const [cohorts, setCohorts] = useState(null)
 
   const location = useLocation()
 
@@ -15,14 +17,32 @@ function SearchResults({ loggedInUser }) {
     setSearchParams({ query: location.state })
   }, [])
 
+  useEffect(() => {
+    client.get('/users').then((data) => {
+      setPeople(data.data.data.users)
+    })
+    client.get('/cohorts').then((data) => {
+      setCohorts(data.data.data)
+    })
+  }, [searchQuery])
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    setSearchParams({ query: searchQuery })
+  }
+
   return (
     <>
       <Header loggedInUser={loggedInUser} />
-
       <NavigationRail user={loggedInUser} />
       <h1> Search results</h1>
-      <form>
-        <input placeholder="Search here..." type="text" />
+      <form onSubmit={handleSubmit}>
+        <input
+          placeholder="Search here..."
+          type="text"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
         {/* TODO: Possibly use a search icon here */}
         <button type="submit" className="button">
           Search
