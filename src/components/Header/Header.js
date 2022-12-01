@@ -21,7 +21,8 @@ const Header = ({ companyName, loggedInUser }) => {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    nav('/search', { state: query })
+    const params = new URLSearchParams({ query })
+    nav({ pathname: '/search', search: params.toString() })
   }
 
   return (

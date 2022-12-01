@@ -1,21 +1,17 @@
 import Header from '../Header/Header'
 import NavigationRail from '../NavigationRail/NavigationRail'
-import { useLocation, useSearchParams } from 'react-router-dom'
+import { useSearchParams } from 'react-router-dom'
 import client from '../../utils/client'
 import './styles/SearchResults.css'
 import { useEffect, useState } from 'react'
 
 function SearchResults({ loggedInUser }) {
   const [searchQuery, setSearchQuery] = useState('')
-  const [searchParams, setSearchParams] = useSearchParams()
+  const setSearchParams = useSearchParams()[1]
   const [people, setPeople] = useState(null)
   const [cohorts, setCohorts] = useState(null)
-  const [peopleDisplay, setPeopleDisplay] = useState(null)
-  const location = useLocation()
-
-  useEffect(() => {
-    setSearchParams({ query: location.state })
-  }, [])
+  const [peopleDisplay, setPeopleDisplay] = useState([])
+  const [cohortsDisplay, setCohortsDisplay] = useState([])
 
   useEffect(() => {
     client.get('/users').then((data) => {
@@ -29,18 +25,48 @@ function SearchResults({ loggedInUser }) {
   const handleSubmit = (e) => {
     e.preventDefault()
     setSearchParams({ query: searchQuery })
+
+    // Filtering people
     const filteredPeopleByFirstName = people.filter((person) => {
       return person.firstName.toLowerCase().includes(searchQuery.toLowerCase())
     })
     const filteredPeopleByLastName = people.filter((person) => {
       return person.lastName.toLowerCase().includes(searchQuery.toLowerCase())
     })
+
+    // Checking that there are no duplicate entries
     const filteredPeople = [
       ...filteredPeopleByFirstName,
       ...filteredPeopleByLastName
     ]
     const filteredPeopleUnique = [...new Set(filteredPeople)]
     setPeopleDisplay(filteredPeopleUnique)
+
+    // Filtering cohorts
+    const filteredCohortsByName = cohorts.filter((cohort) => {
+      return cohort.cohortName.toLowerCase().includes(searchQuery.toLowerCase())
+    })
+    setCohortsDisplay(filteredCohortsByName)
+  }
+
+  function renderCohort() {
+    if (loggedInUser.role === 'STUDENT') {
+      return <></>
+    } else if (loggedInUser.role === 'TEACHER') {
+      return (
+        <>
+          <h3>Cohorts:</h3>
+          <hr className="results--divider" />
+          {cohortsDisplay.length > 0
+            ? cohortsDisplay.map((cohort) => {
+                // TODO: Add component SearchResult here, which we will pass the above
+                // data into to create each li
+                return <p key={cohort.id}>{cohort.cohortName}</p>
+              })
+            : 'no cohorts to display'}
+        </>
+      )
+    }
   }
 
   return (
@@ -63,20 +89,15 @@ function SearchResults({ loggedInUser }) {
       <div className="results--container">
         <h3>People:</h3>
         <hr className="results--divider" />
-        {/* TODO: Call SearchResult component here using map to determine how many 
-        users to display*/}
         {peopleDisplay.length > 0
           ? peopleDisplay.map((person) => {
-              return <p>{person.firstName}</p>
+              // TODO: Add component SearchResult here, which we will pass the above
+              // data into to create each li
+              return <p key={person.id}>{person.firstName}</p>
             })
           : 'no people to display'}
       </div>
-      <div className="results--container">
-        <h3>Cohorts:</h3>
-        <hr className="results--divider" />
-        {/* TODO: Call SearchResult component here using map to determine how many 
-        cohorts to display */}
-      </div>
+      <div className="results--container">{renderCohort()}</div>
     </>
   )
 }
