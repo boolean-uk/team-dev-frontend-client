@@ -76,7 +76,10 @@ function StudentsList({ renderAddBtn, renderInfo, renderAllBtn, user }) {
   return (
     <>
       {renderStudentsPopup ? (
-        <AddStudentPopUp setRenderStudentsPopup={setRenderStudentsPopup} />
+        <AddStudentPopUp
+          setRenderStudentsPopup={setRenderStudentsPopup}
+          students={students}
+        />
       ) : null}
       {asStudent === true ? <h1>My cohort</h1> : <h1>Students</h1>}
 

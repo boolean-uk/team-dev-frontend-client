@@ -2,12 +2,21 @@ import { useState } from 'react'
 import client from '../../../utils/client'
 import './styles.css'
 
-export default function AddStudentPopUp({ setRenderStudentsPopup, cohort }) {
+export default function AddStudentPopUp({
+  setRenderStudentsPopup,
+  cohort,
+  students
+}) {
   const [data, setData] = useState({})
-
+  console.log('hello', students)
   const submitHandler = (event) => {
     event.preventDefault()
-    console.log('hello', data)
+    console.log('hello')
+    // fetch('http://localhost:4000/users/')
+    //   .then((res) => res.json())
+    //   .then((students) => {
+    //     console.log('students database', students)
+    //   })
 
     // client
     //   .post('/cohorts', data)
