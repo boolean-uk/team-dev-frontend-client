@@ -1,18 +1,26 @@
-import { useState } from 'react'
-import client from '../../../utils/client'
+import { useParams } from 'react-router-dom'
 import './addStudentPopUp.css'
+import client from '../../../utils/client'
 
 export default function AddStudentPopUp({
   setRenderStudentsPopup,
-  cohort,
-  students
+  students,
+  updateStudentsList
 }) {
-  console.log('cohort', cohort)
   const studentsWithoutCohort = students.filter((student) => {
     return student.cohortId === null
   })
-  console.log('id', studentsWithoutCohort.id)
+  const urlCohortId = useParams()
+  const intCohortId = {
+    cohortId: parseInt(urlCohortId.cohortId)
+  }
 
+  console.log('useparams', intCohortId, urlCohortId)
+  const handleClick = (studentWC) => {
+    client.patch(`/users/${studentWC.id}`, intCohortId).then(() => {
+      updateStudentsList()
+    })
+  }
   return (
     <div className="student-popup">
       <h2>Students without Cohorts</h2>
@@ -28,8 +36,11 @@ export default function AddStudentPopUp({
         {studentsWithoutCohort.map((studentWC) => {
           console.log('list', studentWC)
           return (
-            <li className="student-popup-list">
-              {studentWC.firstName}, {studentWC.lastName}
+            <li
+              className="student-popup-list"
+              onClick={() => handleClick(studentWC)}
+            >
+              {studentWC.firstName} {studentWC.lastName}
             </li>
           )
         })}

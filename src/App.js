@@ -10,6 +10,7 @@ import { useState } from 'react'
 import { Routes, Route, Navigate, Outlet } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 import CohortsPageTeachers from './components/Cohorts/CohortsPage/CohortsPageTeacher'
+import StudentsList from './components/Cohorts/StudentList/StudentsList'
 
 function App() {
   // fetch logged in user from local storage
@@ -63,6 +64,12 @@ function App() {
                 <h3>
                   Go to <i>/posts/</i>
                 </h3>
+                <StudentsList
+                  user={loggedInUser}
+                  renderAddBtn={true}
+                  renderInfo={'simpleInfo'}
+                  renderAllBtn={true}
+                />
               </>
             }
           />

@@ -58,7 +58,6 @@ function CohortsList({ renderHeader, renderAddButton }) {
         {/* If not empty, continue with map */}
         {cohortsResponse.length !== 0 ? (
           cohortsResponse.data.map((cohort, index) => {
-            console.log('cohort', cohort)
             return <CohortListItem cohort={cohort} key={index} />
           })
         ) : (
