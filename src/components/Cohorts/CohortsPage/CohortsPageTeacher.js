@@ -1,6 +1,7 @@
 import Header from '../../Header/Header'
 import CohortsList from '../../cohortsList/CohortsList'
 import './teachers.css'
+
 import StudentsList from '../StudentList/StudentsList'
 import NavigationRail from '../../NavigationRail/NavigationRail'
 
