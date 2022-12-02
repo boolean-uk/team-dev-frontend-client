@@ -1,5 +1,6 @@
 import client from '../../../utils/client'
 import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 import { StudentListItem } from './StudentListItem'
 import './list.css'
 import AddStudentPopUp from '../AddStudentPopUp/AddStudentPopUp'
@@ -9,20 +10,29 @@ function StudentsList({ renderAddBtn, renderInfo, renderAllBtn, user }) {
   const [cohort, setCohort] = useState([])
   const [students, setStudents] = useState([])
   const [renderStudentsPopup, setRenderStudentsPopup] = useState(false)
-
-  const cohortId = user.cohortId
+  const urlParams = useParams()
   const asStudent = user.role === 'STUDENT' ? true : false
 
   useEffect(() => {
-    client.get(`/cohorts/${cohortId}`).then((cohortsData) => {
-      const cohortData = cohortsData.data.data
-      const startDateMS = Date.parse(cohortData.startDate)
-      let startDate = new Date(startDateMS).toString().slice(3, 15)
-      const endDateMS = Date.parse(cohortData.endDate)
-      let endDate = new Date(endDateMS).toString().slice(3, 15)
-      setCohort({ ...cohortData, startDate, endDate })
-    })
-
+    if (asStudent) {
+      client.get(`/cohorts/${user.cohortId}`).then((cohortsData) => {
+        const cohortData = cohortsData.data.data
+        const startDateMS = Date.parse(cohortData.startDate)
+        let startDate = new Date(startDateMS).toString().slice(3, 15)
+        const endDateMS = Date.parse(cohortData.endDate)
+        let endDate = new Date(endDateMS).toString().slice(3, 15)
+        setCohort({ ...cohortData, startDate, endDate })
+      })
+    } else {
+      client.get(`/cohorts/${urlParams.cohortId}`).then((cohortsData) => {
+        const cohortData = cohortsData.data.data
+        const startDateMS = Date.parse(cohortData.startDate)
+        let startDate = new Date(startDateMS).toString().slice(3, 15)
+        const endDateMS = Date.parse(cohortData.endDate)
+        let endDate = new Date(endDateMS).toString().slice(3, 15)
+        setCohort({ ...cohortData, startDate, endDate })
+      })
+    }
     client.get('/users').then((usersData) => {
       const allUsers = usersData.data.data.users
       const studentsOnly = allUsers.filter((user) => {
@@ -30,14 +40,14 @@ function StudentsList({ renderAddBtn, renderInfo, renderAllBtn, user }) {
       })
       setStudents(studentsOnly)
       const filteredCohort = studentsOnly.filter((student) => {
-        return student.cohortId === cohortId
+        return student.cohortId === user.cohortId
       })
       setCohortStudents(filteredCohort)
     })
-  }, [cohortId])
+  }, [user.cohortId])
 
   function updateStudentsList() {
-    client.get(`/cohorts/${cohortId}`).then((cohortsData) => {
+    client.get(`/cohorts/${user.cohortId}`).then((cohortsData) => {
       const cohortData = cohortsData.data.data
       const startDateMS = Date.parse(cohortData.startDate)
       let startDate = new Date(startDateMS).toString().slice(3, 15)
@@ -53,7 +63,7 @@ function StudentsList({ renderAddBtn, renderInfo, renderAllBtn, user }) {
       })
       setStudents(studentsOnly)
       const filteredCohort = studentsOnly.filter((student) => {
-        return student.cohortId === cohortId
+        return student.cohortId === user.cohortId
       })
       setCohortStudents(filteredCohort)
     })

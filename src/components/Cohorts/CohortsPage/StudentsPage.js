@@ -3,6 +3,7 @@ import TeachersList from '../../teachersList/TeachersList'
 import './students.css'
 import NavigationRail from '../../NavigationRail/NavigationRail'
 import Header from '../../Header/Header'
+import MyExercises from '../myExercises/MyExercises'
 
 export const StudentsCohortPage = ({ loggedInUser }) => {
   return (
@@ -22,7 +23,9 @@ export const StudentsCohortPage = ({ loggedInUser }) => {
           <div className="teachers-list-space">
             <TeachersList renderHeading={true} />
           </div>
-          <div className="exercises-list-space">exercises here</div>
+          <div className="exercises-list-space">
+            <MyExercises User={loggedInUser} />
+          </div>
         </section>
       </div>
     </>
