@@ -22,7 +22,7 @@ function SearchResults({ loggedInUser }) {
     } else {
       return
     }
-  }, [])
+  }, [searchParams])
 
   useEffect(() => {
     if (searchTerms) {
@@ -54,7 +54,7 @@ function SearchResults({ loggedInUser }) {
       const filteredPeopleUnique = [...new Set(filteredPeople)]
       setPeopleDisplay(filteredPeopleUnique)
     }
-  }, [people])
+  }, [people, searchTerms])
 
   useEffect(() => {
     if (cohorts) {
@@ -65,7 +65,7 @@ function SearchResults({ loggedInUser }) {
       })
       setCohortsDisplay(filteredCohortsByName)
     }
-  }, [cohorts])
+  }, [cohorts, searchTerms])
 
   const handleSubmit = (e) => {
     e.preventDefault()
