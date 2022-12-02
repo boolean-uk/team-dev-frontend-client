@@ -2,26 +2,14 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import client from '../../utils/client'
 
-// NameClass for a toggle function that works with css to make like button blue will also need to be pressnt in the jsx
-// {need to go over toggling and conditional rendering}
-
-// need to create a get request to the API to fetch the list of likes on post already
-// do I need to do that or is this a static post so it doesnt exist in api???
-// use a check box to show wether the like button is pressed and use toggle to have checked or unchceked
-
 export default function PostLikes() {
   const [likeCount, setLikeCount] = useState(0)
 
-  const handleLike = () => {
-    console.log('this was clicked!')
-  }
-
   // currently only checking likes on postId  6
-  //   6 needs to changed to current postId using string interpolation
+  // 6 needs to changed to current postId using string interpolation
   useEffect(() => {
     client.get('/posts/postLike').then((data) => {
       const allLikes = data.data.data.postLikes
-      console.log(data)
       const filterLikes = allLikes.filter((likeObject) => {
         if (likeObject.postId === 6 && likeObject.active === true) {
           return true
@@ -30,13 +18,47 @@ export default function PostLikes() {
       setLikeCount(filterLikes.length)
     })
   }, [])
+  //  ^ not sure what the use Effect should be refreshed on yet
+  //   this useEffect is used to display like count
 
-  //   need to get the click
+  // need to interpolate acc post id into this later
+  const LikeandUnlikingPost = () => {
+    client.post('/posts/6/postLike').then((data) => {
+      const postLikeData = data.data.data
+      if (postLikeData.active === false) {
+        return true
+      }
+    })
+  }
+
+  //  both liking and unliking in one big fucntion with 1 if statement that checks wether like is active or not => POST
+
+  //  LIKING A POST:
+  //   need to map through the post object and check for its active status
+  //   create function to use in  onClick that sends POST request when heart icon is clicked
+  //   request must be sent to posts/{postId}/postLikes { for now postId = 6}
+
+  //   UN-LIKING A POST:
+  //   else
+  //    if statements => not active
+
   return (
     <div className="like-container">
-      <div className="like-icon" onClick={handleLike}></div>
+      <div className="like-icon" onClick={LikeandUnlikingPost}></div>
       <div className="like">Like</div>
       <div className="number-of-likes">{likeCount} likes</div>
     </div>
   )
 }
+
+// press on like
+// get all like data for specific post
+// use if statement that checks if active === false
+// return true
+// need to make sure fucntion is being called in the onClick
+// i am guessing once I have made it true then it should just like the post???
+// need to check live server to see if it works
+
+// onle needs one else to capture all unlikes
+// unlike will also be a POST not sure about the code in the slightest
+// will need some check???
