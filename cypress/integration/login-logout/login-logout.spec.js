@@ -1,7 +1,7 @@
 describe('User Login Logout', () => {
   describe('a valid user', () => {
     beforeEach(() => {
-      cy.intercept('POST', 'http://localhost:4000/user', {
+      cy.intercept('POST', 'http://localhost:4000/users', {
         fixture: 'registration/valid-user.json'
       }).as('register')
       cy.intercept('POST', 'http://localhost:4000/login', {
