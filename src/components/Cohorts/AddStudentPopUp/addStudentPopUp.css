@@ -1,0 +1,47 @@
+.student-popup {
+  background-color: #282c34c9;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  align-items: center;
+  justify-content: center;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100vw;
+  height: 100vh;
+}
+
+.exit-button-scapu {
+  display: flex;
+  background-color: #f24646;
+  box-sizing: content-box;
+
+  cursor: pointer;
+
+  position: fixed;
+  top: 0;
+  right: 0;
+
+  scale: 2;
+
+  margin: 4rem 4rem 0 0;
+  padding: 1rem;
+
+  border-radius: 100%;
+}
+.student-popup-ul {
+  border: 1px solid white;
+  border-radius: 10px;
+  padding: 20px;
+  list-style: none
+}
+.student-popup-list {
+  cursor: pointer;
+  line-height: 3;
+  border-bottom: 1px solid white;
+}

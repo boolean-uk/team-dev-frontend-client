@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import client from '../../utils/client'
 import Header from '../Header/Header'
+import NavigationRail from '../NavigationRail/NavigationRail'
 import './styles/ProfileEdit.css'
 
 function ProfileEdit({ loggedInUser }) {
@@ -83,6 +84,9 @@ function ProfileEdit({ loggedInUser }) {
   return (
     <>
       <Header loggedInUser={loggedInUser} />
+
+      <NavigationRail user={loggedInUser} />
+
       <h2 className="profile-h2">Profile</h2>
 
       <form onSubmit={handleSubmit}>
@@ -291,7 +295,7 @@ function ProfileEdit({ loggedInUser }) {
             <textarea
               className="edit--form__textarea"
               cols={40}
-              rows={11}
+              rows={10}
               id="biography"
               name="biography"
               type="box"

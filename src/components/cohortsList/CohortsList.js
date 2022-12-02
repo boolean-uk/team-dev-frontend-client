@@ -16,7 +16,13 @@ function CohortsList({ renderHeader, renderAddButton }) {
       .catch((err) => console.log(err.response))
   }, [])
 
-  const header = <h2>Cohorts</h2>
+  function updateCohortsList() {
+    client
+      .get('/cohorts')
+      .then((res) => setCohortsResponse(res.data))
+      .catch((err) => console.log(err.response))
+  }
+
   const addButton = (
     <button
       onClick={() => {
@@ -34,11 +40,14 @@ function CohortsList({ renderHeader, renderAddButton }) {
 
       {/* {renderCohortPopup ? temporaryAddPopup : null} */}
       {renderCohortPopup ? (
-        <CohortAddPopUp setRenderCohortPopup={setRenderCohortPopup} />
+        <CohortAddPopUp
+          updateCohortsList={updateCohortsList}
+          setRenderCohortPopup={setRenderCohortPopup}
+        />
       ) : null}
 
       {/* Conditional Rendering - Header */}
-      {renderHeader ? header : null}
+      {renderHeader && <h2>Cohorts</h2>}
 
       {/* Conditional Rendering - Add Button */}
       {renderAddButton ? addButton : null}
@@ -49,6 +58,7 @@ function CohortsList({ renderHeader, renderAddButton }) {
         {/* If not empty, continue with map */}
         {cohortsResponse.length !== 0 ? (
           cohortsResponse.data.map((cohort, index) => {
+            console.log('cohort', cohort)
             return <CohortListItem cohort={cohort} key={index} />
           })
         ) : (

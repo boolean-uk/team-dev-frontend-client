@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import client from '../../utils/client'
 import Header from '../Header/Header'
+import NavigationRail from '../NavigationRail/NavigationRail'
 
 import './styles/ProfilePage.css'
 
@@ -36,6 +37,9 @@ function ProfilePage({ loggedInUser }) {
   return (
     <>
       <Header loggedInUser={loggedInUser} />
+
+      <NavigationRail user={loggedInUser} />
+
       <h2 className="profile-h2">Profile</h2>
       <div className="container">
         <div className="profile-header">
@@ -160,7 +164,9 @@ function ProfilePage({ loggedInUser }) {
         <div className="bio">
           <hr className="profile--divider" />
           <h2>Bio</h2>
-          <p className="profile--display_para">{profilePageUser.biography}</p>
+          <p className="profile--display_para profile--display_bio">
+            {profilePageUser.biography}
+          </p>
         </div>
       </div>
     </>

@@ -4,6 +4,7 @@ import RegistrationPage from './components/users/registration/RegistrationPage'
 import PostsPage from './components/posts/PostsPage'
 import ProfilePage from './components/profile/ProfilePage'
 import ProfileEdit from './components/profile/ProfileEdit'
+import SearchResults from './components/search/SearchResults'
 
 import { useState } from 'react'
 import { Routes, Route, Navigate, Outlet } from 'react-router-dom'
@@ -55,6 +56,20 @@ function App() {
         </Route>
         <Route element={<AuthenticateUser />}>
           <Route
+            path="/cohorts/:cohortId"
+            element={
+              <>
+                <h1>Page Under construction</h1>{' '}
+                <h3>
+                  Go to <i>/posts/</i>
+                </h3>
+              </>
+            }
+          />
+        </Route>
+
+        <Route element={<AuthenticateUser />}>
+          <Route
             path="/profile/:id"
             element={<ProfilePage loggedInUser={loggedInUser} />}
           />
@@ -63,6 +78,12 @@ function App() {
           <Route
             path="/profile/:id/edit"
             element={<ProfileEdit loggedInUser={loggedInUser} />}
+          />
+        </Route>
+        <Route element={<AuthenticateUser />}>
+          <Route
+            path="/search"
+            element={<SearchResults loggedInUser={loggedInUser} />}
           />
         </Route>
       </Routes>
