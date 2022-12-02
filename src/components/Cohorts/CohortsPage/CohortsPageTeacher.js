@@ -14,7 +14,7 @@ function CohortsPageTeachers({ loggedInUser }) {
 
       {/*may not use nav bar*/}
       <main className="teachers-cohorts-main">
-        <section className="content">
+        <section className="teachers-cohorts-content">
           <h2 className="teachers-cohorts-h2">
             <span className="teachers-cohorts-title1">Cohorts</span>
             <span className="teachers-cohorts-title2"> Students</span>
