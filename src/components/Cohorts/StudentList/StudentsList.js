@@ -2,11 +2,13 @@ import client from '../../../utils/client'
 import { useEffect, useState } from 'react'
 import { StudentListItem } from './StudentListItem'
 import './list.css'
+import AddStudentPopUp from '../AddStudentPopUp/AddStudentPopUp'
 
 function StudentsList({ renderAddBtn, renderInfo, renderAllBtn, user }) {
   const [cohortStudents, setCohortStudents] = useState([])
   const [cohort, setCohort] = useState([])
   const [students, setStudents] = useState([])
+  const [renderStudentsPopup, setRenderStudentsPopup] = useState(false)
 
   const cohortId = user.cohortId
   const asStudent = user.role === 'STUDENT' ? true : false
@@ -34,9 +36,38 @@ function StudentsList({ renderAddBtn, renderInfo, renderAllBtn, user }) {
     })
   }, [cohortId])
 
+  function updateStudentsList() {
+    client.get(`/cohorts/${cohortId}`).then((cohortsData) => {
+      const cohortData = cohortsData.data.data
+      const startDateMS = Date.parse(cohortData.startDate)
+      let startDate = new Date(startDateMS).toString().slice(3, 15)
+      const endDateMS = Date.parse(cohortData.endDate)
+      let endDate = new Date(endDateMS).toString().slice(3, 15)
+      setCohort({ ...cohortData, startDate, endDate })
+    })
+
+    client.get('/users').then((usersData) => {
+      const allUsers = usersData.data.data.users
+      const studentsOnly = allUsers.filter((user) => {
+        return user.role === 'STUDENT'
+      })
+      setStudents(studentsOnly)
+      const filteredCohort = studentsOnly.filter((student) => {
+        return student.cohortId === cohortId
+      })
+      setCohortStudents(filteredCohort)
+    })
+  }
+
   const moreButtons = (
     <nav className="teacher-nav">
-      <button className="add-btn">
+      <button
+        className="add-btn"
+        onClick={() => {
+          // When the state is true, the popup will appear
+          setRenderStudentsPopup(true)
+        }}
+      >
         <span className="material-symbols-outlined">add</span>
         <span>Add</span>
       </button>
@@ -76,6 +107,14 @@ function StudentsList({ renderAddBtn, renderInfo, renderAllBtn, user }) {
           <h1 className="header-list">My cohort</h1>
         ) : (
           <h1 className="header-list">Students</h1>
+        )}
+
+        {renderStudentsPopup && (
+          <AddStudentPopUp
+            setRenderStudentsPopup={setRenderStudentsPopup}
+            students={students}
+            updateStudentsList={updateStudentsList}
+          />
         )}
 
         {renderInfo === 'fullInfo' && fullInfo}
