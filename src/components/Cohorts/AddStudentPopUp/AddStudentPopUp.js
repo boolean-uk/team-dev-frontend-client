@@ -16,9 +16,14 @@ export default function AddStudentPopUp({
   }
 
   const handleClick = (student) => {
-    client.patch(`/users/${student.id}`, intCohortId).then(() => {
-      updateStudentsList()
-    })
+    client
+      .patch(`/users/${student.id}`, intCohortId)
+      .then(() => {
+        updateStudentsList()
+      })
+      .catch((err) => {
+        console.log('Error while patching user Cohort: ', err)
+      })
   }
 
   return (
