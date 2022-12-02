@@ -6,7 +6,7 @@ import InputBase from '@mui/material/InputBase'
 import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 
-const Header = ({ companyName, loggedInUser }) => {
+const Header = ({ companyName, loggedInUser, searchBarVisible = true }) => {
   const [query, setQuery] = useState('')
 
   let nav = useNavigate()
@@ -42,29 +42,31 @@ const Header = ({ companyName, loggedInUser }) => {
             <p>{companyName}</p>
           </Typography>
         </Box>
-        <form onSubmit={handleSubmit}>
-          <Box
-            sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignContent: 'center'
-            }}
-          >
-            <Box sx={{ backgroundColor: 'white' }}>
-              <InputBase
-                placeholder="Search…"
-                inputProps={{ 'aria-label': 'search' }}
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-              />
+        {searchBarVisible && (
+          <form onSubmit={handleSubmit}>
+            <Box
+              sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignContent: 'center'
+              }}
+            >
+              <Box sx={{ backgroundColor: 'white' }}>
+                <InputBase
+                  placeholder="Search…"
+                  inputProps={{ 'aria-label': 'search' }}
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                />
+              </Box>
+              <Box>
+                <Button type="submit" variant="contained">
+                  Search User
+                </Button>
+              </Box>
             </Box>
-            <Box>
-              <Button type="submit" variant="contained">
-                Search User
-              </Button>
-            </Box>
-          </Box>
-        </form>
+          </form>
+        )}
 
         <Box>
           <Stack spacing={2} direction="row">

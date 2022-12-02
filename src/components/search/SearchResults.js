@@ -1,9 +1,13 @@
+import { useSearchParams } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+
 import Header from '../Header/Header'
 import NavigationRail from '../NavigationRail/NavigationRail'
-import { useSearchParams } from 'react-router-dom'
 import client from '../../utils/client'
+import SearchResultPerson from './SearchResultPerson'
+import SearchResultCohort from './SearchResultCohort'
+
 import './styles/SearchResults.css'
-import { useEffect, useState } from 'react'
 
 function SearchResults({ loggedInUser }) {
   const [searchTerms, setSearchTerms] = useState('')
@@ -84,7 +88,16 @@ function SearchResults({ loggedInUser }) {
             ? cohortsDisplay.map((cohort) => {
                 // TODO: Add component SearchResult here, which we will pass the above
                 // data into to create each li
-                return <p key={cohort.id}>{cohort.cohortName}</p>
+
+                return (
+                  <>
+                    <SearchResultCohort
+                      loggedInUser={loggedInUser}
+                      cohort={cohort}
+                      key={cohort.id}
+                    />
+                  </>
+                )
               })
             : 'no cohorts to display'}
         </>
@@ -94,7 +107,7 @@ function SearchResults({ loggedInUser }) {
 
   return (
     <>
-      <Header loggedInUser={loggedInUser} />
+      <Header loggedInUser={loggedInUser} searchBarVisible={false} />
       <NavigationRail user={loggedInUser} />
       <h1> Search results</h1>
       <form onSubmit={handleSubmit}>
@@ -116,7 +129,13 @@ function SearchResults({ loggedInUser }) {
           ? peopleDisplay.map((person) => {
               // TODO: Add component SearchResult here, which we will pass the above
               // data into to create each li
-              return <p key={person.id}>{person.firstName}</p>
+              return (
+                <SearchResultPerson
+                  loggedInUser={loggedInUser}
+                  person={person}
+                  key={person.id}
+                />
+              )
             })
           : 'no people to display'}
       </div>
