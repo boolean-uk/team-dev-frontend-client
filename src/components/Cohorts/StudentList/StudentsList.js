@@ -109,13 +109,13 @@ function StudentsList({ renderAddBtn, renderInfo, renderAllBtn, user }) {
           <h1 className="header-list">Students</h1>
         )}
 
-        {renderStudentsPopup ? (
+        {renderStudentsPopup && (
           <AddStudentPopUp
             setRenderStudentsPopup={setRenderStudentsPopup}
             students={students}
             updateStudentsList={updateStudentsList}
           />
-        ) : null}
+        )}
 
         {renderInfo === 'fullInfo' && fullInfo}
         {renderInfo && renderInfo !== 'fullInfo' && simpleInfo}

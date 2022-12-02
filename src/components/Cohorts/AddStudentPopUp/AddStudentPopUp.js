@@ -10,17 +10,17 @@ export default function AddStudentPopUp({
   const studentsWithoutCohort = students.filter((student) => {
     return student.cohortId === null
   })
-  const urlCohortId = useParams()
+  const urlCohortId = useParams() // .id = "3"
   const intCohortId = {
-    id: parseInt(urlCohortId.id)
+    cohortId: parseInt(urlCohortId.id)
   }
 
-  console.log('useparams', intCohortId, urlCohortId)
-  const handleClick = (studentWC) => {
-    client.patch(`/users/${studentWC.id}`, intCohortId).then(() => {
+  const handleClick = (student) => {
+    client.patch(`/users/${student.id}`, intCohortId).then(() => {
       updateStudentsList()
     })
   }
+
   return (
     <div className="student-popup">
       <h2>Students without Cohorts</h2>
@@ -33,17 +33,21 @@ export default function AddStudentPopUp({
         Exit
       </button>
       <ul className="student-popup-ul">
-        {studentsWithoutCohort.map((studentWC) => {
-          console.log('list', studentWC)
-          return (
-            <li
-              className="student-popup-list"
-              onClick={() => handleClick(studentWC)}
-            >
-              {studentWC.firstName} {studentWC.lastName}
-            </li>
-          )
-        })}
+        {studentsWithoutCohort.length !== 0 ? (
+          studentsWithoutCohort.map((student, index) => {
+            return (
+              <li
+                key={index}
+                className="student-popup-list"
+                onClick={() => handleClick(student)}
+              >
+                {student.firstName} {student.lastName}
+              </li>
+            )
+          })
+        ) : (
+          <h4>There is no Students without Cohort.</h4>
+        )}
       </ul>
     </div>
   )
