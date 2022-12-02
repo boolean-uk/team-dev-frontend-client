@@ -6,47 +6,70 @@ import './styles/SearchResults.css'
 import { useEffect, useState } from 'react'
 
 function SearchResults({ loggedInUser }) {
-  const [searchQuery, setSearchQuery] = useState('')
-  const setSearchParams = useSearchParams()[1]
+  const [searchTerms, setSearchTerms] = useState('')
+  const [searchBarText, setSearchBarText] = useState('')
   const [people, setPeople] = useState(null)
   const [cohorts, setCohorts] = useState(null)
   const [peopleDisplay, setPeopleDisplay] = useState([])
   const [cohortsDisplay, setCohortsDisplay] = useState([])
+  const searchParams = useSearchParams()[0]
 
   useEffect(() => {
-    client.get('/users').then((data) => {
-      setPeople(data.data.data.users)
-    })
-    client.get('/cohorts').then((data) => {
-      setCohorts(data.data.data)
-    })
-  }, [searchQuery])
+    const query = searchParams.get('query')
+    if (query !== null) {
+      setSearchTerms(query)
+      setSearchBarText(query)
+    } else {
+      return
+    }
+  }, [])
+
+  useEffect(() => {
+    if (searchTerms) {
+      client.get('/users').then((data) => {
+        setPeople(data.data.data.users)
+      })
+      client.get('/cohorts').then((data) => {
+        setCohorts(data.data.data)
+      })
+    }
+  }, [searchTerms])
+
+  useEffect(() => {
+    if (people) {
+      const filteredPeopleByFirstName = people.filter((person) => {
+        return person.firstName
+          .toLowerCase()
+          .includes(searchTerms.toLowerCase())
+      })
+      const filteredPeopleByLastName = people.filter((person) => {
+        return person.lastName.toLowerCase().includes(searchTerms.toLowerCase())
+      })
+
+      // Checking that there are no duplicate entries
+      const filteredPeople = [
+        ...filteredPeopleByFirstName,
+        ...filteredPeopleByLastName
+      ]
+      const filteredPeopleUnique = [...new Set(filteredPeople)]
+      setPeopleDisplay(filteredPeopleUnique)
+    }
+  }, [people])
+
+  useEffect(() => {
+    if (cohorts) {
+      const filteredCohortsByName = cohorts.filter((cohort) => {
+        return cohort.cohortName
+          .toLowerCase()
+          .includes(searchTerms.toLowerCase())
+      })
+      setCohortsDisplay(filteredCohortsByName)
+    }
+  }, [cohorts])
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    setSearchParams({ query: searchQuery })
-
-    // Filtering people
-    const filteredPeopleByFirstName = people.filter((person) => {
-      return person.firstName.toLowerCase().includes(searchQuery.toLowerCase())
-    })
-    const filteredPeopleByLastName = people.filter((person) => {
-      return person.lastName.toLowerCase().includes(searchQuery.toLowerCase())
-    })
-
-    // Checking that there are no duplicate entries
-    const filteredPeople = [
-      ...filteredPeopleByFirstName,
-      ...filteredPeopleByLastName
-    ]
-    const filteredPeopleUnique = [...new Set(filteredPeople)]
-    setPeopleDisplay(filteredPeopleUnique)
-
-    // Filtering cohorts
-    const filteredCohortsByName = cohorts.filter((cohort) => {
-      return cohort.cohortName.toLowerCase().includes(searchQuery.toLowerCase())
-    })
-    setCohortsDisplay(filteredCohortsByName)
+    setSearchTerms(searchBarText)
   }
 
   function renderCohort() {
@@ -78,8 +101,8 @@ function SearchResults({ loggedInUser }) {
         <input
           placeholder="Search here..."
           type="text"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
+          value={searchBarText}
+          onChange={(e) => setSearchBarText(e.target.value)}
         />
         {/* TODO: Possibly use a search icon here */}
         <button type="submit" className="button">
