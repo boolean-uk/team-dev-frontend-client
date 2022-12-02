@@ -12,7 +12,7 @@ export default function AddStudentPopUp({
   })
   const urlCohortId = useParams() // .id = "3"
   const intCohortId = {
-    cohortId: parseInt(urlCohortId.id)
+    cohortId: Number(urlCohortId.id)
   }
 
   const handleClick = (student) => {
@@ -22,7 +22,7 @@ export default function AddStudentPopUp({
         updateStudentsList()
       })
       .catch((err) => {
-        console.log('Error while patching user Cohort: ', err)
+        console.error('Error while patching user Cohort: ', err)
       })
   }
 
