@@ -94,7 +94,7 @@ function SearchResults({ loggedInUser }) {
 
   return (
     <>
-      <Header loggedInUser={loggedInUser} />
+      <Header loggedInUser={loggedInUser} searchBarVisible={false} />
       <NavigationRail user={loggedInUser} />
       <h1> Search results</h1>
       <form onSubmit={handleSubmit}>
