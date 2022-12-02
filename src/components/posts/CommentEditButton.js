@@ -1,13 +1,30 @@
 import { useState } from 'react'
 
-export default function CommentEditButton({ comment, loggedInUser }) {
+export default function CommentEditButton({
+  commentEditMode,
+  setCommentEditMode,
+  deleteCommentFunction
+}) {
   const [showEditandDelete, setShowEditandDelete] = useState(false)
+  const [ShowDeleteYesOrNo, setShowDeleteYesOrNo] = useState(false)
 
   const editButtonClicked = () => {
-    console.log(`Edit button has been clicked at comment number ${comment.id}`)
     setShowEditandDelete(!showEditandDelete)
-    console.log(showEditandDelete)
+    if (ShowDeleteYesOrNo) {
+      setShowDeleteYesOrNo(false)
+    }
   }
+
+  const commentEditFunction = () => {
+    setCommentEditMode(!commentEditMode)
+    console.log('commentEditMode is', commentEditMode)
+  }
+
+  const commentDeleteFunction = () => {
+    setShowEditandDelete(false)
+    setShowDeleteYesOrNo(true)
+  }
+
   return (
     <>
       <div
@@ -20,8 +37,44 @@ export default function CommentEditButton({ comment, loggedInUser }) {
       </div>
       {showEditandDelete && (
         <>
-          <div className="editButton">edit</div>
-          <div className="deleteButton">delete</div>
+          <div
+            className="editButton"
+            onClick={() => {
+              commentEditFunction()
+            }}
+          >
+            edit
+          </div>
+          <div
+            className="deleteButton"
+            onClick={() => {
+              commentDeleteFunction()
+            }}
+          >
+            delete
+          </div>
+        </>
+      )}
+      {ShowDeleteYesOrNo && (
+        <>
+          <div className="are-you-sure">Are you sure? </div>
+          <div
+            className="editButton"
+            onClick={() => {
+              deleteCommentFunction()
+            }}
+          >
+            yes
+          </div>
+          <div
+            className="deleteButton"
+            onClick={() => {
+              setShowEditandDelete(true)
+              setShowDeleteYesOrNo(false)
+            }}
+          >
+            no
+          </div>
         </>
       )}
     </>

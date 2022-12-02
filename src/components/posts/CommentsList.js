@@ -25,8 +25,6 @@ export default function CommentsList({ post, loggedInUser }) {
     event.preventDefault()
     client
       .post(`/posts/${post.id}/comment`, { content: newComment })
-      // CHANGE THE ABOVE NUMBER ACCORDING TO WHICH POST WE ARE ON WITH INTERPOLATION
-
       .then((result) => {
         checkMoreThanFiveComments([...comments, result.data.data])
       })
@@ -76,6 +74,8 @@ export default function CommentsList({ post, loggedInUser }) {
           return (
             <Comment
               key={index}
+              comments={comments}
+              setComments={setComments}
               comment={comment}
               loggedInUser={loggedInUser}
             />
