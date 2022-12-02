@@ -38,10 +38,10 @@
   border: 1px solid white;
   border-radius: 10px;
   padding: 20px;
-  list-style: none
+  list-style: none;
 }
 .student-popup-list {
   cursor: pointer;
-  line-height: 3;
+  line-height: 50px;
   border-bottom: 1px solid white;
 }
