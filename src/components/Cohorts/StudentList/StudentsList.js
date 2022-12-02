@@ -44,7 +44,7 @@ function StudentsList({ renderAddBtn, renderInfo, renderAllBtn, user }) {
       })
       setCohortStudents(filteredCohort)
     })
-  }, [user.cohortId])
+  }, [asStudent, urlParams.cohortId, user.cohortId])
 
   function updateStudentsList() {
     client.get(`/cohorts/${user.cohortId}`).then((cohortsData) => {
