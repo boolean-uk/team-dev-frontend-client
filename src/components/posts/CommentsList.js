@@ -7,9 +7,14 @@ import client from '../../utils/client'
 export default function CommentsList({ post, loggedInUser }) {
   const [comments, setComments] = useState([])
   const [newComment, setNewComment] = useState('')
+  const [hideComments, setHideComments] = useState(false)
+  const [showMoreThanFiveComments, setShowMoreThanFiveComments] =
+    useState(false)
+  const [hiddenComments, setHiddenComments] = useState([])
 
   useEffect(() => {
-    setComments(post.postComments)
+    checkMoreThanFiveComments(post.postComments)
+    // checkMoreThanFiveComments()
   }, [post])
 
   const handleChange = (event) => {
@@ -23,18 +28,49 @@ export default function CommentsList({ post, loggedInUser }) {
       // CHANGE THE ABOVE NUMBER ACCORDING TO WHICH POST WE ARE ON WITH INTERPOLATION
 
       .then((result) => {
-        setComments([...comments, result.data.data])
+        checkMoreThanFiveComments([...comments, result.data.data])
       })
     setNewComment('')
+  }
+  const checkMoreThanFiveComments = (arr) => {
+    if (arr.length > 4) {
+      const filteredComments = arr.filter(
+        (comment, index) => index > arr.length - 6
+      )
+      setHiddenComments(arr)
+      setComments(filteredComments)
+      setHideComments(true)
+      console.log(arr)
+    } else {
+      setComments(arr)
+    }
+  }
+  const showComments = () => {
+    setHideComments(false)
+    setComments(hiddenComments)
+    setShowMoreThanFiveComments(true)
+  }
+  const showHiddenComments = () => {
+    checkMoreThanFiveComments(hiddenComments)
+    setShowMoreThanFiveComments(false)
   }
 
   return (
     <>
-      {/* Not sure how to implement see previous comments functionality yet /}
-      <div className="previous-comments-container">
-        <span className="previous-comments-link">See previous comments</span>
-      </div>
-      {/ Map through the actual comments state when we get there */}
+      {hideComments && (
+        <div className="previous-comments-container">
+          <span className="previous-comments-link" onClick={showComments}>
+            See previous comments
+          </span>
+        </div>
+      )}
+      {showMoreThanFiveComments && (
+        <div className="previous-comments-container">
+          <span className="previous-comments-link" onClick={showHiddenComments}>
+            Hide comments
+          </span>
+        </div>
+      )}
       {comments ? (
         comments.map((comment, index) => {
           return (
