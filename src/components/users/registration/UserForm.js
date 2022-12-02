@@ -8,14 +8,14 @@ const UserForm = ({ handleSubmit, handleChange }) => {
         className="user-form-input"
         label="First Name"
         variant="outlined"
-        name="first_name"
+        name="firstName"
         onChange={handleChange}
       />
       <TextField
         className="user-form-input"
         label="Last Name"
         variant="outlined"
-        name="last_name"
+        name="lastName"
         onChange={handleChange}
       />
       <TextField
@@ -46,7 +46,7 @@ const UserForm = ({ handleSubmit, handleChange }) => {
         type="url"
         label="GitHub URL"
         variant="outlined"
-        name="github_url"
+        name="githubUrl"
         onChange={handleChange}
       />
       <Button id="user-submit-button" type="submit" variant="contained">

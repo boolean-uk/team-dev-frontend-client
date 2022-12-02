@@ -2,7 +2,10 @@ import { useState } from 'react'
 import './Style.css'
 import client from '../../utils/client'
 
-export default function CohortAddPopUp({ setRenderCohortPopup }) {
+export default function CohortAddPopUp({
+  updateCohortsList,
+  setRenderCohortPopup
+}) {
   const [data, setData] = useState({})
 
   const submitHandler = (event) => {
@@ -10,7 +13,10 @@ export default function CohortAddPopUp({ setRenderCohortPopup }) {
 
     client
       .post('/cohorts', data)
-      .then(() => setRenderCohortPopup(false))
+      .then(() => {
+        updateCohortsList()
+        setRenderCohortPopup(false)
+      })
       .catch((err) => console.log(err.response))
   }
 

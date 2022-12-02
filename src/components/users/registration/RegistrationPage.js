@@ -12,7 +12,7 @@ const RegistrationPage = () => {
   const registerUser = (event) => {
     event.preventDefault()
     client
-      .post('/user', user, false)
+      .post('/users', user, false)
       .then((res) => setRegisterResponse(res.data))
       .catch((err) => console.log(err.response))
   }
