@@ -12,7 +12,7 @@ export default function AddStudentPopUp({
   })
   const urlCohortId = useParams()
   const intCohortId = {
-    cohortId: parseInt(urlCohortId.cohortId)
+    id: parseInt(urlCohortId.id)
   }
 
   console.log('useparams', intCohortId, urlCohortId)

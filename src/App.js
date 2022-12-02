@@ -10,7 +10,7 @@ import { useState } from 'react'
 import { Routes, Route, Navigate, Outlet } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 import CohortsPageTeachers from './components/Cohorts/CohortsPage/CohortsPageTeacher'
-import StudentsList from './components/Cohorts/StudentList/StudentsList'
+import { StudentsCohortPage } from './components/Cohorts/CohortsPage/StudentsPage'
 
 function App() {
   // fetch logged in user from local storage
@@ -29,6 +29,7 @@ function App() {
   return (
     <div className="App">
       <Helmet>
+        <title>Cohort Manager 2.0</title>
         <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
@@ -57,24 +58,10 @@ function App() {
         </Route>
         <Route element={<AuthenticateUser />}>
           <Route
-            path="/cohorts/:cohortId"
-            element={
-              <>
-                <h1>Page Under construction</h1>{' '}
-                <h3>
-                  Go to <i>/posts/</i>
-                </h3>
-                <StudentsList
-                  user={loggedInUser}
-                  renderAddBtn={true}
-                  renderInfo={'simpleInfo'}
-                  renderAllBtn={true}
-                />
-              </>
-            }
+            path="/cohorts/:id"
+            element={<StudentsCohortPage loggedInUser={loggedInUser} />}
           />
         </Route>
-
         <Route element={<AuthenticateUser />}>
           <Route
             path="/profile/:id"
@@ -116,7 +103,7 @@ const AuthenticateUser = ({ children, redirectPath = '/' }) => {
 const AuthenticateTeacherUser = ({
   children,
   loggedInUser,
-  redirectPath = '/'
+  redirectPath = '/posts'
 }) => {
   if (!isLoggedIn() || loggedInUser.role !== 'TEACHER') {
     return <Navigate to={redirectPath} replace />
