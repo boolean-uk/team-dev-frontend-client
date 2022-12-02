@@ -80,6 +80,9 @@
 
 .comment-edit-container {
   padding-left: 20px;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  place-items: center;
 }
 
 .single-post-edit,
@@ -176,7 +179,15 @@
 .comment-edit-button, .editButton, .deleteButton {
   display: inline-block;
   margin-right: 20px;
+  cursor: pointer;
 }
+
+.are-you-sure {
+  display: inline-block;
+  margin-right: 20px;
+  cursor: default;
+}
+
 .comment-text {
   padding: 20px;
   border: 2px solid white;
@@ -192,4 +203,23 @@
 .edit-delete-buttons:hover {
   filter: invert() blur(2px);
   cursor: pointer
+}
+
+.comment-edit-form {
+  margin-left: 30px;
+  border: 2px solid white;
+  border-radius: 10px;
+}
+
+.comment-edit-input div input {
+  color: white;
+}
+
+.comment-edit-input:hover fieldset, .comment-edit-input fieldset {
+  border: none;
+}
+
+.edit-comment-form-button {
+  margin-top: 10px!important;
+  margin-right: 10px!important;
 }
