@@ -4,17 +4,19 @@ import './list.css'
 export const StudentListItem = ({ student }) => {
   const fullName = student.firstName + ' ' + student.lastName
   return (
-    <div className="student-list-item">
+    <li className="student-list-item">
       <img
         src={`https://avatars.dicebear.com/api/initials/${fullName}.svg`}
         alt="student initials"
       ></img>
-      <li className="student-item">
-        <Link to={`/users/${student.id}`}>
+      <Link className="link-student-item" to={`/profile/${student.id}`}>
+        <span className="list-student-name">
           {student.firstName} {student.lastName}
-        </Link>
-        <button className="btn-more">...</button>
-      </li>
-    </div>
+        </span>
+      </Link>
+      <button className="btn-more-item">
+        <span className="material-symbols-outlined">more_horiz</span>
+      </button>
+    </li>
   )
 }

@@ -6,26 +6,36 @@
   flex-direction: column;
 }
 
-label {
-  text-align: left;
-  margin-left: 5px;
+.basic-info h2,
+.training-info h2,
+.contact-info h2,
+.bio h2 {
+  margin-top: 10px;
 }
 
-input {
+.edit--form__label {
+  text-align: left;
+  margin-left: 5px;
+  font-weight: bold;
+}
+
+.edit--form__input {
   border-radius: 5px;
   padding-left: 5px;
   height: 30px;
   margin-bottom: 10px;
+  background: #ddd;
 }
 
-select {
+.edit--form__select {
   height: 29px;
   margin-bottom: 10px;
   padding-left: 5px;
+  background: #ddd;
 }
 
-select,
-textarea {
+.edit--form__select,
+.edit--form__textarea {
   border-radius: 5px;
 }
 

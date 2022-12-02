@@ -21,16 +21,8 @@
   gap: 20px;
 }
 
-.profile-picture-container,
-.single-post-author-img-container,
-.new-comment-user-img-container,
-.comment-profile-img-container {
-  border: solid white 2px;
-  border-radius: 50%;
-  height: 50px;
-  width: 50px;
-  padding-top: 10px;
-  margin-top: 3px;
+.profile-picture-container {
+  text-align: left;
 }
 
 .single-post-author-img-container {
@@ -67,16 +59,15 @@
 }
 
 .single-post-date {
-  font-size: 0.8rem;
+  font-size: 0.7rem;
+  color: rgb(217, 255, 159)
 }
 
-.single-post-edit-container,
 .comment-edit-container {
   padding-top: 10px;
   padding-left: 20px;
 }
 
-.single-post-edit,
 .comment-edit-button {
   width: 30px;
   height: 30px;
@@ -127,16 +118,16 @@
   grid-template-columns: 80px 1fr;
 }
 .home-page {
-  display: grid;
-  grid-template-columns: 150px 1fr 300px;
+  margin-left: 110px;
+  margin-right: 200px
 }
 
 .posts-list {
-  margin: 20px;
+  margin: 0px;
+  list-style: none;
 }
 
 .post-item {
-  white-space: pre;
   white-space: pre;
 }
 
@@ -164,4 +155,21 @@
   border: 2px solid white;
   border-radius: 10px;
   margin-left: 30px;
+}
+
+.comment-text {
+  padding: 20px;
+  border: 2px solid white;
+  border-radius: 10px;
+  margin-left: 30px;
+}
+.single-post-edit-container {
+}
+
+.edit-delete-buttons {
+  filter: invert() 
+}
+.edit-delete-buttons:hover {
+  filter: invert() blur(2px);
+  cursor: pointer
 }

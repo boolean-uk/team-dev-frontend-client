@@ -4,6 +4,7 @@ import RegistrationPage from './components/users/registration/RegistrationPage'
 import PostsPage from './components/posts/PostsPage'
 import ProfilePage from './components/profile/ProfilePage'
 import ProfileEdit from './components/profile/ProfileEdit'
+import SearchResults from './components/search/SearchResults'
 
 import { useState } from 'react'
 import { Routes, Route, Navigate, Outlet } from 'react-router-dom'
@@ -27,6 +28,7 @@ function App() {
   return (
     <div className="App">
       <Helmet>
+        <title>Cohort Manager 2.0</title>
         <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
@@ -55,6 +57,20 @@ function App() {
         </Route>
         <Route element={<AuthenticateUser />}>
           <Route
+            path="/cohorts/:cohortId"
+            element={
+              <>
+                <h1>Page Under construction</h1>{' '}
+                <h3>
+                  Go to <i>/posts/</i>
+                </h3>
+              </>
+            }
+          />
+        </Route>
+
+        <Route element={<AuthenticateUser />}>
+          <Route
             path="/profile/:id"
             element={<ProfilePage loggedInUser={loggedInUser} />}
           />
@@ -63,6 +79,12 @@ function App() {
           <Route
             path="/profile/:id/edit"
             element={<ProfileEdit loggedInUser={loggedInUser} />}
+          />
+        </Route>
+        <Route element={<AuthenticateUser />}>
+          <Route
+            path="/search"
+            element={<SearchResults loggedInUser={loggedInUser} />}
           />
         </Route>
       </Routes>
@@ -88,7 +110,7 @@ const AuthenticateUser = ({ children, redirectPath = '/' }) => {
 const AuthenticateTeacherUser = ({
   children,
   loggedInUser,
-  redirectPath = '/'
+  redirectPath = '/posts'
 }) => {
   if (!isLoggedIn() || loggedInUser.role !== 'TEACHER') {
     return <Navigate to={redirectPath} replace />
