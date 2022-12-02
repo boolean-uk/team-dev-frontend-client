@@ -10,7 +10,7 @@ import { useState } from 'react'
 import { Routes, Route, Navigate, Outlet } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 import CohortsPageTeachers from './components/Cohorts/CohortsPage/CohortsPageTeacher'
-import { StudentsPage } from './components/Cohorts/CohortsPage/StudentsPage'
+import { StudentsCohortPage } from './components/Cohorts/CohortsPage/StudentsPage'
 
 function App() {
   // fetch logged in user from local storage
@@ -58,7 +58,7 @@ function App() {
         <Route element={<AuthenticateUser />}>
           <Route
             path="/cohorts/:id"
-            element={<StudentsPage loggedInUser={loggedInUser} />}
+            element={<StudentsCohortPage loggedInUser={loggedInUser} />}
           />
         </Route>
         <Route element={<AuthenticateUser />}>

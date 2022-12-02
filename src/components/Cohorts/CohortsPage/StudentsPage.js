@@ -3,7 +3,7 @@ import TeachersList from '../../teachersList/TeachersList'
 import './students.css'
 import NavigationRail from '../../NavigationRail/NavigationRail'
 
-export const StudentsPage = ({ loggedInUser }) => {
+export const StudentsCohortPage = ({ loggedInUser }) => {
   return (
     <>
       <NavigationRail user={loggedInUser} />
