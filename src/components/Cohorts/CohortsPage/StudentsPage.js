@@ -11,7 +11,7 @@ export const StudentsCohortPage = ({ loggedInUser }) => {
         <div className="students-list-space">
           <StudentsList
             user={loggedInUser}
-            renderAddBtn={false}
+            renderAddBtn={true}
             renderInfo={'fullInfo'}
             renderAllBtn={false}
           />
