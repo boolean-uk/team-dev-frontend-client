@@ -4,6 +4,7 @@ import Edit from './images/edit.svg'
 import Delete from './images/delete.svg'
 import { useState } from 'react'
 import { format, parseISO } from 'date-fns'
+import CommentsList from './CommentsList'
 
 const Post = ({ post, loggedInUser, client, setPosts, posts, setErr }) => {
   const [beingEdited, setBeingEdited] = useState(null)
@@ -124,30 +125,7 @@ const Post = ({ post, loggedInUser, client, setPosts, posts, setErr }) => {
           <div className="placeholder"></div>
           <div className="numberOfLikes">Be the first to like this</div>
         </div>
-        <div className="add-new-comment-container">
-          <div className="new-comment-user-img-container">
-            <div className="new-comment-user-img">
-              <img
-                src={`https://ui-avatars.com/api/?name=${loggedInFirstName}+${loggedInLastName}&background=random&color=fff&rounded=true`}
-                alt="avatar"
-                height="50px"
-              ></img>
-            </div>
-          </div>
-          <form className="post-form">
-            <TextField
-              className="user-form-input"
-              type="text"
-              label="Add a comment..."
-              variant="outlined"
-              name="content"
-              onChange={handleChange}
-            />
-            <Button type="submit" variant="contained">
-              Comment
-            </Button>
-          </form>
-        </div>
+        {post && <CommentsList post={post} loggedInUser={loggedInUser} />}
       </section>
     </>
   )

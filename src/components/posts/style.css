@@ -29,6 +29,16 @@
   margin-top: 0px;
 }
 
+.new-comment-user-img-container,
+.comment-profile-img-container {
+  border: solid white 2px;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  padding-top: 10px;
+  margin-top: 3px;
+}
+
 .single-post {
   width: 100%;
   padding: 20px;
@@ -63,23 +73,16 @@
   color: rgb(217, 255, 159)
 }
 
-<<<<<<< HEAD
 .single-post-edit-container {
-=======
-.comment-edit-container {
->>>>>>> main
   padding-top: 10px;
   padding-left: 20px;
 }
 
-<<<<<<< HEAD
 .comment-edit-container {
   padding-left: 20px;
 }
 
 .single-post-edit,
-=======
->>>>>>> main
 .comment-edit-button {
   width: 30px;
   height: 30px;

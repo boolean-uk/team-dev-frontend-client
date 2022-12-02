@@ -19,7 +19,7 @@ export default function CommentsList({ post, loggedInUser }) {
   const submitForm = (event) => {
     event.preventDefault()
     client
-      .post('/posts/1/comment', { content: newComment })
+      .post(`/posts/${post.id}/comment`, { content: newComment })
       // CHANGE THE ABOVE NUMBER ACCORDING TO WHICH POST WE ARE ON WITH INTERPOLATION
 
       .then((result) => {
