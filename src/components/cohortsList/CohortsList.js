@@ -8,19 +8,22 @@ function CohortsList({ renderHeader, renderAddButton }) {
   const [renderCohortPopup, setRenderCohortPopup] = useState(false)
   const [cohortsResponse, setCohortsResponse] = useState([])
 
-  // GET the Cohorts List from db
   useEffect(() => {
     client
       .get('/cohorts')
       .then((res) => setCohortsResponse(res.data))
-      .catch((err) => console.log(err.response))
+      .catch((err) =>
+        console.error('Error with useEffect, in client.get: ', err.response)
+      )
   }, [])
 
   function updateCohortsList() {
     client
       .get('/cohorts')
       .then((res) => setCohortsResponse(res.data))
-      .catch((err) => console.log(err.response))
+      .catch((err) =>
+        console.error('Error with useEffect, in client.get: ', err.response)
+      )
   }
 
   const addButton = (

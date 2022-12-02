@@ -16,7 +16,7 @@ export const StudentsCohortPage = ({ loggedInUser }) => {
             user={loggedInUser}
             renderAddBtn={true}
             renderInfo={'fullInfo'}
-            renderAllBtn={false}
+            teachersPage={false}
           />
         </div>
         <section className="rigth-section-student-page">

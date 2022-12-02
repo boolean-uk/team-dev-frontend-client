@@ -14,7 +14,9 @@ function TeachersList({ renderHeading }) {
       .then((res) => {
         setUsersResponse(res.data)
       })
-      .catch((err) => console.log(err.response))
+      .catch((err) =>
+        console.error('Error with useEffect, in client.get: ', err.response)
+      )
   }, [])
 
   // Filter usersResponse storing new array in teachers
