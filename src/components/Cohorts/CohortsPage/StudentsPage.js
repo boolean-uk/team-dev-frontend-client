@@ -2,10 +2,12 @@ import StudentsList from '../StudentList/StudentsList'
 import TeachersList from '../../teachersList/TeachersList'
 import './students.css'
 import NavigationRail from '../../NavigationRail/NavigationRail'
+import Header from '../../Header/Header'
 
 export const StudentsCohortPage = ({ loggedInUser }) => {
   return (
     <>
+      <Header />
       <NavigationRail user={loggedInUser} />
       <div className="student-page-container">
         <div className="students-list-space">
