@@ -5,16 +5,16 @@ function InitialsBox({ firstWord = '', secondWord = '', bgColor = null }) {
   let secondCharacter = ''
 
   const arrayOfColor = [
-    '#54577C',
-    '#546A76',
+    '#1A936F',
+    '#FF1654',
     '#F34213',
-    '#3E2F5B',
-    '#136F63',
+    '#CB9173',
+    '#9E1946',
     '#0A369D',
     '#5E7CE2',
     '#424B54',
     '#9B6A6C',
-    '#36213E'
+    '#A10702'
   ]
 
   const randomNumber = Math.floor(Math.random() * 10)
