@@ -1,6 +1,5 @@
 import './style.css'
 function CohortListItem({ cohort }) {
-  console.log(cohort)
   return (
     <div className="cohort-item-panel">
       <img
