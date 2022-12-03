@@ -8,7 +8,7 @@ function CohortListItem({ cohort }) {
         src={`https://avatars.dicebear.com/api/initials/:${cohort.cohortName}.svg`}
         alt="cohort initials"
       />
-      <InitialsBox secondWord={cohort.cohortName} />
+      <InitialsBox firstWord={cohort.cohortName} />
       <span className="cohort-name">{cohort.cohortName}</span>
       <span className="cohort-id">Cohort {cohort.id}</span>
     </div>

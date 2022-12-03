@@ -1,4 +1,11 @@
 .initials-box-circle{
     border-radius:100%;
+    width: 40px;
+    height: 40px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: aquamarine;
+    font-size: larger;
 }

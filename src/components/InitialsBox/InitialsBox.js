@@ -12,7 +12,11 @@ function InitialsBox({ firstWord = '', secondWord = '', bgColor = null }) {
     }
     //Luciano Simano
     if (secondWord !== '') {
-      secondCharacter = secondWord[0].substring(0, 1).toUpperCase()
+      if (firstWord === '') {
+        secondCharacter = secondWord[1].substring(0, 1).toUpperCase()
+      } else {
+        secondCharacter = secondWord[0].substring(0, 1).toUpperCase()
+      }
     } else {
       secondCharacter = firstWord[1].substring(0, 1).toUpperCase()
     }
@@ -22,7 +26,7 @@ function InitialsBox({ firstWord = '', secondWord = '', bgColor = null }) {
   }
   return (
     <div className="initials-box-circle">
-      <span>{firstCharacter + secondCharacter} </span>
+      <span>{firstCharacter + secondCharacter}</span>
     </div>
   )
 }
