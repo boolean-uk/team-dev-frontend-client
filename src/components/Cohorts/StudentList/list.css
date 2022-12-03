@@ -11,7 +11,7 @@
   height: calc(100% - 32px); /*All minus margins & padidngs*/
 
   border-radius: 16px;
-  border: 1px solid white;
+  border: 2px solid white;
 }
 .students-header {
   grid-area: students-header;
