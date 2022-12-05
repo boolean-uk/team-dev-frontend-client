@@ -53,8 +53,6 @@ function StudentsList({ renderAddBtn, renderInfo, teachersPage, user }) {
   }, [cohortId, teachersPage])
 
   function updateStudentsList() {
-    console.log('Update list')
-
     client
       .get(`/cohorts/${cohortId}`)
       .then((cohortsData) => {

@@ -22,7 +22,7 @@ function MyExercises({ User }) {
         const exercise_Name = exercise.cohortExercise.exercise.exerciseName
         return (
           <div key={index} className="exercises-list-item">
-            {exercise_Name} :{' '}
+            {exercise_Name} :
             <a
               className="exercise-link"
               href={exerciseUrl}

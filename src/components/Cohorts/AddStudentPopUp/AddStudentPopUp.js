@@ -14,7 +14,6 @@ export default function AddStudentPopUp({
   const intCohortId = {
     cohortId: Number(urlCohortId.id)
   }
-  console.log('done.')
 
   const handleClick = (student) => {
     client
