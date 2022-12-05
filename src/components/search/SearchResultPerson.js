@@ -6,7 +6,7 @@ function SearchResultPerson({ loggedInUser, person, cohorts }) {
   const navigate = useNavigate()
 
   const handleChange = (e) => {
-    const cohort = parseInt(e.target.value)
+    const cohort = Number(e.target.value)
 
     client
       .patch(`/users/update/${person.id}`, { ...person, cohortId: cohort })
