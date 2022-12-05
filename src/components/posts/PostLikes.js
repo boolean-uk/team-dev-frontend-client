@@ -17,31 +17,46 @@ export default function PostLikes() {
       })
       setLikeCount(filterLikes.length)
     })
-  }, [setLikeCount])
+  }, [likeCount])
 
   // need to interpolate actual post id into this later
-  const handleLikingandUnlikingPost = () => {
+  const handleLikingPost = () => {
     client
       .post('/posts/6/postLike')
       .then((data) => {
         const postLikeData = data.data.data
-        if (postLikeData.active === false) {
+        const postIsNotLiked = postLikeData.active === false
+        if (postIsNotLiked) {
           return true
         }
       })
       .then((updatedPostLikeData) => setLikeCount(updatedPostLikeData))
   }
 
-  //  both liking and unliking in one big fucntion with 1 if statement that checks whether like is active or not => POST
+  const handleUnLikingPost = () => {
+    client.post('/posts/6/postLike').then((data) => {
+      const postLikeData = data.data.data
+      const postIsLiked = postLikeData.active === true
+      if (postIsLiked) {
+        return console.log('I WILL UNLIKE POST SOON')
+      }
+    })
+  }
 
-  //   UN-LIKING A POST:
-  //   request must be sent to posts/{postId}/postLikes { for now postId = 6}
-  //   else
-  //   not active
+  const handleLikeButton = () => {
+    client.post('/posts/6/postLike').then((data) => {
+      const postLikeData = data.data.data
+      if (postLikeData.active === false) {
+        return handleLikingPost()
+      } else {
+        handleUnLikingPost()
+      }
+    })
+  }
 
   return (
     <div className="like-container">
-      <div className="like-icon" onClick={handleLikingandUnlikingPost}></div>
+      <div className="like-icon" onClick={handleLikeButton}></div>
       <div className="like">Like</div>
       <div className="number-of-likes">{likeCount} likes</div>
     </div>
