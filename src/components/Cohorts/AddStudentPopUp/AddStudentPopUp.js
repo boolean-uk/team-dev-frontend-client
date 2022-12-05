@@ -22,7 +22,7 @@ export default function AddStudentPopUp({
         updateStudentsList()
       })
       .catch((err) => {
-        console.error('Error while patching user Cohort: ', err)
+        console.error('Error while patching user Cohort: ', err.response)
       })
   }
 

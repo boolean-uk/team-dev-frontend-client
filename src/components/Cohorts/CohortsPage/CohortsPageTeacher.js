@@ -31,7 +31,7 @@ function CohortsPageTeachers({ loggedInUser }) {
               user={loggedInUser}
               renderAddBtn={false}
               renderInfo={false}
-              renderAllBtn={true}
+              teachersPage={true}
             />
           </div>
         </section>

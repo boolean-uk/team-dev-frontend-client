@@ -1,62 +1,88 @@
 import client from '../../../utils/client'
 import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 import { StudentListItem } from './StudentListItem'
 import './list.css'
 import AddStudentPopUp from '../AddStudentPopUp/AddStudentPopUp'
 
-function StudentsList({ renderAddBtn, renderInfo, renderAllBtn, user }) {
+function StudentsList({ renderAddBtn, renderInfo, teachersPage, user }) {
   const [cohortStudents, setCohortStudents] = useState([])
   const [cohort, setCohort] = useState([])
   const [students, setStudents] = useState([])
   const [renderStudentsPopup, setRenderStudentsPopup] = useState(false)
 
-  const cohortId = user.cohortId
   const asStudent = user.role === 'STUDENT' ? true : false
+  const urlParams = useParams()
+
+  const cohortId = user.role === 'STUDENT' ? user.cohortId : urlParams.id
 
   useEffect(() => {
-    client.get(`/cohorts/${cohortId}`).then((cohortsData) => {
-      const cohortData = cohortsData.data.data
-      const startDateMS = Date.parse(cohortData.startDate)
-      let startDate = new Date(startDateMS).toString().slice(3, 15)
-      const endDateMS = Date.parse(cohortData.endDate)
-      let endDate = new Date(endDateMS).toString().slice(3, 15)
-      setCohort({ ...cohortData, startDate, endDate })
-    })
+    if (!teachersPage) {
+      client
+        .get(`/cohorts/${cohortId}`)
+        .then((cohortsData) => {
+          const cohortData = cohortsData.data.data
+          const startDateMS = Date.parse(cohortData.startDate)
+          let startDate = new Date(startDateMS).toString().slice(3, 15)
+          const endDateMS = Date.parse(cohortData.endDate)
+          let endDate = new Date(endDateMS).toString().slice(3, 15)
+          setCohort({ ...cohortData, startDate, endDate })
+        })
+        .catch((err) =>
+          console.error('Error with useEffect, in client.get: ', err)
+        )
+    }
 
-    client.get('/users').then((usersData) => {
-      const allUsers = usersData.data.data.users
-      const studentsOnly = allUsers.filter((user) => {
-        return user.role === 'STUDENT'
+    client
+      .get('/users')
+      .then((usersData) => {
+        const allUsers = usersData.data.data.users
+        const studentsOnly = allUsers.filter((user) => {
+          return user.role === 'STUDENT'
+        })
+        setStudents(studentsOnly)
+        const filteredCohort = studentsOnly.filter((student) => {
+          return student.cohortId === Number(cohortId)
+        })
+
+        setCohortStudents(filteredCohort)
       })
-      setStudents(studentsOnly)
-      const filteredCohort = studentsOnly.filter((student) => {
-        return student.cohortId === cohortId
-      })
-      setCohortStudents(filteredCohort)
-    })
-  }, [cohortId])
+      .catch((err) =>
+        console.error('Error with useEffect, in client.get: ', err)
+      )
+  }, [cohortId, teachersPage])
 
   function updateStudentsList() {
-    client.get(`/cohorts/${cohortId}`).then((cohortsData) => {
-      const cohortData = cohortsData.data.data
-      const startDateMS = Date.parse(cohortData.startDate)
-      let startDate = new Date(startDateMS).toString().slice(3, 15)
-      const endDateMS = Date.parse(cohortData.endDate)
-      let endDate = new Date(endDateMS).toString().slice(3, 15)
-      setCohort({ ...cohortData, startDate, endDate })
-    })
+    client
+      .get(`/cohorts/${cohortId}`)
+      .then((cohortsData) => {
+        const cohortData = cohortsData.data.data
+        const startDateMS = Date.parse(cohortData.startDate)
+        let startDate = new Date(startDateMS).toString().slice(3, 15)
+        const endDateMS = Date.parse(cohortData.endDate)
+        let endDate = new Date(endDateMS).toString().slice(3, 15)
+        setCohort({ ...cohortData, startDate, endDate })
+      })
+      .catch((err) =>
+        console.error('Error with first updateStudentsList client.get: ', err)
+      )
 
-    client.get('/users').then((usersData) => {
-      const allUsers = usersData.data.data.users
-      const studentsOnly = allUsers.filter((user) => {
-        return user.role === 'STUDENT'
+    client
+      .get('/users')
+      .then((usersData) => {
+        const allUsers = usersData.data.data.users
+        const studentsOnly = allUsers.filter((user) => {
+          return user.role === 'STUDENT'
+        })
+        setStudents(studentsOnly)
+        const filteredCohort = studentsOnly.filter((student) => {
+          return student.cohortId === cohortId
+        })
+        setCohortStudents(filteredCohort)
       })
-      setStudents(studentsOnly)
-      const filteredCohort = studentsOnly.filter((student) => {
-        return student.cohortId === cohortId
-      })
-      setCohortStudents(filteredCohort)
-    })
+      .catch((err) =>
+        console.error('Error with second updateStudentsList client.get: ', err)
+      )
   }
 
   const moreButtons = (
@@ -122,13 +148,8 @@ function StudentsList({ renderAddBtn, renderInfo, renderAllBtn, user }) {
         {renderAddBtn === true ? moreButtons : null}
       </div>
       <ul className="students-list">
-        {asStudent === true ? mapOfCohort : mapOfStudents}
+        {teachersPage === true ? mapOfStudents : mapOfCohort}
       </ul>
-      {renderAllBtn === true ? (
-        <button className="all-btn">
-          <span> All Students</span>
-        </button>
-      ) : null}
     </div>
   )
 }
