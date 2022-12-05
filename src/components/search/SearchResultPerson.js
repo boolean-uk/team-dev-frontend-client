@@ -1,5 +1,5 @@
 import './styles/SearchResult.css'
-import { FaEllipsisH } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 
 function SearchResultPerson({ loggedInUser, person }) {
   return (
@@ -10,16 +10,14 @@ function SearchResultPerson({ loggedInUser, person }) {
         <p>{`${person.role} Cohort ${person.cohortId}`}</p>
       </div>
       <div className="search--result-item_buttons">
-        <button className="button">Profile</button>
+        <Link to={`/profile/${person.id}`} loggedInUser={loggedInUser}>
+          <button className="button">Profile</button>
+        </Link>
         {loggedInUser.role === 'TEACHER' && (
           <>
             <button className="button">Add to cohort</button>
-            <button className="button">Add note</button>
           </>
         )}
-        <button className="button--more">
-          <FaEllipsisH />
-        </button>
       </div>
     </div>
   )

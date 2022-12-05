@@ -1,5 +1,5 @@
 import './styles/SearchResult.css'
-import { FaEllipsisH } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 
 function SearchResultCohort({ loggedInUser, cohort }) {
   return (
@@ -12,12 +12,10 @@ function SearchResultCohort({ loggedInUser, cohort }) {
         ).toLocaleDateString()}`}</p>
       </div>
       <div className="search--result-item_buttons">
-        <button className="button">Cohort page</button>
+        <Link to={`/cohorts/${cohort.id}`} loggedInUser={loggedInUser}>
+          <button className="button">Cohort page</button>
+        </Link>
         <button className="button">Add students</button>
-        <button className="button">Add note</button>
-        <button className="button--more">
-          <FaEllipsisH />
-        </button>
       </div>
     </div>
   )
