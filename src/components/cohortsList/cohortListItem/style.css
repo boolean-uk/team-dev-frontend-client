@@ -14,14 +14,13 @@
   scale: 1.025;
 }
 
-.cohort-item-panel img {
+.initials-box-wrapper-cohorts {
   grid-column: 1;
   grid-row: 1 / span 2;
-
   margin: 0.5rem;
-
   height: 40px;
-  border-radius: 50%;
+  width: 40px;
+  border-radius: 50px;
 }
 
 .cohort-name {
