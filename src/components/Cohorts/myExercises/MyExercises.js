@@ -13,6 +13,7 @@ function MyExercises({ User }) {
       .get(`/cohorts/${cohortId}/cohortExercises`)
       .then((res) => {
         setLoading(false)
+        console.log(res.data.data.cohortExercises)
         setMyExercises(res.data.data.cohortExercises)
       })
       .catch((err) => console.error(err.response))
@@ -23,7 +24,7 @@ function MyExercises({ User }) {
       <h1 className="exercises-title">Exercises</h1>
       {loading && <span>Loading Exercises...</span>}
 
-      {myExercises.length === 0 ? (
+      {myExercises.length !== 0 ? (
         myExercises.map((exercise, index) => {
           const exerciseUrl = exercise.cohortExercise.exercise.githubUrl
           const exercise_Name = exercise.cohortExercise.exercise.exerciseName
