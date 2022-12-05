@@ -1,0 +1,46 @@
+.form-select-cohort {
+  display: flex;
+  flex-direction: row;
+  justify-self: flex-end;
+}
+.select-options-cohorts {
+  height: 50%;
+  filter: brightness(92%);
+  background-color: rgba(50, 50, 63, 0.673);
+  color: white;
+}
+.confirm-button-list {
+  display: flex;
+  flex-direction: row;
+  width: fit-content;
+  height: 25px;
+  align-items: center;
+  /* justify-items: center; */
+  align-self: center;
+  padding: 10px;
+
+  border-radius: 16px;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  box-shadow: rgb(27 31 35 / 4%) 0 1px 0, rgb(255 255 255 / 25%) 0 1px 0 inset;
+
+  color: white;
+  background-color: #166ac5;
+  cursor: pointer;
+  font-weight: 500;
+  font-family: -apple-system, system-ui, 'Segoe UI', Helvetica, Arial,
+    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+
+  transition: ease filter 0.1s;
+}
+.confirm-button-list:hover {
+  filter: brightness(92%);
+}
+.confirm-button-list:active {
+  filter: brightness(88%);
+}
+
+.select-options-cohorts {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+}

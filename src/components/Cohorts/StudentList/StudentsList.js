@@ -125,7 +125,6 @@ function StudentsList({ renderAddBtn, renderInfo, teachersPage, user }) {
   const mapOfStudents = students.map((student, index) => {
     return <StudentListItem key={index} student={student} />
   })
-
   return (
     <div className="student-list-container">
       <div className="students-header">
