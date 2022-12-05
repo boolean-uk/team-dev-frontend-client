@@ -32,7 +32,6 @@ function MyExercises({ User }) {
               target="_blank"
               rel="noreferrer"
             >
-              {' '}
               {exerciseUrl}
             </a>
           </div>

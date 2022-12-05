@@ -23,4 +23,5 @@
 .exercise-link {
   text-decoration: none;
   color: rgb(228, 241, 37);
+  margin-left: 6px;
 }
