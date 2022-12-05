@@ -13,6 +13,10 @@ export const StudentListItem = ({ student }) => {
         />
       </div>
       <Link className="link-student-item" to={`/profile/${student.id}`}>
+        <img
+          src={`https://avatars.dicebear.com/api/initials/${fullName}.svg`}
+          alt="student initials"
+        ></img>
         <span className="list-student-name">
           {student.firstName} {student.lastName}
         </span>
