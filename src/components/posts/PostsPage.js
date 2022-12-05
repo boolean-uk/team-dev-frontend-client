@@ -59,7 +59,7 @@ const PostsPage = ({ loggedInUser }) => {
 
   return (
     <>
-      <Header companyName={`Cohort Manager 2.0`} loggedInUser={loggedInUser} />
+      <Header companyName={'Cohort Manager 2.0'} />
 
       <NavigationRail user={loggedInUser} />
 
