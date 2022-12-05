@@ -6,11 +6,13 @@ function SearchResultCohort({ loggedInUser, cohort }) {
   return (
     <div className="search--result_item">
       <div className="comment-profile-img">
-        <InitialsBox
-          firstWord={'Cohort'}
-          secondWord={cohort.id.toString()}
-          bgColor={null}
-        />
+        {cohort !== null && (
+          <InitialsBox
+            firstWord={'Cohort'}
+            secondWord={cohort.id.toString()}
+            bgColor={null}
+          />
+        )}
       </div>
       <div className="search--result-item_name-role">
         <p>{cohort.cohortName}</p>
