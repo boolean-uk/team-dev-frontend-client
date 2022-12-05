@@ -2,21 +2,22 @@
   display: grid;
   grid-template-columns: 70% 30%;
   height: calc(100vh - 5px - 68.5px);
-  gap: 20px;
   align-items: stretch;
   overflow: hidden;
   margin-left: 90px;
-  padding-right: 16px;
 }
 
-.students-list-space,
-.teachers-list-space,
-.exercises-list-space {
+.students-list-space {
   overflow-y: hidden;
 }
+/* .teachers-list-space,
+.exercises-list-space {
+  overflow-y: hidden;
+} */
 
 .rigth-section-student-page {
   display: flex;
   flex-direction: column;
   min-width: fit-content;
+  overflow-y: auto;
 }
