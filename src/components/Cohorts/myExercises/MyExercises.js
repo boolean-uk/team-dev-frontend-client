@@ -20,8 +20,8 @@ function MyExercises({ User }) {
 
   return (
     <div className="exercises-list">
-      <h1 className="exercises-title">My Exercises</h1>
-      {loading && <span>Loading...</span>}
+      <h1 className="exercises-title">Exercises</h1>
+      {loading && <span>Loading Exercises...</span>}
 
       {myExercises.length === 0 ? (
         myExercises.map((exercise, index) => {
@@ -42,7 +42,7 @@ function MyExercises({ User }) {
           )
         })
       ) : (
-        <span>No Exercises.</span>
+        <span>No Exercises - 🧙‍♂️</span>
       )}
     </div>
   )

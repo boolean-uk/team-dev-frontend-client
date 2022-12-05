@@ -8,21 +8,13 @@ function CohortListItem({ cohort, goToExercises = false }) {
     : `/cohorts/${cohort.id}`
 
   return (
-    <div
-      className="cohort-item-panel"
-      onClick={() => navigate(`/cohorts/${cohort.id}`)}
-    >
+    <div className="cohort-item-panel" onClick={() => navigate(pathToNavigate)}>
       <div className="initials-box-wrapper-cohorts">
         <InitialsBox
           firstWord={`${cohort.cohortName}`}
           secondWord={`${cohort.id}`}
         />
       </div>
-    <div className="cohort-item-panel" onClick={() => navigate(pathToNavigate)}>
-      <img
-        src={`https://avatars.dicebear.com/api/initials/:${cohort.cohortName}.svg`}
-        alt="cohort initials"
-      />
       <span className="cohort-name">{cohort.cohortName}</span>
       <span className="cohort-id">Cohort {cohort.id}</span>
     </div>
