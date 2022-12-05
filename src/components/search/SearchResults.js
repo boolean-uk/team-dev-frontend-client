@@ -17,6 +17,7 @@ function SearchResults({ loggedInUser }) {
   const [peopleDisplay, setPeopleDisplay] = useState([])
   const [cohortsDisplay, setCohortsDisplay] = useState([])
   const searchParams = useSearchParams()[0]
+  const [searching, setSearching] = useState(true)
 
   useEffect(() => {
     const query = searchParams.get('query')
@@ -37,6 +38,7 @@ function SearchResults({ loggedInUser }) {
         setCohorts(data.data.data)
       })
     }
+    setSearching(false)
   }, [searchTerms])
 
   useEffect(() => {
@@ -103,6 +105,14 @@ function SearchResults({ loggedInUser }) {
         </>
       )
     }
+  }
+
+  if (searching) {
+    return (
+      <section className="load">
+        <span className="loader"></span>
+      </section>
+    )
   }
 
   return (
