@@ -14,7 +14,7 @@ export default function CommentsList({ post, loggedInUser }) {
 
   useEffect(() => {
     checkMoreThanFiveComments(post.postComments)
-  }, [])
+  })
 
   const handleChange = (event) => {
     setNewComment(event.target.value)
