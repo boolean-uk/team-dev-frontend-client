@@ -1,6 +1,5 @@
 import { useNavigate } from 'react-router-dom'
 import './style.css'
-
 function CohortListItem({ cohort }) {
   const navigate = useNavigate()
   return (
