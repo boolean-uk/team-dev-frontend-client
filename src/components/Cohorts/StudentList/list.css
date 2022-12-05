@@ -65,11 +65,12 @@
   margin: 0;
   height: fit-content;
 }
-.student-list-item img {
+.initials-box-wrapper-student {
   grid-column: 1;
   grid-row: 1 / span 2;
   margin: 0.5rem;
   height: 40px;
+  width: 40px;
   border-radius: 50px;
 }
 .teacher-nav {
