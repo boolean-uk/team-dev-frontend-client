@@ -14,7 +14,6 @@ export default function CommentsList({ post, loggedInUser }) {
 
   useEffect(() => {
     checkMoreThanFiveComments(post.postComments)
-    // checkMoreThanFiveComments()
   }, [post])
 
   const handleChange = (event) => {
@@ -38,7 +37,6 @@ export default function CommentsList({ post, loggedInUser }) {
       setHiddenComments(arr)
       setComments(filteredComments)
       setHideComments(true)
-      console.log(arr)
     } else {
       setComments(arr)
     }

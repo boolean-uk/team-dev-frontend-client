@@ -14,8 +14,6 @@ const Post = ({ post, loggedInUser, client, setPosts, posts, setErr }) => {
   }
   const firstName = post.user.profile.firstName
   const lastName = post.user.profile.lastName
-  const loggedInFirstName = loggedInUser.firstName
-  const loggedInLastName = loggedInUser.lastName
   const canEditOrDelete =
     (loggedInUser !== null && loggedInUser.role === 'TEACHER') ||
     loggedInUser.id === post.user.id

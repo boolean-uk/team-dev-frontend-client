@@ -17,7 +17,6 @@ export default function CommentEditButton({
 
   const commentEditFunction = () => {
     setCommentEditMode(!commentEditMode)
-    console.log('commentEditMode is', commentEditMode)
   }
 
   const commentDeleteFunction = () => {
