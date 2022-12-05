@@ -4,7 +4,6 @@ import { useParams } from 'react-router-dom'
 import { StudentListItem } from './StudentListItem'
 import './list.css'
 import AddStudentPopUp from '../AddStudentPopUp/AddStudentPopUp'
-import { add } from 'date-fns'
 
 function StudentsList({ renderAddBtn, renderInfo, teachersPage, user }) {
   const [cohortStudents, setCohortStudents] = useState([])
