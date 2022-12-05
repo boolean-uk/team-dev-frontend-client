@@ -68,7 +68,7 @@ function App() {
             element={<StudentsCohortPage loggedInUser={loggedInUser} />}
           />
           <Route
-            path="/exercises/:cohortId"
+            path="/exercises/:id"
             element={<ExercisePage loggedInUser={loggedInUser} />}
           />
         </Route>

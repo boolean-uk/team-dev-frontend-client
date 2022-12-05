@@ -5,6 +5,7 @@ import './style.css'
 import CohortAddPopUp from '../CohortAddPopUp/CohortAddPopUp'
 
 function CohortsList({ renderHeader, renderAddButton, goToExercises = false }) {
+  const [loading, setLoading] = useState(true)
   const [renderCohortPopup, setRenderCohortPopup] = useState(false)
   const [cohortsResponse, setCohortsResponse] = useState([])
 
