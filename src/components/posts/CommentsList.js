@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 import client from '../../utils/client'
+import InitialsBox from '../InitialsBox/InitialsBox'
 
 export default function CommentsList({ post, loggedInUser }) {
   const [comments, setComments] = useState([])
@@ -84,7 +85,9 @@ export default function CommentsList({ post, loggedInUser }) {
       )}
       <div className="add-new-comment-container">
         <div className="new-comment-user-img-container">
-          <div className="new-comment-user-img"></div>
+          <div className="new-comment-user-img">
+            <InitialsBox />
+          </div>
         </div>
         <form className="post-form" onSubmit={submitForm}>
           <TextField
