@@ -1,7 +1,6 @@
 import './styles/SearchResult.css'
-import { FaEllipsisH } from 'react-icons/fa'
 import client from '../../utils/client'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 
 function SearchResultPerson({ loggedInUser, person, cohorts }) {
   const navigate = useNavigate()
@@ -22,7 +21,9 @@ function SearchResultPerson({ loggedInUser, person, cohorts }) {
         <p>{`${person.role} Cohort ${person.cohortId}`}</p>
       </div>
       <div className="search--result-item_buttons">
-        <button className="button">Profile</button>
+        <Link to={`/profile/${person.id}`} loggedInUser={loggedInUser}>
+          <button className="button">Profile</button>
+        </Link>
         {loggedInUser.role === 'TEACHER' && (
           <>
             {cohorts && (
@@ -47,9 +48,6 @@ function SearchResultPerson({ loggedInUser, person, cohorts }) {
             <button className="button">Add note</button>
           </>
         )}
-        <button className="button--more">
-          <FaEllipsisH />
-        </button>
       </div>
     </div>
   )

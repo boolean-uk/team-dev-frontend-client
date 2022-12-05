@@ -29,6 +29,16 @@
   margin-top: 0px;
 }
 
+.new-comment-user-img-container,
+.comment-profile-img-container {
+  border: solid white 2px;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  padding-top: 10px;
+  margin-top: 3px;
+}
+
 .single-post {
   width: 100%;
   padding: 20px;
@@ -48,7 +58,7 @@
   text-align: left;
 }
 
-.single-post-content {
+.single-post-content, .like-and-comment-container {
   padding-bottom: 20px;
   border-bottom: 1px solid white;
   margin-bottom: 20px;
@@ -63,11 +73,19 @@
   color: rgb(217, 255, 159)
 }
 
-.comment-edit-container {
+.single-post-edit-container {
   padding-top: 10px;
   padding-left: 20px;
 }
 
+.comment-edit-container {
+  padding-left: 20px;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  place-items: center;
+}
+
+.single-post-edit,
 .comment-edit-button {
   width: 30px;
   height: 30px;
@@ -81,6 +99,7 @@
 .like-and-comment-container {
   display: grid;
   grid-template-columns: 150px 150px 1fr auto;
+  place-items: center;
 }
 
 .like-link-container,
@@ -157,6 +176,18 @@
   margin-left: 30px;
 }
 
+.comment-edit-button, .editButton, .deleteButton {
+  display: inline-block;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.are-you-sure {
+  display: inline-block;
+  margin-right: 20px;
+  cursor: default;
+}
+
 .comment-text {
   padding: 20px;
   border: 2px solid white;
@@ -172,4 +203,23 @@
 .edit-delete-buttons:hover {
   filter: invert() blur(2px);
   cursor: pointer
+}
+
+.comment-edit-form {
+  margin-left: 30px;
+  border: 2px solid white;
+  border-radius: 10px;
+}
+
+.comment-edit-input div input {
+  color: white;
+}
+
+.comment-edit-input:hover fieldset, .comment-edit-input fieldset {
+  border: none;
+}
+
+.edit-comment-form-button {
+  margin-top: 10px!important;
+  margin-right: 10px!important;
 }
