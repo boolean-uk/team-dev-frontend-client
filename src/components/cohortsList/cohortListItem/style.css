@@ -5,6 +5,7 @@
 
   border: 1px solid yellow;
   text-align: left;
+  cursor: pointer;
 }
 
 .cohort-item-panel img {
