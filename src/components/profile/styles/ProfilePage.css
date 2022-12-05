@@ -6,15 +6,16 @@
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: 0.3fr repeat(2, 1fr);
   column-gap: 50px;
-  margin-left: 130px; /*50+80*/
-  margin-right: 50px;
+  width: 1000px;
+  margin: 0 auto;
 }
 
 .profile-h2 {
   text-align: left;
-  margin-left: 130px; /*3.2ch + 50px*/
+  margin: 0 auto;
   margin-top: 15px;
   margin-bottom: 15px;
+  width: 1000px;
 }
 
 .profile-header {
