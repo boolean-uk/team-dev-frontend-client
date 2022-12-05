@@ -69,10 +69,19 @@ function MoreFeatures({ student, setShowMoreFeatures }) {
           </option>
         ))}
       </select>
-      {/* </Select> */}
-      <button className="confirm-button-list" onClick={() => submitHandler}>
-        Confirm
-      </button>
+      <nav className="buttons-nav">
+        <button
+          className="exit-button-more"
+          onClick={() => {
+            setShowMoreFeatures(false)
+          }}
+        >
+          <span className="material-symbols-outlined">cancel</span>
+        </button>
+        <button className="confirm-button-list" onClick={() => submitHandler}>
+          Confirm
+        </button>
+      </nav>
     </form>
   )
 }

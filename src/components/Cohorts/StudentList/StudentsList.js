@@ -120,10 +120,10 @@ function StudentsList({ renderAddBtn, renderInfo, teachersPage, user }) {
     </header>
   )
   const mapOfCohort = cohortStudents.map((student, index) => {
-    return <StudentListItem key={index} student={student} />
+    return <StudentListItem key={index} student={student} user={user} />
   })
   const mapOfStudents = students.map((student, index) => {
-    return <StudentListItem key={index} student={student} />
+    return <StudentListItem key={index} student={student} user={user} />
   })
   return (
     <div className="student-list-container">

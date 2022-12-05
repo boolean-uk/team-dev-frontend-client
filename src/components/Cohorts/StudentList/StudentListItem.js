@@ -5,7 +5,7 @@ import InitialsBox from '../../InitialsBox/InitialsBox'
 import { useState } from 'react'
 import MoreFeatures from './MoreFeatures'
 
-export const StudentListItem = ({ student, cohort, cohortsResponse }) => {
+export const StudentListItem = ({ student, user }) => {
   const [showMoreFeatures, setShowMoreFeatures] = useState(false)
   return (
     <li className="student-list-item">
@@ -26,12 +26,14 @@ export const StudentListItem = ({ student, cohort, cohortsResponse }) => {
           student={student}
         />
       )}
-      <button
-        className="btn-more-item"
-        onClick={() => setShowMoreFeatures(true)}
-      >
-        <span className="material-symbols-outlined">more_horiz</span>
-      </button>
+      {user.role === 'TEACHER' ? (
+        <button
+          className="btn-more-item"
+          onClick={() => setShowMoreFeatures(true)}
+        >
+          <span className="material-symbols-outlined">more_horiz</span>
+        </button>
+      ) : null}
     </li>
   )
 }

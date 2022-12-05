@@ -6,8 +6,23 @@
 .select-options-cohorts {
   height: 50%;
   filter: brightness(92%);
-  background-color: rgba(50, 50, 63, 0.673);
+  background-color: rgba(50, 50, 63, 0.776);
   color: white;
+}
+.buttons-nav {
+  display: flex;
+  flex-direction: column;
+}
+.exit-button-more {
+  display: flex;
+  align-self: flex-end;
+  background-color: red;
+  border-radius: 25px;
+  border: none;
+  margin: none;
+  height: min-content;
+  width: min-content;
+  padding: 0;
 }
 .confirm-button-list {
   display: flex;
@@ -15,7 +30,7 @@
   width: fit-content;
   height: 25px;
   align-items: center;
-  /* justify-items: center; */
+  justify-items: center;
   align-self: center;
   padding: 10px;
 
