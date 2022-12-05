@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'
 import { StudentListItem } from './StudentListItem'
 import './list.css'
 import AddStudentPopUp from '../AddStudentPopUp/AddStudentPopUp'
+import { add } from 'date-fns'
 
 function StudentsList({ renderAddBtn, renderInfo, teachersPage, user }) {
   const [cohortStudents, setCohortStudents] = useState([])
@@ -13,22 +14,25 @@ function StudentsList({ renderAddBtn, renderInfo, teachersPage, user }) {
 
   const asStudent = user.role === 'STUDENT' ? true : false
   const urlParams = useParams()
+
   const cohortId = user.role === 'STUDENT' ? user.cohortId : urlParams.id
 
   useEffect(() => {
-    client
-      .get(`/cohorts/${cohortId}`)
-      .then((cohortsData) => {
-        const cohortData = cohortsData.data.data
-        const startDateMS = Date.parse(cohortData.startDate)
-        let startDate = new Date(startDateMS).toString().slice(3, 15)
-        const endDateMS = Date.parse(cohortData.endDate)
-        let endDate = new Date(endDateMS).toString().slice(3, 15)
-        setCohort({ ...cohortData, startDate, endDate })
-      })
-      .catch((err) =>
-        console.error('Error with useEffect, in client.get: ', err)
-      )
+    if (!teachersPage) {
+      client
+        .get(`/cohorts/${cohortId}`)
+        .then((cohortsData) => {
+          const cohortData = cohortsData.data.data
+          const startDateMS = Date.parse(cohortData.startDate)
+          let startDate = new Date(startDateMS).toString().slice(3, 15)
+          const endDateMS = Date.parse(cohortData.endDate)
+          let endDate = new Date(endDateMS).toString().slice(3, 15)
+          setCohort({ ...cohortData, startDate, endDate })
+        })
+        .catch((err) =>
+          console.error('Error with useEffect, in client.get: ', err)
+        )
+    }
 
     client
       .get('/users')
