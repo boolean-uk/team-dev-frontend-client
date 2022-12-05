@@ -12,7 +12,10 @@ function CohortsList({ renderHeader, renderAddButton, goToExercises = false }) {
   useEffect(() => {
     client
       .get('/cohorts')
-      .then((res) => setCohortsResponse(res.data))
+      .then((res) => {
+        setLoading(false)
+        setCohortsResponse(res.data)
+      })
       .catch((err) =>
         console.error('Error with useEffect, in client.get: ', err.response)
       )
@@ -52,8 +55,9 @@ function CohortsList({ renderHeader, renderAddButton, goToExercises = false }) {
 
       {renderAddButton ? addButton : null}
 
+      {loading && <span>Loading Cohorts...</span>}
       <div className="list-wrapper">
-        {cohortsResponse.length !== 0 ? (
+        {cohortsResponse.length !== 0 &&
           cohortsResponse.data.map((cohort, index) => {
             return (
               <CohortListItem
@@ -62,10 +66,7 @@ function CohortsList({ renderHeader, renderAddButton, goToExercises = false }) {
                 goToExercises={goToExercises}
               />
             )
-          })
-        ) : (
-          <span>Loading Cohorts...</span>
-        )}
+          })}
       </div>
     </section>
   )

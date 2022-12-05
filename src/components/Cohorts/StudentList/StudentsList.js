@@ -6,6 +6,7 @@ import './list.css'
 import AddStudentPopUp from '../AddStudentPopUp/AddStudentPopUp'
 
 function StudentsList({ renderAddBtn, renderInfo, teachersPage, user }) {
+  const [loading, setLoading] = useState(true)
   const [cohortStudents, setCohortStudents] = useState([])
   const [cohort, setCohort] = useState([])
   const [students, setStudents] = useState([])
@@ -45,6 +46,7 @@ function StudentsList({ renderAddBtn, renderInfo, teachersPage, user }) {
           return student.cohortId === Number(cohortId)
         })
 
+        setLoading(false)
         setCohortStudents(filteredCohort)
       })
       .catch((err) =>
@@ -143,10 +145,13 @@ function StudentsList({ renderAddBtn, renderInfo, teachersPage, user }) {
           />
         )}
 
+        {loading && <span>Loading Students...</span>}
+
         {renderInfo === 'fullInfo' && fullInfo}
         {renderInfo && renderInfo !== 'fullInfo' && simpleInfo}
         {renderAddBtn === true ? moreButtons : null}
       </div>
+
       <ul className="students-list">
         {teachersPage === true ? mapOfStudents : mapOfCohort}
       </ul>
