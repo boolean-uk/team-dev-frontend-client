@@ -1,15 +1,21 @@
 .exercises-title {
-  margin: 10px;
+  margin: 0;
+  margin-bottom: 12px;
 }
 
 .exercises-list {
   display: grid;
-  max-width: 700px;
   grid-auto-rows: max-content;
-  border: 2px solid gray;
+
+  padding: 16px;
+  margin: 16px;
+
+  border-radius: 16px;
+  border: 2px solid white;
 }
 .exercises-list-item {
-  border: 1px solid gray;
+  border-radius: 8px;
+  border: 1px solid slategray;
   margin: 5px;
   margin-left: 20px;
   margin-right: 20px;
@@ -17,4 +23,5 @@
 .exercise-link {
   text-decoration: none;
   color: rgb(228, 241, 37);
+  margin-left: 6px;
 }

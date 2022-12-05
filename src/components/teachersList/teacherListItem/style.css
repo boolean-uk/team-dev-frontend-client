@@ -6,16 +6,23 @@
   cursor: pointer;
   align-items: center;
 
-  border: 1px solid yellow;
+  border-radius: 8px;
+  border: 1px solid slategray;
   text-align: left;
+
+  transition: ease scale 0.2s;
+}
+.teacher-item-panel:hover {
+  scale: 1.025;
 }
 
-.teacher-item-panel img {
+.initials-box-wrapper-teacher {
   grid-area: 1 / 1 / span 2;
   margin: 0.5rem;
 
   height: 40px;
   border-radius: 50%;
+  width: 40px;
 }
 
 .teacher-name {

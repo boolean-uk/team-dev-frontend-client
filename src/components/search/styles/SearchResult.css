@@ -27,6 +27,14 @@
   justify-self: end;
 }
 
+.search--result_dropdown {
+  height: 32px;
+  padding-left: 5px;
+  background: #ddd;
+  border-radius: 6px;
+  width: 200px;
+}
+
 .button,
 .button--more {
   appearance: none;
