@@ -1,10 +1,17 @@
 import './styles/SearchResult.css'
 import { Link } from 'react-router-dom'
+import InitialsBox from '../InitialsBox/InitialsBox'
 
 function SearchResultCohort({ loggedInUser, cohort }) {
   return (
     <div className="search--result_item">
-      <img src={cohort.profileUrl} alt="Cohort img" />
+      <div className="comment-profile-img">
+        <InitialsBox
+          firstWord={'Cohort'}
+          secondWord={cohort.id.toString()}
+          bgColor={null}
+        />
+      </div>
       <div className="search--result-item_name-role">
         <p>{cohort.cohortName}</p>
         <p>{`Start date: ${new Date(
