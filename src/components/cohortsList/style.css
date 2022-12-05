@@ -6,7 +6,7 @@
   padding: 16px 8px;
   margin: 16px;
 
-  height: calc(100% - 32px); /*All minus margins & padidngs*/
+  height: calc(100% - 32px); /* All minus margins & padidngs; */
 
   border-radius: 16px;
   border: 2px solid white;

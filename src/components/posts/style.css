@@ -1,5 +1,10 @@
 .posts-section {
 }
+.home-page {
+  display: grid;
+  grid-template-columns: 1fr 250px;
+  margin-left: 110px
+}
 
 .new-post-form-section {
   display: grid;
@@ -136,10 +141,6 @@
   display: grid;
   grid-template-columns: 80px 1fr;
 }
-.home-page {
-  margin-left: 110px;
-  margin-right: 200px
-}
 
 .posts-list {
   margin: 0px;
@@ -235,3 +236,4 @@
   margin-top: 10px!important;
   margin-right: 10px!important;
 }
+

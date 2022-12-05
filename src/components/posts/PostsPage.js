@@ -23,8 +23,6 @@ const PostsPage = ({ loggedInUser }) => {
 
   const isTeacher = loggedInUser !== null && loggedInUser.role === 'TEACHER'
 
-  const isTeacher = loggedInUser !== null && loggedInUser.role === 'TEACHER'
-
   useEffect(() => {
     client.get('/posts').then((res) => {
       if (res.data.data) setPosts(res.data.data.posts)
@@ -73,7 +71,6 @@ const PostsPage = ({ loggedInUser }) => {
       <NavigationRail user={loggedInUser} />
 
       <div className="home-page">
-        <div className="left-sidebar"></div>
         <div className="posts-container">
           <section className="posts-section">
             {err !== '' && <span style={{ color: 'red' }}>{err}!</span>}
