@@ -10,12 +10,13 @@
   text-align: left;
 }
 
-.teacher-item-panel img {
+.initials-box-wrapper-teacher {
   grid-area: 1 / 1 / span 2;
   margin: 0.5rem;
 
   height: 40px;
   border-radius: 50%;
+  width: 40px;
 }
 
 .teacher-name {
