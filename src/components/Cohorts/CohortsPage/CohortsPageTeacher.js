@@ -18,15 +18,14 @@ function CohortsPageTeachers({ loggedInUser }) {
           <CohortsList renderHeader={true} renderAddButton={true} />
         </div>
 
-          <div className="teachers-studentlist">
-            <StudentsList
-              user={loggedInUser}
-              renderAddBtn={false}
-              renderInfo={false}
-              teachersPage={true}
-            />
-          </div>
-        </section>
+        <div className="teachers-studentlist">
+          <StudentsList
+            user={loggedInUser}
+            renderAddBtn={false}
+            renderInfo={false}
+            teachersPage={true}
+          />
+        </div>
       </main>
     </>
   )
