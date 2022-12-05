@@ -10,10 +10,6 @@
 .students-list-space {
   overflow-y: hidden;
 }
-/* .teachers-list-space,
-.exercises-list-space {
-  overflow-y: hidden;
-} */
 
 .rigth-section-student-page {
   display: flex;
