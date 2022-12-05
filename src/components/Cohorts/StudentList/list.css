@@ -4,11 +4,14 @@
     'students-header' auto
     'students-list' 1fr/
     1fr;
-  padding: 1rem;
-  border: 1px solid white;
-  min-width: fit-content;
-  height: fit-content;
-  position: relative;
+  gap: 8px;
+  padding: 16px 8px;
+  margin: 16px;
+
+  height: calc(100% - 32px); /*All minus margins & padidngs*/
+
+  border-radius: 16px;
+  border: 2px solid white;
 }
 .students-header {
   grid-area: students-header;
@@ -19,7 +22,8 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-template-rows: repeat(auto-fit, 56px);
-  padding-bottom: 70px;
+  grid-row: 56px;
+  padding: 8px;
   overflow-y: auto;
   gap: 6px;
 }
@@ -35,6 +39,11 @@
   height: 56px;
   text-decoration: none;
   padding-right: 6px;
+
+  transition: ease scale 0.2s;
+}
+.student-list-item:hover {
+  scale: 1.025;
 }
 
 .link-student-item {
@@ -91,7 +100,7 @@
   display: flex;
   flex-direction: row;
   gap: 8px;
-  width: 90px;
+  width: fit-content;
   height: 56px;
   align-items: center;
   border-radius: 16px;
@@ -106,4 +115,16 @@
     sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
   font-weight: 500;
   margin-right: 6px;
+
+  transition: ease filter 0.1s;
+}
+
+.all-btn:hover,
+.add-btn:hover {
+  filter: brightness(92%);
+}
+
+.all-btn:active,
+.add-btn:active {
+  filter: brightness(88%);
 }
