@@ -3,6 +3,8 @@ import Button from '@mui/material/Button'
 import Edit from './images/edit.svg'
 import Delete from './images/delete.svg'
 import { useState } from 'react'
+import { format, parseISO, isYesterday } from 'date-fns'
+import CommentsList from './CommentsList'
 
 const Post = ({ post, loggedInUser, client, setPosts, posts, setErr }) => {
   const [beingEdited, setBeingEdited] = useState(null)
@@ -12,8 +14,6 @@ const Post = ({ post, loggedInUser, client, setPosts, posts, setErr }) => {
   }
   const firstName = post.user.profile.firstName
   const lastName = post.user.profile.lastName
-  const loggedInFirstName = loggedInUser.firstName
-  const loggedInLastName = loggedInUser.lastName
   const canEditOrDelete =
     (loggedInUser !== null && loggedInUser.role === 'TEACHER') ||
     loggedInUser.id === post.user.id
@@ -45,6 +45,20 @@ const Post = ({ post, loggedInUser, client, setPosts, posts, setErr }) => {
         setErr(err.message)
       })
   }
+  const computePostDateAndTimeString = () => {
+    const today = format(new Date(), 'MMMM d')
+    const postDay = format(parseISO(post.createdAt), 'MMMM d')
+    const createdYesterday = isYesterday(today)
+    const postTime = format(parseISO(post.createdAt), 'h:mm a')
+    let date = format(parseISO(post.createdAt), 'MMMM d, yyyy h:mm a')
+    if (today === postDay) {
+      date = `today @ ${postTime}`
+    }
+    if (createdYesterday === true) {
+      date = `yesterday @ ${postTime}`
+    }
+    return date
+  }
 
   return (
     <>
@@ -63,7 +77,9 @@ const Post = ({ post, loggedInUser, client, setPosts, posts, setErr }) => {
             <div className="single-post-name">
               {firstName} {lastName}
             </div>
-            <div className="single-post-date">{post.createdAt}</div>
+            <div className="single-post-date">
+              {computePostDateAndTimeString()}
+            </div>
           </div>
           <div className="single-post-edit-container">
             {canEditOrDelete && (
@@ -117,30 +133,7 @@ const Post = ({ post, loggedInUser, client, setPosts, posts, setErr }) => {
           <div className="placeholder"></div>
           <div className="numberOfLikes">Be the first to like this</div>
         </div>
-        <div className="add-new-comment-container">
-          <div className="new-comment-user-img-container">
-            <div className="new-comment-user-img">
-              <img
-                src={`https://ui-avatars.com/api/?name=${loggedInFirstName}+${loggedInLastName}&background=random&color=fff&rounded=true`}
-                alt="avatar"
-                height="50px"
-              ></img>
-            </div>
-          </div>
-          <form className="post-form">
-            <TextField
-              className="user-form-input"
-              type="text"
-              label="Add a comment..."
-              variant="outlined"
-              name="content"
-              onChange={handleChange}
-            />
-            <Button type="submit" variant="contained">
-              Comment
-            </Button>
-          </form>
-        </div>
+        {post && <CommentsList post={post} loggedInUser={loggedInUser} />}
       </section>
     </>
   )

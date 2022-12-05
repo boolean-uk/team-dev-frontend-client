@@ -2,12 +2,12 @@ const constants = {
   token: process.env.REACT_APP_USER_TOKEN,
   user: {
     permittedProperties: [
-      'first_name',
-      'last_name',
+      'firstName',
+      'lastName',
       'email',
       'password',
       'biography',
-      'github_url'
+      'githubUrl'
     ]
   },
   post: {
