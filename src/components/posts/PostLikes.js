@@ -3,7 +3,6 @@ import { useEffect } from 'react'
 import client from '../../utils/client'
 
 export default function PostLikes({ loggedInUser }) {
-  const [likeCount, setLikeCount] = useState(0)
   const [likesArray, setLikesArray] = useState([])
 
   //  postId  6 => needs to changed to current postId using string interpolation
@@ -11,7 +10,7 @@ export default function PostLikes({ loggedInUser }) {
     client.get('/posts/postLike').then((data) => {
       const allLikes = data.data.data.postLikes
       const filterLikes = allLikes.filter((likeObject) => {
-        if (likeObject.postId === 6 && likeObject.active === true) {
+        if (likeObject.postId === 3 && likeObject.active === true) {
           return true
         }
       })
@@ -21,7 +20,7 @@ export default function PostLikes({ loggedInUser }) {
 
   // need to interpolate actual post id into this later
   const handleLikingPost = () => {
-    client.post('/posts/6/postLike').then((data) => {
+    client.post('/posts/3/postLike').then((data) => {
       const postLikeData = data.data.data
       const newPostLikesArray = [...likesArray, postLikeData]
       setLikesArray(newPostLikesArray)
@@ -33,14 +32,17 @@ export default function PostLikes({ loggedInUser }) {
       active: false,
       postLikeId: filterId.id
     }
-    client.post('/posts/6/postLike', dataToSend).then((data) => {
+    client.post('/posts/3/postLike', dataToSend).then((data) => {
       const removeLikeFromArray = likesArray.filter((likeObject) => {
-        if (likeObject === filterId) {
+        console.log('likeobject', likeObject)
+        console.log('filter-id', filterId[0])
+        if (likeObject.id === filterId[0].id) {
           return false
         } else {
           return true
         }
       })
+      console.log(removeLikeFromArray)
       const newPostLikesArray = [...removeLikeFromArray, data.data.data]
       setLikesArray(newPostLikesArray)
     })
@@ -48,7 +50,7 @@ export default function PostLikes({ loggedInUser }) {
 
   const handleLikeButton = () => {
     const filterId = likesArray.filter((likeObject) => {
-      if (likeObject.userId === loggedInUser.id) {
+      if (likeObject.userId === loggedInUser.id && likeObject.active === true) {
         return true
       }
     })
