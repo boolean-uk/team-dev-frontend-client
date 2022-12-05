@@ -1,25 +1,22 @@
 .student-page-container {
   display: grid;
   grid-template-columns: 70% 30%;
-  height: 100vh;
+  height: calc(100vh - 5px - 68.5px);
   gap: 20px;
   padding-top: 10px;
   align-items: stretch;
   overflow: hidden;
-  width: 100vw;
   padding-left: 90px;
   padding-right: 50px;
   margin: 0;
   margin-left: 14px;
   max-width: 100%;
 }
-.students-list-space {
-  width: 100%;
-}
+
+.students-list-space,
 .teachers-list-space,
 .exercises-list-space {
-  width: 100%;
-  margin-right: 10px;
+  overflow-y: hidden;
 }
 
 .rigth-section-student-page {
