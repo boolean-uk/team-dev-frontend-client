@@ -98,7 +98,7 @@ const PostsPage = ({ loggedInUser }) => {
                 tofth eliv ingdead.
               </article>
               <div className="like-and-comment-container">
-                <PostLikes />
+                <PostLikes loggedInUser={loggedInUser} />
                 <div className="comment-container">
                   <div className="comment-icon"></div>
                   <div className="comment">Comment</div>

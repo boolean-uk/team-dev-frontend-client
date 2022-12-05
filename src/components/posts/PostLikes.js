@@ -2,11 +2,9 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import client from '../../utils/client'
 
-export default function PostLikes() {
+export default function PostLikes({ loggedInUser }) {
   const [likeCount, setLikeCount] = useState(0)
-
   // currently only checking likes on postId  6 => needs to changed to current postId using string interpolation
-
   useEffect(() => {
     client.get('/posts/postLike').then((data) => {
       const allLikes = data.data.data.postLikes
@@ -44,9 +42,19 @@ export default function PostLikes() {
   }
 
   const handleLikeButton = () => {
-    client.post('/posts/6/postLike').then((data) => {
-      const postLikeData = data.data.data
-      if (postLikeData.active === false) {
+    client.get('/posts/postLike').then((data) => {
+      const postLikeData = data.data.data.postLikes
+      const filterLikes = postLikeData.filter((likeObject) => {
+        if (likeObject.postId === 6 && likeObject.active === true) {
+          return true
+        }
+      })
+      const filterId = filterLikes.filter((likeObject) => {
+        if (likeObject.userId === loggedInUser.id) {
+          return true
+        }
+      })
+      if (filterId.length === 0) {
         return handleLikingPost()
       } else {
         handleUnLikingPost()
@@ -63,14 +71,13 @@ export default function PostLikes() {
   )
 }
 
-// press on like
-// get all like data for specific post
-// use if statement that checks if active === false
-// return true
-// need to make sure fucntion is being called in the onClick
-// i am guessing once I have made it true then it should just like the post???
-// need to check live server to see if it works
+// // need to use a patch request to unlike post
+// const handleUnLikingPost = () => {
+//       const postLikeData = data.data.data
+//   client
+//     .patch('/posts/6/postLike', { ...postLikeData, active: false })
+//     })
+//     .then((updatedData) => setLikeCount(updatedData))
+// }
 
-// only needs one else to capture all unlikes
-// unlike will also be a POST not sure about the code in the slightest
-// will need some check???
+// need to make ll data and get request globally available
