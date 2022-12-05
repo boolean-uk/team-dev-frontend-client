@@ -1,7 +1,18 @@
 import './styles/SearchResult.css'
-import { Link } from 'react-router-dom'
+import client from '../../utils/client'
+import { useNavigate, Link } from 'react-router-dom'
 
-function SearchResultPerson({ loggedInUser, person }) {
+function SearchResultPerson({ loggedInUser, person, cohorts }) {
+  const navigate = useNavigate()
+
+  const handleChange = (e) => {
+    const cohort = Number(e.target.value)
+
+    client
+      .patch(`/users/update/${person.id}`, { ...person, cohortId: cohort })
+      .then((data) => navigate(`/profile/${person.id}`))
+  }
+
   return (
     <div className="search--result_item">
       <img src={person.profileUrl} alt="Profile img" />
@@ -15,7 +26,26 @@ function SearchResultPerson({ loggedInUser, person }) {
         </Link>
         {loggedInUser.role === 'TEACHER' && (
           <>
-            <button className="button">Add to cohort</button>
+            {cohorts && (
+              <>
+                <select
+                  className="search--result_dropdown"
+                  name="cohortId"
+                  onChange={handleChange}
+                >
+                  <option>Change Cohort...</option>
+                  {cohorts.map((cohort) => {
+                    const { id, cohortName } = cohort
+                    return (
+                      <option key={id} value={id}>
+                        {cohortName}
+                      </option>
+                    )
+                  })}
+                </select>
+              </>
+            )}
+            <button className="button">Add note</button>
           </>
         )}
       </div>

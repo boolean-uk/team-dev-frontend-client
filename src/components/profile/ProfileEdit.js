@@ -57,7 +57,7 @@ function ProfileEdit({ loggedInUser }) {
 
     // If the cohortId has changed, we change the value from a string to a number so it can be added to ProfileToEdit correctly
     if (name === 'cohortId') {
-      value = parseInt(value)
+      value = Number(value)
     }
 
     setProfileToEdit({

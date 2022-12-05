@@ -144,6 +144,8 @@ function SearchResults({ loggedInUser }) {
                   loggedInUser={loggedInUser}
                   person={person}
                   key={person.id}
+                  cohorts={cohorts}
+                  query={searchBarText}
                 />
               )
             })
