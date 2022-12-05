@@ -54,7 +54,7 @@ const Post = ({ post, loggedInUser, client, setPosts, posts, setErr }) => {
     if (today === postDay) {
       date = `today @ ${postTime}`
     }
-    if (createdYesterday === 'true') {
+    if (createdYesterday === true) {
       date = `yesterday @ ${postTime}`
     }
     return date
