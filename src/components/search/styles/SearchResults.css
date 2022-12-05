@@ -6,8 +6,10 @@
 }
 
 .results--container {
-  margin: 10px 300px 10px 160px;
+  width: 1000px;
+  margin: 0 auto;
   border: solid 2px #c8d2e6;
   border-radius: 20px;
   padding-bottom: 20px;
+  margin-bottom: 30px;
 }

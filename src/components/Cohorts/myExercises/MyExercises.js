@@ -16,7 +16,10 @@ function MyExercises({ User }) {
 
   return (
     <div className="exercises-list">
-      <h1 className="exercises-title">My Exercises</h1>
+      <h1 className="exercises-title">Exercises</h1>
+
+      {myExercises.length === 0 && <span>No exercises - 🧙‍♂️</span>}
+
       {myExercises.map((exercise, index) => {
         const exerciseUrl = exercise.cohortExercise.exercise.githubUrl
         const exercise_Name = exercise.cohortExercise.exercise.exerciseName

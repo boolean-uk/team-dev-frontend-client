@@ -1,6 +1,6 @@
 .search--result_item {
   display: grid;
-  grid-template-columns: 50px 1fr 1fr;
+  grid-template-columns: auto 1fr 1fr;
   margin: 10px 20px 10px 20px;
 }
 
@@ -69,4 +69,8 @@
 .button--more {
   border-radius: 50%;
   padding: 6px 9px;
+}
+
+.comment-profile-img span {
+  padding: 6px 9px 6px 9px;
 }
