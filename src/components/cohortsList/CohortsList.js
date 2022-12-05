@@ -4,7 +4,7 @@ import CohortListItem from './cohortListItem/CohortListItem'
 import './style.css'
 import CohortAddPopUp from '../CohortAddPopUp/CohortAddPopUp'
 
-function CohortsList({ renderHeader, renderAddButton }) {
+function CohortsList({ renderHeader, renderAddButton, goToExercises = false }) {
   const [renderCohortPopup, setRenderCohortPopup] = useState(false)
   const [cohortsResponse, setCohortsResponse] = useState([])
 
@@ -61,7 +61,13 @@ function CohortsList({ renderHeader, renderAddButton }) {
         {/* If not empty, continue with map */}
         {cohortsResponse.length !== 0 ? (
           cohortsResponse.data.map((cohort, index) => {
-            return <CohortListItem cohort={cohort} key={index} />
+            return (
+              <CohortListItem
+                cohort={cohort}
+                key={index}
+                goToExercises={goToExercises}
+              />
+            )
           })
         ) : (
           <p>Loading Cohorts...</p>
