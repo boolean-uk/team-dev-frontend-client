@@ -42,8 +42,9 @@ export default function PostLikes({ loggedInUser }) {
           return true
         }
       })
-      console.log(removeLikeFromArray)
       const newPostLikesArray = [...removeLikeFromArray, data.data.data]
+      console.log('data', data)
+      console.log('newPostLikesArray is', newPostLikesArray)
       setLikesArray(newPostLikesArray)
     })
   }
