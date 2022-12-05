@@ -1,7 +1,13 @@
 .results--divider {
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin: 0 20px 20px 20px;
   height: 2px;
   background-color: #c8d2e6;
   border: none;
+}
+
+.results--container {
+  margin: 10px 300px 10px 160px;
+  border: solid 2px #c8d2e6;
+  border-radius: 20px;
+  padding-bottom: 20px;
 }

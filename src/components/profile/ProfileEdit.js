@@ -90,7 +90,7 @@ function ProfileEdit({ loggedInUser }) {
       <h2 className="profile-h2">Profile</h2>
 
       <form onSubmit={handleSubmit}>
-        <div className="container">
+        <div className="profile-container">
           <div className="profile-header">
             <img src={profileToEdit.profileUrl} alt="Profile img" />
             <div>

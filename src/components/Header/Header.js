@@ -4,8 +4,11 @@ import Typography from '@mui/material/Typography'
 import { Stack } from '@mui/material'
 import InputBase from '@mui/material/InputBase'
 import { Link, useNavigate } from 'react-router-dom'
+import { useState } from 'react'
 
-const Header = ({ companyName, loggedInUser }) => {
+const Header = ({ companyName, loggedInUser, searchBarVisible = true }) => {
+  const [query, setQuery] = useState('')
+
   let nav = useNavigate()
 
   const signOut = (event) => {
@@ -14,6 +17,14 @@ const Header = ({ companyName, loggedInUser }) => {
     localStorage.setItem('loggedInUser', '')
     nav('/', { replace: true })
   }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    const params = new URLSearchParams({ query })
+    nav({ pathname: '/search', search: params.toString() })
+  }
+
   return (
     <>
       <Box
@@ -31,24 +42,31 @@ const Header = ({ companyName, loggedInUser }) => {
             <p>{companyName}</p>
           </Typography>
         </Box>
-
-        <Box
-          sx={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignContent: 'center'
-          }}
-        >
-          <Box sx={{ backgroundColor: 'white' }}>
-            <InputBase
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </Box>
-          <Box>
-            <Button variant="contained">Search User</Button>
-          </Box>
-        </Box>
+        {searchBarVisible && (
+          <form onSubmit={handleSubmit}>
+            <Box
+              sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignContent: 'center'
+              }}
+            >
+              <Box sx={{ backgroundColor: 'white' }}>
+                <InputBase
+                  placeholder="Search…"
+                  inputProps={{ 'aria-label': 'search' }}
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                />
+              </Box>
+              <Box>
+                <Button type="submit" variant="contained">
+                  Search User
+                </Button>
+              </Box>
+            </Box>
+          </form>
+        )}
 
         <Box>
           <Stack spacing={2} direction="row">

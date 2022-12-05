@@ -41,7 +41,7 @@ function ProfilePage({ loggedInUser }) {
       <NavigationRail user={loggedInUser} />
 
       <h2 className="profile-h2">Profile</h2>
-      <div className="container">
+      <div className="profile-container">
         <div className="profile-header">
           <img src={profilePageUser.profileUrl} alt="Profile img" />
           <div>
