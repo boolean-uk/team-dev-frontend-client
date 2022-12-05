@@ -51,7 +51,7 @@ function StudentsList({ renderAddBtn, renderInfo, teachersPage, user }) {
       .catch((err) =>
         console.error('Error with useEffect, in client.get: ', err)
       )
-  }, [cohortId])
+  }, [cohortId, teachersPage])
 
   function updateStudentsList() {
     console.log('Update list')
