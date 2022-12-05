@@ -3,7 +3,6 @@ import './list.css'
 import InitialsBox from '../../InitialsBox/InitialsBox'
 
 export const StudentListItem = ({ student }) => {
-  const fullName = student.firstName + ' ' + student.lastName
   return (
     <li className="student-list-item">
       <Link className="link-student-item" to={`/profile/${student.id}`}>
