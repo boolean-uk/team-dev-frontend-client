@@ -1,8 +1,13 @@
+import { useNavigate } from 'react-router-dom'
 import './style.css'
 
 function CohortListItem({ cohort }) {
+  const navigate = useNavigate()
   return (
-    <div className="cohort-item-panel">
+    <div
+      className="cohort-item-panel"
+      onClick={() => navigate(`/cohorts/${cohort.id}`)}
+    >
       <img
         src={`https://avatars.dicebear.com/api/initials/:${cohort.cohortName}.svg`}
         alt="cohort initials"
