@@ -6,7 +6,7 @@ function TeacherListItem({ teacher }) {
   const navigate = useNavigate()
 
   function handleClick() {
-    navigate(`/profiles/${teacher.id}`)
+    navigate(`/profile/${teacher.id}`)
   }
 
   const cohortId = teacher.cohortId
