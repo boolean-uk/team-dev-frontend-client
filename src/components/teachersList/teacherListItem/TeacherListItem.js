@@ -16,7 +16,7 @@ function TeacherListItem({ teacher }) {
     <div className="teacher-item-panel" onClick={handleClick}>
       <div className="initials-box-wrapper-teacher">
         <InitialsBox
-          firstWord={`${teacher.firstName}}`}
+          firstWord={`${teacher.firstName}`}
           secondWord={`${teacher.lastName}`}
         />
       </div>
