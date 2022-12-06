@@ -3,7 +3,7 @@ import { useState } from 'react'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 import client from '../../utils/client'
-
+import InitialsBox from '../InitialsBox/InitialsBox'
 export default function Comment({
   comment,
   setComment,
@@ -57,8 +57,7 @@ export default function Comment({
     <section className="comments-container">
       <div className="comment-profile-img-container">
         <div className="comment-profile-img">
-          {comment.profile && (comment.profile.firstName[0] || '')}
-          {comment.profile && (comment.profile.lastName[0] || '')}
+          <InitialsBox />
         </div>
       </div>
       {commentEditMode === false && (

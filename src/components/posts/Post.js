@@ -3,8 +3,9 @@ import Button from '@mui/material/Button'
 import Edit from './images/edit.svg'
 import Delete from './images/delete.svg'
 import { useState } from 'react'
-import { format, parseISO, isYesterday } from 'date-fns'
+import { format, parseISO, sub } from 'date-fns'
 import CommentsList from './CommentsList'
+import InitialsBox from '../InitialsBox/InitialsBox'
 
 const Post = ({ post, loggedInUser, client, setPosts, posts, setErr }) => {
   const [beingEdited, setBeingEdited] = useState(null)
@@ -48,13 +49,14 @@ const Post = ({ post, loggedInUser, client, setPosts, posts, setErr }) => {
   const computePostDateAndTimeString = () => {
     const today = format(new Date(), 'MMMM d')
     const postDay = format(parseISO(post.createdAt), 'MMMM d')
-    const createdYesterday = isYesterday(today)
+    const yesterdayFull = sub(new Date(), { days: 1 })
+    const yesterdayDay = format(yesterdayFull, 'MMMM d')
     const postTime = format(parseISO(post.createdAt), 'h:mm a')
     let date = format(parseISO(post.createdAt), 'MMMM d, yyyy h:mm a')
     if (today === postDay) {
       date = `today @ ${postTime}`
     }
-    if (createdYesterday === true) {
+    if (postDay === yesterdayDay) {
       date = `yesterday @ ${postTime}`
     }
     return date
@@ -65,13 +67,7 @@ const Post = ({ post, loggedInUser, client, setPosts, posts, setErr }) => {
       <section className="single-post">
         <div className="single-post-header">
           <div className="single-post-author-img-container">
-            <div className="single-post-author-img">
-              <img
-                src={`https://ui-avatars.com/api/?name=${firstName}+${lastName}&background=random&color=fff&rounded=true`}
-                alt="avatar"
-                height="50px"
-              ></img>
-            </div>
+            <InitialsBox />
           </div>
           <div className="name-and-date-container">
             <div className="single-post-name">
