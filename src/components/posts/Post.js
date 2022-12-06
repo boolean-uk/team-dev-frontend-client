@@ -5,6 +5,7 @@ import Delete from './images/delete.svg'
 import { useState } from 'react'
 import { format, parseISO, isYesterday } from 'date-fns'
 import CommentsList from './CommentsList'
+import PostLikes from './PostLikes'
 
 const Post = ({ post, loggedInUser, client, setPosts, posts, setErr }) => {
   const [beingEdited, setBeingEdited] = useState(null)
@@ -120,12 +121,8 @@ const Post = ({ post, loggedInUser, client, setPosts, posts, setErr }) => {
             </Button>
           </form>
         )}
-
-        <div className="like-and-comment-container">
-          <div className="like-container">
-            <div className="like-icon"></div>
-            <div className="like">Like</div>
-          </div>
+        <div>
+          <PostLikes loggedInUser={loggedInUser} postId={post.id} />
           <div className="comment-container">
             <div className="comment-icon"></div>
             <div className="comment">Comment</div>
