@@ -1,5 +1,6 @@
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
+import InitialsBox from '../InitialsBox/InitialsBox'
 
 const PostForm = ({
   handleSubmit,
@@ -11,15 +12,7 @@ const PostForm = ({
   return (
     <section className="new-post-form-section">
       <div className="profile-picture-container">
-        <div className="profile-picture">
-          {loggedInUser && (
-            <img
-              src={`https://ui-avatars.com/api/?name=${loggedInUser.firstName}+${loggedInUser.lastName}&background=random&color=fff&rounded=true`}
-              alt="avatar"
-              height="50px"
-            ></img>
-          )}
-        </div>
+        <div className="profile-picture">{loggedInUser && <InitialsBox />}</div>
       </div>
       <form className="post-form" onSubmit={handleSubmit}>
         <TextField

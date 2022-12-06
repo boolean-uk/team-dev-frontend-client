@@ -5,6 +5,7 @@ import Delete from './images/delete.svg'
 import { useState } from 'react'
 import { format, parseISO, sub } from 'date-fns'
 import CommentsList from './CommentsList'
+import InitialsBox from '../InitialsBox/InitialsBox'
 
 const Post = ({ post, loggedInUser, client, setPosts, posts, setErr }) => {
   const [beingEdited, setBeingEdited] = useState(null)
@@ -66,13 +67,7 @@ const Post = ({ post, loggedInUser, client, setPosts, posts, setErr }) => {
       <section className="single-post">
         <div className="single-post-header">
           <div className="single-post-author-img-container">
-            <div className="single-post-author-img">
-              <img
-                src={`https://ui-avatars.com/api/?name=${firstName}+${lastName}&background=random&color=fff&rounded=true`}
-                alt="avatar"
-                height="50px"
-              ></img>
-            </div>
+            <InitialsBox />
           </div>
           <div className="name-and-date-container">
             <div className="single-post-name">

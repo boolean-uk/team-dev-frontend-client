@@ -25,19 +25,7 @@
   text-align: left;
 }
 
-.single-post-author-img-container {
-  margin-top: 0px;
-}
 
-.new-comment-user-img-container,
-.comment-profile-img-container {
-  border: solid white 2px;
-  border-radius: 50%;
-  height: 50px;
-  width: 50px;
-  padding-top: 10px;
-  margin-top: 3px;
-}
 
 .single-post {
   width: 100%;
