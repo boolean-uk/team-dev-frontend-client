@@ -1,0 +1,13 @@
+{
+  "data": {
+    "postLikes": [
+      {
+        "id": 1,
+        "userId": 1,
+        "postId": 1,
+        "createdAt": "2022-11-23T13:09:46.308Z",
+        "updatedAt": "2022-11-23T13:09:46.308Z"
+      }
+    ]
+  }
+}

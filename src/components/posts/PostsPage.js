@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import PostForm from './PostForm'
 import client from '../../utils/client'
 import './style.css'
-
 import Header from '../Header/Header'
 import Post from './Post'
 import NavigationRail from '../NavigationRail/NavigationRail'
