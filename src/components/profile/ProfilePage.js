@@ -36,7 +36,7 @@ function ProfilePage({ loggedInUser }) {
 
   return (
     <>
-      <Header loggedInUser={loggedInUser} />
+      <Header companyName={'Cohort Manager 2.0'} />
 
       <NavigationRail user={loggedInUser} />
 

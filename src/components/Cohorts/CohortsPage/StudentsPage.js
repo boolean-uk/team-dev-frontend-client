@@ -13,7 +13,8 @@ export const StudentsCohortPage = ({ loggedInUser }) => {
 
   return (
     <>
-      <Header />
+      <Header companyName={'Cohort Manager 2.0'} />
+
       <NavigationRail user={loggedInUser} />
       {!newStudentNoCohort ? (
         <div className="student-page-container">
