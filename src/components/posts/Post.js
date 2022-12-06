@@ -3,7 +3,7 @@ import Button from '@mui/material/Button'
 import Edit from './images/edit.svg'
 import Delete from './images/delete.svg'
 import { useState } from 'react'
-import { format, parseISO, isYesterday } from 'date-fns'
+import { format, parseISO, sub } from 'date-fns'
 import CommentsList from './CommentsList'
 
 const Post = ({ post, loggedInUser, client, setPosts, posts, setErr }) => {
@@ -48,13 +48,14 @@ const Post = ({ post, loggedInUser, client, setPosts, posts, setErr }) => {
   const computePostDateAndTimeString = () => {
     const today = format(new Date(), 'MMMM d')
     const postDay = format(parseISO(post.createdAt), 'MMMM d')
-    const createdYesterday = isYesterday(today)
+    const yesterdayFull = sub(new Date(), { days: 1 })
+    const yesterdayDay = format(yesterdayFull, 'MMMM d')
     const postTime = format(parseISO(post.createdAt), 'h:mm a')
     let date = format(parseISO(post.createdAt), 'MMMM d, yyyy h:mm a')
     if (today === postDay) {
       date = `today @ ${postTime}`
     }
-    if (createdYesterday === true) {
+    if (postDay === yesterdayDay) {
       date = `yesterday @ ${postTime}`
     }
     return date
