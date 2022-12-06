@@ -11,6 +11,8 @@ import { Routes, Route, Navigate, Outlet } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 import CohortsPageTeachers from './components/Cohorts/CohortsPage/CohortsPageTeacher'
 import { StudentsCohortPage } from './components/Cohorts/CohortsPage/StudentsPage'
+import ExercisePageSelect from './components/exercisesPage/ExercisesPageTeacher'
+import ExercisePage from './components/exercisesPage/ExercisePage'
 
 function App() {
   // fetch logged in user from local storage
@@ -55,11 +57,19 @@ function App() {
             path="/cohorts"
             element={<CohortsPageTeachers loggedInUser={loggedInUser} />}
           />
+          <Route
+            path="/exercises"
+            element={<ExercisePageSelect loggedInUser={loggedInUser} />}
+          />
         </Route>
         <Route element={<AuthenticateUser />}>
           <Route
             path="/cohorts/:id"
             element={<StudentsCohortPage loggedInUser={loggedInUser} />}
+          />
+          <Route
+            path="/exercises/:id"
+            element={<ExercisePage loggedInUser={loggedInUser} />}
           />
         </Route>
         <Route element={<AuthenticateUser />}>
