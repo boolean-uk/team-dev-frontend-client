@@ -10,6 +10,9 @@ describe('User Login Logout', () => {
       cy.intercept('GET', 'http://localhost:4000/posts', {
         fixture: 'posts/valid-posts.json'
       }).as('getPosts')
+      cy.intercept('GET', 'http://localhost:4000/posts/postLike', {
+        fixture: 'posts/valid-post-likes.json'
+      }).as('getPostLikes')
       cy.visit('/')
     })
 
@@ -58,6 +61,7 @@ describe('User Login Logout', () => {
 
       cy.url().should('eq', `${Cypress.config('baseUrl')}/posts`)
       cy.wait('@getPosts')
+      cy.wait('@getPostLikes')
       cy.get('#user-signout-button').click()
       cy.url().should('eq', `${Cypress.config('baseUrl')}/`)
     })
