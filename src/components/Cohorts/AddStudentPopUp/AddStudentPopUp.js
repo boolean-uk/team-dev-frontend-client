@@ -10,9 +10,6 @@ export default function AddStudentPopUp({
   const [loading, setLoading] = useState(true)
   const [cohorts, setCohorts] = useState([])
   const [allFieldsOk, setAllFieldsOk] = useState(false)
-  // const storedData = [] //0: studentId, 1: cohortId
-  // const [studentId, setStudentId] = useState()
-  // const [cohortId, setCohortId] = useState()
   const [stateData, setStateData] = useState({
     studentId: undefined,
     cohortJson: { cohortId: undefined }
@@ -62,17 +59,13 @@ export default function AddStudentPopUp({
 
   const handleStudentClicked = (student, event) => {
     unselectStudents()
-    // storedData[0] = student.id
     setStateData({ ...stateData, studentId: student.id })
     event.target.className = 'student-selected'
-    // checkIfBothSelected()
   }
   const handleCohortClicked = (cohort, event) => {
     unselectCohorts()
-    // storedData[1] = { cohortId: cohort.id }
     setStateData({ ...stateData, cohortJson: { cohortId: cohort.id } })
     event.target.className = 'cohort-selected'
-    // checkIfBothSelected()
   }
   const handleSubmit = (event) => {
     event.preventDefault()
