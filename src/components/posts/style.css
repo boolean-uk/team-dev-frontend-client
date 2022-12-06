@@ -1,5 +1,10 @@
-.posts-section {
+.i
+
+.comment-profile-img, .new-comment-user-img, .single-post-author-img-container, .profile-picture {
+  height: 50px;
+  width: 50px;
 }
+
 
 .new-post-form-section {
   display: grid;
