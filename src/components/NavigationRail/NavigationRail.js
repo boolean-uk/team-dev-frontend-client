@@ -17,6 +17,15 @@ function NavigationRail({ user }) {
       navigate(`/cohorts/${user.cohortId}`)
     }
   }
+  function exercisesPressed() {
+    if (user.role === 'TEACHER') {
+      navigate('/exercises')
+    } else {
+      if (user.cohortId !== null) {
+        navigate(`/exercises/${user.cohortId}`)
+      }
+    }
+  }
 
   return (
     <nav className="navigation-rail">
@@ -43,6 +52,14 @@ function NavigationRail({ user }) {
             <span className="material-symbols-outlined">workspaces</span>
           </div>
           <span className="nav-item-name">Cohort</span>
+        </li>
+
+        {/* Exercises */}
+        <li className="nav-item noselect" onClick={exercisesPressed}>
+          <div className="nav-item-circle">
+            <span className="material-symbols-outlined">menu_book</span>
+          </div>
+          <span className="nav-item-name">Exercises</span>
         </li>
       </ul>
     </nav>

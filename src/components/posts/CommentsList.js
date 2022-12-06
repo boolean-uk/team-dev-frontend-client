@@ -14,7 +14,9 @@ export default function CommentsList({ post, loggedInUser }) {
   const [hiddenComments, setHiddenComments] = useState([])
 
   useEffect(() => {
-    checkMoreThanFiveComments(post.postComments)
+    if (post.postcomments !== undefined) {
+      checkMoreThanFiveComments(post.postComments)
+    }
   }, [post])
 
   const handleChange = (event) => {

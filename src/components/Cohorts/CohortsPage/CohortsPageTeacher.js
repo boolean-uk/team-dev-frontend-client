@@ -7,12 +7,10 @@ import NavigationRail from '../../NavigationRail/NavigationRail'
 function CohortsPageTeachers({ loggedInUser }) {
   return (
     <>
-      {/*Header may change*/}
-      <Header />
+      <Header companyName={'Cohort Manager 2.0'} />
 
       <NavigationRail user={loggedInUser} />
 
-      {/*may not use nav bar*/}
       <main className="teachers-cohorts-content">
         <div className="teachers-cohortlist">
           <CohortsList renderHeader={true} renderAddButton={true} />

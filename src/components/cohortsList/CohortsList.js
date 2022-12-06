@@ -4,14 +4,18 @@ import CohortListItem from './cohortListItem/CohortListItem'
 import './style.css'
 import CohortAddPopUp from '../CohortAddPopUp/CohortAddPopUp'
 
-function CohortsList({ renderHeader, renderAddButton }) {
+function CohortsList({ renderHeader, renderAddButton, goToExercises = false }) {
+  const [loading, setLoading] = useState(true)
   const [renderCohortPopup, setRenderCohortPopup] = useState(false)
   const [cohortsResponse, setCohortsResponse] = useState([])
 
   useEffect(() => {
     client
       .get('/cohorts')
-      .then((res) => setCohortsResponse(res.data))
+      .then((res) => {
+        setLoading(false)
+        setCohortsResponse(res.data)
+      })
       .catch((err) =>
         console.error('Error with useEffect, in client.get: ', err.response)
       )
@@ -51,14 +55,18 @@ function CohortsList({ renderHeader, renderAddButton }) {
 
       {renderAddButton ? addButton : null}
 
+      {loading && <span>Loading Cohorts...</span>}
       <div className="list-wrapper">
-        {cohortsResponse.length !== 0 ? (
+        {cohortsResponse.length !== 0 &&
           cohortsResponse.data.map((cohort, index) => {
-            return <CohortListItem cohort={cohort} key={index} />
-          })
-        ) : (
-          <span>Loading Cohorts...</span>
-        )}
+            return (
+              <CohortListItem
+                cohort={cohort}
+                key={index}
+                goToExercises={goToExercises}
+              />
+            )
+          })}
       </div>
     </section>
   )

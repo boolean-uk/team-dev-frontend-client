@@ -1,12 +1,11 @@
 import { Box } from '@mui/system'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
-import { Stack } from '@mui/material'
 import InputBase from '@mui/material/InputBase'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 
-const Header = ({ companyName, loggedInUser, searchBarVisible = true }) => {
+const Header = ({ companyName, searchBarVisible = true }) => {
   const [query, setQuery] = useState('')
 
   let nav = useNavigate()
@@ -38,7 +37,7 @@ const Header = ({ companyName, loggedInUser, searchBarVisible = true }) => {
         }}
       >
         <Box>
-          <Typography>
+          <Typography variant="h5">
             <p>{companyName}</p>
           </Typography>
         </Box>
@@ -69,29 +68,13 @@ const Header = ({ companyName, loggedInUser, searchBarVisible = true }) => {
         )}
 
         <Box>
-          <Stack spacing={2} direction="row">
-            <Link to={'/posts'} style={{ textDecoration: 'none' }}>
-              <Button variant="contained">Home</Button>
-            </Link>
-            {loggedInUser && (
-              <Link
-                to={`/profile/${loggedInUser.id}`}
-                style={{ textDecoration: 'none' }}
-              >
-                <Button variant="contained">Profile</Button>
-              </Link>
-            )}
-
-            <Button variant="contained">Add Cohort</Button>
-
-            <Button
-              variant="contained"
-              id="user-signout-button"
-              onClick={signOut}
-            >
-              Logout
-            </Button>
-          </Stack>
+          <Button
+            variant="contained"
+            id="user-signout-button"
+            onClick={signOut}
+          >
+            Logout
+          </Button>
         </Box>
       </Box>
     </>

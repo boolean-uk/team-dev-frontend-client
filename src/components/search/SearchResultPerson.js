@@ -45,7 +45,6 @@ function SearchResultPerson({ loggedInUser, person, cohorts }) {
                 </select>
               </>
             )}
-            <button className="button">Add note</button>
           </>
         )}
       </div>
