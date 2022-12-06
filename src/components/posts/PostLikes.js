@@ -6,16 +6,20 @@ export default function PostLikes({ loggedInUser, postId }) {
   const [likesArray, setLikesArray] = useState([])
 
   useEffect(() => {
-    client.get('/posts/postLike').then((data) => {
-      const allLikes = data.data.data.postLikes
-      const filterLikes = allLikes.filter((likeObject) => {
-        if (likeObject.postId === 3 && likeObject.active === true) {
-          return true
-        }
-        return false
+    client
+      .get('/posts/postLike')
+      .then((data) => {
+        console.log('got data from postLike', data)
+        const allLikes = data.data.data.postLikes
+        const filterLikes = allLikes.filter((likeObject) => {
+          if (likeObject.postId === 3 && likeObject.active === true) {
+            return true
+          }
+          return false
+        })
+        setLikesArray(filterLikes)
       })
-      setLikesArray(filterLikes)
-    })
+      .catch((e) => console.error('error getting likes', e))
   }, [likesArray])
 
   const handleLikingPost = () => {
