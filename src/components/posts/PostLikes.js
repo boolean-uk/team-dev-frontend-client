@@ -12,6 +12,7 @@ export default function PostLikes({ loggedInUser, postId }) {
         if (likeObject.postId === 3 && likeObject.active === true) {
           return true
         }
+        return false
       })
       setLikesArray(filterLikes)
     })
@@ -50,6 +51,7 @@ export default function PostLikes({ loggedInUser, postId }) {
       if (likeObject.userId === loggedInUser.id && likeObject.active === true) {
         return true
       }
+      return false
     })
     if (filterId.length === 0) {
       return handleLikingPost()
