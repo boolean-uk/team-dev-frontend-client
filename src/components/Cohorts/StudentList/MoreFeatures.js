@@ -36,9 +36,6 @@ function MoreFeatures({ student, setShowMoreFeatures, updateStudentsList }) {
   }
   const handleChange = (e) => {
     changedCohortId.cohortId = Number(e.target.value)
-    console.log(changedCohortId)
-    console.log('value', e.target.value)
-    console.log('event on change', e)
   }
 
   const fullSelectOptions = [

@@ -38,16 +38,42 @@
   border-radius: 100%;
 }
 .student-popup-ul {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
   border: 2px solid white;
   border-radius: 16px;
   padding: 16px;
   margin: 16px;
+
+  list-style: none;
+}
+.cohorts-popup-ul {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  border: 2px solid white;
+  border-radius: 16px;
+  padding: 16px;
+  margin: 16px;
+  height: calc(100% - 32px); /*All minus margins & padidngs*/
+  overflow-y: auto;
+
   list-style: none;
 }
 .student-popup-list {
   cursor: pointer;
   line-height: 50px;
-  border-bottom: 1px solid white;
+  border-radius: 8px;
+  border: 1px solid white;
+}
+.cohort-popup-list-item {
+  cursor: pointer;
+  line-height: 50px;
+  border-radius: 8px;
+  border: 1px solid white;
 }
 
 .columns-wrapper {
@@ -72,21 +98,25 @@
 .add-popup-student-confirm:hover {
   scale: 1.05;
 }
+.add-popup-student-confirm:disabled {
+  filter: brightness(50%);
+}
+
 .cohorts-list-all-wrapper {
   overflow-y: hidden;
 }
 
-.cohorts-list-popup-wrapper {
-  padding: 8px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-
-  padding: 16px 8px;
-  margin: 16px;
-
-  height: calc(100% - 32px); /*All minus margins & padidngs*/
-
-  border-radius: 16px;
-  border: 2px solid white;
+.student-selected {
+  cursor: pointer;
+  box-sizing: border-box;
+  line-height: 50px;
+  border: 4px solid white;
+  border-radius: 8px;
+}
+.cohort-selected {
+  cursor: pointer;
+  box-sizing: border-box;
+  line-height: 50px;
+  border: 4px solid white;
+  border-radius: 8px;
 }
