@@ -1,10 +1,10 @@
-.i
-
-.comment-profile-img, .new-comment-user-img, .single-post-author-img-container, .profile-picture {
+.i .comment-profile-img,
+.new-comment-user-img,
+.single-post-author-img-container,
+.profile-picture {
   height: 50px;
   width: 50px;
 }
-
 
 .new-post-form-section {
   display: grid;
@@ -29,8 +29,6 @@
 .profile-picture-container {
   text-align: left;
 }
-
-
 
 .single-post {
   width: 100%;
@@ -129,7 +127,7 @@
 .like-icon:after {
   background-color: rgb(208, 30, 30);
   position: absolute;
-  content: '';
+  content: none;
   left: 25px;
   top: 0;
   width: 25px;

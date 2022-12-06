@@ -9,7 +9,6 @@ export default function PostLikes({ loggedInUser, postId }) {
     client
       .get('/posts/postLike')
       .then((data) => {
-        console.log('got data from postLike', data)
         const allLikes = data.data.data.postLikes
         const filterLikes = allLikes.filter((likeObject) => {
           if (likeObject.postId === 3 && likeObject.active === true) {
@@ -44,8 +43,7 @@ export default function PostLikes({ loggedInUser, postId }) {
         }
       })
       const newPostLikesArray = [...removeLikeFromArray, data.data.data]
-      console.log('data', data)
-      console.log('newPostLikesArray is', newPostLikesArray)
+
       setLikesArray(newPostLikesArray)
     })
   }
