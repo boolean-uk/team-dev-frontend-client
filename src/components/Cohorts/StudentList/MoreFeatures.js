@@ -1,18 +1,10 @@
 import { useEffect, useState } from 'react'
 import client from '../../../utils/client'
 
-// initialState = {
-//   cohortId: student.cohortId,
-//   role: student.role,
-//   firstName: student.firstName,
-//   lastName: student.lastName
-// }
-
-function MoreFeatures({ student, setShowMoreFeatures }) {
-  const [listOfCohorts, setListOfCohorts] = useState([])
+function MoreFeatures({ student, setShowMoreFeatures, updateStudentsList }) {
   const [selectOptions, setSelectOptions] = useState([])
-  const [changedCohortId, setChangedCohortId] = useState([])
 
+  const changedCohortId = {}
   useEffect(() => {
     client
       .get('/cohorts')
@@ -33,36 +25,33 @@ function MoreFeatures({ student, setShowMoreFeatures }) {
   }, [])
   const submitHandler = (event) => {
     event.preventDefault()
+
     client
-      .patch('/users', changedCohortId)
+      .patch(`/users/${student.id}`, changedCohortId)
       .then(() => {
+        updateStudentsList()
         setShowMoreFeatures(false)
       })
       .catch((err) => console.log(err.response))
   }
   const handleChange = (e) => {
-    const value = e.target.value
-
-    setChangedCohortId({ ...student, cohortId: e.target.value })
+    changedCohortId.cohortId = Number(e.target.value)
+    console.log(changedCohortId)
+    console.log('value', e.target.value)
+    console.log('event on change', e)
   }
 
-  //   console.log(listOfCohorts)
-  //   console.log(selectOptions)
-  //   console.log(student)
   const fullSelectOptions = [
     { value: 'null', label: 'No Cohort' },
     ...selectOptions
   ]
 
-  //   {value === 'null' && label === 'No Cohort' ? className = 'bold-select': className = 'standart-select' }
-
   return (
     <form className="form-select-cohort">
-      <select className="select-options-cohorts">
+      <select className="select-options-cohorts" onChange={handleChange}>
         {fullSelectOptions.map((option) => (
           <option
             value={option.value}
-            onChange={handleChange}
             selected={option.value === student.cohortId}
           >
             {option.label}
@@ -78,7 +67,7 @@ function MoreFeatures({ student, setShowMoreFeatures }) {
         >
           <span className="material-symbols-outlined">cancel</span>
         </button>
-        <button className="confirm-button-list" onClick={() => submitHandler}>
+        <button className="confirm-button-list" onClick={submitHandler}>
           Confirm
         </button>
       </nav>

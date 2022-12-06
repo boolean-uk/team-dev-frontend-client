@@ -1,13 +1,16 @@
 .form-select-cohort {
   display: flex;
   flex-direction: row;
-  justify-self: flex-end;
+  justify-self: center;
 }
 .select-options-cohorts {
+  display: flex;
+  flex-direction: row;
   height: 50%;
   filter: brightness(92%);
   background-color: rgba(50, 50, 63, 0.776);
   color: white;
+  justify-self: flex-end;
 }
 .buttons-nav {
   display: flex;

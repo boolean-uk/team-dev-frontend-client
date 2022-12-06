@@ -5,7 +5,7 @@ import InitialsBox from '../../InitialsBox/InitialsBox'
 import { useState } from 'react'
 import MoreFeatures from './MoreFeatures'
 
-export const StudentListItem = ({ student, user }) => {
+export const StudentListItem = ({ student, user, updateStudentsList }) => {
   const [showMoreFeatures, setShowMoreFeatures] = useState(false)
   return (
     <li className="student-list-item">
@@ -24,6 +24,7 @@ export const StudentListItem = ({ student, user }) => {
         <MoreFeatures
           setShowMoreFeatures={setShowMoreFeatures}
           student={student}
+          updateStudentsList={updateStudentsList}
         />
       )}
       {user.role === 'TEACHER' ? (
