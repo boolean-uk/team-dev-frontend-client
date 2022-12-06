@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import InitialsBox from '../../InitialsBox/InitialsBox'
 import './style.css'
+
 function CohortListItem({ cohort, goToExercises = false }) {
   const navigate = useNavigate()
   const pathToNavigate = goToExercises

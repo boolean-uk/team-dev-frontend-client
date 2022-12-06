@@ -19,7 +19,7 @@ function CohortsPageTeachers({ loggedInUser }) {
         <div className="teachers-studentlist">
           <StudentsList
             user={loggedInUser}
-            renderAddBtn={false}
+            renderAddBtn={true}
             renderInfo={false}
             teachersPage={true}
           />
