@@ -10,6 +10,9 @@ describe('User Login Logout', () => {
       cy.intercept('GET', 'http://localhost:4000/posts', {
         fixture: 'posts/valid-posts.json'
       }).as('getPosts')
+      cy.intercept('GET', 'http://localhost:4000/posts/postLike', {
+        fixture: 'posts/valid-post-likes.json'
+      }).as('getPostLikes')
       cy.visit('/')
     })
 
@@ -24,6 +27,7 @@ describe('User Login Logout', () => {
       cy.get('input[name=biography]').type('a long bio')
       cy.get('input[name=githubUrl]').type('https://github.com/dearshrewdwit')
       cy.get('#user-submit-button').click()
+      cy.wait('@register')
 
       cy.get('#user-login-link').click()
       cy.url().should('eq', `${Cypress.config('baseUrl')}/`)
@@ -31,8 +35,11 @@ describe('User Login Logout', () => {
       cy.get('input[name=email]').type('test@test.com')
       cy.get('input[name=password]').type('test12')
       cy.get('#user-submit-button').click()
+      cy.wait('@login')
 
       cy.url().should('eq', `${Cypress.config('baseUrl')}/posts`)
+      cy.wait('@getPosts')
+      cy.wait('@getPostLikes')
     })
 
     it('can log out after login', () => {
@@ -58,6 +65,7 @@ describe('User Login Logout', () => {
 
       cy.url().should('eq', `${Cypress.config('baseUrl')}/posts`)
       cy.wait('@getPosts')
+      cy.wait('@getPostLikes')
       cy.get('#user-signout-button').click()
       cy.url().should('eq', `${Cypress.config('baseUrl')}/`)
     })
