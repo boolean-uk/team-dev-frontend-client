@@ -120,7 +120,7 @@ function SearchResults({ loggedInUser }) {
       <Header loggedInUser={loggedInUser} searchBarVisible={false} />
       <NavigationRail user={loggedInUser} />
       <h1> Search results</h1>
-      <form onSubmit={handleSubmit}>
+      <form className="search-input-bar" onSubmit={handleSubmit}>
         <input
           placeholder="Search here..."
           type="text"
