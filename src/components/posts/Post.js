@@ -66,9 +66,7 @@ const Post = ({ post, loggedInUser, client, setPosts, posts, setErr }) => {
       <section className="single-post">
         <div className="single-post-header">
           <div className="single-post-author-img-container">
-            {/* <div className="single-post-author-img"> */}
             <InitialsBox />
-            {/* </div> */}
           </div>
           <div className="name-and-date-container">
             <div className="single-post-name">
