@@ -1,0 +1,19 @@
+.results--divider {
+  margin: 0 20px 20px 20px;
+  height: 2px;
+  background-color: #c8d2e6;
+  border: none;
+}
+
+.results--container {
+  width: 1000px;
+  margin: 0 auto;
+  border: solid 2px #c8d2e6;
+  border-radius: 20px;
+  padding-bottom: 20px;
+  margin-bottom: 30px;
+}
+
+.search-input-bar {
+  margin-bottom: 30px;
+}

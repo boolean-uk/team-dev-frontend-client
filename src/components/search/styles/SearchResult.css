@@ -1,0 +1,76 @@
+.search--result_item {
+  display: grid;
+  grid-template-columns: auto 1fr 1fr;
+  margin: 10px 20px 10px 20px;
+}
+
+.search--result_item img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.search--result_item div {
+  align-self: center;
+}
+
+.search--result_item .search--result-item_name-role {
+  left: 0;
+  margin-left: 10px;
+}
+
+.search--result_item .search--result-item_name-role p {
+  width: fit-content;
+}
+
+.search--result-item_buttons {
+  justify-self: end;
+}
+
+.search--result_dropdown {
+  height: 32px;
+  padding-left: 5px;
+  background: #ddd;
+  border-radius: 6px;
+  width: 200px;
+}
+
+.button,
+.button--more {
+  appearance: none;
+  background-color: #1976d2;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  box-shadow: rgb(27 31 35 / 4%) 0 1px 0, rgb(255 255 255 / 25%) 0 1px 0 inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system, system-ui, 'Segoe UI', Helvetica, Arial,
+    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+  font-size: 14px;
+  font-weight: 500;
+  position: relative;
+  transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+  word-wrap: break-word;
+}
+
+.button {
+  border-radius: 6px;
+  padding: 6px 9px;
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
+.button--more {
+  border-radius: 50%;
+  padding: 6px 9px;
+}
+
+.comment-profile-img span {
+  padding: 6px 9px 6px 9px;
+}

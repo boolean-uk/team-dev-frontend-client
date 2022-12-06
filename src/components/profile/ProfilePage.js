@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import client from '../../utils/client'
 import Header from '../Header/Header'
+import NavigationRail from '../NavigationRail/NavigationRail'
 
 import './styles/ProfilePage.css'
 
@@ -35,9 +36,12 @@ function ProfilePage({ loggedInUser }) {
 
   return (
     <>
-      <Header loggedInUser={loggedInUser} />
-      <h2>Profile</h2>
-      <div className="container">
+      <Header companyName={'Cohort Manager 2.0'} />
+
+      <NavigationRail user={loggedInUser} />
+
+      <h2 className="profile-h2">Profile</h2>
+      <div className="profile-container">
         <div className="profile-header">
           <img src={profilePageUser.profileUrl} alt="Profile img" />
           <div>
@@ -68,8 +72,15 @@ function ProfilePage({ loggedInUser }) {
           <hr className="profile--divider" />
           <h2>Basic Info</h2>
           <ul className="profile--display__list">
-            <li>First Name: {profilePageUser.firstName}</li>
-            <li>Last Name: {profilePageUser.lastName}</li>
+            <li>
+              {' '}
+              <span className="space"> First Name:</span>{' '}
+              {profilePageUser.firstName}
+            </li>
+            <li>
+              <span className="space"> Last Name: </span>
+              {profilePageUser.lastName}
+            </li>
             <li>
               <span className="space">Username:</span>
               {profilePageUser.username
@@ -153,7 +164,9 @@ function ProfilePage({ loggedInUser }) {
         <div className="bio">
           <hr className="profile--divider" />
           <h2>Bio</h2>
-          <p className="profile--display_para">{profilePageUser.biography}</p>
+          <p className="profile--display_para profile--display_bio">
+            {profilePageUser.biography}
+          </p>
         </div>
       </div>
     </>

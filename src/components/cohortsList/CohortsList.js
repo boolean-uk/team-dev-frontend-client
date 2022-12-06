@@ -4,22 +4,35 @@ import CohortListItem from './cohortListItem/CohortListItem'
 import './style.css'
 import CohortAddPopUp from '../CohortAddPopUp/CohortAddPopUp'
 
-function CohortsList({ renderHeader, renderAddButton }) {
+function CohortsList({ renderHeader, renderAddButton, goToExercises = false }) {
+  const [loading, setLoading] = useState(true)
   const [renderCohortPopup, setRenderCohortPopup] = useState(false)
   const [cohortsResponse, setCohortsResponse] = useState([])
 
-  // GET the Cohorts List from db
   useEffect(() => {
     client
       .get('/cohorts')
-      .then((res) => setCohortsResponse(res.data))
-      .catch((err) => console.log(err.response))
+      .then((res) => {
+        setLoading(false)
+        setCohortsResponse(res.data)
+      })
+      .catch((err) =>
+        console.error('Error with useEffect, in client.get: ', err.response)
+      )
   }, [])
 
-  const header = <h2>Cohorts</h2>
+  function updateCohortsList() {
+    client
+      .get('/cohorts')
+      .then((res) => setCohortsResponse(res.data))
+      .catch((err) =>
+        console.error('Error with useEffect, in client.get: ', err.response)
+      )
+  }
 
   const addButton = (
     <button
+      className="cohorts-list-add-button"
       onClick={() => {
         // When the state is true, the popup will appear
         setRenderCohortPopup(true)
@@ -31,30 +44,29 @@ function CohortsList({ renderHeader, renderAddButton }) {
 
   return (
     <section className="cohorts-list-panel">
-      {/* Conditional Rendering - Add Popup #115 */}
-
-      {/* {renderCohortPopup ? temporaryAddPopup : null} */}
       {renderCohortPopup ? (
-        <CohortAddPopUp setRenderCohortPopup={setRenderCohortPopup} />
+        <CohortAddPopUp
+          updateCohortsList={updateCohortsList}
+          setRenderCohortPopup={setRenderCohortPopup}
+        />
       ) : null}
 
-      {/* Conditional Rendering - Header */}
-      {renderHeader ? header : null}
+      {renderHeader && <h1 className="cohorts-list-header">Cohorts</h1>}
 
-      {/* Conditional Rendering - Add Button */}
       {renderAddButton ? addButton : null}
 
-      {/* Render List */}
+      {loading && <span>Loading Cohorts...</span>}
       <div className="list-wrapper">
-        {/* Render CohortListItem mapping though the Cohorts List */}
-        {/* If not empty, continue with map */}
-        {cohortsResponse.length !== 0 ? (
+        {cohortsResponse.length !== 0 &&
           cohortsResponse.data.map((cohort, index) => {
-            return <CohortListItem cohort={cohort} key={index} />
-          })
-        ) : (
-          <p>Loading Cohorts...</p>
-        )}
+            return (
+              <CohortListItem
+                cohort={cohort}
+                key={index}
+                goToExercises={goToExercises}
+              />
+            )
+          })}
       </div>
     </section>
   )

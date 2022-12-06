@@ -1,29 +1,54 @@
-.DEBUG-popup {
-  /* REMOVE DEBUG */
-  display: flex;
-  flex-direction: column;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  justify-content: center;
-  align-items: center;
-
-  background-color: rgba(0, 0, 0, 0.714);
-}
-
 .cohorts-list-panel {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 8px;
 
-  padding: 1rem;
+  padding: 16px 8px;
+  margin: 16px;
 
-  border: 1px solid white;
+  height: calc(100% - 32px); /*All minus margins & padidngs*/
+
+  border-radius: 16px;
+  border: 2px solid white;
 }
 
 .list-wrapper {
-  overflow-y: auto;
-  overflow-x: hidden;
+  padding: 8px;
+}
+
+.cohorts-list-header {
+  margin: 0;
+  height: fit-content;
+  font-size: 32px;
+}
+
+.cohorts-list-add-button {
+  display: flex;
+  flex-direction: row;
+
+  width: fit-content;
+  height: 40px;
+
+  align-items: center;
+  align-self: flex-end;
+  padding: 16px;
+
+  border-radius: 16px;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  box-shadow: rgb(27 31 35 / 4%) 0 1px 0, rgb(255 255 255 / 25%) 0 1px 0 inset;
+
+  color: white;
+  background-color: #166ac5;
+  cursor: pointer;
+  font-weight: 500;
+  font-family: -apple-system, system-ui, 'Segoe UI', Helvetica, Arial,
+    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+
+  transition: ease filter 0.1s;
+}
+.cohorts-list-add-button:hover {
+  filter: brightness(92%);
+}
+.cohorts-list-add-button:active {
+  filter: brightness(88%);
 }

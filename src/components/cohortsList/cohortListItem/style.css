@@ -3,18 +3,24 @@
   grid-template-columns: auto 1fr;
   box-sizing: border-box;
 
-  border: 1px solid yellow;
+  border-radius: 8px;
+  border: 1px solid slategray;
   text-align: left;
+
+  cursor: pointer;
+  transition: ease scale 0.2s;
+}
+.cohort-item-panel:hover {
+  scale: 1.025;
 }
 
-.cohort-item-panel img {
+.initials-box-wrapper-cohorts {
   grid-column: 1;
   grid-row: 1 / span 2;
-
   margin: 0.5rem;
-
   height: 40px;
-  border-radius: 50%;
+  width: 40px;
+  border-radius: 50px;
 }
 
 .cohort-name {

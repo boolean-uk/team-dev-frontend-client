@@ -21,8 +21,14 @@
   gap: 20px;
 }
 
-.profile-picture-container,
-.single-post-author-img-container,
+.profile-picture-container {
+  text-align: left;
+}
+
+.single-post-author-img-container {
+  margin-top: 0px;
+}
+
 .new-comment-user-img-container,
 .comment-profile-img-container {
   border: solid white 2px;
@@ -31,10 +37,6 @@
   width: 50px;
   padding-top: 10px;
   margin-top: 3px;
-}
-
-.single-post-author-img-container {
-  margin-top: 0px;
 }
 
 .single-post {
@@ -56,7 +58,7 @@
   text-align: left;
 }
 
-.single-post-content {
+.single-post-content, .like-and-comment-container {
   padding-bottom: 20px;
   border-bottom: 1px solid white;
   margin-bottom: 20px;
@@ -67,13 +69,20 @@
 }
 
 .single-post-date {
-  font-size: 0.8rem;
+  font-size: 0.7rem;
+  color: rgb(217, 255, 159)
 }
 
-.single-post-edit-container,
-.comment-edit-container {
+.single-post-edit-container {
   padding-top: 10px;
   padding-left: 20px;
+}
+
+.comment-edit-container {
+  padding-left: 20px;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  place-items: center;
 }
 
 .single-post-edit,
@@ -90,6 +99,7 @@
 .like-and-comment-container {
   display: grid;
   grid-template-columns: 150px 150px 1fr auto;
+  place-items: center;
 }
 
 .like-link-container,
@@ -153,16 +163,16 @@
   grid-template-columns: 80px 1fr;
 }
 .home-page {
-  display: grid;
-  grid-template-columns: 150px 1fr 300px;
+  margin-left: 110px;
+  margin-right: 200px
 }
 
 .posts-list {
-  margin: 20px;
+  margin: 0px;
+  list-style: none;
 }
 
 .post-item {
-  white-space: pre;
   white-space: pre;
 }
 
@@ -190,4 +200,52 @@
   border: 2px solid white;
   border-radius: 10px;
   margin-left: 30px;
+}
+
+.comment-edit-button, .editButton, .deleteButton {
+  display: inline-block;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.are-you-sure {
+  display: inline-block;
+  margin-right: 20px;
+  cursor: default;
+}
+
+.comment-text {
+  padding: 20px;
+  border: 2px solid white;
+  border-radius: 10px;
+  margin-left: 30px;
+}
+.single-post-edit-container {
+}
+
+.edit-delete-buttons {
+  filter: invert() 
+}
+.edit-delete-buttons:hover {
+  filter: invert() blur(2px);
+  cursor: pointer
+}
+
+.comment-edit-form {
+  margin-left: 30px;
+  border: 2px solid white;
+  border-radius: 10px;
+}
+
+.comment-edit-input div input {
+  color: white;
+}
+
+.comment-edit-input:hover fieldset, .comment-edit-input fieldset {
+  border: none;
+}
+
+.edit-comment-form-button {
+  margin-top: 10px!important;
+  margin-right: 10px!important;
 }
