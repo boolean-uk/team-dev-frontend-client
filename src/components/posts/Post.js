@@ -121,7 +121,7 @@ const Post = ({ post, loggedInUser, client, setPosts, posts, setErr }) => {
             </Button>
           </form>
         )}
-        <div>
+        <div className="like-and-comment-container">
           <PostLikes loggedInUser={loggedInUser} postId={post.id} />
           <div className="comment-container">
             <div className="comment-icon"></div>

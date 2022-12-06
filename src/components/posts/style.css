@@ -58,7 +58,8 @@
   text-align: left;
 }
 
-.single-post-content, .like-and-comment-container {
+.single-post-content,
+.like-and-comment-container {
   padding-bottom: 20px;
   border-bottom: 1px solid white;
   margin-bottom: 20px;
@@ -70,7 +71,7 @@
 
 .single-post-date {
   font-size: 0.7rem;
-  color: rgb(217, 255, 159)
+  color: rgb(217, 255, 159);
 }
 
 .single-post-edit-container {
@@ -106,7 +107,7 @@
 .comment-link-container {
   place-items: center start;
   display: grid;
-  grid-template-columns: 50px auto;
+  grid-template-columns: auto auto;
 }
 
 .like,
@@ -164,7 +165,7 @@
 }
 .home-page {
   margin-left: 110px;
-  margin-right: 200px
+  margin-right: 200px;
 }
 
 .posts-list {
@@ -202,7 +203,9 @@
   margin-left: 30px;
 }
 
-.comment-edit-button, .editButton, .deleteButton {
+.comment-edit-button,
+.editButton,
+.deleteButton {
   display: inline-block;
   margin-right: 20px;
   cursor: pointer;
@@ -224,11 +227,11 @@
 }
 
 .edit-delete-buttons {
-  filter: invert() 
+  filter: invert();
 }
 .edit-delete-buttons:hover {
   filter: invert() blur(2px);
-  cursor: pointer
+  cursor: pointer;
 }
 
 .comment-edit-form {
@@ -241,11 +244,12 @@
   color: white;
 }
 
-.comment-edit-input:hover fieldset, .comment-edit-input fieldset {
+.comment-edit-input:hover fieldset,
+.comment-edit-input fieldset {
   border: none;
 }
 
 .edit-comment-form-button {
-  margin-top: 10px!important;
-  margin-right: 10px!important;
+  margin-top: 10px !important;
+  margin-right: 10px !important;
 }
