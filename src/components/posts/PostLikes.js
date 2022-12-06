@@ -2,10 +2,9 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import client from '../../utils/client'
 
-export default function PostLikes({ loggedInUser }) {
+export default function PostLikes({ loggedInUser, postId }) {
   const [likesArray, setLikesArray] = useState([])
 
-  //  postId  6 => needs to changed to current postId using string interpolation
   useEffect(() => {
     client.get('/posts/postLike').then((data) => {
       const allLikes = data.data.data.postLikes
@@ -18,9 +17,8 @@ export default function PostLikes({ loggedInUser }) {
     })
   }, [likesArray])
 
-  // need to interpolate actual post id into this later
   const handleLikingPost = () => {
-    client.post('/posts/3/postLike').then((data) => {
+    client.post(`/posts/${postId}/postLike`).then((data) => {
       const postLikeData = data.data.data
       const newPostLikesArray = [...likesArray, postLikeData]
       setLikesArray(newPostLikesArray)
@@ -32,10 +30,8 @@ export default function PostLikes({ loggedInUser }) {
       active: false,
       postLikeId: filterId.id
     }
-    client.post('/posts/3/postLike', dataToSend).then((data) => {
+    client.post(`/posts/${postId}/postLike`, dataToSend).then((data) => {
       const removeLikeFromArray = likesArray.filter((likeObject) => {
-        console.log('likeobject', likeObject)
-        console.log('filter-id', filterId[0])
         if (likeObject.id === filterId[0].id) {
           return false
         } else {
