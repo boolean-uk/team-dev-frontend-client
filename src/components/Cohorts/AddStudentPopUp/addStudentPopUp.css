@@ -3,7 +3,6 @@
 
   display: flex;
   flex-direction: column;
-  gap: 20px;
 
   align-items: center;
   justify-content: center;
@@ -14,6 +13,9 @@
 
   width: 100vw;
   height: 100vh;
+}
+.add-popup-header {
+  margin: 32px 16px 16px 16px;
 }
 
 .exit-button-scapu {
@@ -32,16 +34,59 @@
   margin: 4rem 4rem 0 0;
   padding: 1rem;
 
+  border: 0;
   border-radius: 100%;
 }
 .student-popup-ul {
-  border: 1px solid white;
-  border-radius: 10px;
-  padding: 20px;
+  border: 2px solid white;
+  border-radius: 16px;
+  padding: 16px;
+  margin: 16px;
   list-style: none;
 }
 .student-popup-list {
   cursor: pointer;
   line-height: 50px;
   border-bottom: 1px solid white;
+}
+
+.columns-wrapper {
+  display: flex;
+  flex-direction: row;
+  overflow-y: hidden;
+}
+
+.add-popup-student-confirm {
+  height: 100px;
+  width: 300px;
+  margin: 16px;
+
+  border-radius: 16px;
+  border: 0;
+  font-size: larger;
+  background-color: springgreen;
+
+  cursor: pointer;
+  transition: ease scale 0.2s;
+}
+.add-popup-student-confirm:hover {
+  scale: 1.05;
+}
+.cohorts-list-all-wrapper {
+  overflow-y: hidden;
+}
+
+.cohorts-list-popup-wrapper {
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  padding: 16px 8px;
+  margin: 16px;
+
+  height: calc(100% - 32px); /*All minus margins & padidngs*/
+
+  border-radius: 16px;
+  border: 2px solid white;
 }

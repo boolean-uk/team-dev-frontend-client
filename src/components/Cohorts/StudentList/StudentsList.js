@@ -87,7 +87,7 @@ function StudentsList({ renderAddBtn, renderInfo, teachersPage, user }) {
       )
   }
 
-  const moreButtons = (
+  const addButton = (
     <nav className="teacher-nav">
       <button
         className="add-btn"
@@ -97,10 +97,7 @@ function StudentsList({ renderAddBtn, renderInfo, teachersPage, user }) {
         }}
       >
         <span className="material-symbols-outlined">add</span>
-        <span>Add</span>
-      </button>
-      <button className="btn-more">
-        <span className="material-symbols-outlined">more_horiz</span>
+        <span>Student</span>
       </button>
     </nav>
   )
@@ -149,7 +146,7 @@ function StudentsList({ renderAddBtn, renderInfo, teachersPage, user }) {
 
         {renderInfo === 'fullInfo' && fullInfo}
         {renderInfo && renderInfo !== 'fullInfo' && simpleInfo}
-        {renderAddBtn === true ? moreButtons : null}
+        {renderAddBtn && addButton}
       </div>
 
       <ul className="students-list">
