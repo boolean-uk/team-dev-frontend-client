@@ -58,7 +58,7 @@ function CohortsList({ renderHeader, renderAddButton, goToExercises = false }) {
       {loading && <span>Loading Cohorts...</span>}
       <div className="list-wrapper">
         {cohortsResponse.length !== 0 &&
-          cohortsResponse.data.map((cohort, index) => {
+          cohortsResponse.map((cohort, index) => {
             return (
               <CohortListItem
                 cohort={cohort}
