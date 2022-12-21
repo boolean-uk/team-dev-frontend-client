@@ -14,7 +14,7 @@ function CohortsList({ renderHeader, renderAddButton, goToExercises = false }) {
       .get('/cohorts')
       .then((res) => {
         setLoading(false)
-        setCohortsResponse(res.data)
+        setCohortsResponse(res.data.data.cohorts)
       })
       .catch((err) =>
         console.error('Error with useEffect, in client.get: ', err.response)
