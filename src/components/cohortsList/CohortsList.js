@@ -16,7 +16,6 @@ function CohortsList({ renderHeader, renderAddButton, goToExercises = false }) {
         setLoading(false)
         setCohortsResponse(res.data.data.cohorts)
       })
-      .then(() => console.log('useEffect', cohortsResponse))
       .catch((err) =>
         console.error('Error with useEffect, in client.get: ', err.response)
       )
@@ -26,7 +25,6 @@ function CohortsList({ renderHeader, renderAddButton, goToExercises = false }) {
     client
       .get('/cohorts')
       .then((res) => setCohortsResponse(res.data.data.cohorts))
-      .then(() => console.log('updateCohortsList', cohortsResponse))
       .catch((err) =>
         console.error('Error with useEffect, in client.get: ', err.response)
       )
@@ -59,7 +57,6 @@ function CohortsList({ renderHeader, renderAddButton, goToExercises = false }) {
 
       {loading && <span>Loading Cohorts...</span>}
       <div className="list-wrapper">
-        {console.log('in render', cohortsResponse)}
         {cohortsResponse.length !== 0 &&
           cohortsResponse.map((cohort, index) => {
             return (
